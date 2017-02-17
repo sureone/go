@@ -788,7 +788,7 @@ int processCommand(OBUFF* o)
             return -1;
 		}
 	}
-        else if (strcmp(cmd,".str")==0)
+    else if (strcmp(cmd,".str")==0)
     {
         char* http_header="request:stat-room\r\n"
                           "\r\n";
@@ -1028,6 +1028,37 @@ int processCommand(OBUFF* o)
         sprintf(data,command,name);
         n = write(sockfd,data,strlen(data));
         free(name);
+        if (n < 0)
+        {
+            error("ERROR writing to socket");
+            return -1;
+        }
+    }else if (strcmp(cmd,".ak")==0)
+    {
+        char* command="request:update-property\r\n"
+                      "key:%s\r\n"
+                      "value:%s\r\n\r\n";
+        char* key = getString(o," ");
+        char* value = getString(o," ");
+        bzero(data,1024);
+        sprintf(data,command,key,value);
+        n = write(sockfd,data,strlen(data));
+        free(key);
+        free(value);
+        if (n < 0)
+        {
+            error("ERROR writing to socket");
+            return -1;
+        }
+    }else if (strcmp(cmd,".rk")==0)
+    {
+        char* command="request:read-property\r\n"
+                      "key:%s\r\n\r\n";
+        char* key = getString(o," ");
+        bzero(data,1024);
+        sprintf(data,command,key);
+        n = write(sockfd,data,strlen(data));
+        free(key);
         if (n < 0)
         {
             error("ERROR writing to socket");

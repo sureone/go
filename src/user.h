@@ -77,6 +77,8 @@ void resetUser(USER_T* user);
 int freeUser(USER_T* u);
 int insertUser(USER_T* u);
 void add_admin(int id,int perm);
+char* read_property(char* key);
+int update_property(char* key,char* value);
 USER_T* u_register(char* email,char* password,char* sn);
 USER_T* existUser(char* email);
 #define GAME_COST 10

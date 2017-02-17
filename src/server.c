@@ -795,7 +795,7 @@ int main (int argc, char **argv) {
 
 	while(-1 != (o = getopt(argc, argv, "f:m:hvVDp:u:Z:t"))) {
 		switch(o) {
-		case 'D': srv->srvconf.dont_daemonize = 1; break;
+		case 'D': srv->srvconf.dont_daemonize = 0; break;
 		case 'V': show_features();{
 			break;
 		}

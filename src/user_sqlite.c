@@ -266,6 +266,22 @@ int init_db(char* sqlite_db_name){
         sqlite3_free(err);
     }
     if (SQLITE_OK != sqlite3_exec(g_db_config.sql,
+                                  "CREATE TABLE app_property ("
+                                  "  key TEXT NOT NULL,"
+                                  "  value TEXT NOT NULL,"
+                                  "UNIQUE (key))",
+                                  NULL, NULL, &err))
+    {
+        WS("create table app_property");
+        if (0 != strstr(err, "already exists"))
+        {
+            WS(err);
+        }
+
+        WS(err);
+        sqlite3_free(err);
+    }
+    if (SQLITE_OK != sqlite3_exec(g_db_config.sql,
                                   "CREATE TABLE max_id ("
                                   "  id INTEGER NOT NULL)", NULL, NULL, &err))
     {
@@ -343,6 +359,37 @@ int is_first_of_device(char* sn){
 
 
     return bOK;
+}
+
+int update_property(char* key,char* value){
+    QSET_T* qs = 0;
+    
+    sprintf(ssql,"SELECT value FROM app_property where key = '%s'",
+            key);
+    qs=db_query(ssql);
+    if(qs->nrow>0){
+        sprintf(ssql,"update app_property set value='%s' where key = '%s'",
+            value,key);
+    }else{
+        sprintf(ssql,"insert into app_property (key,value) values('%s','%s')",
+            key,value);
+    }
+    db_execute(ssql);
+    freeResult( qs );
+}
+
+char* read_property(char* key){
+    QSET_T* qs = 0;
+    char* value = 0;
+    sprintf(ssql,"SELECT value FROM app_property where key = '%s'",
+            key);
+    qs=db_query(ssql);
+    if(qs->nrow>0){
+        value = qs->rows[qs->ncolumn];
+    }
+    freeResult( qs );
+    return value;
+
 }
 
 int is_admin(int id){

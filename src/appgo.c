@@ -726,7 +726,50 @@ int app_handle_join(void* srv,user_msg_t* umsg,buffer* bresponse)
 	}
 	return ret;
 }
+int app_handle_read_property(void* srv,user_msg_t* umsg,buffer* bresponse)
+{
+	int ret = -1;
+	USER_T *me=getUserByConn(umsg->ndx);
+	data_string *key= (data_string *)array_get_element(
+			umsg->headers,"key");
+	if(me == NULL) return ret;
+	buffer* bsend = bresponse;
+	buffer_append_string(bsend,"response:read-property,");
+	if(key!=NULL) {
+		char* value = read_property(key->value->ptr);
+		if(value!=NULL){
+			buffer_append_string(bsend,"200,");
+			buffer_append_string(bsend,value);
+			ret = 0;
+		}else
+			buffer_append_string(bsend,"404,");
+		
+	} else {
+		buffer_append_string(bsend,"404,");
+	}
+	return ret;
+}
+int app_handle_update_property(void* srv,user_msg_t* umsg,buffer* bresponse)
+{
+	int ret = -1;
+	USER_T *me=getUserByConn(umsg->ndx);
+	data_string *key= (data_string *)array_get_element(
+			umsg->headers,"key");
+	data_string *value= (data_string *)array_get_element(
+			umsg->headers,"value");
+	if(me == NULL) return ret;
 
+	buffer* bsend = bresponse;
+	buffer_append_string(bsend,"response:update-property,");
+	if(key!=NULL && value!=NULL) {
+		update_property(key->value->ptr,value->value->ptr);
+		buffer_append_string(bsend,"200,");
+		ret = 0;
+	} else {
+		buffer_append_string(bsend,"404,");
+	}
+	return ret;
+}
 void* startGoGame(void* srv,int did,user_msg_t* umsg)
 {
 	void* p = logicgo_init();
@@ -1258,14 +1301,7 @@ int app_handle_post_talk(void* srv,user_msg_t* umsg,buffer* bresponse)
 int app_handle_reboot(void* srv,user_msg_t* umsg,buffer* bresponse)
 {
 	int ret = -1;
-	int puid;
-	USER_T *pu,*u;
-	u = getUserByConn(umsg->ndx);
-	if(u==NULL) return -1;
-	if(u->id==14370) {
-		system("reboot");
-		return 0;
-	}
+	
 	return -1;
 
 }
@@ -3243,11 +3279,15 @@ int appgo_handle_request(void* srv,user_msg_t* umsg)
 	} else if (strcmp(ds->value->ptr,"giveup")==0) {
 		app_handle_giveup(srv,umsg,bresponse);
 	} else if (strcmp(ds->value->ptr,"set_step_time")==0) {
-    		app_handle_set_step_time(srv,umsg,bresponse);
-    	}
-    	else if (strcmp(ds->value->ptr,"stat-room")==0) {
-    		app_handle_stat_room(srv,umsg,bresponse);
-    	}
+    	app_handle_set_step_time(srv,umsg,bresponse);
+	}
+	else if (strcmp(ds->value->ptr,"stat-room")==0) {
+		app_handle_stat_room(srv,umsg,bresponse);
+	}else if (strcmp(ds->value->ptr,"read-property")==0) {
+		app_handle_read_property(srv,umsg,bresponse);
+	}else if (strcmp(ds->value->ptr,"update-property")==0) {
+		app_handle_update_property(srv,umsg,bresponse);
+	}
 	if(bresponse->used>0) send_response(srv,umsg->ndx,bresponse);
 	buffer_free(bresponse);
 	return 0;
