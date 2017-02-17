@@ -21,7 +21,7 @@ int log_error_cycle();
 
 #define debug_log(arg...) \
         do { log_error_write(__FILE__, __LINE__, ## arg); } while (0)
-#define dprintf(arg...) do { char buf[1024];sprintf(buf,## arg); log_error_write(__FILE__, __LINE__,"s",buf); } while (0)
+#define dprintf(arg...) do { char buf[1024];snprintf(buf,1000,## arg); log_error_write(__FILE__, __LINE__,"s",buf); } while (0)
 #endif
 
 	
