@@ -398,8 +398,8 @@ static server *server_init(void) {
 	int i;
 	FILE *frandom = NULL;
 	//setup_log(ERRORLOG_NONE,STDERR_FILENO,NULL,0);
-	setup_log(ERRORLOG_FD,STDERR_FILENO,NULL,0);
-	// setup_log(ERRORLOG_FILE,NULL,"ipface.log",0);
+	// setup_log(ERRORLOG_FD,STDERR_FILENO,NULL,0);
+	setup_log(ERRORLOG_FILE,NULL,"ipface.log",0);
 
 	server *srv = calloc(1, sizeof(*srv));
 	gs = srv;
