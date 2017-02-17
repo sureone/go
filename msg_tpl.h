@@ -1,0 +1,1 @@
+#define M_RESP_LOGIN_OK "{\"hdr\":{\"type\":\"login\",\"code\":%d},\"body\":{\"id\":%d,\"resume\":%d,\"rank-label\":\"%s\",\"utype\":\"%s\",\"wins\":%d,\"loses\":%d}}"

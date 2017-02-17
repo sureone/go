@@ -1,0 +1,12 @@
+*.[oa]
+*.exe
+*.db
+*.old
+*.stackdump
+*.gz
+*.sublime-project
+*.sublime-workspace
+
+logs
+matches
+
