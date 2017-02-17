@@ -1,6 +1,9 @@
 a weiqi(go) server running on linux/windows.
-build:
-cd src
-make
-run:
-./ipface.exe -p [portno]
+
+- build:
+  cd src
+  make
+- run:
+  ./ipface.exe -p [portno]
+
+yang.xiaowang@wcare.cn
