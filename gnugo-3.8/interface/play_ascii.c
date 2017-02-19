@@ -772,6 +772,10 @@ void *worker_proc(void *ptr)
           bzero(data,1024);
 	  sprintf(data,"%s","resign");
           thread_queue_add(reqs_queue,(void*)data,0,strlen(data));
+      }else if(strstr(buffer,"notify:timeout,join,2,")>0) {
+          bzero(data,1024);
+	  sprintf(data,"request:join\r\ndid:%d\r\nsid:2\r\n\r\n",mydesk);
+          send2net(data);
       }else if(strstr(buffer,"notify:start_dianmu,")>0) {
           send2net("request:done\r\n\r\n"); 
       }else if(strstr(buffer,"notify:pass,")>0) {

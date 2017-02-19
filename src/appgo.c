@@ -38,7 +38,7 @@
 #define MIN_GAME_TIME 60*3
 #else
 #define MAX_STEP_TIMEOUT 15
-#define MAX_JOIN_TIMEOUT 15
+#define MAX_JOIN_TIMEOUT 5
 #define MAX_DIANMU_TIMEOUT 15
 #define MAX_WAIT_ME_BACK_TIMEOUT 15
 #define MIN_GAME_TIME 30 
@@ -2616,15 +2616,11 @@ int app_handle_timeout(void* srv,int uid,char type){
 		notify_user(srv,pu,bnotify);
 		setDeskStatus(u->did,DESK_FULL);
 	} else if (type==TIMER_TYPE_JOIN) {
-		if(strstr(u->email,"robot-")>0){
-                   clearTimer(u,TIMER_TYPE_JOIN);
-		}else{ 
-                   app_handle_leave(srv,u);
-		   buffer_append_string(bnotify,"notify:timeout,join,");
-		   buffer_append_long(bnotify,u->sid);
-		   buffer_append_string(bnotify,",\r\n\r\n");
-		   notify_user(srv,u,bnotify);
-		}
+		buffer_append_string(bnotify,"notify:timeout,join,");
+		buffer_append_long(bnotify,u->sid);
+		buffer_append_string(bnotify,",\r\n\r\n");
+		notify_user(srv,u,bnotify);
+                app_handle_leave(srv,u);
 
                 
 	} else if (type==TIMER_TYPE_RESUME) {

@@ -29,7 +29,7 @@
 #ifndef O_LARGEFILE
 # define O_LARGEFILE 0
 #endif
-#define MAX_ERROR_LOG_LINES 100000
+#define MAX_ERROR_LOG_LINES 800000
 /* Close fd and _try_ to get a /dev/null for it instead.
  * close() alone may trigger some bugs when a
  * process opens another file and gets fd = STDOUT_FILENO or STDERR_FILENO
