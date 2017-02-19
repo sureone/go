@@ -500,30 +500,25 @@ computer_move(Gameinfo *gameinfo, int *passes)
 	  movenum + 1, move);
   if (is_pass(move)){
     (*passes)++;
-  }
+    }
   else{
-    char ss[100];
+    *passes = 0;
+     char ss[100];
     bzero(ss,100);
-    sprintf(ss,"%1m",move);
-    char c;
-    int d,x,y;
-    if (!((sscanf(ss, "%c%d", &c, &d) != 2)
-	|| ((c = toupper((int) c)) < 'A')
-	|| ((c = toupper((int) c)) > 'Z')
-	|| (c == 'I'))){
+	printf("=============%d,%d\n",I(move),J(move));
+		
         char* cmds="request:step\r\n"
                       "x:%d\r\n"
                       "y:%d\r\n\r\n";
   
         bzero(ss,100);
-        x = c-'A';
-        y = d-1;
+        int x = J(move);
+        int y = 18-I(move);
+	if(y>=11) y++;
         sprintf(ss,cmds,x,y);
 	send2net(ss);
 
 	
-    }
-    *passes = 0;
   }
 
   gnugo_play_move(move, gameinfo->to_move);
@@ -786,7 +781,8 @@ void *worker_proc(void *ptr)
           p=skipAndGetInt(&x,p,',');
           p=skipAndGetInt(&y,p,',');
           p=skipAndGetInt(&killed,p,',');
-	  sprintf(data,"%c%d",'a'+x,y+1);
+	  sprintf(data,"%c%d",'a'+x+1,y+1);
+	  printf("net:move %d,%d,%s\n",x,y,data);
           thread_queue_add(reqs_queue,(void*)data,0,strlen(data));
       }
       else if(strstr(buffer,"notify:areyouok,")>0)
@@ -911,7 +907,8 @@ do_play_ascii(Gameinfo *gameinfo,int servermode)
       } else{
 	struct threadmsg *msg = (struct threadmsg*)malloc(sizeof(struct threadmsg));
         thread_queue_get(reqs_queue,NULL,msg);
-	strncpy(line,msg->data,msg->length);
+	char* s = (char*)(msg->data);
+	strcpy(line,s);
         free(msg);
       }
 
