@@ -60,6 +60,7 @@ static int opt_showboard = 1;
 static int showdead = 0;
 static SGFTree sgftree;
 static int resignation_allowed;
+static int last_computer_move=0;
 
 static int clock_on = 0;
 
@@ -68,13 +69,14 @@ static int clock_on = 0;
 /* Keep track of the score estimated before the last computer move. */
 static int current_score_estimate = NO_SCORE;
 
-static void do_play_ascii(Gameinfo *gameinfo);
+static void do_play_ascii(Gameinfo *gameinfo,int servermode);
 static int ascii_endgame(Gameinfo *gameinfo, int reason);
 static void ascii_count(Gameinfo *gameinfo);
 static void showcapture(char *line);
 static void showdefense(char *line);
 static void ascii_goto(Gameinfo *gameinfo, char *line);
 static void ascii_free_handicap(Gameinfo *gameinfo, char *handicap_string);
+void connect2server(char* hostname,int portno,char* mplayer,char* password,int did);
 
 /* If sgf game info is written can't reset parameters like handicap, etc. */
 static int sgf_initialized;
@@ -496,10 +498,33 @@ computer_move(Gameinfo *gameinfo, int *passes)
   
   mprintf("%s(%d): %1m\n", color_to_string(gameinfo->to_move),
 	  movenum + 1, move);
-  if (is_pass(move))
+  if (is_pass(move)){
     (*passes)++;
-  else
+  }
+  else{
+    char ss[100];
+    bzero(ss,100);
+    sprintf(ss,"%1m",move);
+    char c;
+    int d,x,y;
+    if (!((sscanf(ss, "%c%d", &c, &d) != 2)
+	|| ((c = toupper((int) c)) < 'A')
+	|| ((c = toupper((int) c)) > 'Z')
+	|| (c == 'I'))){
+        char* cmds="request:step\r\n"
+                      "x:%d\r\n"
+                      "y:%d\r\n\r\n";
+  
+        bzero(ss,100);
+        x = c-'A';
+        y = d-1;
+        sprintf(ss,cmds,x,y);
+	send2net(ss);
+
+	
+    }
     *passes = 0;
+  }
 
   gnugo_play_move(move, gameinfo->to_move);
   sgffile_add_debuginfo(sgftree.lastnode, move_value);
@@ -509,6 +534,7 @@ computer_move(Gameinfo *gameinfo, int *passes)
   sgffile_output(&sgftree);
 
   gameinfo->to_move = OTHER_COLOR(gameinfo->to_move);
+  last_computer_move = move;
   return 0;
 }
 
@@ -587,7 +613,8 @@ do_pass(Gameinfo *gameinfo, int *passes, int force)
  */
 
 void
-play_ascii(SGFTree *tree, Gameinfo *gameinfo, char *filename, char *until)
+play_ascii(SGFTree *tree, Gameinfo *gameinfo, char *filename, char *until
+,char* serverip,int serverport,char* mplayer,char* mpassword,int deskid)
 {
   int sz;
   
@@ -616,7 +643,11 @@ play_ascii(SGFTree *tree, Gameinfo *gameinfo, char *filename, char *until)
     sgf_initialized = 0;
   }
 
-  do_play_ascii(gameinfo);
+  if(mplayer!=NULL){
+	connect2server(serverip,serverport,mplayer,mpassword,deskid);
+  	do_play_ascii(gameinfo,1);
+  } else 
+	do_play_ascii(gameinfo,0);
   printf("\nThanks! for playing GNU Go.\n\n");
 
   /* main() frees the tree and we might have changed it. */
@@ -708,6 +739,18 @@ char* skipAndGetInt(int* v,char* buff,char token)
     return (data+i);
 }
 
+
+int send2net(char* data){
+  int n = write(sockfd,data,strlen(data));
+  if (n < 0)
+  {
+      error("ERROR writing to socket");
+      return -1;
+  }
+  return 0;
+}
+
+
 void *worker_proc(void *ptr)
 {
   #define BUFF_LEN 4096
@@ -743,25 +786,19 @@ void *worker_proc(void *ptr)
           p=skipAndGetInt(&x,p,',');
           p=skipAndGetInt(&y,p,',');
           p=skipAndGetInt(&killed,p,',');
-	  sprintf(data,"%c%d",'a'+x,y);
-          thread_queue_add(reqs_queue,(void*)data,0);
+	  sprintf(data,"%c%d",'a'+x,y+1);
+          thread_queue_add(reqs_queue,(void*)data,0,strlen(data));
       }
+      else if(strstr(buffer,"notify:areyouok,")>0)
+      {
+          send2net("request:iamok\r\n\r\n");
+      }
+
   }
 };
 
 
-int send2net(char* data){
-  int n = write(sockfd,data,strlen(data));
-  if (n < 0)
-  {
-      error("ERROR writing to socket");
-      return -1;
-  }
-  return 0;
-}
-
-
-void connectToServer(char* hostname,int portno,char* mplayer,char* password,int did){
+void connect2server(char* hostname,int portno,char* mplayer,char* password,int did){
   int n;
   struct hostent *server;
   char buffer[BUFF_LEN];
@@ -796,9 +833,9 @@ void connectToServer(char* hostname,int portno,char* mplayer,char* password,int 
   char* cmds="request:login\r\n"
       "email:%s\r\n"
       "sn:%s_from_machine\r\n"
-      "password:_from_machine\r\n\r\n";
+      "password:%s\r\n\r\n";
   bzero(buffer,1024);
-  sprintf(buffer,cmds,mplayer,mplayer);
+  sprintf(buffer,cmds,mplayer,mplayer,password);
   send2net(buffer);  
 
   cmds="request:join\r\n"
@@ -824,7 +861,7 @@ void connectToServer(char* hostname,int portno,char* mplayer,char* password,int 
 }
 
 void
-do_play_ascii(Gameinfo *gameinfo)
+do_play_ascii(Gameinfo *gameinfo,int servermode)
 {
   int m, num;
   float fnum;
@@ -864,14 +901,21 @@ do_play_ascii(Gameinfo *gameinfo)
 	ascii_showboard();
 
 #if !READLINE
-
       /* Print the prompt */
       mprintf("%s(%d): ", color_to_string(gameinfo->to_move), movenum + 1);
 
       /* Read a line of input. */
       line_ptr = line;
-      if (!fgets(line, 80, stdin))
-	return;
+      if(servermode==0){
+      	if (!fgets(line, 80, stdin)) return;
+      } else{
+	struct threadmsg *msg = (struct threadmsg*)malloc(sizeof(struct threadmsg));
+        thread_queue_get(reqs_queue,NULL,msg);
+	strncpy(line,msg->data,msg->length);
+        free(msg);
+      }
+
+	
 #else
       snprintf(line, 79, "%s(%d): ",
 	       color_to_string(gameinfo->to_move), movenum + 1);
@@ -1022,6 +1066,7 @@ do_play_ascii(Gameinfo *gameinfo)
 
 	case MOVE:
 	  state = do_move(gameinfo, command, &passes, 0);
+          
 	  break;
 
 	case PASS:

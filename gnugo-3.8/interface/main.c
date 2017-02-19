@@ -162,7 +162,8 @@ enum {OPT_BOARDSIZE = 127,
       OPT_MC_GAMES_PER_LEVEL,
       OPT_MC_PATTERNS,
       OPT_MC_LIST_PATTERNS,
-      OPT_MC_LOAD_PATTERNS
+      OPT_MC_LOAD_PATTERNS,
+      DESK_ID,MPLAYER_ID,SERVER_IP,SERVER_PORT
 };
 
 /* names of playing modes */
@@ -203,6 +204,10 @@ enum mode {
 static struct gg_option const long_options[] =
 {
   {"mode",           required_argument, 0, OPT_MODE},
+  {"desk",           required_argument, 0, DESK_ID},
+  {"mplayer",           required_argument, 0, MPLAYER_ID},
+  {"serverip",           required_argument, 0, SERVER_IP},
+  {"serverport",           required_argument, 0, SERVER_PORT},
   {"replay",         required_argument, 0, OPT_REPLAY_GAME},
   {"quiet",          no_argument,       0, OPT_QUIET},
   {"silent",         no_argument,       0, OPT_QUIET},
@@ -328,6 +333,12 @@ main(int argc, char *argv[])
   int i;
   int mandated_color = EMPTY;
   enum mode playmode = MODE_UNKNOWN;
+  int deskid = 1;
+  char *serverip = "127.0.0.1";
+  int serverport = 8090;
+  char *mplayer = NULL;
+  char *mpassword = "i-am-robot";
+
   int replay_color = EMPTY;
   
   char *infilename = NULL;
@@ -674,7 +685,18 @@ main(int argc, char *argv[])
 	}
 	strcpy(mc_pattern_filename, gg_optarg);
 	break;
-
+      case DESK_ID:
+	deskid = atoi(gg_optarg);
+	break;
+      case SERVER_IP:
+	serverip = (gg_optarg);
+	break;
+      case SERVER_PORT:
+	serverport = atoi(gg_optarg);
+	break;
+      case MPLAYER_ID:
+	mplayer= (gg_optarg);
+	break;
       case OPT_MODE: 
 	if (strcmp(gg_optarg, "ascii") == 0)
 	  playmode = MODE_ASCII;
@@ -1459,8 +1481,7 @@ main(int argc, char *argv[])
       oracle_loadsgf(infilename, untilstring);
     }
 #endif
-
-    play_ascii(&sgftree, &gameinfo, infilename, untilstring);
+    play_ascii(&sgftree, &gameinfo, infilename, untilstring,serverip,serverport,mplayer,mpassword,deskid);
     break;
   }
   

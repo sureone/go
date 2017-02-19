@@ -72,7 +72,7 @@ int thread_queue_init(struct threadqueue *queue)
 
 }
 
-int thread_queue_add(struct threadqueue *queue, void *data, long msgtype)
+int thread_queue_add(struct threadqueue *queue, void *data, long msgtype,int length)
 {
     struct msglist *newmsg;
     pthread_mutex_lock(&queue->mutex);
@@ -83,6 +83,7 @@ int thread_queue_add(struct threadqueue *queue, void *data, long msgtype)
     }
     newmsg->msg.data = data;
     newmsg->msg.msgtype = msgtype;
+    newmsg->msg.length=length;
 
     newmsg->next = NULL;
     if (queue->last == NULL) {
@@ -150,6 +151,8 @@ int thread_queue_get(struct threadqueue *queue, const struct timespec *timeout, 
 
 
     msg->data = firstrec->msg.data;
+    msg->length = firstrec->msg.length;
+
     msg->msgtype = firstrec->msg.msgtype;
         msg->qlength = queue->length;
 

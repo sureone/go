@@ -50,6 +50,7 @@ struct threadmsg{
          * Holds the messagetype
          */
         long msgtype;
+        int length;
         /**
         * Holds the current queue lenght. Might not be meaningful if there's several readers
         */
@@ -123,7 +124,7 @@ int thread_queue_init(struct threadqueue *queue);
  * @param msgtype a long specifying the message type, choice of the user.
  * @return 0 on succes ENOMEM if out of memory EINVAL if queue is NULL
  */
-int thread_queue_add(struct threadqueue *queue, void *data, long msgtype);
+int thread_queue_add(struct threadqueue *queue, void *data, long msgtype,int length);
 
 /**
  * Gets a message from a queue
