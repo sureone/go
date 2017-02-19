@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+android:id="@+id/remoteSgfGridBack"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+<ImageView android:id="@+id/rsgfItemImage" 
+android:layout_width="wrap_content" 
+android:layout_alignParentBottom="true"
+android:layout_alignParentRight="true"
+android:layout_height="wrap_content">
+</ImageView>
+
+<TextView
+android:id="@+id/rtxtSgf"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NULL"
+android:gravity="left"
+
+>
+</TextView>
+
+
+
+
+</RelativeLayout>
+

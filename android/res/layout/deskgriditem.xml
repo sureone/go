@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:id="@+id/itemLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+            android:id="@+id/deskItemImage"
+            android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:src="@drawable/desk"
+            android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/txtDeskId"
+                style="@style/DeskItemTextBig"/>
+
+        <TextView
+                android:id="@+id/txtJoin"
+                android:text="@string/clicktojoin"
+                android:layout_below="@id/txtDeskId"
+                style="@style/DeskItemTextMed"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/txtStepTime"
+                    style="@style/WDeskItemTextTime"/>
+
+            <TextView
+                    android:id="@+id/txtBlack"
+                    android:layout_below="@id/txtStepTime"
+                    style="@style/WDeskItemTextName"/>
+
+            <TextView
+                    android:id="@+id/txtBlackInfo"
+                    android:layout_below="@id/txtBlack"
+                    style="@style/WDeskItemTextInfo"/>
+
+            <TextView
+                    android:id="@+id/txtWhite"
+                    android:layout_below="@id/txtBlackInfo"
+                    style="@style/WDeskItemTextName"/>
+
+            <TextView
+                    android:id="@+id/txtWhiteInfo"
+                    android:layout_below="@id/txtWhite"
+                    style="@style/WDeskItemTextInfo"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
+

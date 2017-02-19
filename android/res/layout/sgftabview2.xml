@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:background="@drawable/backrepeat"  
+  android:layout_height="fill_parent">
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_alignParentBottom="true"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_alignParentBottom="true"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1">
+<TableRow>
+
+
+<ImageButton
+android:layout_centerVertical="true"
+android:layout_width="0dip"
+android:layout_weight="1"
+android:background="@null"
+android:id="@+id/BtnLocalSgf">
+</ImageButton>
+<ImageButton
+android:layout_centerVertical="true"
+android:layout_width="0dip"
+android:layout_weight="1"
+android:background="@null"
+android:id="@+id/BtnRemoteSgf">
+</ImageButton>
+
+</TableRow>
+</TableLayout>
+</LinearLayout>
+</RelativeLayout>

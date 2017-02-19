@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="set4_chess_scheme_path_value">
+        <item>chess_3d</item>
+		<item>chess_clam1</item>
+		<item>chess_clam2</item>
+		<item>chess_yunzi1</item>
+		<item>chess_yunzi2</item>
+    </string-array>
+</resources>

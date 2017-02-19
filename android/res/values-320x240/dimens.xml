@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="articleload_w">335.0px</dimen>
+    <dimen name="articleloadline_w">2.0px</dimen>
+    <dimen name="articleload_h">82.0px</dimen>
+</resources>

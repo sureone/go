@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/backrepeat" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@+id/layout_title" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="wrap_content"> 
+		<com.viewpagerindicator.NormalTitle
+		android:id="@+id/ntTitle"
+		android:padding="5dip"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@color/tab_background_color"
+		android:textColor="@color/tab_text_color"
+		android:textSize="@dimen/stream_tab_text_size"
+		app:footerColor="#FFAA2222"
+		app:footerLineHeight="1dp"
+		app:footerIndicatorHeight="3dp"
+		app:footerIndicatorStyle="underline"
+		app:selectedColor="@color/tab_text_color"
+		app:selectedBold="false"
+		/>
+	</LinearLayout>
+	<GridView android:id="@+id/menuGrid" android:layout_weight="1.0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:numColumns="auto_fit"  android:stretchMode="columnWidth" 
+android:layout_below="@+id/layout_title"   android:layout_alignParentBottom="true" android:gravity="center" />
+
+
+</RelativeLayout>

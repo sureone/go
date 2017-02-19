@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="leave">Leave</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+	<string name="dianmu">Counting</string>
+	<string name="giveup">Resign</string>
+	<string name="pass">Pass</string>
+	<string name="start">Start</string>
+	<string name="password">Password</string>
+	<string name="email">Email</string>
+	<string name="acount">Account</string>
+	<string name="register">Sign Up</string>
+    <string name="registergroup">Create Group</string>
+	<string name="login">Sign In</string>
+	<string name="plz_ipt_account">email</string>
+	<string name="hello">Hello World, main!</string>
+	<string name="app_name">Go</string>
+	<string name="appnamecn">思源圍棋</string>
+	<string name="atweibo">思源棋社</string>
+	<string name="dianmuReq">The other side request to counting,Agree?</string>
+	<string name="dianmuResult">The result of counting:</string>
+	<string name="black">黑</string>
+	<string name="white">白</string>
+	<string name="win">勝</string>
+	<string name="lost">負</string>
+	<string name="ping">tied</string>
+	<string name="agree">agree</string>
+	<string name="reject">reject</string>
+	<string name="xia">下</string>
+	<string name="jointimeout">太长时间未开始游戏\n请按返回重新加入游戏.</string>
+	<string name="join">Join</string>
+    <string name="minutes">min</string>
+    <string name="minutes1">1min</string>
+    <string name="minutes2">2min</string>
+    <string name="minutes3">3min</string>
+    <string name="maxStepTime">Max time of each step</string>
+	<string name="loginfail">Failed on login, check your account or password</string>
+	<string name="registerfail">Failed on sign up,try with a different account</string>
+	<string name="isready">is ready</string>
+	<string name="gamestart">game starting</string>
+	<string name="acc_pin_null">account and password can not be empty</string>
+	<string name="refresh">Refresh</string>
+	<string name="go">Go</string>
+	<string name="joingame">join game</string>
+	<string name="waitingforlogin">Please wait...\nsigning into server</string>
+	<string name="waitingforregister">Please wait...\nsigning up with server</string>
+	<string name="waitingforjoin">Please wait...\nYou are joining the game</string>
+	<string name="agreeresult">Agree!</string>
+	<string name="continuego">Continue Go</string>
+	<string name="clicktojoin">Join</string>
+	<string name="BtnEnterPlay">"Play"</string>
+	<string name="BtnEnterSGF">"SGF Viewer"</string>
+	<string name="btnNext">Next</string>
+	<string name="btnLast">Last</string>
+	<string name="vs">vs</string>
+	<string name="waitingforgetsgf">Please wait...\nDownloading SGF record from server</string>
+	<string name="savesgftolocal">Please wait...\nSaving SGF record to local</string>
+	<string name="localsgf">【Local】</string>        
+	<string name="remotesgf">【Download】</string>
+	<string name="more">More...</string>
+	<string name="btnStop">Stop</string>
+	<string name="btnPlay">Play</string>   
+	<string name="REWR">白中盘胜</string>
+	<string name="REBR">黑中盘胜</string>
+	<string name="mu">目</string>
+	<bool name="debug">false</bool>
+	<bool name="googlemarket">true</bool>
+	<string name="search">Search</string>
+	<string name="txtBoardSize">Board Size</string>    
+	<string name="btnFullBoard">Full Board</string>
+	<string name="welcome">歡迎  ようこそ\n환영  Welcome\n"</string>
+	<string name="post">post</string>
+	<string name="view">Views</string>
+	<string name="reply">Reply</string>
+	<string name="noname">noname</string>
+    <string name="enterDesk">Enter Game</string>
+	<string name="disczBoard">Discuz!</string>
+    <string name="registerDesc">You should >=10K to register a group。</string>
+	<string name="loginDesc">Please input your account and password to login.\nIf you have been not registered, please input a account and password then hit the "Sign Up".</string>
+	<string name="swVersion">3.4.3\nsureone@yeah.net</string>		
+	<string name="menu">Menu</string>
+	<string name="talk">Talk</string>
+	<string name="delete">Delete</string>
+	<string name="SgfMenu">SGF Menu</string>
+	<string name="ManageMenu">管理菜单</string>
+	<string name="checkUpdate">Checking update...</string>
+	<string name="download">Downloading</string>
+	<string name="confirmleave">Do you want to leave and get lost?</string>
+	<string name="attention">注意</string>
+	<string name="delete_all">是否要删除这条微博？</string>
+	<string name="ok">是</string>
+	<string name="cancel">否</string>
+	<string name="send">发送</string>
+	<string name="close">关闭</string>
+	<string name="back">back</string>
+	<string name="share_dialog_title">新浪微博</string>
+	<string name="please_login">请登录！</string>
+	<string name="send_sucess">分享成功！</string>
+	<string name="send_failed">分享失败！</string>
+	<string name="del_pic">是否删除图片？</string>
+	<string name="rena">未分胜负</string>
+	<string name="sgfsaved">The match record has been saved local.</string>
+	<string name="share">Share</string>
+	<string name="silentreconn">Oops! Connection is broken,trying to recover...</string>
+	<string name="silentconnok">Thanks God! Connection is recoved.</string>
+	<string name="newverfound">App have the new version,do you need update now?</string>
+	<string name="blackTie">black komi 3+3/4</string>
+	<string name="ad_mode">Show advertise</string>
+	<string name="summary_ad_mode">Show advertise to support our development,Thanks!</string>
+	<string name="silent_mode">Silent mode</string>
+	<string name="summary_silent_mode">No sound when put stone or receive notification.</string>
+	<string name="touch_mode">Cursor Mode</string>
+	<string name="summary_touch_mode">Touch and moving the finger to move the cursor and then press talk button to put a stone.</string>
+	<string name="speed">speed:</string>
+	<string name="observernum">observers:</string>
+	<string name="gameno">Game No.</string>
+	<string name="totalgamenum">Total onging matchs </string>
+	<string name="friendsTab">Friends</string>
+	<string name="playersTab">Players</string>
+	<string name="gamesTab">Matches</string>
+	<string name="observinggame">Observing the game</string>
+	<string name="playinggame">Playing the game</string>
+	<string name="idle">Idle</string>
+	<string name="rank1">1d-9d</string>
+	<string name="rank2">1k-10k</string>
+	<string name="rank3">11k-20k</string>
+	<string name="rank4"> All </string>
+	<string name="btnInvite">Invite</string>
+	<string name="btnAddFriend">Add as friend</string>
+	<string name="rank">Rank</string>
+	<string name="rate">Rate</string>
+	<string name="hide">Hide</string>
+    <string name="score">score</string>
+    <string name="members_num">members</string>
+    <string name="groupname">Group Name</string>
+    <string name="groupdesc">Group Description</string>
+    <string name="logout">logout</string>
+    <string name="logoutSum">current account:</string>
+
+    <string name="jifeng">score</string>
+    <string name="creator">creator</string>
+
+    <string name="registergroup">Register Group</string>
+    <string name="newSelfMatch">Create New Match</string>
+
+
+    <string name="waitingforgamelist">Downloading the game list...</string>
+	<string name="waitingforplayerlist">Downloading the player list...</string>
+	<string name="accept">Accept</string>
+	<string name="decline">Decline</string>
+	<string name="resignedgame">has resigned the game.</string>
+	<string name="getinvite">You are invited to play with:</string>
+	<string name="from">from</string>
+	<string name="wins">Wins</string>
+	<string name="loses">Losses</string>
+	<string name="menuplayhint">play online</string>
+	<string name="menuigshint">play on IGS</string>
+	<string name="menusgfhint">sgf study</string>
+	<string name="menuboardhint">your comments</string>
+	<string name="menusettingshint">settings</string>
+	<string name="menuadapphint">support me</string>
+	<string name="menuplay">Play</string>
+	<string name="menuigs">IGS</string>
+	<string name="menusgf">SGF</string>
+	<string name="mainmenu">Main Menus</string>
+	<string name="boardtitle">Feedback</string>
+
+    <string name="rankReq">rank required</string>
+    <string name="match_min_level">minimal rank required</string>
+    <string name="match_max_level">maximal rank required</string>
+
+
+    <string name="menumatch">Match</string>
+    <string name="menumatchhint">Self Match</string>
+	<string name="menuboard">Talk</string>
+	<string name="menusettings">Set</string>
+	<string name="menuadapp">More</string>
+	<string name="loginview">Please login</string>
+	<string name="playernum">Currnet players</string>
+	<string name="score">Score</string>
+	<string name="done">Done</string>
+	<string name="undo">Undo</string>
+	<string name="scoreinfo">Score Tips:\n1. Select your dead stone to remove it.\n2. Press the *Undo* to re-select the dead stones.\n3. Press the *score* button to check the score.\n4. Hit the *Done* to finish the score.</string>
+	<string name="confirmDead">Confirm</string>
+	<string name="passinfo">Your opponent issue a *pass*,please press *pass* button if you want score the match.</string>
+	<string name="igslogininf">Please sign in with your IGS account and password.\nIf you have not a IGS account, hit the *Sign Up* button will bring you to \"http://www.pandanet.co.jp/English/register/index.htm\" to register a account. </string> 
+	<string name="autopair">Auto Invite</string>
+	<string name="igsurl">http://www.pandanet.co.jp/English/register/index.htm</string>
+	<string name="stop">Stop</string>
+	<string name="btnChangeRank">Set Rank</string>
+	<string name="welcomigs">Welcome to IGS!</string>
+	<string name="yourankset">You rank is set to </string>
+	<string name="ranksetinfo">After you set the rank done, IGS start to tracking your match score, and update your rank automatically according to your match result, so please be carefully for your rank choice,since you have only one chance to set it manually.</string>
+	<string name="oppLost">The opponent lost connection.</string>
+	<string name="btnRestore">Retore</string>
+	<string name="restoreInfo">Found a stored match *%s*, press Restore to restore it.</string>
+	<string name="oppRestore">The opponent has restore the connection.</string>
+	<string name="autopairinfo">Start to invite the players automatically who have the similar rank with you until someone accept the invite.</string>
+	<string name="yourigsaccount">Your IGS account</string>
+	<string name="yourigspassword">Your IGS password</string>
+	<string name="btncontinuego">Continue</string>
+	<string name="undoStep">Undo</string>
+	<string name="undoDead">Undo</string>
+	<string name="dianmustep">1. Remove the dead stones of yours by select it.\n2. If you select the wrong dead stone, press "Undo" button to restore.\n3. You can check the score anytime by pressing "Score" button.\n4. Press the "Done" button to complete.</string>
+	<string name="deskslist">【Games】</string>
+	<string name="playerslist">【Players】</string>
+
+    <string name="grouplist">【Groups】</string>
+	<string name="alarm"> Player is call admin at desk *%d*.</string>
+	<string name="btnalarm">Alarm</string>
+	<string name="blackwin">black win</string>
+	<string name="whitewin">white win</string>
+	<string name="minago">minutes ago</string>
+	<string name="hourago">hours ago</string>
+	<string name="dayago">days ago</string>
+	<string name="monago">months ago</string>
+	<string name="yearago">years ago</string>
+	<string name="justnow">just now</string>
+	<string name="postat"> post at </string>
+	<string name="feedbackhint">Leave your words, then Post it</string>
+	<string name="connectfail">Can not connect to the server, check your network please!</string>
+	<string name="playerlistmenu">Menu</string>
+	<string name="menuinvite">Invite to play</string>
+	<string name="menumessage">Send a message</string>
+	<string name="invite">Invitation</string>
+	<string name="inviteerror">The invitation is failed.</string>
+	<string name="invitereject">The invitation is rejected.</string>
+	<string name="options">Options</string>
+	<string name="crash_toast_text">Ooooops ! I crashed, but a report has been sent to my developer to help fix the issue !</string>
+	<string name="isdone"> have completed to remove his dead stones.</string>
+	<string name="ipass">Pass one step.</string>
+	<string name="boardclose">Please email to sureone@yeah.net if any comments or bugreport, Thanks.</string>
+	<string name="shareToTencet">Share to Tencent Weibo</string>
+<string name="shareToSina">Share to Sina Weibo</string>
+<string name="sharetoweibo">Share To Weibo</string>
+<string name="loadauth">Weibo auth page loading...</string>
+<string name="mute">mute</string>
+<string name="unmute">unmute</string>
+    <string name="match_title_hint">The Match Name...</string>
+    <string name="match_description_hint">The Match Description...</string>
+
+
+
+<string name="hideIcon">Hide Icon</string>
+<string name="hideIconSum">Hide the player\'s icon to reduce the data usage.</string>
+    <string name="groupMembers">members</string>
+    <string name="groupBoard">Board</string>
+    <string name="matchsetup">game setup</string>
+
+    <string name="matchlist">Match List</string>
+
+
+    <string name="match_register_fail">Register Failed!</string>
+    <string-array name="ranks">
+
+        <item>所有人</item>
+        <item>17k</item>
+        <item>16K</item>
+        <item>15k</item>
+        <item>14K</item>
+        <item>13k</item>
+        <item>12K</item>
+        <item>11k</item>
+        <item>10K</item>
+        <item>9k</item>
+        <item>8K</item>
+        <item>7k</item>
+        <item>6K</item>
+        <item>5k</item>
+    </string-array>
+
+    <string name="join_match">Join Match</string>
+    <string name="join_caipan">Join Judge</string>
+</resources>

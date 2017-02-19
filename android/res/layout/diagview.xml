@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:background="@drawable/backrepeat"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<TextView
+android:layout_alignParentTop="true"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:paddingTop="5dip" 
+android:paddingLeft="5dip" 
+android:paddingRight="5dip" 
+android:layout_alignParentLeft="true"
+android:id="@+id/txtDump"/>
+		<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+				android:layout_alignParentBottom="true"
+				>
+		<TableLayout android:paddingTop="10dip" android:id="@+id/t01" 
+			android:layout_height="wrap_content" android:layout_width="fill_parent"  
+			android:stretchColumns="0,1" android:collapseColumns="2">
+			<TableRow android:id="@+id/t02" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <EditText android:id="@+id/etIpt" android:inputType="numberDecimal" android:layout_width="fill_parent" android:layout_height="wrap_content"   />
+                <EditText android:id="@+id/etPay" android:inputType="numberDecimal" android:layout_width="fill_parent" android:layout_height="wrap_content"  />
+
+            </TableRow>
+
+		</TableLayout>
+
+            <TableLayout
+                    android:id="@+id/dianmuButtons"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:stretchColumns="*"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TableRow  android:layout_width="fill_parent">
+                    <FrameLayout
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                        <Button android:id="@+id/btnAddAdmin"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Add Admin"/>
+                    </FrameLayout>
+                    <FrameLayout
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                        <Button android:id="@+id/btnPay"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Pay"/>
+                    </FrameLayout>
+                    <FrameLayout
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                        <Button android:id="@+id/btnQueryPay"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Query"/>
+                    </FrameLayout>
+                </TableRow>
+            </TableLayout>
+
+			  <TableLayout
+		  android:id="@+id/dianmuButtons"
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				  android:stretchColumns="*"
+
+					android:layout_width="wrap_content"
+				  android:layout_height="wrap_content">
+				  <TableRow  android:layout_width="fill_parent">
+					  <FrameLayout
+					  android:layout_weight="1"
+						  android:layout_height="wrap_content">
+			<Button android:id="@+id/btnStat"
+						android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+						  android:layout_gravity="center"
+			android:text="Statistic"/>
+					</FrameLayout>
+					  <FrameLayout
+					  android:layout_weight="1"
+						  android:layout_height="wrap_content">
+			<Button android:id="@+id/btnDiag"
+						android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+						  android:layout_gravity="center"
+			android:text="Diag"/>
+					</FrameLayout>
+					  <FrameLayout
+					  android:layout_weight="1"
+						  android:layout_height="wrap_content">
+			<Button android:id="@+id/btnReboot"
+						android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+						  android:layout_gravity="center"
+			android:text="reboot"/>
+					</FrameLayout>
+				</TableRow>
+	  </TableLayout>
+	  </LinearLayout>
+</RelativeLayout>
+
+

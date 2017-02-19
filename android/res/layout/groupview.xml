@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@drawable/backrepeat"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/layout_title" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.viewpagerindicator.NormalTitle
+                android:id="@+id/ntTitle"
+                android:padding="5dip"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:background="@color/tab_background_color"
+                android:textColor="@color/tab_text_color"
+                android:textSize="@dimen/stream_tab_text_size"
+                app:footerColor="#FFAA2222"
+                app:footerLineHeight="1dp"
+                app:footerIndicatorHeight="3dp"
+                app:footerIndicatorStyle="underline"
+                app:selectedColor="@color/tab_text_color"
+                app:selectedBold="false"
+                />
+    </LinearLayout>
+
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="#FF000000"
+                    android:id="@+id/groupDesc"></TextView>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical"
+                      android:layout_height="1px"
+                      android:background="#FF000000"
+
+                      android:layout_width="match_parent"/>
+
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
+            <Button android:layout_height="wrap_content"
+                    android:id="@+id/btnJoin"
+                    android:layout_width="wrap_content"
+                    android:text="@string/join"
+                    android:onClick="joinGroup"
+                    > </Button>
+
+            <Button android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btnLeave"
+                    android:text="@string/leave"
+                    android:onClick="leaveGroup"
+                    > </Button>
+
+            <Button android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btnUpdate"
+                    android:text="@string/edit"
+                    android:onClick="editGroup"
+                    > </Button>
+
+            <Button android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btnUpdate"
+                    android:text="@string/groupMembers"
+                    android:onClick="showMembers"
+                    > </Button>
+
+
+            <Button android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btnUpdate"
+                    android:text="@string/groupBoard"
+                    android:onClick="showBoard"
+                    > </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

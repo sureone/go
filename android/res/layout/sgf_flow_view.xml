@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"			
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:app="http://schemas.android.com/apk/res-auto"			
+	xmlns:android="http://schemas.android.com/apk/res/android">	
+	<com.viewpagerindicator.TitlePageIndicator
+		android:id="@+id/indicator"
+		android:padding="5dip"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@color/tab_background_color"
+		android:textColor="@color/tab_text_color"
+		android:textSize="@dimen/stream_tab_text_size"
+		app:footerColor="#FFAA2222"
+		app:footerLineHeight="1dp"
+		app:footerIndicatorHeight="3dp"
+		app:footerIndicatorStyle="underline"
+		app:selectedColor="@color/tab_text_color"
+		app:selectedBold="false"
+		/>
+	<com.sureone.SgfViewPager
+		android:id="@+id/pager"
+		android:layout_width="fill_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+	/>
+</LinearLayout>

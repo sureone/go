@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/layout_title" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.viewpagerindicator.NormalTitle
+                android:id="@+id/ntTitle"
+                android:padding="5dip"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:background="@color/tab_background_color"
+                android:textColor="@color/tab_text_color"
+                android:textSize="@dimen/stream_tab_text_size"
+                app:footerColor="#FFAA2222"
+                app:footerLineHeight="1dp"
+                app:footerIndicatorHeight="3dp"
+                app:footerIndicatorStyle="underline"
+                app:selectedColor="@color/tab_text_color"
+                app:selectedBold="false"
+                />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10"
+            android:layout_below="@id/layout_title"
+            >
+        <EditText
+            android:layout_weight="0.1"
+            android:id="@+id/etTitle"
+            android:hint="@string/match_title_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+       </EditText>
+
+        <EditText
+                android:id="@+id/etDesc"
+                android:layout_weight="9.7"
+                android:inputType="textMultiLine"
+
+                android:gravity="top|left"
+
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:scrollbars="vertical"
+                android:hint="@string/match_description_hint"
+                >
+        </EditText>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_weight="0.1"
+                >
+
+            <Spinner
+                    android:id="@+id/rankMin"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/ranks"
+                    android:prompt="@string/match_min_level" />
+            <Spinner
+                    android:id="@+id/rankMax"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/ranks"
+                    android:prompt="@string/match_max_level" />
+        </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="0.1"
+            >
+        <Button
+                android:layout_weight="1"
+            android:onClick="onNewTheMatch"
+            android:text="@string/register"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"></Button>
+
+        <Button
+                android:layout_weight="1"
+                android:onClick="onCancelCreate"
+                android:text="@string/cancel"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"></Button>
+
+    </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,103 @@
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/backrepeat"
+>		
+    <LinearLayout android:id="@+id/layout_title" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<com.viewpagerindicator.NormalTitle
+		android:id="@+id/ntTitle"
+		android:padding="5dip"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@color/tab_background_color"
+		android:textColor="@color/tab_text_color"
+		android:textSize="@dimen/stream_tab_text_size"
+		app:footerColor="#FFAA2222"
+		app:footerLineHeight="1dp"
+		app:footerIndicatorHeight="3dp"
+		app:footerIndicatorStyle="underline"
+		app:selectedColor="@color/tab_text_color"
+		app:selectedBold="false"
+		/>
+	</LinearLayout>
+<RelativeLayout
+android:id="@+id/loginView"
+android:layout_centerVertical="true"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:paddingLeft="10dip"
+android:paddingRight="10dip"
+android:orientation="vertical" >
+
+<!-- <LinearLayout android:orientation="vertical"
+	android:layout_centerHorizontal="true"
+	android:id="@+id/lvIcon"
+	android:background="@drawable/icon_frame"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">   
+<com.sureone.LoaderImageView 
+android:id="@+id/ivIcon"
+android:layout_width="120dip"
+android:layout_height="120dip"/>
+</LinearLayout>
+
+<HorizontalScrollView 
+	android:id="@+id/hsvIcon"
+	android:layout_below="@+id/lvIcon"
+	android:visibility="gone"
+	android:layout_width="fill_parent" android:layout_height="wrap_content" android:padding="0px"
+	android:layout_margin="0px" android:fadingEdge="none" android:fadingEdgeLength="0px" android:scrollbars="none">
+	<LinearLayout android:id="@+id/top" android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:orientation="horizontal" android:padding="0px" android:layout_margin="0px">
+	</LinearLayout>
+</HorizontalScrollView> -->
+
+
+
+
+<EditText
+android:layout_marginTop="4.0dip"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:hint="@string/acount"
+android:id="@+id/txtEmail" android:text="sureone@gmail.com">
+</EditText>
+<EditText
+android:layout_marginTop="2.0dip"
+android:hint="@string/password"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:layout_below="@+id/txtEmail"
+android:id="@+id/txtPassword" android:text="111111" android:password="true">
+</EditText>
+<Button android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentLeft="true"
+android:layout_below="@+id/txtPassword"
+android:id="@+id/BtnLogin" android:text="@string/login" android:bufferType="spannable"/>
+    <LinearLayout android:layout_below="@+id/txtPassword" android:layout_alignParentRight="true"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+            >
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register" android:id="@+id/BtnRegister">
+        </Button>
+
+    </LinearLayout>
+
+
+<TextView android:id="@+id/txtDesc"
+android:layout_width="wrap_content"
+android:layout_marginTop="4dip"
+android:paddingLeft="1dip"
+android:layout_height="wrap_content"
+android:layout_below="@+id/BtnLogin"
+android:text="@string/loginDesc"
+android:textColor="#000000"/>
+</RelativeLayout>
+
+</RelativeLayout>

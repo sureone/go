@@ -1,0 +1,32 @@
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#FFFFFF"
+>	
+		<ImageView 
+			android:layout_alignParentTop="true"
+  		android:layout_width="fill_parent"
+		android:paddingTop="2dip"
+		android:paddingLeft="2dip"
+		android:paddingRight="2dip"
+		android:id="@+id/sgfpic"
+		android:layout_height="wrap_content">
+		</ImageView>	  
+			<EditText
+		android:paddingLeft="2dip"
+			android:layout_below="@+id/sgfpic"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:layout_alignParentLeft="true"
+			android:id="@+id/content"/>
+			<Button
+		android:paddingLeft="2dip"
+			android:layout_alignParentBottom="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/sina_share_btn"
+			android:text=""
+			android:id="@+id/btnPost" android:bufferType="spannable"/>
+</RelativeLayout>

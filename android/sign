@@ -1,0 +1,5 @@
+rm bin/goapp_publish.apk
+rm bin/goapp_signed.apk
+jarsigner -verbose -keystore android.keystore -storepass May242004 -signedjar bin/goapp_signed.apk bin/goapp-release-unsigned.apk sureone
+rm -f goapp_publish.apk
+/d/Android/android-sdk_r24.4.1-windows/android-sdk-windows/build-tools/22.0.1/zipalign.exe -v 4 bin/goapp_signed.apk bin/goapp_publish.apk

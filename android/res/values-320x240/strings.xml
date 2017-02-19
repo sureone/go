@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="articleload_w">335</string>
+    <string name="articleload_h">82</string>
+    <string name="cover_jinru_w">30</string>
+    <string name="cover_jinru_h">30</string>
+    <string name="cover_jinru_x">170</string>
+    <string name="cover_jinru_y">220</string>
+    <string name="cover_login_w">110</string>
+    <string name="cover_login_h">35</string>
+    <string name="cover_login_x">20</string>
+    <string name="cover_login_y">30</string>
+    <string name="photo_width_space">26</string>
+    <string name="photo_hight_space">40</string>
+    <string name="photo_paing">3</string>
+    <string name="photo_textwith">60</string>
+    <string name="photo_texthight">15</string>
+    <string name="photo_textsize">10</string>
+    <string name="photo_hightpaing">0</string>
+    <string name="photo_heading_textsize">30</string>
+    <string name="photo_heading_paing">5</string>
+    <string name="photo_bar_hight">50</string>
+    <string name="photo_move_wight">50</string>
+</resources>

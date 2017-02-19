@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright 2011 Sina.
+ *
+ * Licensed under the Apache License and Weibo License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.open.weibo.com
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources>
+
+	<style name="Theme.App" parent="@android:style/Theme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ContentOverlay" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="TitleLayout">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/title_generic</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/main_titlebar_height</item>
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+    <style name="Title">
+        <item name="android:textSize">@dimen/main_titlebar_textSize</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:shadowColor">#ffcd6000</item>
+        <item name="android:shadowDx">1.0</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">3.0</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+    <style name="ManagerTitle" parent="@style/Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/template_title_marginLeft</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+    <style name="SettingText">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/changecity_divide</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="chat_send_style">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:background">@drawable/chat_send_button</item>
+    </style>
+    <style name="SettingText1">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/darkgray</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="weibocontent">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="weibostatus">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="goviewtalktext">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="goviewplayerinfo">
+		<item name="android:shadowColor">#ff000000</item>
+		<item name="android:shadowDx">0.0</item>
+		<item name="android:shadowDy">-1.0</item>
+		<item name="android:shadowRadius">1.0</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="goviewplayername">
+		<item name="android:shadowColor">#ff000000</item>
+		<item name="android:shadowDx">0.0</item>
+		<item name="android:shadowDy">-1.0</item>
+		<item name="android:shadowRadius">1.0</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="DeskItemTextBig">
+        <item name="android:textSize">40.0sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="DeskItemTextMed">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="MenuItemText">
+        <item name="android:textSize">34.0sp</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="MenuItemTextHint">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="WDeskItemTextInfo">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:focusable">false</item>
+		<item name="android:shadowDx">0.0</item>
+		<item name="android:shadowDy">-1.0</item>
+		<item name="android:shadowRadius">1.0</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="WDeskItemTextName">
+        <item name="android:textColor">@color/dark</item>
+		<item name="android:textSize">@dimen/stream_tab_text_size</item>
+        <item name="android:focusable">false</item>
+		<item name="android:shadowDx">0.0</item>
+		<item name="android:shadowDy">-1.0</item>
+		<item name="android:shadowRadius">1.0</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="WDeskItemTextTime">
+        <item name="android:textColor">@color/blue_dark</item>
+        <item name="android:textSize">@dimen/stream_tab_text_size</item>
+        <item name="android:focusable">false</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">-1.0</item>
+        <item name="android:shadowRadius">1.0</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="BDeskItemTextInfo">
+        <item name="android:textSize">@dimen/stream_tab_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:focusable">false</item>
+		<item name="android:shadowDx">0.0</item>
+		<item name="android:shadowDy">-1.0</item>
+		<item name="android:shadowRadius">1.0</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="BDeskItemTextName">
+        <item name="android:textSize">@dimen/stream_tab_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:focusable">false</item>
+		<item name="android:shadowDx">0.0</item>
+		<item name="android:shadowDy">-1.0</item>
+		<item name="android:shadowRadius">1.0</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="SettingRadio1">
+        <item name="android:focusable">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/main_frame_item_marginLR</item>
+        <item name="android:button">@drawable/radiobutton</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="Theme.CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <style name="Theme.RecipientDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

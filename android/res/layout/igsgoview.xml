@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/mainlayout"
+	android:layout_height="fill_parent"
+	android:layout_alignParentTop="true"
+	android:background="@drawable/backrepeat">
+		<RelativeLayout 
+xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+  xmlns:myapp="http://schemas.android.com/apk/res/com.sureone"
+android:id="@+id/adArea" android:layout_width="fill_parent" android:layout_height="wrap_content">
+<!--net.youmi.android.AdView
+    android:id="@+id/ymView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"/-->
+<!--cn.domob.android.ads.DomobAdView android:layout_width="fill_parent" android:layout_height="wrap_content" myapp:keywords="game" myapp:spots="androidtest" myapp:refreshInterval="20" /-->
+<com.google.ads.AdView android:id="@+id/adView" android:layout_width="fill_parent" android:layout_height="wrap_content" ads:adUnitId="a14e9ccf61c04e3" ads:adSize="BANNER" ads:loadAdOnCreate="false"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" " android:layout_alignParentTop="true" android:layout_alignParentLeft="true"/>
+		</RelativeLayout>
+		<RelativeLayout
+		android:layout_below="@+id/adArea"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<RelativeLayout android:id="@+id/titleAreaGo"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="4dip" 
+		android:layout_alignParentTop="true" >
+			<ImageView android:id="@+id/BlackImage" android:layout_width="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentLeft="true" android:layout_height="wrap_content" android:src="@drawable/b16"/>
+			<ImageView android:id="@+id/WhiteImage" android:layout_width="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_height="wrap_content" android:src="@drawable/w16"/>
+			<TextView
+			android:id="@+id/txtBlackGo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:paddingLeft="4dip" 
+			android:textColor="#000000"
+			android:layout_alignParentTop="true"
+			android:layout_toRightOf="@+id/BlackImage"/>
+	
+			<TextView
+			android:id="@+id/txtWhiteGo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:paddingRight="4dip" 
+			android:textColor="#000000"
+			android:layout_alignParentTop="true"
+			android:layout_toLeftOf="@+id/WhiteImage"/>
+	
+			<TextView
+			android:textColor="#000000"
+			android:id="@+id/txtCenterGo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"/>
+		</RelativeLayout>
+
+		<RelativeLayout android:id="@+id/panelGo"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/titleAreaGo" />
+		<TextView
+		android:id="@+id/txtInfoGo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="TextView"
+		android:scrollbars = "vertical"
+		android:maxLines="20"
+		android:textColor="#000000"
+		android:paddingLeft="4dip" 
+		android:layout_below="@+id/panelGo"
+		android:layout_alignParentLeft="true" />	
+		</RelativeLayout>
+		  <TableLayout
+	  		android:id="@+id/bigviewButtons"
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		      android:stretchColumns="*"
+		android:layout_alignParentBottom="true"
+		        android:layout_width="wrap_content"
+			  android:layout_height="wrap_content">
+			  <TableRow  android:layout_width="fill_parent">
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		              <Button
+				android:id="@+id/btnFullBoard"
+				android:text="@string/btnFullBoard"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"/>
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+			       </FrameLayout>
+			       </TableRow>
+		</TableLayout>
+
+		  <TableLayout
+	  android:id="@+id/scoreButtons"
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		      android:stretchColumns="*"
+		android:layout_alignParentBottom="true"
+		        android:layout_width="wrap_content"
+			  android:layout_height="wrap_content">
+			  <TableRow  android:layout_width="fill_parent">
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button android:id="@+id/btnScore"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/score"/>
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button android:id="@+id/btnUndo"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/undo"/>
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button android:id="@+id/btnDone"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/done"/>
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button android:id="@+id/btnGiveUp2"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/giveup"/>
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button android:id="@+id/btnBackTalk2"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/talk"/>
+			       </FrameLayout>
+		</TableRow>
+		  </TableLayout>
+		  <TableLayout
+	  android:id="@+id/onGameButtons"
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		      android:stretchColumns="*"
+		android:layout_alignParentBottom="true"
+		        android:layout_width="wrap_content"
+			  android:layout_height="wrap_content">
+			  <TableRow  android:layout_width="fill_parent">
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button
+		android:id="@+id/btnPass"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/pass"/>
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button android:id="@+id/btnGiveUp"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/giveup"/>
+			       </FrameLayout>
+			      <FrameLayout
+			      android:layout_weight="1"
+		              android:layout_height="wrap_content">
+		<Button android:id="@+id/btnBackTalk"
+		        	android:layout_width="fill_parent"
+	                  	android:layout_height="wrap_content"
+		              android:layout_gravity="center"
+		android:text="@string/talk"/>
+			       </FrameLayout>
+		</TableRow>
+	  </TableLayout>
+<LinearLayout
+android:id="@+id/talkArea"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true" >
+<Button android:id="@+id/btnMenu"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentLeft="true"
+android:layout_gravity="center_horizontal"
+android:text="@string/menu"/>
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+android:layout_weight="1"
+android:layout_toRightOf="@id/btnStart"
+android:id="@+id/txtTalk"/>
+<Button
+android:layout_weight="0"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+android:layout_toRightOf="@+id/txtTalk"
+android:id="@+id/btnSendTalk" android:text="@string/post" android:bufferType="spannable"/>
+</LinearLayout>
+</RelativeLayout>

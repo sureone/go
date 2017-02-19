@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:id="@+id/thread"
+  android:layout_height="fill_parent">
+<!-- 	<LinearLayout android:orientation="vertical"
+	android:id="@+id/lvIcon"	
+	android:background="@drawable/icon_frame"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">   
+		<com.sureone.LoaderImageView 
+		android:id="@+id/ivIcon"
+		android:layout_width="64dip"
+		android:layout_height="64dip"/>
+	</LinearLayout> -->
+    <LinearLayout android:orientation="vertical"
+	android:layout_width="fill_parent"	
+	android:paddingLeft="2dip" 
+	android:paddingTop="2dip" 	
+	android:layout_height="wrap_content">   
+		<TextView android:id="@+id/txtContent"
+		android:layout_width="fill_parent"
+		android:textColor="#000000"
+		android:layout_height="wrap_content"
+		android:text="NULL"
+		android:gravity="left"/>
+		<RelativeLayout
+		android:layout_below="@+id/txtContent"
+		  android:id="@+id/txtAutDate"		  
+		  android:layout_width="fill_parent"			
+		  android:layout_height="wrap_content">
+
+			<TextView android:id="@+id/txtStatus"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="#000000"
+			android:text="NULL"
+			android:gravity="left" />  
+			<TableLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_below="@+id/txtStatus"
+			android:stretchColumns="*"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+				<TableRow  android:layout_width="fill_parent">
+					<FrameLayout  android:layout_weight="1"  android:layout_height="wrap_content">
+					<com.sureone.MyProgressBar
+					android:id="@+id/rankBar"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" />   
+					</FrameLayout>
+					<FrameLayout  android:layout_weight="1"	  android:layout_height="wrap_content">
+					<TextView android:id="@+id/txtScore"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="3dip" 
+					android:textColor="#000000"
+					android:text="NULL"
+					android:gravity="left"/>  
+					</FrameLayout>
+				</TableRow>
+			</TableLayout>
+		</RelativeLayout>  
+    </LinearLayout>
+</RelativeLayout>

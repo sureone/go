@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+	android:id="@+id/lvIcon"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@drawable/icon_frame"
+	android:layout_width="120dip" 
+	android:layout_height="120dip">   
+
+</LinearLayout>

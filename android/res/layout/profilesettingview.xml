@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+	android:id="@+id/inner_content"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent">   
+
+	<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/scrollView"
+		android:layout_width="fill_parent" android:layout_height="wrap_content" android:padding="0px"
+		android:layout_margin="0px" android:fadingEdge="none" android:fadingEdgeLength="0px" android:scrollbars="none">
+		<LinearLayout android:id="@+id/top" android:layout_height="fill_parent" android:layout_width="fill_parent"
+			android:orientation="horizontal" android:padding="0px" android:layout_margin="0px">
+		</LinearLayout>
+	</HorizontalScrollView>
+
+	<!--
+	<TableLayout	
+    android:id="@+id/myTableLayout"
+    android:layout_width="fill_parent"
+	android:layout_weight="1"
+    android:layout_height="0dip"
+    >
+	</TableLayout>
+	-->
+	<LinearLayout android:orientation="vertical"
+		android:id="@+id/bottomArea"
+		android:layout_weight="1"
+		android:layout_width="fill_parent" 
+		android:layout_height="0dip">   
+	</LinearLayout>
+	
+</LinearLayout>

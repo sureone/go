@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+android:id="@+id/localSgfGridBack"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<ImageView android:id="@+id/sgfItemImage" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" 
+android:layout_alignParentBottom="true"
+android:layout_alignParentRight="true" />
+<TextView
+android:id="@+id/txtSgf"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NULL" />
+</RelativeLayout>
+

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@+id/TransitionDialogBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+android:background="@drawable/backrepeat"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@+id/layout_title" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<com.viewpagerindicator.NormalTitle
+		android:id="@+id/ntTitle"
+		android:padding="5dip"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@color/tab_background_color"
+		android:textColor="@color/tab_text_color"
+		android:textSize="@dimen/stream_tab_text_size"
+		app:footerColor="#FFAA2222"
+		app:footerLineHeight="1dp"
+		app:footerIndicatorHeight="3dp"
+		app:footerIndicatorStyle="underline"
+		app:selectedColor="@color/tab_text_color"
+		app:selectedBold="false"
+		/>
+	</LinearLayout>
+    <RelativeLayout android:id="@+id/rl_silent" android:background="@drawable/manager_item_middle" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/main_frame_item_height" android:layout_below="@id/layout_title">
+        <CheckBox android:id="@+id/rb_silent" style="@style/SettingRadio1" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@+id/rb_silent" android:layout_centerVertical="true">
+            <TextView android:id="@+id/tv_silent1" android:text="@string/silent_mode" style="@style/SettingText" />
+            <TextView android:id="@+id/tv_silent2" android:text="@string/summary_silent_mode" style="@style/SettingText1" />
+        </LinearLayout>
+        <View android:background="@drawable/line" android:focusable="false" android:layout_width="fill_parent" android:layout_height="@dimen/seting_view_line_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/rl_cursor" android:background="@drawable/manager_item_middle" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/main_frame_item_height" android:layout_below="@id/rl_silent">
+        <CheckBox android:id="@+id/rb_cursor" style="@style/SettingRadio1" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@+id/rb_cursor" android:layout_centerVertical="true">
+            <TextView android:id="@+id/tv_cursor1" android:text="@string/touch_mode" style="@style/SettingText" />
+            <TextView android:id="@+id/tv_cursor2" android:text="@string/summary_touch_mode" style="@style/SettingText1" />
+        </LinearLayout>
+        <View android:background="@drawable/line" android:focusable="false" android:layout_width="fill_parent" android:layout_height="@dimen/seting_view_line_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/rl_icon" android:background="@drawable/manager_item_middle" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/main_frame_item_height" android:layout_below="@id/rl_cursor">
+        <!-- <CheckBox android:id="@+id/rb_icon" style="@style/SettingRadio1" /> -->
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <TextView android:text="@string/hideIcon" style="@style/SettingText" />
+            <TextView android:text="@string/hideIconSum" style="@style/SettingText1" />
+        </LinearLayout>
+        <View android:background="@drawable/line" android:focusable="false" android:layout_width="fill_parent" android:layout_height="@dimen/seting_view_line_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>	
+    <RelativeLayout android:id="@+id/rl_logout" android:background="@drawable/manager_item_middle" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/main_frame_item_height" android:layout_below="@id/rl_icon">
+        <CheckBox android:id="@+id/rb_icon" style="@style/SettingRadio1" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@+id/rb_icon" android:layout_centerVertical="true">
+            <TextView android:text="@string/logout" style="@style/SettingText" />
+            <TextView android:text="@string/logoutSum" style="@style/SettingText1" />
+        </LinearLayout>
+        <View android:background="@drawable/line" android:focusable="false" android:layout_width="fill_parent" android:layout_height="@dimen/seting_view_line_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>	
+	<RelativeLayout android:visibility="gone" android:id="@+id/rl_stone" android:background="@drawable/manager_item_middle" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/rl_logout">
+		<RadioGroup
+			android:id="@+id/stoneStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" >
+			<RadioButton
+				android:id="@+id/st0"
+				android:layout_width="wrap_content" style="@style/SettingText"
+				android:layout_height="wrap_content"
+				android:text="chess_3d" />
+			<RadioButton
+				android:id="@+id/st1"
+				android:layout_width="wrap_content" style="@style/SettingText"
+				android:layout_height="wrap_content"
+				android:text="chess_clam1" />
+			<RadioButton
+				android:id="@+id/st2"
+				android:layout_width="wrap_content" style="@style/SettingText"
+				android:layout_height="wrap_content"
+				android:text="chess_clam2" />			
+			<RadioButton
+				android:id="@+id/st3"
+				android:layout_width="wrap_content" style="@style/SettingText"
+				android:layout_height="wrap_content"
+				android:text="chess_yunzi1" />
+			<RadioButton
+				android:id="@+id/st4"
+				android:layout_width="wrap_content" style="@style/SettingText"
+				android:layout_height="wrap_content"
+				android:text="chess_yunzi2" />		
+			<RadioButton
+				android:id="@+id/st5"
+				style="@style/SettingText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="default" />							
+		</RadioGroup>
+		<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+			<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chess_3d"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chess_clam1"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chess_clam2"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chess_yunzi1"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/chess_yunzi2"/>
+        </LinearLayout>
+		<View android:background="@drawable/line" android:focusable="false" android:layout_width="fill_parent" android:layout_height="@dimen/seting_view_line_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+	
+</RelativeLayout>

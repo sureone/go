@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" 
+	android:layout_gravity="center" android:orientation="vertical" 
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@drawable/q_dialog_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@+id/fl_placehoder" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/linearLayout9" 
+			android:layout_width="fill_parent" android:layout_height="fill_parent"> 
+			<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llBlack" 
+				android:visibility="gone"
+				android:layout_width="fill_parent" android:layout_height="fill_parent">
+				<LinearLayout android:orientation="vertical"
+				android:layout_centerHorizontal="true"
+				android:background="@drawable/bg_icon2"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content">   
+				<com.sureone.LoaderImageView 
+				android:id="@+id/ivIconBlack"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+				</LinearLayout>
+
+			</LinearLayout>
+			<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llWhite" 
+				android:visibility="gone"
+				android:layout_width="fill_parent" android:layout_height="fill_parent">  
+				<LinearLayout android:orientation="vertical"
+				android:layout_centerHorizontal="true"
+				android:background="@drawable/bg_icon2"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content">   				
+				<com.sureone.LoaderImageView 
+				android:id="@+id/ivIconWhite"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+				</LinearLayout>
+			</LinearLayout>		
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout android:id="@+id/fl_btn_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="7.0dip" android:layout_centerHorizontal="true">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <Button android:textSize="17.0sp"  android:gravity="center" android:id="@+id/btnDialogClose" 
+				android:layout_width="fill_parent" android:layout_height="fill_parent" 
+				android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" />            
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

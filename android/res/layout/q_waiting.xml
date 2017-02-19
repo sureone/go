@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" 
+	android:layout_gravity="center" android:orientation="vertical" 
+	android:layout_width="fill_parent" android:layout_height="fill_parent"	
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <FrameLayout android:visibility="gone" android:id="@+id/fl_pb_loading" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    			<ProgressBar android:id="@+id/pb_app_loading" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:attr/progressBarStyleLarge" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

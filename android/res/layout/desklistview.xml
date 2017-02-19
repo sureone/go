@@ -1,0 +1,20 @@
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/backrepeat"
+>				
+		<GridView android:id="@+id/deskGrid"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:numColumns="auto_fit"  
+		android:stretchMode="columnWidth"  
+		android:gravity="center"  
+		android:layout_above="@+id/miniAdLinearLayout"
+		/>
+		<LinearLayout  android:id="@+id/miniAdLinearLayout"
+			android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"			
+        android:gravity="center_horizontal"/>
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:id="@+id/thread"
+  android:layout_height="fill_parent">
+<TextView
+android:id="@+id/txtContent"
+android:layout_width="fill_parent"
+android:textSize="18sp"
+android:layout_height="wrap_content"
+android:text="NULL"
+android:gravity="left"
+android:layout_below="@+id/txtAutDate"
+android:layout_alignParentTop="true"
+/>  
+<TextView android:id="@+id/txtAuthor"
+android:layout_below="@id/txtContent"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="14sp"
+android:layout_alignParentLeft="true"
+android:text="NULL"
+android:gravity="left" />
+<TextView
+android:id="@+id/txtReplyAndView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@id/txtContent"
+android:layout_alignParentRight="true"
+android:textSize="14sp"
+android:text="NULL"
+android:gravity="right"
+android:paddingBottom="2dip" 
+>  
+</TextView>  
+</RelativeLayout>

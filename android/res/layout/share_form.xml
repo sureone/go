@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+  android:background="@drawable/backrepeat"
+    >
+	<LinearLayout android:id="@+id/layout_title" android:layout_width="fill_parent" android:layout_height="wrap_content"> <include layout="@layout/custom_title_new" /> </LinearLayout>
+	<ImageView android:id="@+id/ivBlog" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip"/>
+	<EditText android:gravity="top" android:id="@+id/etBlog"  android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" />
+	<FrameLayout android:id="@+id/fl_btn_bar" android:layout_width="fill_parent" android:layout_height="wrap_content"  android:layout_marginBottom="7.0dip" android:layout_centerHorizontal="true">
+		<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+			<Button android:textSize="17.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/btn_back" android:text="@string/back" android:background="@drawable/button_new_back" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:shadowColor="#ff000000" android:shadowDx="0.0" android:shadowDy="-1.0" android:shadowRadius="1.0" android:layout_weight="1.0" />
+			<Button android:textSize="17.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/btn_post" android:text="@string/post" android:background="@drawable/button_new_back" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:shadowColor="#ff000000" android:shadowDx="0.0" android:shadowDy="-1.0" android:shadowRadius="1.0" android:layout_weight="1.0" />
+		</LinearLayout>
+	</FrameLayout>
+</LinearLayout>

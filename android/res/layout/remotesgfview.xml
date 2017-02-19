@@ -1,0 +1,40 @@
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/backrepeat"
+>
+			<ListView android:id="@+id/sgfList"
+			android:paddingTop="2dip"
+			android:background="@android:color/transparent"
+			android:layout_above="@+id/searchBox"
+			android:paddingLeft="2dip"
+			android:paddingRight="2dip"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" />
+			<LinearLayout
+			android:id="@+id/searchBox"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="2dip" 
+			android:paddingRight="2dip" 
+			android:layout_alignParentBottom="true" >
+			<EditText
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_gravity="center_horizontal"
+			android:layout_alignParentLeft="true"
+			android:id="@+id/txtSearch">
+			</EditText>
+			<Button
+			android:layout_weight="0"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:layout_toRightOf="@+id/txtSearch"
+			android:text="@string/search"
+			android:id="@+id/btnSearch" android:bufferType="spannable"/>
+			</LinearLayout>
+</RelativeLayout>	

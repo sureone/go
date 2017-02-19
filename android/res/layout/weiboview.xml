@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_alignParentTop="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="@drawable/backrepeat" xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@+id/layout_title" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent" android:layout_height="wrap_content"> 
+	<com.viewpagerindicator.NormalTitle
+		android:id="@+id/ntTitle"
+		android:padding="5dip"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@color/tab_background_color"
+		android:textColor="@color/tab_text_color"
+		android:textSize="@dimen/stream_tab_text_size"
+		app:footerColor="#FFAA2222"
+		app:footerLineHeight="1dp"
+		app:footerIndicatorHeight="3dp"
+		app:footerIndicatorStyle="underline"
+		app:selectedColor="@color/tab_text_color"
+		app:selectedBold="false"
+		/>
+	</LinearLayout>
+<TextView android:id="@+id/txtDesc"
+android:layout_width="wrap_content"
+android:layout_below="@+id/layout_title"
+android:layout_height="wrap_content"
+android:paddingBottom="4dip"
+android:visibility="gone" 
+android:text="@string/boardclose"
+android:textColor="#000000"/>
+
+<ListView android:id="@+id/threadList"
+android:paddingLeft="5dip" 
+android:paddingRight="5dip" 
+android:divider="@drawable/line"
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content"
+android:layout_below="@+id/layout_title"
+android:layout_above="@+id/postArea"
+android:background="@null"
+/>
+    <ProgressBar android:id="@+id/pb_loading" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" style="?android:attr/progressBarStyleLarge" />
+<LinearLayout
+android:id="@+id/postArea"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:background="@drawable/bar_bottom_top_bg"
+android:layout_alignParentBottom="true" >
+<EditText
+android:layout_marginLeft="4.0dip"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+android:layout_alignParentLeft="true"
+android:background="@drawable/chat_input"
+android:hint="@string/feedbackhint"
+android:layout_weight="1"
+android:id="@+id/txtPost"/>
+<Button android:gravity="center" android:id="@+id/btnPost" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/post" style="@style/chat_send_style" />
+</LinearLayout>
+</RelativeLayout>
+
+

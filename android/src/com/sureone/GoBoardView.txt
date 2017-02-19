@@ -1,0 +1,962 @@
+/*
+ * Copyright (C) 2007 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.sureone;
+
+// Need the following import to get access to the app resources, since this
+// class is in a sub-package.
+import java.util.Locale;
+
+import com.sureone.go.CLogicGo;
+import com.sureone.go.GoOp;
+import com.sureone.go.GoStep;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.AbsoluteLayout;
+import android.widget.AbsoluteLayout;
+import android.widget.TextView;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.view.View;
+
+
+
+/**
+ * Example of how to write a custom subclass of View. LabelView
+ * is used to draw simple text views. Note that it does not handle
+ * styled text or right-to-left writing systems.
+ *
+ */    
+class BoardViewGo extends ImageView {
+			public Bitmap mChessMem=null;
+
+      private android.graphics.Bitmap mMemBmp=null;
+      private android.graphics.Bitmap mBigBoardBmp;
+      private android.graphics.Bitmap mSmallBoardBmp;
+      private FocusWidget mFocusWidget = null;
+
+      private ChessBMP mBlackBmp = null;
+      private ChessBMP mWhiteBmp = null;
+      final int BOARD_OFFSET_320 = 16;
+      final int BOARD_STEP_320 = 16;
+      public int mTopX=BOARD_OFFSET_320;
+      public int mTopY=BOARD_OFFSET_320;
+      public int mStepW=BOARD_STEP_320;
+
+
+
+      public int mScaleRate = 2;
+      private boolean IsQiPanDrawed=false;
+      private float mScare=1;
+      private int mCanvasWidth;
+      private int mCanvasHeight;
+      private boolean mFullBoard = true;
+
+
+      public int mBigViewX=0;
+      public int mBigViewY=0;
+
+      public int mFocusX=0;
+      public int mFocusY=0;
+
+      public boolean mDianMuMode=false;
+
+      public BoardViewGo(Context context) {
+          super(context);
+          InputEventListener listener = new InputEventListener();
+          this.setOnLongClickListener(listener);
+          this.setOnClickListener(listener);
+          this.setOnKeyListener(listener);
+          this.setOnTouchListener(listener);
+
+
+
+      }
+			public void freeMem(){
+				if(mChessMem!=null) mChessMem.recycle();
+				mChessMem=null;
+			}
+      @Override
+      protected void onDraw(Canvas canvas) {
+          paint(canvas);
+      }
+      int mBlinkCursor=0;
+      void updateCursor() {
+          mBlinkCursor++;
+          if(mBlinkCursor==4) mBlinkCursor=0;
+          invalidateEx(false);
+      }
+
+      void ptol(float x,float y) {
+          mCursorX=getLX(x,mTopX,mStepW);
+          mCursorY=getLY(y,mTopY,mStepW);
+      }
+      void drawCursor(Canvas canvas) {
+          if(mCursorX==-1) return;
+          float px,py;
+          int lx,ly;
+          lx=mCursorX;
+          ly=mCursorY;
+          px = getPX(lx,mTopX,mStepW);
+          py = getPY(ly,mTopY,mStepW);
+          Paint paint = new Paint();
+          paint.setColor(Color.RED);
+          paint.setStyle(Paint.Style.STROKE);
+          paint.setStrokeWidth(2);
+          float w = mStepW/(float)1.5;
+          w=(w/4)*(mBlinkCursor+1);
+          float x1=px-w+1;
+          float x2=px+w;
+          float y1=py+(float)0.5;
+          float y2=y1;
+          canvas.drawLine(x1, y1, x2, y2, paint);
+          x1=px+(float)0.5;
+          x2=x1;
+          y1=py-w+1;
+          y2=py+w;
+          canvas.drawLine(x1, y1, x2, y2, paint);
+      }
+
+
+
+
+      android.graphics.Bitmap CreateMemBmp(int w,int h) {
+
+          Bitmap memBmp = android.graphics.Bitmap.createBitmap(w, h, android.graphics.Bitmap.Config.ARGB_4444);
+          return memBmp;
+      }
+
+      void putChess() {
+          mDianMuResult.clean();
+          int x,y;
+          x=mFocusX;
+          y=mFocusY;
+          mGoController.putChess(x,18-y);
+          mCursorX=-1;
+          mCursorY=-1;
+
+      }
+
+      Bitmap drawChesses() {
+          Bitmap memBmp = null;
+          GoLogic mGoLogic = mGoController.getGoLogic(mBoardSize);
+          if(mGoLogic==null) return null;
+          if(mFullBoard==true) {
+              if(xBoardBmp.mSmallChessesBmp==null) {
+                  //   xBoardBmp.mSmallChessesBmp = CreateMemBmp(mCanvasWidth,mCanvasHeight);
+              }
+              //memBmp = xBoardBmp.mSmallChessesBmp;
+              memBmp = CreateMemBmp(mCanvasWidth,mCanvasHeight);;
+          } else {
+              if(xBoardBmp.mBigChessesBmp==null) {
+                  //xBoardBmp.mBigChessesBmp = CreateMemBmp(mCanvasWidth*mScaleRate,mCanvasHeight*mScaleRate);
+              }
+              memBmp = CreateMemBmp(mCanvasWidth*mScaleRate,mCanvasHeight*mScaleRate);
+          }
+          Canvas canvasMem = new Canvas();
+          canvasMem.setBitmap(memBmp);
+          /*
+          Paint eraseP = new Paint(Color.TRANSPARENT);
+          eraseP.setStyle(Paint.Style.FILL_AND_STROKE);
+
+          canvasMem.drawPaint(eraseP);
+          */
+    final Paint ap = new Paint(Paint.ANTI_ALIAS_FLAG);
+			ap.setAntiAlias(true);
+			ap.setFilterBitmap(true);
+          for (int x=0 ; x<mBoardSize ; x++) {
+              for(int y=0 ; y<mBoardSize; y++) {
+                  float px,py;
+
+                  Bitmap bmpShadow=null;
+                  if(mGoLogic.getSide(x, y)==1) {
+
+
+									bmpShadow=mBlackBmp.mShadow;
+
+                  } else if(mGoLogic.getSide(x, y)==2) {
+
+									bmpShadow=mWhiteBmp.mShadow;
+                  } 
+                  if(bmpShadow==null) continue;
+
+                  if(mFullBoard==true) {
+                      px = getPX(x,mTopX,mStepW);
+                      py = getPY(18-y,mTopY,mStepW);
+                      Rect src = new Rect();
+                      Rect dst = new Rect();
+                      dst.top = (int)(py-(mStepW)/2);
+                      dst.left = (int)(px-(mStepW)/2);
+                      dst.right = (int)(px+mStepW/2+1);
+                      dst.bottom = (int)(py+mStepW/2+1);
+
+                      src.top=0;
+                      src.left=0;
+                      src.right=bmpShadow.getWidth();
+                      src.bottom=bmpShadow.getHeight();
+                      /*
+                      	   canvasMem.drawBitmap(bmp.mSmall ,
+                       			   px-(mStepW)/2,
+                       			   py-(mStepW)/2,null) ;
+                       			   */
+
+	                    dst.top +=5;
+	                    dst.bottom +=5;
+	                    dst.left += 2;
+	                    dst.right += 2;
+
+                      canvasMem.drawBitmap(bmpShadow, src, dst,ap);
+
+
+                  } else {
+                      px = getPX(x,mTopX*mScaleRate,mStepW*mScaleRate);
+                      py = getPY(18-y,mTopY*mScaleRate,mStepW*mScaleRate);
+                      /*
+                      canvasMem.drawBitmap(bmp.mBig ,
+                      	   px-(mStepW*mScaleRate)/2,
+                      	   py-(mStepW*mScaleRate)/2,null) ;
+                      	   */
+                      Rect src = new Rect();
+                      Rect dst = new Rect();
+                      dst.top = (int)(py-(mStepW*mScaleRate)/2);
+                      dst.left = (int)(px-(mStepW*mScaleRate)/2);
+                      dst.right = (int)(px+(mStepW*mScaleRate)/2+1);
+                      dst.bottom = (int)(py+(mStepW*mScaleRate)/2+1);
+
+                      src.top=0;
+                      src.left=0;
+                      src.right=bmpShadow.getWidth();
+                      src.bottom=bmpShadow.getHeight();
+                      /*
+                      	   canvasMem.drawBitmap(bmp.mSmall ,
+                       			   px-(mStepW)/2,
+                       			   py-(mStepW)/2,null) ;
+                       			   */
+
+	                    dst.top +=10;
+	                    dst.bottom +=10;
+	                    dst.left += 4;
+	                    dst.right += 4;
+
+                      canvasMem.drawBitmap(bmpShadow, src, dst,ap);
+
+                  }
+              }
+          }
+
+          for (int x=0 ; x<mBoardSize ; x++) {
+              for(int y=0 ; y<mBoardSize; y++) {
+                  float px,py;
+                  Bitmap bmp=null;
+
+                  if(mGoLogic.getSide(x, y)==1) {
+
+                      if(mFullBoard==true) {
+                          bmp=mBlackBmp.mSmall;
+                      } else {
+                          bmp=mBlackBmp.mSmall;
+                      }
+
+
+                  } else if(mGoLogic.getSide(x, y)==2) {
+                      if(mFullBoard==true) {
+                          bmp=mWhiteBmp.mSmall;
+                      } else {
+                          bmp=mWhiteBmp.mSmall;
+                      }
+
+                  } else if(mDianMuMode==true) {
+                      if(mDianMuResult.getSide(x, y)==1) {
+                          bmp=mBlackBmp.mMu;
+                      } else if(mDianMuResult.getSide(x, y)==2) {
+                          bmp=mWhiteBmp.mMu;
+                      }
+                  }
+                  if(bmp==null) continue;
+
+                  if(mFullBoard==true) {
+                      px = getPX(x,mTopX,mStepW);
+                      py = getPY(18-y,mTopY,mStepW);
+                      Rect src = new Rect();
+                      Rect dst = new Rect();
+                      dst.top = (int)(py-(mStepW)/2);
+                      dst.left = (int)(px-(mStepW)/2);
+                      dst.right = (int)(px+mStepW/2+1);
+                      dst.bottom = (int)(py+mStepW/2+1);
+
+
+                      src.top=0;
+                      src.left=0;
+                      src.right=bmp.getWidth();
+                      src.bottom=bmp.getHeight();
+                      /*
+                      	   canvasMem.drawBitmap(bmp.mSmall ,
+                       			   px-(mStepW)/2,
+                       			   py-(mStepW)/2,null) ;
+                       			   */
+
+                      canvasMem.drawBitmap(bmp, src, dst,ap);
+
+                      if(mDianMuMode==true) {
+
+                      }
+                      if(x==mLastStep.x && y==mLastStep.y) {
+                          Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                          paint.setColor(Color.RED);
+                          canvasMem.drawRect(px-3, py-3, px+4, py+4, paint);
+                      }
+                  } else {
+                      px = getPX(x,mTopX*mScaleRate,mStepW*mScaleRate);
+                      py = getPY(18-y,mTopY*mScaleRate,mStepW*mScaleRate);
+                      /*
+                      canvasMem.drawBitmap(bmp.mBig ,
+                      	   px-(mStepW*mScaleRate)/2,
+                      	   py-(mStepW*mScaleRate)/2,null) ;
+                      	   */
+                      Rect src = new Rect();
+                      Rect dst = new Rect();
+                      dst.top = (int)(py-(mStepW*mScaleRate)/2);
+                      dst.left = (int)(px-(mStepW*mScaleRate)/2);
+                      dst.right = (int)(px+(mStepW*mScaleRate)/2+1);
+                      dst.bottom = (int)(py+(mStepW*mScaleRate)/2+1);
+
+
+                      src.top=0;
+                      src.left=0;
+                      src.right=bmp.getWidth();
+                      src.bottom=bmp.getHeight();
+                      /*
+                      	   canvasMem.drawBitmap(bmp.mSmall ,
+                       			   px-(mStepW)/2,
+                       			   py-(mStepW)/2,null) ;
+                       			   */
+
+                      canvasMem.drawBitmap(bmp, src, dst,ap);
+
+                      if(x==mLastStep.x && y==mLastStep.y) {
+                          Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                          paint.setColor(Color.RED);
+                          canvasMem.drawRect(px-6, py-6, px+7, py+7, paint);
+                      }
+                  }
+              }
+          }
+          return memBmp;
+      }
+
+      
+
+      void paint(Canvas canvas) {
+          mCanvasWidth=canvas.getWidth();
+          mCanvasHeight=canvas.getHeight();
+          mStepW=mCanvasWidth/(mBoardSize+1);
+          mTopX=mStepW;
+          mTopY=mStepW;
+          drawBoardMem(mBoardSize,mTopX,mTopY,mStepW);
+    	final Paint ap = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+          if(mBlackBmp==null) {
+              mBlackBmp = new ChessBMP();
+              mWhiteBmp = new ChessBMP();
+
+              mBlackBmp.mMu=BitmapFactory.decodeResource( getResources(), R.drawable.bmu16) ;
+              mWhiteBmp.mMu=BitmapFactory.decodeResource( getResources(), R.drawable.wmu16) ;
+
+
+          //mBlackBmp.mShadow=BitmapFactory.decodeResource( getResources(), R.drawable.blackshadow) ;
+          //mBlackBmp.mSmall=BitmapFactory.decodeResource( getResources(), R.drawable.blackstone52) ;
+          mBlackBmp.mSmall=BitmapFactory.decodeResource( getResources(), R.drawable.b) ;
+          //mWhiteBmp.mShadow=BitmapFactory.decodeResource( getResources(), R.drawable.whiteshadow) ;
+          //mWhiteBmp.mSmall=BitmapFactory.decodeResource( getResources(), R.drawable.whitestone52) ;
+          mWhiteBmp.mSmall=BitmapFactory.decodeResource( getResources(), R.drawable.w) ;
+
+
+          }
+
+
+
+          if(mFocusWidget==null) {
+              mFocusWidget = new FocusWidget();
+              mFocusWidget.mSmall = BitmapFactory.decodeResource(getResources(), R.drawable.focus18) ;
+          }
+
+          if(mDianMuMode==true) {
+              // mFullBoard=true;
+          }
+          Bitmap boardBmp=mBigBoardBmp;
+          if(mDirty==true || mChessMem==null)
+              mChessMem = drawChesses();
+
+
+          if(mFullBoard==false) {
+              boardBmp=mBigBoardBmp;
+              Log.d("xGoActivity","BigViewX="+mBigViewX+"BigViewY="+mBigViewY);
+              //canvas.drawBitmap(boardBmp ,mBigViewX,mBigViewY,  null) ;
+
+              Rect src = new Rect();
+              Rect dst = new Rect();
+              src.top = mBigViewY;
+              src.left = mBigViewX;
+              src.right = mBigViewX+mCanvasWidth;
+              src.bottom = mBigViewY+mCanvasWidth;
+
+              dst.top=0;
+              dst.left=0;
+              dst.right=mCanvasWidth;
+              dst.bottom=mCanvasWidth;
+              canvas.drawBitmap(boardBmp, src, dst, ap);
+              if(mChessMem!=null) canvas.drawBitmap(mChessMem, src, dst, ap);
+
+              if(mFocusWidget.visible==true) {
+                  float px = getPX(mFocusX,mTopX*mScaleRate,mStepW*mScaleRate);
+                  float py = getPY(mFocusY,mTopY*mScaleRate,mStepW*mScaleRate);
+
+
+                  Rect src1 = new Rect();
+                  Rect dst1 = new Rect();
+                  dst1.top = (int)(py-(mStepW*mScaleRate)/2-mBigViewY);
+                  dst1.left = (int)(px-(mStepW*mScaleRate)/2-mBigViewX);
+                  dst1.right = (int)(px+(mStepW*mScaleRate)/2+1-mBigViewX);
+                  dst1.bottom = (int)(py+(mStepW*mScaleRate)/2+1-mBigViewY);
+
+                  src1.top=0;
+                  src1.left=0;
+                  src1.right=mFocusWidget.mSmall.getWidth();
+                  src1.bottom=mFocusWidget.mSmall.getHeight();
+                  //src1.right=18;
+                  //src1.bottom=18;
+                  canvas.drawBitmap(mFocusWidget.mSmall, src1, dst1,ap);
+
+              }
+          } else {
+              boardBmp=mSmallBoardBmp;
+              canvas.drawBitmap(boardBmp ,0,0,  ap) ;
+              if(mChessMem!=null) canvas.drawBitmap(mChessMem, 0, 0, ap);
+              if(mFocusWidget.visible==true) {
+                  float px = getPX(mFocusX,mTopX,mStepW);
+                  float py = getPY(mFocusY,mTopY,mStepW);
+                  Rect src1 = new Rect();
+                  Rect dst1 = new Rect();
+                  dst1.top = (int)(py-(mStepW)/2-2);
+                  dst1.left = (int)(px-(mStepW)/2-2);
+                  dst1.right = (int)(px+mStepW/2+3);
+                  dst1.bottom = (int)(py+mStepW/2+3);
+
+                  src1.top=0;
+                  src1.left=0;
+                  src1.right=mFocusWidget.mSmall.getWidth();
+                  src1.bottom=mFocusWidget.mSmall.getHeight();
+                  //src1.right=18;
+                  //src1.bottom=18;
+                  canvas.drawBitmap(mFocusWidget.mSmall, src1, dst1,ap);
+              }
+          }
+          if(isMyTurnToPutChess()==true) {
+              if(bCursorMode==true) drawCursor(canvas);
+          }
+
+      }
+
+      void scrollView(float dx,float dy) {
+          mBigViewX-=dx;
+          mBigViewY-=dy;
+
+          if(mBigViewX<=0) mBigViewX=0;
+          if(mBigViewY<=0) mBigViewY=0;
+
+          if(mBigViewX+mCanvasWidth>=mCanvasWidth*mScaleRate)
+              mBigViewX=mCanvasWidth*(mScaleRate-1);
+          if(mBigViewY+mCanvasWidth>=mCanvasWidth*mScaleRate)
+              mBigViewY=mCanvasWidth*(mScaleRate-1);
+
+          this.invalidateEx(true);
+      }
+      boolean mDirty = false;
+      void invalidateEx(boolean dirty) {
+          mDirty=dirty;
+          this.invalidate();
+      }
+      void showFocus() {
+          if(mFocusWidget!=null) mFocusWidget.visible = true;
+          this.invalidateEx(true);
+      }
+      void hideFocus() {
+          if(mFocusWidget!=null) mFocusWidget.visible = false;
+          this.invalidateEx(true);
+      }
+
+
+      void reCalFocus() {
+          if(mFullBoard==true) {
+              int lx = getLX(mScreenX,mTopX,mStepW);
+              int ly = getLY(mScreenY,mTopY,mStepW);
+              mFocusX=lx;
+              mFocusY=ly;
+          } else {
+              int lx = getLX(mScreenX+mBigViewX,mTopX*mScaleRate,mStepW*mScaleRate);
+              int ly = getLY(mScreenY+mBigViewY,mTopY*mScaleRate,mStepW*mScaleRate);
+              mFocusX=lx;
+              mFocusY=ly;
+          }
+      }
+
+      void switchBoardMode(boolean mode) {
+          if(this.mFullBoard!=mode) {
+              this.mFullBoard = mode;
+
+              if(mode==false) {
+                  Log.d("GoActivity","lx="+mFocusX+"ly="+mFocusY);
+
+                  float px_old = getPX(mFocusX,mTopX,mStepW);
+                  float py_old = getPY(mFocusY,mTopY,mStepW);
+
+                  float px = getPX(mFocusX,mTopX*mScaleRate,mStepW*mScaleRate);
+                  float py = getPY(mFocusY,mTopY*mScaleRate,mStepW*mScaleRate);
+
+                  float x=px-px_old;
+                  float y=py-py_old;
+                  if(x<=0) x=0;
+                  if(y<=0) y=0;
+                  mBigViewX=(int)x;
+                  mBigViewY=(int)y;
+
+                  // draw focus
+                  if(isMyTurnToPutChess()==true)
+                      showFocus();
+                  else
+                      hideFocus();
+                  mHideView=mShowView;
+                  mShowView=mFullBoardButtons;
+                  switchButtonsAnimate();
+              } else {
+				View v = mShowView;
+                  mShowView=mHideView;
+                  mHideView=v;
+                  switchButtonsAnimate();
+              }
+              mBoardView.invalidateEx(true);
+          }
+
+
+      }
+
+      Bitmap scaleBmp(Bitmap src,int rate) {
+          if(rate!=1) {
+              int bmpW = src.getWidth();
+              int bmpH = src.getHeight();
+              Matrix matrix=new Matrix();
+              matrix.postScale(rate, rate);
+              Bitmap resizeBmp=Bitmap.createBitmap(src, 0, 0, bmpW, bmpH, matrix, true);
+              return resizeBmp;
+          }
+          return src;
+
+      }
+
+      void drawBoardMem(int size,int lx,int ly,float step) {
+          if(xBoardBmp.IsQiPanDrawed==true &&
+                  xBoardBmp.mBoardSize==mBoardSize) {
+
+              mBigBoardBmp=xBoardBmp.mBigBoardBmp;
+              mSmallBoardBmp=xBoardBmp.mSmallBoardBmp;
+          } else {
+              int w=mCanvasWidth;
+              xBoardBmp.mSmallBoardBmp=Bitmap.createBitmap(w, w, android.graphics.Bitmap.Config.ARGB_4444);
+              w*=mScaleRate;
+
+              xBoardBmp.mBigBoardBmp=Bitmap.createBitmap(w, w, android.graphics.Bitmap.Config.ARGB_4444);
+              mBigBoardBmp=xBoardBmp.mBigBoardBmp;
+              mSmallBoardBmp=xBoardBmp.mSmallBoardBmp;
+              drawQiPanEx(w,mSmallBoardBmp,mBoardSize,mTopX,mTopY,mStepW);
+              drawQiPanEx(w,mBigBoardBmp,mBoardSize,mTopX*mScaleRate,mTopY*mScaleRate,mStepW*mScaleRate);
+          }
+      }
+      void drawQiPanEx(int ww,Bitmap memBmp,int size,int lx,int ly,float step) {
+
+          xBoardBmp.IsQiPanDrawed = true;
+          xBoardBmp.mBoardSize=size;
+          Canvas canvas = new Canvas();
+          canvas.setBitmap(memBmp);
+	/*
+	android.graphics.drawable.BitmapDrawable backg = 
+		(android.graphics.drawable.BitmapDrawable)getResources().getDrawable(R.drawable.backrepeat);
+	Rect bounds = new Rect(0,0,ww,ww);
+	backg.setBounds(bounds);
+	backg.draw(canvas);
+	*/
+
+          Paint paint = new Paint();
+          paint.setColor(Color.BLACK);
+          paint.setTextSize(12);
+          paint.setAntiAlias(true);
+
+          Paint paintDot = new Paint();
+          paintDot.setColor(Color.BLACK);
+
+          int width = (int)(step*(size-1));
+          int startX,startY,stopX,stopY;
+
+          ly-=2;
+
+          startX=lx;
+          startY=ly;
+          stopX=lx+width;
+          stopY=ly;
+          Bitmap h_outline= BitmapFactory.decodeResource(getResources(), R.drawable.houtline) ;
+          Bitmap v_outline= BitmapFactory.decodeResource(getResources(), R.drawable.voutline) ;
+
+          Bitmap h_bmp= BitmapFactory.decodeResource(getResources(), R.drawable.h_bl) ;
+          Bitmap v_bmp = BitmapFactory.decodeResource(getResources(), R.drawable.v_bl) ;
+          Bitmap dot_bmp = BitmapFactory.decodeResource(getResources(), R.drawable.dot) ;
+          //draw horizon line
+
+          for(int i=0 ; i<size; i++) {
+              //if(i==0 || i==size-1)
+              //	canvas.drawLine(startX, startY, stopX, stopY, paintDot);
+              //else
+              //canvas.drawLine(startX, startY, stopX, stopY, paint);
+              int x1=startX;
+              int x2=stopX;
+              while(x1<x2) {
+                  if(i==0 || i==size-1)
+                      canvas.drawBitmap(h_outline, x1, startY+1, null);
+                  else
+                      canvas.drawBitmap(h_bmp, x1, startY+2, null);
+                  x1++;
+              }
+              String tag = new Integer(19-i).toString();
+              paint.setTextAlign(Paint.Align.RIGHT);
+              canvas.drawText(tag,startX-4,startY+6,paint);
+              paint.setTextAlign(Paint.Align.LEFT);
+              canvas.drawText(tag,stopX+4,startY+6,paint);
+              startY+=step;
+              stopY+=step;
+
+          }
+
+
+          //draw ver line
+          startX=lx-2;
+          startY=ly+2;
+          stopX=lx;
+          stopY=ly+width+2;
+          for(int i=0 ; i<size; i++) {
+              //if(i==0 || i==size-1)
+              //	canvas.drawLine(startX, startY, stopX, stopY, paintDot);
+              //else
+              //canvas.drawLine(startX, startY, stopX, stopY, paint);
+              int y1=startY;
+              int y2=stopY;
+              if(i==0 || i==size-1)
+                  y2=stopY+2;
+              if(i==size-1)
+                  startX++;
+              while(y1<y2) {
+                  if(i==0 || i==size-1) {
+                      canvas.drawBitmap(v_outline, startX+1, y1-1, null);
+                  } else
+                      canvas.drawBitmap(v_bmp, startX+2, y1, null);
+                  y1++;
+              }
+              int ix = i;
+              if(ix>7) ix++;
+              String tag = new String(Character.toChars(65+ix));
+              paint.setTextAlign(Paint.Align.CENTER);
+              canvas.drawText(tag,startX+2,startY-6,paint);
+              canvas.drawText(tag,startX+2,stopY+16,paint);
+              startX+=step;
+              stopX+=step;
+
+          }
+          //draw dots
+
+    	final Paint ap = new Paint(Paint.ANTI_ALIAS_FLAG);
+          if(mBoardSize==19) {
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+3*step);
+              float offset=(float)2;
+              float offsety=(float)0;
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+9*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+3*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+9*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+15*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+15*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+              startX=(int)(lx+15*step);
+              startY=(int)(ly+3*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+              startX=(int)(lx+15*step);
+              startY=(int)(ly+9*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+              startX=(int)(lx+15*step);
+              startY=(int)(ly+15*step);
+
+              //canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+              canvas.drawBitmap(dot_bmp, startX-offset, startY-offsety, ap);
+          }
+      }
+
+      void drawQiPan(Bitmap memBmp,int size,int lx,int ly,float step) {
+
+          xBoardBmp.IsQiPanDrawed = true;
+          xBoardBmp.mBoardSize=size;
+          Canvas canvas = new Canvas();
+          canvas.setBitmap(memBmp);
+
+          Paint paint = new Paint();
+          paint.setColor(Color.BLACK);
+
+          Paint paintDot = new Paint();
+          paintDot.setColor(Color.BLACK);
+
+          int width = (int)(step*(size-1));
+          int startX,startY,stopX,stopY;
+
+          startX=lx;
+          startY=ly;
+          stopX=lx+width;
+          stopY=ly;
+          for(int i=0 ; i<size; i++) {
+              //if(i==0 || i==size-1)
+              //	canvas.drawLine(startX, startY, stopX, stopY, paintDot);
+              //else
+              canvas.drawLine(startX, startY, stopX, stopY, paint);
+              startY+=step;
+              stopY+=step;
+
+          }
+
+          startX=lx;
+          startY=ly;
+          stopX=lx;
+          stopY=ly+width;
+          for(int i=0 ; i<size; i++) {
+              //if(i==0 || i==size-1)
+              //	canvas.drawLine(startX, startY, stopX, stopY, paintDot);
+              //else
+              canvas.drawLine(startX, startY, stopX, stopY, paint);
+              startX+=step;
+              stopX+=step;
+
+          }
+
+          if(mBoardSize==19) {
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+3*step);
+              int offset=(int)1;
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+9*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+
+
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+3*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+9*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+15*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+15*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+15*step);
+              startY=(int)(ly+3*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+15*step);
+              startY=(int)(ly+9*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+15*step);
+              startY=(int)(ly+15*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+          } else if(mBoardSize==13) {
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+3*step);
+              int offset=(int)1;
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+3*step);
+              startY=(int)(ly+9*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+
+
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+3*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+9*step);
+              startY=(int)(ly+9*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+          } else if(mBoardSize==9) {
+              startX=(int)(lx+2*step);
+              startY=(int)(ly+2*step);
+              int offset=(int)1;
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+2*step);
+              startY=(int)(ly+6*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+
+
+              startX=(int)(lx+6*step);
+              startY=(int)(ly+2*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+              startX=(int)(lx+6*step);
+              startY=(int)(ly+6*step);
+
+              canvas.drawRect(startX-offset, startY-offset, startX+offset+1,startY+offset+1, paintDot);
+
+          }
+      }
+
+      int getLX(float x,int topx,int stepW) {
+          x=x-topx;
+          int index=(int)(x/stepW);
+          int offset=(int)(x % stepW);
+
+          if(offset>(stepW/2)) {
+              index++;
+          }
+
+          if(index==mBoardSize) {
+              index--;
+          }
+          if(index>mBoardSize) {
+              return -1;
+          }
+          return index;
+      }
+      int getLY(float y,int topy,int stepW) {
+          y=y-topy;
+          int index=(int)(y/stepW);
+          int offset=(int)(y % stepW);
+
+          if(offset>(stepW/2)) {
+              index++;
+          }
+
+          if(index==mBoardSize) {
+              index--;
+          }
+          if(index>mBoardSize) {
+              return -1;
+          }
+          return (index);
+      }
+
+      float getPX(int x,int topx,int stepw) {
+          float px;
+          px=(x)*stepw+topx;
+          return px;
+      }
+      float getPY(int y,int topy,int stepw) {
+          float py;
+          py=y*stepw+topy;
+          return py;
+      }
+  }

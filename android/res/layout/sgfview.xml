@@ -1,0 +1,127 @@
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:background="@drawable/backrepeat"
+		xmlns:myapp="http://schemas.android.com/apk/res/com.sureone"
+		>
+	<RelativeLayout
+			android:id="@+id/sgfView"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_below="@+id/adArea"
+			>
+
+
+		<LinearLayout
+				android:id="@+id/titleAreaGo"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				xmlns:app="http://schemas.android.com/apk/res-auto"	
+				android:layout_height="wrap_content">
+					<com.viewpagerindicator.GoGameTitle
+					android:id="@+id/gtTitle"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:background="@color/tab_background_color"
+					android:textColor="@color/tab_text_color"
+					android:textSize="@dimen/stream_tab_text_size"
+					app:footerColor="#FFAA2222"
+					app:footerLineHeight="1dp"
+					app:footerIndicatorHeight="5dp"
+					app:footerIndicatorStyle="underline"
+					app:selectedColor="@color/tab_text_color"
+					app:selectedBold="false"
+					/>	
+		</LinearLayout>		
+        <RelativeLayout android:id="@+id/panelGo"
+                        android:background="#ffe5a659"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/titleAreaGo" >
+		<com.sureone.GoPanelView
+				android:id="@+id/boardView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+		<LinearLayout 
+				xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+				xmlns:myapp="http://schemas.android.com/apk/res/com.sureone"
+				android:gravity="center_horizontal"
+				android:layout_below="@+id/boardView"
+				android:id="@+id/adArea" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<!--com.google.ads.AdView android:id="@+id/adView" android:layout_width="fill_parent" android:layout_height="wrap_content" ads:adUnitId="a14e9ccf61c04e3" ads:adSize="BANNER" ads:loadAdOnCreate="false"/-->					
+		</LinearLayout>	
+		
+							
+		<TextView
+				android:id="@+id/txtComment"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text=""
+				android:gravity="left"
+				android:paddingLeft="2dip" 
+				android:paddingRight="2dip" 
+				android:layout_below="@+id/adArea"
+				>
+		</TextView>
+
+		<RelativeLayout
+				android:id="@+id/control"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:layout_centerHorizontal="true"
+				android:layout_marginBottom="10dip"
+				>
+			<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:stretchColumns="1">
+				<TableRow>
+
+					<ImageButton
+							android:layout_weight="1"
+							android:layout_width="0dip"
+							android:textSize="20sp"
+							android:id="@+id/btnLast" 
+							android:src="@drawable/lastbutton"
+							android:background="@null"	
+							android:layout_marginBottom="20dip"
+							android:layout_alignParentLeft="true" 
+							>
+					</ImageButton>
+
+
+					<ImageButton
+							android:layout_weight="1"
+							android:layout_width="0dip"
+							android:textSize="20sp"	
+							android:layout_toRightOf="@+id/btnLast"
+							android:background="@null"	
+
+							android:id="@+id/btnPlay">
+					</ImageButton>
+
+					<ImageButton
+							android:layout_weight="1"
+							android:layout_width="0dip"
+							android:textSize="20sp"	
+							android:layout_toRightOf="@+id/btnPlay"
+							android:background="@null"	
+							android:src="@drawable/nextbutton"
+
+							android:id="@+id/btnNext">
+					</ImageButton>
+
+
+				</TableRow>
+			</TableLayout>
+
+
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

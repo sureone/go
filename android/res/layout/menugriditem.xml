@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/itemLayout"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<ImageView android:id="@+id/imageItem" 
+android:layout_width="wrap_content" 
+android:layout_alignParentTop="true"
+android:layout_centerHorizontal="true"
+android:gravity="center"
+android:src="@drawable/desk"
+android:layout_height="wrap_content"/>
+<RelativeLayout android:layout_centerHorizontal="true"
+android:layout_centerVertical="true"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" >
+android:gravity="center"/>
+<TextView android:id="@+id/txtItem" style="@style/MenuItemText" />
+<TextView android:id="@+id/txtHint" android:text="@string/clicktojoin" android:layout_below="@id/txtItem" style="@style/MenuItemTextHint" />
+</RelativeLayout>
+</RelativeLayout>
+
