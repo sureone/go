@@ -873,6 +873,7 @@ main(int argc, char *argv[])
 	break;
 	
       case OPT_LEVEL:
+        printf("game level=== %s\n",gg_optarg);
 	set_level(atoi(gg_optarg));
 	break;
 
@@ -1092,6 +1093,8 @@ main(int argc, char *argv[])
     else
       playmode = (isatty(0)) ? MODE_ASCII : MODE_GMP;
   }
+  //hardcode mode
+  playmode = MODE_ASCII;
 
   if (outfile && playmode != MODE_LOAD_AND_PRINT) {
     output_check = fopen(outfile, "w");
@@ -1481,6 +1484,7 @@ main(int argc, char *argv[])
       oracle_loadsgf(infilename, untilstring);
     }
 #endif
+    printf("======enter===== play ascii\n");
     play_ascii(&sgftree, &gameinfo, infilename, untilstring,serverip,serverport,mplayer,mpassword,deskid);
     break;
   }

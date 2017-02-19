@@ -56,7 +56,7 @@ showterri        display territory\n\
 "
 
 /* some options for the ascii interface */
-static int opt_showboard = 1;
+static int opt_showboard = 0;
 static int showdead = 0;
 static SGFTree sgftree;
 static int resignation_allowed;
@@ -482,7 +482,8 @@ computer_move(Gameinfo *gameinfo, int *passes)
     adjust_level_offset(gameinfo->to_move);
   move = genmove(gameinfo->to_move, &move_value, &resign);
   if (resignation_allowed && resign) {
-    int state = ascii_endgame(gameinfo, 2);
+    //int state = ascii_endgame(gameinfo, 2);
+    int state = ascii_endgame(gameinfo, 3);
     if (state != -1)
       return state;
 
@@ -505,7 +506,7 @@ computer_move(Gameinfo *gameinfo, int *passes)
     *passes = 0;
      char ss[100];
     bzero(ss,100);
-	printf("=============%d,%d\n",I(move),J(move));
+	//printf("=============%d,%d\n",I(move),J(move));
 		
         char* cmds="request:step\r\n"
                       "x:%d\r\n"
@@ -514,7 +515,6 @@ computer_move(Gameinfo *gameinfo, int *passes)
         bzero(ss,100);
         int x = J(move);
         int y = 18-I(move);
-	if(y>=11) y++;
         sprintf(ss,cmds,x,y);
 	send2net(ss);
 
@@ -764,16 +764,28 @@ void *worker_proc(void *ptr)
           error("ERROR reading from socket");
           break;
       }
-      printf("NET: %s\n",buffer);
+      //printf("NET: %s\n",buffer);
       if(strstr(buffer,"notify:ready,")>0)
       {
 	 send2net("request:ready\r\n\r\n");	
+      }else if(strstr(buffer,"notify:game_end,")>0) {
+          bzero(data,1024);
+	  sprintf(data,"%s","resign");
+          thread_queue_add(reqs_queue,(void*)data,0,strlen(data));
+      }else if(strstr(buffer,"notify:start_dianmu,")>0) {
+          send2net("request:done\r\n\r\n"); 
+      }else if(strstr(buffer,"notify:pass,")>0) {
+          bzero(data,1024);
+	  sprintf(data,"%s","pass");
+	  if(movenum>50) send2net("request:pass\r\n\r\n"); 
+          else thread_queue_add(reqs_queue,(void*)data,0,strlen(data));
       }else if(strstr(buffer,"notify:step,")>0)
       {
           char* p = buffer+strlen("notify:step,");
           int x,y;
           int killed;
           int side;
+	  int c;
           bpass=0;
           bzero(data,1024);
           x=y=0;
@@ -781,8 +793,11 @@ void *worker_proc(void *ptr)
           p=skipAndGetInt(&x,p,',');
           p=skipAndGetInt(&y,p,',');
           p=skipAndGetInt(&killed,p,',');
-	  sprintf(data,"%c%d",'a'+x+1,y+1);
-	  printf("net:move %d,%d,%s\n",x,y,data);
+	  c='a'+x;
+	  if (c>='i') c++;
+	  
+	  sprintf(data,"%c%d",c,y+1);
+	  //printf("net:move s\n",data);
           thread_queue_add(reqs_queue,(void*)data,0,strlen(data));
       }
       else if(strstr(buffer,"notify:areyouok,")>0)
@@ -893,8 +908,7 @@ do_play_ascii(Gameinfo *gameinfo,int servermode)
     /* main ASCII Play loop */
     while (state == 0) {
       /* Display game board. */
-      if (opt_showboard)
-	ascii_showboard();
+      if (opt_showboard) ascii_showboard();
 
 #if !READLINE
       /* Print the prompt */
@@ -927,7 +941,7 @@ do_play_ascii(Gameinfo *gameinfo,int servermode)
 	/* Get the command or move. */
 	switch (get_command(command)) {
 	case RESIGN:
-	  state = ascii_endgame(gameinfo, 1);
+	  state = ascii_endgame(gameinfo, 3);
 	  break;
 
 	case END:
@@ -1244,7 +1258,8 @@ do_play_ascii(Gameinfo *gameinfo,int servermode)
 	}
 
 	if (passes >= 2)
-	  state = ascii_endgame(gameinfo, 0);
+	  //state = ascii_endgame(gameinfo, 0);
+	  state = ascii_endgame(gameinfo, 3);
       }
 #if READLINE
 	free(line_ptr);
@@ -1308,8 +1323,9 @@ ascii_endgame(Gameinfo *gameinfo, int reason)
     printf(" or  \"game\" to play again\n");
 
     line_ptr = line;
-    if (!fgets(line, 80, stdin))
-      break;
+    if(reason==3) strcpy(line,"game");
+    else
+      if (!fgets(line, 80, stdin)) break;
 
     command = strtok(line_ptr, "");
     switch (get_command(command)) {

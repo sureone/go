@@ -1022,10 +1022,11 @@ int processCommand(OBUFF* o)
     {
         char* command="request:register\r\n"
                       "email:%s\r\n"
-                      "password:vvv\r\n\r\n";
+                      "password:%s\r\n\r\n";
         char* name = getString(o," ");
+        char* pass = getString(o," ");
         bzero(data,1024);
-        sprintf(data,command,name);
+        sprintf(data,command,name,pass);
         n = write(sockfd,data,strlen(data));
         free(name);
         if (n < 0)
