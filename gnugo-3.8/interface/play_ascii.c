@@ -482,8 +482,8 @@ computer_move(Gameinfo *gameinfo, int *passes)
     adjust_level_offset(gameinfo->to_move);
   move = genmove(gameinfo->to_move, &move_value, &resign);
   if (resignation_allowed && resign) {
-    //int state = ascii_endgame(gameinfo, 2);
-    int state = ascii_endgame(gameinfo, 3);
+    int state = ascii_endgame(gameinfo, 2);
+    //int state = ascii_endgame(gameinfo, 3);
     if (state != -1)
       return state;
 
@@ -499,26 +499,21 @@ computer_move(Gameinfo *gameinfo, int *passes)
   
   mprintf("%s(%d): %1m\n", color_to_string(gameinfo->to_move),
 	  movenum + 1, move);
-  if (is_pass(move)){
-    (*passes)++;
-    }
-  else{
-    *passes = 0;
      char ss[100];
     bzero(ss,100);
-	//printf("=============%d,%d\n",I(move),J(move));
-		
+  if (is_pass(move)){
+    (*passes)++;
+        char* cmds="request:pass\r\n\r\n";
+	send2net(cmds);
+  }else{
+    *passes = 0;
         char* cmds="request:step\r\n"
                       "x:%d\r\n"
                       "y:%d\r\n\r\n";
-  
-        bzero(ss,100);
         int x = J(move);
         int y = 18-I(move);
         sprintf(ss,cmds,x,y);
 	send2net(ss);
-
-	
   }
 
   gnugo_play_move(move, gameinfo->to_move);
@@ -945,7 +940,7 @@ do_play_ascii(Gameinfo *gameinfo,int servermode)
 	/* Get the command or move. */
 	switch (get_command(command)) {
 	case RESIGN:
-	  state = ascii_endgame(gameinfo, 3);
+	  state = ascii_endgame(gameinfo, 1);
 	  break;
 
 	case END:
@@ -1262,8 +1257,8 @@ do_play_ascii(Gameinfo *gameinfo,int servermode)
 	}
 
 	if (passes >= 2)
-	  //state = ascii_endgame(gameinfo, 0);
-	  state = ascii_endgame(gameinfo, 3);
+	  state = ascii_endgame(gameinfo, 0);
+	  //state = ascii_endgame(gameinfo, 3);
       }
 #if READLINE
 	free(line_ptr);
@@ -1327,9 +1322,12 @@ ascii_endgame(Gameinfo *gameinfo, int reason)
     printf(" or  \"game\" to play again\n");
 
     line_ptr = line;
+    strcpy(line,"game");
+    /*
     if(reason==3) strcpy(line,"game");
     else
       if (!fgets(line, 80, stdin)) break;
+    */
 
     command = strtok(line_ptr, "");
     switch (get_command(command)) {
