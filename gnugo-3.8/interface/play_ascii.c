@@ -61,6 +61,7 @@ static int showdead = 0;
 static SGFTree sgftree;
 static int resignation_allowed;
 static int last_computer_move=0;
+static int computer_resign=0;
 
 static int clock_on = 0;
 
@@ -764,6 +765,11 @@ void *worker_proc(void *ptr)
       {
 	 send2net("request:ready\r\n\r\n");	
       }else if(strstr(buffer,"notify:game_end,")>0) {
+	  if(computer_resign==1){
+		//game already end
+		computer_resign=0;
+                continue;
+          }
           bzero(data,1024);
 	  sprintf(data,"%s","resign");
           thread_queue_add(reqs_queue,(void*)data,0,strlen(data));
@@ -1304,8 +1310,11 @@ ascii_endgame(Gameinfo *gameinfo, int reason)
 
     if (reason == 1)		/* Our opponent has resigned. */
       printf("GNU Go wins by resignation.\n");
-    else			/* We have resigned. */
+    else{			/* We have resigned. */
       printf("You win by resignation.\n");
+      send2net("request:giveup\r\n\r\n");
+       
+    }
 
     printf("Result: %c+Resign\n\n", color == WHITE ? 'W' : 'B');
     sgftreeWriteResult(&sgftree, color == WHITE ? 1000.0 : -1000.0, 1);
