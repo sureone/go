@@ -1,6 +1,9 @@
 *.[oa]
 *.exe
 *.db
+*.go
+*.apk
+*.log
 *.old
 *.stackdump
 *.gz
