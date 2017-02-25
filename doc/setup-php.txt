@@ -1,0 +1,21 @@
+sudo apt-get install php5
+sudo apt-get install php5-fpm
+# setup php5-fpm bind address
+sudo vim /etc/php5/fpm/pool.d/www.conf
++++ listen = 127.0.0.1:10000 
+# setup virtual site in nginx
+sudo vim /etc/nginx/sites-enable/xxx.conf
++++
+location /go/web/ {
+   alias /sdb/appsrv/go/web/;
+   location ~ \.php$ {
+	 fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	 #fastcgi_pass unix:/var/run/php5-fpm.sock;
+	 fastcgi_pass 127.0.0.1:10000;
+	 fastcgi_index index.php;
+	 include fastcgi_params;
+   }
+}
+
+
+

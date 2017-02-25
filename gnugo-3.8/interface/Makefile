@@ -49,9 +49,9 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_gnugo_OBJECTS = main.$(OBJEXT) play_ascii.$(OBJEXT) threadqueue.$(OBJEXT) \
+am_gnugo_OBJECTS = main.$(OBJEXT) play_ascii.$(OBJEXT) \
 	play_gmp.$(OBJEXT) play_gtp.$(OBJEXT) play_solo.$(OBJEXT) \
-	play_test.$(OBJEXT) gmp.$(OBJEXT) gtp.$(OBJEXT)
+	play_test.$(OBJEXT) gmp.$(OBJEXT) gtp.$(OBJEXT) threadqueue.$(OBJEXT)
 gnugo_OBJECTS = $(am_gnugo_OBJECTS)
 gnugo_LDADD = $(LDADD)
 gnugo_DEPENDENCIES = ../engine/libengine.a ../patterns/libpatterns.a \
@@ -69,13 +69,13 @@ HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /sdb/appsrv/gnugo-3.8/missing --run aclocal-1.9
+ACLOCAL = ${SHELL} /sdb/appsrv/go/gnugo-3.8/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = ${SHELL} /sdb/appsrv/gnugo-3.8/missing --run tar
-AUTOCONF = ${SHELL} /sdb/appsrv/gnugo-3.8/missing --run autoconf
-AUTOHEADER = ${SHELL} /sdb/appsrv/gnugo-3.8/missing --run autoheader
-AUTOMAKE = ${SHELL} /sdb/appsrv/gnugo-3.8/missing --run automake-1.9
+AMTAR = ${SHELL} /sdb/appsrv/go/gnugo-3.8/missing --run tar
+AUTOCONF = ${SHELL} /sdb/appsrv/go/gnugo-3.8/missing --run autoconf
+AUTOHEADER = ${SHELL} /sdb/appsrv/go/gnugo-3.8/missing --run autoheader
+AUTOMAKE = ${SHELL} /sdb/appsrv/go/gnugo-3.8/missing --run automake-1.9
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -102,14 +102,14 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-LDFLAGS = 
+LDFLAGS =
 LIBOBJS = 
 LIBS = -lm -lpthread
 LTLIBOBJS = 
 MAINT = #
 MAINTAINER_MODE_FALSE = 
 MAINTAINER_MODE_TRUE = #
-MAKEINFO = ${SHELL} /sdb/appsrv/gnugo-3.8/missing --run makeinfo
+MAKEINFO = ${SHELL} /sdb/appsrv/go/gnugo-3.8/missing --run makeinfo
 OBJEXT = o
 PACKAGE = gnugo
 PACKAGE_BUGREPORT = 
@@ -143,7 +143,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = /sdb/appsrv/gnugo-3.8/install-sh
+install_sh = /sdb/appsrv/go/gnugo-3.8/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -181,12 +181,12 @@ LDADD = \
 gnugo_SOURCES = \
 	main.c \
 	play_ascii.c \
-	threadqueue.c \
 	play_gmp.c \
 	play_gtp.c \
 	play_solo.c \
 	play_test.c \
 	gmp.c \
+	threadqueue.c \
 	gtp.c
 
 AIXOPTS = -O -qmaxmem=16384 -qro -qroconst -qinfo

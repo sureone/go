@@ -17,7 +17,7 @@
 #define DEFAULT_LEVEL 10
 
 /* Default hash table size in megabytes */
-#define DEFAULT_MEMORY -1
+#define DEFAULT_MEMORY 32
 
 /* Compile support for GTP communication over TCP/IP channel. */
 #define ENABLE_SOCKET_SUPPORT 1
