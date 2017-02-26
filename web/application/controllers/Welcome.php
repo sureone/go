@@ -42,6 +42,7 @@ class Welcome extends CI_Controller {
 		$result = "";
 		switch ($jobj->{'ACTION'}){
 			case 'postThread':
+			case 'postReply':
 				$result = $this->doPostThread($jobj);
 			break;
 			case 'loadThreadsTo':
@@ -60,18 +61,40 @@ class Welcome extends CI_Controller {
 		$data = array(
 			'uid'=>$json->{'uid'},
 			'content'=>$json->{'content'},
-			'rcount'=>0,
 			'sn'=>$json->{'sn'},
+			'rid'=>0,
+			'rcount'=>0,
 			'uname'=>$json->{'uname'},
 			'cdate'=>$date->format('Y-m-d H:i:s')
 		);
+		if(array_key_exists('rid', $json)){
+			$data['rid']= $json->{'rid'};
+		}
 		$this->db->insert('threads',$data);
+		if(array_key_exists('rid', $json) && $json->{'rid'}>0){
+			$this->db->set('rcount','rcount+1',FALSE);
+			$this->db->where('id',$json->{'rid'});
+			$this->db->update('threads');
+		}
 		return 'OK';
 		
 	}
 	
 	function doLoadThreads($json){
-		$query = $this->db->query("select * from threads");
+		$action = $json->{'ACTION'};
+		$id = $json->{'id'};
+		$sql = "select * from threads";
+		$sql = $sql . " where rid='" . $json->{'rid'} . "'";
+		if($id!='now'){
+			if($action=='loadThreadsTo'){
+				$sql = $sql . " and id < '{$id}'";
+			}else{
+				$sql = $sql . " and id > '{$id}'";
+			}
+		}
+		$sql = $sql . " order by id desc limit " . $json->{'max'};
+		
+		$query = $this->db->query($sql);
 		$rows = $query->result_array();
 		$result = array(
 			'ACTION'=>$json->{'ACTION'},
