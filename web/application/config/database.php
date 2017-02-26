@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sqlite:/sdb/appsrv/go/src/sql.db',
+	'hostname' => 'sqlite:../src/sql.db',
 	'username' => '',
 	'password' => '',
 	'database' => '',
