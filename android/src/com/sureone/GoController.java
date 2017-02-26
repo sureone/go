@@ -155,6 +155,12 @@ public class GoController extends us.xdroid.util.ControllerBase{
     public final static int WEB_REGISTER_MATCH=89;
     public final static int WEB_LIST_SELF_MATCH=90;
 
+    public final static int REQ_LOAD_SGFS_FROM=91;
+    public final static int RSP_LOAD_SGFS_FROM=92;
+    
+    public final static int REQ_LOAD_SGFS_TO=93;
+    public final static int RSP_LOAD_SGFS_TO=94;
+    
     public xTcpThread mConn=null;
     public static boolean mObserverMode=false;
     DbModel mDbModel=null;
@@ -571,7 +577,40 @@ public class GoController extends us.xdroid.util.ControllerBase{
             return;
         }
         sendRequestNC(REQ_LOAD_THREADS_TO,obj);				
-	}	
+	}
+
+
+    public void loadSgfsFrom(int fromId,String skey){
+
+        JSONObject obj = new JSONObject();
+        try {
+
+            obj.put("ACTION", new String("loadSgfsFrom"));
+            obj.put("id", fromId);
+            obj.put("skey", skey);
+            obj.put("max", 100);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            return;
+        }
+        sendRequestNC(REQ_LOAD_SGFS_FROM,obj);               
+    }
+    
+    public void loadSgfsTo(int toId,String skey){
+
+        JSONObject obj = new JSONObject();
+        try {
+
+            obj.put("ACTION", new String("loadSgfsTo"));
+            obj.put("id", toId);
+            obj.put("skey", skey);
+            obj.put("max", 100);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            return;
+        }
+        sendRequestNC(REQ_LOAD_SGFS_TO,obj);             
+    }	
 	
 	public void postThread(String content){
 	
@@ -700,7 +739,17 @@ public class GoController extends us.xdroid.util.ControllerBase{
 			sendMessageToUI(RSP_GET_REMOTE_RESOURCE,0,0,bundle);				
 			break;				
 		}			
-		
+		case REQ_LOAD_SGFS_FROM: {
+            List<MessageSgf> threads = doLoadSgfs((JSONObject)msg.obj);           
+            sendMessageToUI(RSP_LOAD_SGFS_FROM,0,0,threads);
+            break;              
+        }   
+
+        case REQ_LOAD_SGFS_TO: {
+            List<MessageSgf> threads = doLoadSgfs((JSONObject)msg.obj);            
+            sendMessageToUI(RSP_LOAD_SGFS_TO,0,0,threads);
+            break;              
+        }   
 		case REQ_LOAD_THREADS_FROM: {
 			List<MessageThread> threads = doLoadThreads((JSONObject)msg.obj);			
 			sendMessageToUI(RSP_LOAD_THREADS_FROM,0,0,threads);
@@ -809,6 +858,52 @@ public class GoController extends us.xdroid.util.ControllerBase{
             } else {
                 xHelper.log("Failed, status code=" + status);
 				return null;
+            }
+        } while (false);
+
+    }
+
+
+    private List<MessageSgf> doLoadSgfs(JSONObject obj) {
+        xHelper.log("doLoadSgfs");
+            
+        do {
+
+            int status;
+            StringBuffer jsonResponse = new StringBuffer(1024);
+            try {
+                status = HttpConnectionManager.doPostEntity(obj.toString(), jsonResponse);
+            } catch (Exception e) {
+                xHelper.log("network error");
+                return null;                
+            }
+
+            if (status == HttpStatus.SC_OK) {
+                xHelper.log("HTTP POST OK");
+                LinkedList<MessageSgf> list = new LinkedList<MessageSgf>();
+                try {
+                    //String test = "{ACTION:GETAWARDLIST,awardlist:[{id:5,name:fsafd,price:200,iconid:1},{id:6,name:浣犲ソ鍚?price:300,iconid:2}]}";
+                    JSONObject jo = new JSONObject(jsonResponse.toString());                                        
+                    JSONArray ary = jo.getJSONArray("rows");
+                    xHelper.log("rows="+ary.length());
+                    String action = obj.getString("ACTION");
+                    for (int i = 0; i < ary.length(); i++) {                    
+                        JSONObject joo = ary.getJSONObject(i);                      
+                        MessageSgf mt = MessageSgf.createFromJson(joo);
+                        if(action.equals("loadSgfsTo"))
+                            list.addLast(mt);
+                        else
+                            list.addFirst(mt);
+                        //list.add(mt);
+                    }       
+                    return list;
+                } catch (JSONException e1) {
+                    e1.printStackTrace();                    
+                    return null;
+                }
+            } else {
+                xHelper.log("Failed, status code=" + status);
+                return null;
             }
         } while (false);
 

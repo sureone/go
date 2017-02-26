@@ -5,9 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.List;
-import java.util.LinkedList;
-
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.support.v4.app.Fragment;
@@ -156,8 +153,6 @@ public class RemoteSgfFragment extends BaseFragment {
         mBtnSearch = (Button)mView.findViewById(R.id.btnSearch);
         mBtnSearch.setOnClickListener(evtLis);
         mSearchTxt = (EditText)mView.findViewById(R.id.txtSearch);
-                mMainMsgThreads = new java.util.LinkedList<MessageSgf>();
-
 
         mGrid = (ListView) mView.findViewById(R.id.sgfList);
         if(mAppsAdapter==null) {
@@ -172,8 +167,6 @@ public class RemoteSgfFragment extends BaseFragment {
 
 	
 	public void onShow(){
-
-        GoApp.getInstance().getGoController().setHandler(mHandler);
 		showRemote();
 	}
 
@@ -186,10 +179,11 @@ public class RemoteSgfFragment extends BaseFragment {
 	}
 	
     void onBtnSearch() {
-        if(mSearchKey.length()>0) {
-            mMaxDt=0;
-            mMinDt=0;
-            loadMoreOld();
+        String s = mSearchTxt.getText().toString().trim();
+        if(s.length()>0) {
+            mSgfData.clear();
+            mStartIdx=0;
+            searchSgf(s);
         }
     }
 
@@ -227,6 +221,15 @@ public class RemoteSgfFragment extends BaseFragment {
                          "type:sgf\r\n"+
                          "id:"+id+"\r\n\r\n";
         	if(mConn!=null) mConn.sendData(str);
+        }
+    }
+    void LoadMoreSgf() {
+		if(mPager.getCurrentItem()!=1) return;
+        mSearchKey=mSearchTxt.getText().toString().trim();
+        if(mSearchKey!=null && mSearchKey.length()>0) {
+            searchSgf(mSearchKey);
+        } else {
+            LoadSgf();
         }
     }
 
@@ -274,15 +277,50 @@ public class RemoteSgfFragment extends BaseFragment {
             }
 
             // Bind the data efficiently with the holder.
-            // Bind the data efficiently with the holder.
-            MessageSgf mt=mMainMsgThreads.get(position);
 
 
-            xHelper.log("goapp",mt.cdate);
+            String s="";
+            SgfHeader h = null;
+            if(mViewMode==1) {
+                String ss=mSgfData.get(position);
+                // holder.icon.setImageResource(R.drawable.deskicon);
+                SgfParser parser = new SgfParser(ss);
+                if(parser.parseHeader()==true) {
+                    h = parser.mH;
+                }
+            } 
+            s=h.EV;
+            String sbr=h.BR;
+            String swr=h.WR;
+            if(sbr.compareTo("NA")==0) sbr="";
+            if(swr.compareTo("NA")==0) swr="";
+            if(isDebug==true) s+="("+h.ID+")";
+            s+="\n"+h.PB+sbr+" VS "+h.PW+swr+"\n";
+            String[] ss = new String[2];
+            ss[0]=h.RE.substring(0, 1);
+            ss[1]=h.RE.substring(2);
+            if(ss.length==2) {
+                if(ss[1].compareTo("R")==0) {
+                    if(ss[0].compareTo("B")==0)
+                        s+=mContainer.getString(R.string.REBR);
+                    if(ss[0].compareTo("W")==0)
+                        s+=mContainer.getString(R.string.REWR);
+                } else if(ss[0].compareTo("B")==0 || ss[0].compareTo("W")==0) {
+                    if(ss[0].compareTo("B")==0)
+                        s+=mContainer.getString(R.string.black)+
+                           ss[1]+mContainer.getString(R.string.mu)+mContainer.getString(R.string.win);
+                    if(ss[0].compareTo("W")==0)
+                        s+=mContainer.getString(R.string.white)+
+                           ss[1]+mContainer.getString(R.string.mu)+mContainer.getString(R.string.win);
+                } else {
+                    s+=h.RE;
+                }
+            }
+
             holder.sgfTxt.setTextColor(android.graphics.Color.BLACK);
-            holder.sgfTxt.setText(mt.black+" "+mt.white+" "+mt.name+" "+mt.result);
+            holder.sgfTxt.setText(s);
 
-            holder.id = mt.id;
+            holder.id = h.ID;
             if(mViewMode==1) {
                 if(mGoController.getLocalSgf(holder.id)!=null) {
                     holder.icon.setImageResource(R.drawable.done);
@@ -322,7 +360,8 @@ public class RemoteSgfFragment extends BaseFragment {
 
         public final int getCount() {
             //return xGlobal.getSystemInfo().mGames.size();
-              return mMainMsgThreads.size();
+                if(mSgfData==null ) return 0;
+                return mSgfData.size();
         }
 
         public final Object getItem(int position) {
@@ -368,10 +407,11 @@ public class RemoteSgfFragment extends BaseFragment {
          }
             showWaitingDialog(R.string.waitingforgetsgf);
             loadMoreOld();
-        
+        }
     }
 
 
+    MainHandler mHandler = null;
     class MainHandler extends Handler {
         @Override
         public void handleMessage(android.os.Message msg) {
@@ -385,7 +425,6 @@ public class RemoteSgfFragment extends BaseFragment {
             }
         }
     }
-    MainHandler mHandler = null;
     
     void onNotify(byte[] buf,int len,int offset) {
 
@@ -394,19 +433,15 @@ public class RemoteSgfFragment extends BaseFragment {
     int mMaxDt=0;
     int mMinDt=0;
 
-    boolean isLoadingThreads;
+
 
     java.util.LinkedList<MessageSgf> mMainMsgThreads = null;
 
-    void onLoadDone(LinkedList<MessageSgf> threads,boolean isfrom){    
-  
+    void onLoadDone(LinkedList<MessageSgf> threads,boolean isfrom){      
         if(threads!=null){
             try {
                 int i=0;
-
                 if(threads.size()>0){
-
-
                     if(isfrom){
                         mMaxDt=threads.getLast().id;
                         if(mMinDt==0){
@@ -421,7 +456,6 @@ public class RemoteSgfFragment extends BaseFragment {
                 }
                 for (MessageSgf mt : threads) {
                     int pos=0;
-                    
                     for(MessageSgf mmt: mMainMsgThreads){
                         
                         if(mmt.id==mt.id){
@@ -430,28 +464,92 @@ public class RemoteSgfFragment extends BaseFragment {
                         }
                         pos++;
                     }
-                    
                     if(isfrom){
                         mMainMsgThreads.addFirst(mt);                       
                     }else{
                         mMainMsgThreads.addLast(mt);
                     }
-
-
                     
+                    
+
+                    xHelper.log(mt.uname+"@"+mt.cdate+":"+mt.content);
                 }
                 isLoadingThreads=false;
             } catch (Exception e) {
-                xHelper.log("goapp",e.toString());
                 e.printStackTrace();
             }
         }
-        closeWaitingDialog();
-
+        hideProgress();
         mAppsAdapter.notifyDataSetChanged();
     }
 
-    
+    static final int RSP_DONE=1;
+    static final int RSP_WAIT=2;
+    static final class SgfDownload {
+        int id=0;
+        int len=0;
+        int cur=0;
+        byte[] data=null;
+    }
+    SgfDownload mLastSgfDl=null;
+    byte[] last_rsp_data=null;
+    int onResponse(byte[] buf,int len,int offset) {
+        int i = 0;
+        int start = offset;
+        int count = 0;
+        while(offset<len) {
+            if(buf[offset]==',') {
+                offset++;
+                break;
+            }
+            count++;
+            offset++;
+        }
+
+        String type= new String(buf,start,count);
+        if(type.compareTo("ls")==0) {
+            x_Integer o = new x_Integer(offset);
+            int cnt = xHelper.getInt(buf, len, o, ',');
+            Message message = new Message();
+            message.arg1=cnt;
+            while(cnt>0) {
+                String str = xHelper.getStr(buf, len, o, ';');
+                if(str!=null)
+                    mSgfData.add(str);
+                cnt--;
+            }
+
+            message.what = SgfHandler.MSG_LS_SGF;
+            mHandler.sendMessage(message);
+        } else if(type.compareTo("get")==0) {
+            x_Integer o = new x_Integer(offset);
+            String t = xHelper.getStr(buf, len, o, ',');
+            if(t.compareTo("sgf")==0) {
+                SgfDownload sgfdl=new SgfDownload();
+                sgfdl.id = xHelper.getInt(buf, len, o, ',');
+                sgfdl.len = xHelper.getInt(buf, len, o, ',');
+                sgfdl.cur+=len-o.v;
+                sgfdl.data=new byte[sgfdl.len];
+                if(sgfdl.cur>sgfdl.len)
+                    sgfdl.cur=sgfdl.len;
+                xHelper.log("goapp","onResponse get expect:"+sgfdl.len+",current:"+sgfdl.cur);
+                System.arraycopy(buf, o.v, sgfdl.data, 0,sgfdl.cur);
+                if(sgfdl.cur>=sgfdl.len) {
+                    String data = new String(sgfdl.data);
+                    mGoController.AddSgf(sgfdl.id, data);
+                    saveSgfToFs(sgfdl.id,data);
+                    sgfdl=null;
+                    Message message = new Message();
+                    message.what = SgfHandler.MSG_GET_SGF;
+                    mHandler.sendMessage(message);
+                }
+                mLastSgfDl=sgfdl;
+            }
+
+        }
+        last_rsp_data=null;
+        return RSP_DONE;
+    }
     void saveSgfToFs(int id,String data) {
         //Toast.makeText(this, getFilesDir().toString(), Toast.LENGTH_LONG).show();
         String fn = "sgf"+id+".sgf";
@@ -469,6 +567,11 @@ public class RemoteSgfFragment extends BaseFragment {
             e.printStackTrace();
         }
 
+    }
+    void OnLsSgfResponse(int cnt) {
+        if(cnt>0)
+            mAppsAdapter.notifyDataSetChanged();
+        closeWaitingDialog();
     }
     void OnGetSgfResponse() {
         mAppsAdapter.notifyDataSetChanged();
@@ -523,7 +626,65 @@ public class RemoteSgfFragment extends BaseFragment {
         mMaxDt=0;
         loadMoreNew();
     }
-    
+    EvtListener tcpevtLis = null;
+    class EvtListener implements xTcpEventListener {
+        public void onConnected(xTcpThread thread) {
+            Message message = new Message();
+            message.what = SgfHandler.MSG_LOAD_SGF;
+	    if(mHandler!=null) mHandler.sendMessage(message);
+        }
+        public void onConnectTimeOut(xTcpThread thread) {
+			mConn= null;
+        }
+        public void onDisconnected(xTcpThread thread) {
+			mConn= null;
+        }
+        public void onSendFailed(String s) {
+
+        }
+        public void onDataReceived(xTcpThread thread,byte[] buff,int clen) {
+            int offset = 0;
+            int bFound=0;
+            int start=0;
+            int len = clen;
+            byte[] buf = buff;
+            if(mLastSgfDl!=null) {
+                int delta = mLastSgfDl.len-mLastSgfDl.cur;
+                if(clen<delta) {
+                    delta=clen;
+                }
+                System.arraycopy(buff, 0, mLastSgfDl.data, mLastSgfDl.cur, delta);
+                mLastSgfDl.cur+=delta;
+                offset=delta;
+                if(mLastSgfDl.cur>=mLastSgfDl.len) {
+                    String data = new String(mLastSgfDl.data);
+                    mGoController.AddSgf(mLastSgfDl.id,data);
+                    saveSgfToFs(mLastSgfDl.id,data);
+                    mLastSgfDl=null;
+                    Message message = new Message();
+                    message.what = SgfHandler.MSG_GET_SGF;
+                    mHandler.sendMessage(message);
+                }
+            }
+            while(offset<len) {
+                if(buf[offset]==':') {
+                    String type= new String(buf,start,offset-start);
+                    offset++;
+                    if(type.compareTo("response")==0) {
+                        onResponse(buf,len,offset);
+                    }
+                    if(type.compareTo("notify")==0) {
+                        onNotify(buf,len,offset);
+                    }
+                    bFound++;
+                    break;
+                }
+                offset++;
+            }
+
+        }
+
+    }
 
     void showRemote() {
         mViewMode = 1;
