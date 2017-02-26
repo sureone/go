@@ -541,13 +541,13 @@ public class GoController extends us.xdroid.util.ControllerBase{
 		sendRequest(REQ_LOAD_HEAD_ICONS);
 	}
 	
-	public void loadThreadsFrom(String dt,int rid){
-		xHelper.log("loadThreadsFrom "+dt);
+	public void loadThreadsFrom(int fromId,int rid){
+
         JSONObject obj = new JSONObject();
         try {
 
 			obj.put("ACTION", new String("loadThreadsFrom"));
-			obj.put("dt", dt);
+			obj.put("id", fromId);
 			obj.put("rid", rid);
 			obj.put("max", 100);
         } catch (JSONException e1) {
@@ -557,13 +557,13 @@ public class GoController extends us.xdroid.util.ControllerBase{
         sendRequestNC(REQ_LOAD_THREADS_FROM,obj);				
 	}
 	
-	public void loadThreadsTo(String dt,int rid){
-		xHelper.log("loadThreadsTo "+dt);
+	public void loadThreadsTo(int toId,int rid){
+
         JSONObject obj = new JSONObject();
         try {
 
 			obj.put("ACTION", new String("loadThreadsTo"));
-			obj.put("dt", dt);
+			obj.put("id", toId);
 			obj.put("rid", rid);
 			obj.put("max", 100);
         } catch (JSONException e1) {
@@ -589,7 +589,7 @@ public class GoController extends us.xdroid.util.ControllerBase{
 			obj.put("ACTION", new String("postThread"));
 			obj.put("content", content);
 			obj.put("uid", mApp.getUID());
-            obj.put("sn:",xUtil.getDeviceID(mContext));
+            obj.put("sn",xUtil.getDeviceID(mContext));
 			obj.put("uname", author);
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
@@ -613,7 +613,7 @@ public class GoController extends us.xdroid.util.ControllerBase{
 			obj.put("ACTION", new String("postReply"));
 			obj.put("content", content);
 			obj.put("uid", mApp.getUID());
-            obj.put("sn:",xUtil.getDeviceID(mContext));
+            obj.put("sn",xUtil.getDeviceID(mContext));
 			obj.put("rid",tid);
 			obj.put("uname", author);
         } catch (JSONException e1) {

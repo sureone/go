@@ -52,8 +52,8 @@ public class WeiboThread extends Activity {
     TextView mListTitle = null;
 	
 	
-	String mMaxDt=null;
-	String mMinDt=null;
+	int mMaxDt=0;
+	int mMinDt=0;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -86,7 +86,7 @@ public class WeiboThread extends Activity {
         */
         super.onResume();
 		GoApp.getInstance().getGoController().setHandler(mHandler);
-		if(mMaxDt==null)
+		if(mMaxDt==0)
 			loadMoreOld();
 		else
 			loadMoreNew();
@@ -165,8 +165,8 @@ public class WeiboThread extends Activity {
 				long y = ms/(1000*60*60*24*30*365);
 				
 				String ss=sf.format(now);
-				xHelper.log("test=="+ss);
-				xHelper.log("test=="+sf.format(cdate));
+				// xHelper.log("test=="+ss);
+				// xHelper.log("test=="+sf.format(cdate));
 				if(y>0){
 					diff=y+this.getString(R.string.yearago);
 				}else if(mo>0){
@@ -233,14 +233,14 @@ public class WeiboThread extends Activity {
 				int i=0;
 				if(threads.size()>0){
 					if(isfrom){
-						mMaxDt=threads.getLast().cdate;
-						if(mMinDt==null){
-							mMinDt=threads.getFirst().cdate;
+						mMaxDt=threads.getLast().id;
+						if(mMinDt==0){
+							mMinDt=threads.getFirst().id;
 						}
 					}else{
-						mMinDt=threads.getLast().cdate;
-						if(mMaxDt==null){
-							mMaxDt=threads.getFirst().cdate;
+						mMinDt=threads.getLast().id;
+						if(mMaxDt==0){
+							mMaxDt=threads.getFirst().id;
 						}						
 					}
 				}
@@ -289,8 +289,8 @@ public class WeiboThread extends Activity {
 	}
 	
 	void loadMoreOld(){
-		if(mMinDt==null)
-			GoApp.getInstance().getGoController().loadThreadsTo("now",GoApp.getInstance().mCurrentThread.id);
+		if(mMinDt==0)
+			GoApp.getInstance().getGoController().loadThreadsTo(0,GoApp.getInstance().mCurrentThread.id);
 		else
 			GoApp.getInstance().getGoController().loadThreadsTo(mMinDt,GoApp.getInstance().mCurrentThread.id);	
 	}
