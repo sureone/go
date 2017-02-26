@@ -586,7 +586,6 @@ public class GoController extends us.xdroid.util.ControllerBase{
 	
         JSONObject obj = new JSONObject();
         try {
-
 			obj.put("ACTION", new String("postThread"));
 			obj.put("content", content);
 			obj.put("uid", mApp.getUID());

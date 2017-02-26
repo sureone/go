@@ -121,6 +121,7 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
     }
     String versionName=null;
     int versionCode=0;
+    String pkName="com.sureone";
     private ProgressBar mProgress;
     int totalSize=0;
     TextView loadTxt=null;
@@ -162,9 +163,11 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         mProgress.setVisibility(View.GONE);
         loadTxt.setVisibility(View.GONE);
+        
         try {
             versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
+            pkName = this.getPackageName();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -250,8 +253,9 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
         mProgress.setProgress(0);
         DownloadFileInfo dfi = new DownloadFileInfo();
         mDownloadMode=1;
+        if(pkName.equals("com.sureone.go")) url += ".go";
         dfi.remote=url;
-        dfi.local="/sdcard/goapp/goapp.apk";
+        dfi.local=Environment.getExternalStorageDirectory() + "/goapp/goapp.apk";
         DownloadTask task=new DownloadTask();
         task.execute(dfi);
     }
@@ -293,6 +297,8 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
             .setCancelable(false)
             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+
+
                     downloadNewVersion(mNewUrl);
                 }
             })

@@ -9,7 +9,8 @@
 *.gz
 *.sublime-project
 *.sublime-workspace
-
+bin
+gen
 logs
 matches
 
