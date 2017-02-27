@@ -219,19 +219,32 @@ public class RemoteSgfFragment extends BaseFragment {
         return k;
     }
 
+     void onEnterSGF(String sgfData) {
+        //gotoSgfActivity
+        Intent intent = new Intent(mContainer,com.sureone.SgfActivity.class);
+        intent.putExtra("curSgf",sgfData);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        mContainer.startActivity(intent);
+    }
 
     void getRemoteSgf(int id,String url) {
         if(mGoController.getLocalSgf(id)==null) {
             showWaitingDialog(R.string.savesgftolocal);
             mGoController.getRemoteSgf(id,url);
+        }else{
+            onEnterSGF(readSgfFromFs(id));
         }
     }
+
+
 
     void onLoadRemoteSgfDone(Bundle obj){
         try{
 
             int id = obj.getInt("id");
              xHelper.log("goapp","sgf"+id+" downloaded");
+
+             onEnterSGF(readSgfFromFs(id));
 
 
              
@@ -240,6 +253,7 @@ public class RemoteSgfFragment extends BaseFragment {
             xHelper.log("goapp","sgf download error");
         }
 
+        closeWaitingDialog();
        
     }
 
