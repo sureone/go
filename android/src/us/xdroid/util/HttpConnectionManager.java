@@ -67,7 +67,7 @@ public class HttpConnectionManager {
     private static final DefaultHttpClient sClient;
     private static final String LOG_TAG = "HttpConnectionManager";
 
-    public static String SERVER_URL = "http://weiqi188.sinaapp.com/index.php/appentry";
+    public static String SERVER_URL = "http://pk.wcare.cn:19022/go/web/welcome/api";
 
     // [version: 0][name: saeut][value:
     // 219.142.125.161.1326768416547744][domain: xwtech.sinaapp.com][path:
@@ -227,6 +227,26 @@ public class HttpConnectionManager {
 
     public static byte[] downloadBitmap(String url) {
         xUtil.log("downloadBitmap++, url=" + url);
+
+        try {
+            HttpGet request = new HttpGet(url.toString());
+            HttpResponse response = execute(request);
+            StatusLine statusLine = response.getStatusLine();
+            int statusCode = statusLine.getStatusCode();
+            if (statusCode == 200) {
+                HttpEntity entity = response.getEntity();
+                return EntityUtils.toByteArray(entity);
+            } else
+                Log.d(LOG_TAG, "Download failed, HTTP response code "
+                      + statusCode + " - " + statusLine.getReasonPhrase());
+        } catch (IOException e) {
+            Log.d(LOG_TAG, "Network IO error");
+        }
+        return null;
+    }
+
+    public static byte[] downloadFile(String url) {
+        xUtil.log("downloadFile, url=" + url);
 
         try {
             HttpGet request = new HttpGet(url.toString());

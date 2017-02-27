@@ -160,7 +160,10 @@ public class GoController extends us.xdroid.util.ControllerBase{
     
     public final static int REQ_LOAD_SGFS_TO=93;
     public final static int RSP_LOAD_SGFS_TO=94;
-    
+        
+    public final static int REQ_GET_REMOTE_SGF=95;
+    public final static int RSP_GET_REMOTE_SGF=96;
+
     public xTcpThread mConn=null;
     public static boolean mObserverMode=false;
     DbModel mDbModel=null;
@@ -338,6 +341,21 @@ public class GoController extends us.xdroid.util.ControllerBase{
         return mDbModel.getLocalSgf(id);
     }
 
+    public void getRemoteSgf(int id,String url){
+      
+        xHelper.log("getRemoteSgf");
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", id);
+            obj.put("url", url);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            return;
+        }
+        sendRequest(REQ_GET_REMOTE_SGF,obj);               
+
+    }
+
     public int saveSgf(Context ctx) {
         //if(mGoGame!=null && mObserverMode==false) {
         if(mGoGame!=null) {
@@ -503,6 +521,9 @@ public class GoController extends us.xdroid.util.ControllerBase{
 		}
 		return rr;
 	}
+
+
+
 	
 	
 	
@@ -739,6 +760,11 @@ public class GoController extends us.xdroid.util.ControllerBase{
 			sendMessageToUI(RSP_GET_REMOTE_RESOURCE,0,0,bundle);				
 			break;				
 		}			
+        case REQ_GET_REMOTE_SGF: {
+            Bundle bundle = doGetRemoteSgf((JSONObject)msg.obj);            
+            sendMessageToUI(RSP_GET_REMOTE_SGF,0,0,bundle);                
+            break;              
+        }   
 		case REQ_LOAD_SGFS_FROM: {
             List<MessageSgf> threads = doLoadSgfs((JSONObject)msg.obj);           
             sendMessageToUI(RSP_LOAD_SGFS_FROM,0,0,threads);
@@ -1136,6 +1162,42 @@ public class GoController extends us.xdroid.util.ControllerBase{
 
         return bundle;
     }	
+
+
+    private Bundle doGetRemoteSgf(JSONObject obj) {
+        xHelper.log("doGetRemoteResource");
+        int cnt=0;
+        Bundle bundle = null;
+        do {     
+            try {
+                bundle = new Bundle();
+                String url = obj.getString("url");
+                int id = obj.getInt("id");
+                byte[] data = HttpConnectionManager.downloadFile(url);
+                String fn = "sgf"+id+".sgf";
+
+                File newFile=new File(mContext.getFilesDir(), fn);
+
+                BufferedWriter output;
+              
+                output = new BufferedWriter(new FileWriter(newFile));
+                output.write(new String(data,"UTF-8"));
+                output.flush();
+                output.close();
+
+                bundle.putInt("id",id);
+
+                this.AddSgf(id,new String(data,"UTF-8"));
+               
+            } catch (Exception e1) {
+                e1.printStackTrace();                    
+            }
+   
+        } while (false);
+
+        return bundle;
+    }       
+
 	
     private Bundle doGetRemoteResource(JSONObject obj) {
 		xHelper.log("doGetRemoteResource");

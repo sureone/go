@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.List;
 import java.util.LinkedList;
-
+import org.json.JSONObject;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.support.v4.app.Fragment;
@@ -220,14 +220,27 @@ public class RemoteSgfFragment extends BaseFragment {
     }
 
 
-    void getRemoteSgf(int id) {
+    void getRemoteSgf(int id,String url) {
         if(mGoController.getLocalSgf(id)==null) {
             showWaitingDialog(R.string.savesgftolocal);
-            String str = "request:get\r\n"+
-                         "type:sgf\r\n"+
-                         "id:"+id+"\r\n\r\n";
-        	if(mConn!=null) mConn.sendData(str);
+            mGoController.getRemoteSgf(id,url);
         }
+    }
+
+    void onLoadRemoteSgfDone(Bundle obj){
+        try{
+
+            int id = obj.getInt("id");
+             xHelper.log("goapp","sgf"+id+" downloaded");
+
+
+             
+        }catch(Exception e){
+
+            xHelper.log("goapp","sgf download error");
+        }
+
+       
     }
 
 
@@ -280,7 +293,7 @@ public class RemoteSgfFragment extends BaseFragment {
 
             xHelper.log("goapp",mt.cdate);
             holder.sgfTxt.setTextColor(android.graphics.Color.BLACK);
-            holder.sgfTxt.setText(mt.black+" "+mt.white+" "+mt.name+" "+mt.result);
+            holder.sgfTxt.setText(mt.name+"\n"+mt.black+" 对 "+mt.white+"\n"+mt.result);
 
             holder.id = mt.id;
             if(mViewMode==1) {
@@ -304,7 +317,8 @@ public class RemoteSgfFragment extends BaseFragment {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
             ViewHolder holder = (ViewHolder) v.getTag();
             if(mViewMode==1) {
-                getRemoteSgf(holder.id);
+                MessageSgf mt=mMainMsgThreads.get(position);
+                getRemoteSgf(mt.id,mt.sgf);
                 xHelper.log("goapp","get remote sgf="+holder.id);
                 return;
             }
@@ -381,6 +395,10 @@ public class RemoteSgfFragment extends BaseFragment {
                 break;
                 case GoController.RSP_LOAD_SGFS_TO:
                     onLoadDone((LinkedList<MessageSgf>)msg.obj,false);
+                break;
+
+                case GoController.RSP_GET_REMOTE_SGF:
+                    onLoadRemoteSgfDone((Bundle)msg.obj);
                 break;
             }
         }
