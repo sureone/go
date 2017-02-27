@@ -5,3 +5,5 @@ virtualenv [directory]
 cd [directory]
 source ./bin/activate
 pip install scrapy
+
+scrapy runspider sinawq.py
