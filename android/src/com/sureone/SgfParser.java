@@ -96,6 +96,9 @@ public class SgfParser {
                 if(k.compareTo("EV")==0) {
                     mH.EV=new String(v);
                 }
+                if(k.compareTo("TE")==0) {
+                    mH.EV=new String(v);
+                }
                 if(k.compareTo("DT")==0) {
                     mH.DT=new String(v);
                 }

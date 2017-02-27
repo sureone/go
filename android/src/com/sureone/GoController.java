@@ -1181,16 +1181,17 @@ public class GoController extends us.xdroid.util.ControllerBase{
                 BufferedWriter output;
               
                 output = new BufferedWriter(new FileWriter(newFile));
-                output.write(new String(data,"UTF-8"));
+                output.write(new String(data,"GBK"));
                 output.flush();
                 output.close();
 
                 bundle.putInt("id",id);
 
-                this.AddSgf(id,new String(data,"UTF-8"));
+                this.AddSgf(id,new String(data,"GBK"));
                
             } catch (Exception e1) {
-                e1.printStackTrace();                    
+                e1.printStackTrace();     
+                xHelper.log("goapp",e1.toString());               
             }
    
         } while (false);
