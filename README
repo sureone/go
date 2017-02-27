@@ -3,7 +3,12 @@ a weiqi(go) server running on linux/windows.
 - build:
   cd src
   make
+
 - run:
   ./ipface.exe -p [portno]
+
+- debug tricks
+  use valgrind check the memory lean after any change
+  valgrind --tool=memcheck ./ipface.exe -p [port]
 
 yang.xiaowang@wcare.cn
