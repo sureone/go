@@ -3006,19 +3006,19 @@ int app_handle_con_close(void* srv,int conn_ndx)
 	USER_T* me = getUserByConn(conn_ndx);
 	if(me!=NULL) {
 		dprintf("%s@%d lost the connection",me->email->ptr,conn_ndx);
+		me->conn_ndx = -1;
 		if(isInGame(me)==1 && isEnableGoBack()==1) {
 			me->noresponse=1;
 			waitMeBack(me);
 		}else{
+			clearAllTimer(me);
 			if(isInDesk(me)==1) {
 				app_handle_leave(srv,me);
 				removeUser(me);
 			} else {
 				removeUser(me);
 			}
-			clearAllTimer(me);
 		}
-		me->conn_ndx = -1;
 
 	}
 	return ret;

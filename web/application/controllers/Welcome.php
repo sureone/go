@@ -29,11 +29,11 @@ class Welcome extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('welcome_message');
-		
-		//$rows = $query->result_array();
+		//$this->load->view('welcome_message');
+        $query = $this->db->query("select * from sgfs");
+		$rows = $query->result_array();
 		//$this->db->query("insert into threads(content) values('hello')");
-		//echo json_encode_utf8($this->doLoadThreads(""));
+		echo json_encode_utf8($rows);
 	}
 	
 	public function api(){
@@ -48,6 +48,9 @@ class Welcome extends CI_Controller {
 			case 'loadThreadsTo':
 			case 'loadThreadsFrom':
 				$result = $this->doLoadThreads($jobj);
+			case 'loadSgfsTo':
+			case 'loadSgfsFrom':
+				$result = $this->doLoadSgfs($jobj);
 			break;
 			default:
 			break;
@@ -99,6 +102,35 @@ class Welcome extends CI_Controller {
 		$result = array(
 			'ACTION'=>$json->{'ACTION'},
 			'threads'=>$rows
+		);
+		return $result;
+	}
+	
+	function doLoadSgfs($json){
+		$action = $json->{'ACTION'};
+		$id = $json->{'id'};
+		$sql = "select * from sgfs where 1=1";
+         
+		if($id!='now'){
+			if($action=='loadThreadsTo'){
+				$sql = $sql . " and id < '{$id}'";
+			}else{
+				$sql = $sql . " and id > '{$id}'";
+			}
+		}
+
+		if(array_key_exists('skey', $json)){
+            $skey = $json->{'skey'};
+            $sql = $sql . " and (black like '%{$skey}' or white like '%{$skey}' or name like '%{$skey}')";
+        }
+        
+		$sql = $sql . " order by id desc limit " . $json->{'max'};
+		
+		$query = $this->db->query($sql);
+		$rows = $query->result_array();
+		$result = array(
+			'ACTION'=>$json->{'ACTION'},
+			'rows'=>$rows
 		);
 		return $result;
 	}

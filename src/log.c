@@ -169,7 +169,7 @@ void setup_log(int mode,int fd,char* logfile,int usesyslog){
 			if(strcmp(ptr->d_name,".")==0 || strcmp(ptr->d_name,"..")==0) continue;
 			else if(ptr->d_type == 8){
 				char logno[10];
-
+                memset(logno,0,10);
 				strncpy(logno,ptr->d_name,strchr(ptr->d_name,'.')-ptr->d_name);
 				int n = atoi(logno);
 

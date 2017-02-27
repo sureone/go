@@ -425,8 +425,8 @@ CWeiQiModel::~CWeiQiModel()
         delete (vector_qizi[i]);
     }
 
-    delete vector_dragon;
-    delete vector_qizi;
+    free(vector_dragon);
+    free(vector_qizi);
 	free(mmap);
 
 
