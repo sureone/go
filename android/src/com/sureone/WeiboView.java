@@ -248,7 +248,9 @@ public class WeiboView extends Activity {
 							mMaxDt=threads.getFirst().id;
 						}						
 					}
-				}
+				}else if(isfrom==false){
+                    isMoreOld=false;
+                }
 				for (MessageThread mt : threads) {
 					int pos=0;
 					for(MessageThread mmt: mMainMsgThreads){
@@ -273,8 +275,11 @@ public class WeiboView extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		}else if(isfrom==false){
+            isMoreOld=false;
+        }
 		hideProgress();
+        isLoadingThreads=false;
 		mAppsAdapter.notifyDataSetChanged();
 	}
 
@@ -299,13 +304,16 @@ public class WeiboView extends Activity {
         }
 	}
 	
+    boolean isMoreOld=true;
 	void loadMoreNew(){
+        isLoadingThreads=true;
 		GoApp.getInstance().getGoController().loadThreadsFrom(mMaxDt,0);
 	}
 	
 	void loadMoreOld(){
+        isLoadingThreads=true;
 		if(mMinDt==0)
-			GoApp.getInstance().getGoController().loadThreadsTo(0,0);
+			GoApp.getInstance().getGoController().loadThreadsFrom(0,0);
 		else
 			GoApp.getInstance().getGoController().loadThreadsTo(mMinDt,0);			
 	}
@@ -488,8 +496,7 @@ public class WeiboView extends Activity {
             int id;
         }
 
-        boolean mReallyEnd=false;
-
+    
         @Override
         public void onScroll(AbsListView view, int firstVisibleItem,
                              int visibleItemCount, int totalItemCount) {
@@ -497,9 +504,8 @@ public class WeiboView extends Activity {
             boolean loadMore = /* maybe add a padding */
                 firstVisibleItem + visibleItemCount >= totalItemCount-1;
             // xHelper.log("goapp","onScroll");
-            if(loadMore==true && totalItemCount!=0 && mReallyEnd==false) {
-                //refresh();
-                // xHelper.log("goapp","scroll to end");
+            if(loadMore==true && totalItemCount!=0 && isLoadingThreads==false && isMoreOld) {
+                loadMoreOld();
             }
         }
 

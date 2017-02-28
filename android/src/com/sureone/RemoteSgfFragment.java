@@ -305,7 +305,7 @@ public class RemoteSgfFragment extends BaseFragment {
             MessageSgf mt=mMainMsgThreads.get(position);
 
 
-            xHelper.log("goapp",mt.cdate);
+            // xHelper.log("goapp",mt.cdate);
             holder.sgfTxt.setTextColor(android.graphics.Color.BLACK);
             holder.sgfTxt.setText(mt.name+"\n"+mt.black+" 对 "+mt.white+"\n"+mt.result);
 
@@ -364,7 +364,7 @@ public class RemoteSgfFragment extends BaseFragment {
             // TODO Auto-generated method stub
             if(mViewMode==1) {
                 boolean loadMore = (firstVisibleItem + visibleItemCount >= totalItemCount-1);
-                if(loadMore==true && totalItemCount!=0 && mWaitingDialog==null) {
+                if(loadMore==true && totalItemCount!=0 && isLoadingThreads==false && isMoreOld) {
                     loadMoreOld();
                 }
             }
@@ -426,7 +426,7 @@ public class RemoteSgfFragment extends BaseFragment {
     int mMaxDt=0;
     int mMinDt=0;
 
-    boolean isLoadingThreads;
+    boolean isLoadingThreads=false;
 
     java.util.LinkedList<MessageSgf> mMainMsgThreads = null;
 
@@ -450,6 +450,10 @@ public class RemoteSgfFragment extends BaseFragment {
                             mMaxDt=threads.getFirst().id;
                         }                       
                     }
+                }else{
+                    if(isfrom==false){
+                        isMoreOld = false;
+                    }
                 }
                 for (MessageSgf mt : threads) {
                     int pos=0;
@@ -472,13 +476,17 @@ public class RemoteSgfFragment extends BaseFragment {
 
                     
                 }
-                isLoadingThreads=false;
+                
             } catch (Exception e) {
                 xHelper.log("goapp",e.toString());
                 e.printStackTrace();
             }
         }
+        else if(isfrom==false){
+            isMoreOld = false;
+        }
         closeWaitingDialog();
+        isLoadingThreads=false;
 
         mAppsAdapter.notifyDataSetChanged();
     }
@@ -535,18 +543,19 @@ public class RemoteSgfFragment extends BaseFragment {
 
     String skey = null;
     void loadMoreNew(){
-        
+        isLoadingThreads=true;
         GoApp.getInstance().getGoController().loadSgfsFrom(mMaxDt,mSearchKey);
     }
     
     void loadMoreOld(){
+        isLoadingThreads=true;
         if(mMinDt==0)
-            GoApp.getInstance().getGoController().loadSgfsTo(0,mSearchKey);
+            GoApp.getInstance().getGoController().loadSgfsFrom(0,mSearchKey);
         else
-            GoApp.getInstance().getGoController().loadSgfsFrom(mMinDt,mSearchKey);  
+            GoApp.getInstance().getGoController().loadSgfsTo(mMinDt,mSearchKey);  
     }
 
-
+    boolean isMoreOld = true;
     String mSearchKey=null;
     void searchSgf(String key) {
 
