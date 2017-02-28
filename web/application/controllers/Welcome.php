@@ -29,11 +29,11 @@ class Welcome extends CI_Controller {
 	}
 	public function index()
 	{
-		//$this->load->view('welcome_message');
-        $query = $this->db->query("select * from sgfs");
-		$rows = $query->result_array();
+		$this->load->view('welcome_message');
+        #$query = $this->db->query("select * from sgfs");
+		#$rows = $query->result_array();
 		//$this->db->query("insert into threads(content) values('hello')");
-		echo json_encode_utf8($rows);
+		#echo json_encode_utf8($rows);
 	}
 	
 	public function api(){
@@ -48,6 +48,7 @@ class Welcome extends CI_Controller {
 			case 'loadThreadsTo':
 			case 'loadThreadsFrom':
 				$result = $this->doLoadThreads($jobj);
+                break;
 			case 'loadSgfsTo':
 			case 'loadSgfsFrom':
 				$result = $this->doLoadSgfs($jobj);
@@ -112,7 +113,7 @@ class Welcome extends CI_Controller {
 		$sql = "select * from sgfs where 1=1";
          
 		if($id!='now'){
-			if($action=='loadThreadsTo'){
+			if($action=='loadSgfsTo'){
 				$sql = $sql . " and id < '{$id}'";
 			}else{
 				$sql = $sql . " and id > '{$id}'";

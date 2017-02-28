@@ -331,6 +331,7 @@ int log_error_close() {
 
 extern void zmq_write_log(char* s);
 int log_error_write(const char *filename, unsigned int line, const char *fmt, ...) {
+    return 0;
 
 	time_t cur_ts = time(NULL);
 	va_list ap;
