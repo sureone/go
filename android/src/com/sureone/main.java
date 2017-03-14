@@ -56,6 +56,11 @@ import java.net.URL;
 import android.net.Uri;
 import 	android.os.AsyncTask;
 import android.util.Log;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.content.Context;
 //import com.tapjoy.TapjoyConnect;
 //import com.tapjoy.TapjoyLog;
 /*addr:192.168.56.101*/
@@ -65,6 +70,8 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
     //time in milliseconds
     private static final long SPLASHTIME = 3000;
 
+    boolean use_opengl = false;
+    private GLSurfaceView mGLView;
     ImageView mLogo=null;
     //handler for splash screen
     private MyHandler splashHandler=null;
@@ -128,14 +135,19 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
     DisplayMetrics mDM=null;
     GoController mGoController=null;
     void showProgress() {
-        ProgressBar pb_loading = (ProgressBar)findViewById(R.id.pb_loading);
-        pb_loading.setVisibility(View.VISIBLE);
+        if(use_opengl==false){
+            ProgressBar pb_loading = (ProgressBar)findViewById(R.id.pb_loading);
+            pb_loading.setVisibility(View.VISIBLE);
+        }
+        
     }
     void hideProgress() {
-        ProgressBar pb_loading = (ProgressBar)findViewById(R.id.pb_loading);
-        pb_loading.setVisibility(View.GONE);
+        if(use_opengl==false){
+            ProgressBar pb_loading = (ProgressBar)findViewById(R.id.pb_loading);
+            pb_loading.setVisibility(View.GONE);
+        }
     }
-		GoApp app = null;
+	GoApp app = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,38 +155,51 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
 		app.onCreate(this);
 		startService(new Intent(this, MyService.class));
 
-		
-        mGoController = app.getGoController();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.splashview);
-		//TapjoyConnect.requestTapjoyConnect(this, "18d3e757-976f-4f26-ba55-0e54e1c8eefc", "kcHbedSwijPuEhCrycfR");
-		//TapjoyxHelper.lognableLogging(true);
-		
-		//com.waps.AppConnect.getInstance(this);		
-		//AdManager.init(this,"576c9b0a16279c55", "9839cdaf5975e912", 60, false);
-		//net.youmi.android.appoffers.YoumiOffersManager.init(this,"576c9b0a16279c55", "9839cdaf5975e912");
-		Configure.chess_scheme = app.getStone();
-        mDM=new DisplayMetrics();
-        this.getWindowManager().getDefaultDisplay().getMetrics(mDM);
-        splashHandler= new MyHandler();
-        TextView verTxt = (TextView)findViewById(R.id.txtVersion);
-        loadTxt = (TextView)findViewById(R.id.txtLoading);
-        mProgress = (ProgressBar) findViewById(R.id.progressBar);
-        mProgress.setVisibility(View.GONE);
-        loadTxt.setVisibility(View.GONE);
-        
-        try {
+		try {
             versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
             pkName = this.getPackageName();
         } catch(Exception e) {
             e.printStackTrace();
         }
-        verTxt.setText(getString(R.string.appnamecn) + " "+versionName);
-        setTitle(getString(R.string.appnamecn) + " "+versionName);
-	showProgress();
-	//startView();
+
+        mGoController = app.getGoController();
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Configure.chess_scheme = app.getStone();
+        mDM=new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(mDM);
+        if(use_opengl==false){
+
+            setContentView(R.layout.splashview);
+            //TapjoyConnect.requestTapjoyConnect(this, "18d3e757-976f-4f26-ba55-0e54e1c8eefc", "kcHbedSwijPuEhCrycfR");
+            //TapjoyxHelper.lognableLogging(true);
+            
+            //com.waps.AppConnect.getInstance(this);        
+            //AdManager.init(this,"576c9b0a16279c55", "9839cdaf5975e912", 60, false);
+            //net.youmi.android.appoffers.YoumiOffersManager.init(this,"576c9b0a16279c55", "9839cdaf5975e912");
+            TextView verTxt = (TextView)findViewById(R.id.txtVersion);
+            loadTxt = (TextView)findViewById(R.id.txtLoading);
+            mProgress = (ProgressBar) findViewById(R.id.progressBar);
+            mProgress.setVisibility(View.GONE);
+            loadTxt.setVisibility(View.GONE);
+            verTxt.setText(getString(R.string.appnamecn) + " "+versionName);
+            setTitle(getString(R.string.appnamecn) + " "+versionName);
+        }else{
+
+            mGLView = new MyGLSurfaceView(this);
+            setContentView(mGLView);
+
+        }
+
+        splashHandler= new MyHandler();
+        
+        
+     
+        
+    	showProgress();
+    	//startView();
         Message msg = new Message();
         msg.what = STOPSPLASH;
         splashHandler.sendMessageDelayed(msg, SPLASHTIME);
@@ -247,10 +272,13 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
     }
     String mNotifyHtmlFile=null;
     void downloadNewVersion(String url) {
-	hideProgress();
-        loadTxt.setText(getString(R.string.download));
-        mProgress.setVisibility(View.VISIBLE);
-        mProgress.setProgress(0);
+	    hideProgress();
+        if(use_opengl==false){
+            loadTxt.setText(getString(R.string.download));
+            mProgress.setVisibility(View.VISIBLE);
+            mProgress.setProgress(0);
+        }
+       
         DownloadFileInfo dfi = new DownloadFileInfo();
         mDownloadMode=1;
         if(pkName.equals("com.sureone.go")) url += ".go";
@@ -280,8 +308,8 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
         totalSize = xHelper.getInt(buf, len, o, ',');
         mNewUrl = xHelper.getStr(buf,len,o,',');
         mNewInfo = xHelper.getStr(buf,len,o,',');
-	String ip = xHelper.getStr(buf,len,o,',');
-	app.setIp(ip);
+	   String ip = xHelper.getStr(buf,len,o,',');
+	    app.setIp(ip);
         mHttpUrl = xHelper.getStr(buf,len,o,',');
         mNewHttpUrl = xHelper.getStr(buf,len,o,',');
 
@@ -362,8 +390,11 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
             float perc = (total[0]/(float)totalSize)*(float)100.0;
             int d=(int)perc;
             if(d>100) return;
-            mProgress.setProgress((int)perc);
-            loadTxt.setText(d+"%");
+            if(use_opengl==false){
+                mProgress.setProgress((int)perc);
+                loadTxt.setText(d+"%");          
+            }
+
             xHelper.log("goapp","downloading...."+perc);
         }
 
@@ -463,6 +494,59 @@ public class main extends Activity implements View.OnCreateContextMenuListener {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    class MyGLSurfaceView extends GLSurfaceView
+    {
+
+        public MyGLSurfaceView(Context context)
+        {
+            super(context);
+
+            try
+            {
+                // Create an OpenGL ES 2.0 context
+                setEGLContextClientVersion(2);
+
+                // Set the Renderer for drawing on the GLSurfaceView
+                setRenderer(new MyRenderer());
+
+                // Render the view only when there is a change in the drawing
+                // data
+                setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+
+                // 注意上面语句的顺序，反了可能会出错
+
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+
+            }
+
+        }
+    }
+
+    public class MyRenderer implements GLSurfaceView.Renderer
+    {
+
+        public void onSurfaceCreated(GL10 unused, EGLConfig config)
+        {
+            // Set the background frame color
+            GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+        }
+
+        public void onDrawFrame(GL10 unused)
+        {
+            // Redraw background color
+            GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+        }
+
+        public void onSurfaceChanged(GL10 unused, int width, int height)
+        {
+            GLES20.glViewport(0, 0, width, height);
+        }
     }
 }
 
