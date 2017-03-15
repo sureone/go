@@ -1,12 +1,19 @@
 import scrapy
 import sqlite3
 import re
+import sys
     
 
 class QuotesSpider(scrapy.Spider):
     name = "sgfs"
     start_urls = [
-        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?key=2&keyword=%C8%FD%D0%C7',
+        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?cur_page=8&key=2&keyword=%C8%FD%D0%C7',
+        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?cur_page=9&key=2&keyword=%C8%FD%D0%C7',
+        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?cur_page=10&key=2&keyword=%C8%FD%D0%C7',
+        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?cur_page=11&key=2&keyword=%C8%FD%D0%C7',
+        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?cur_page=12&key=2&keyword=%C8%FD%D0%C7',
+        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?cur_page=13&key=2&keyword=%C8%FD%D0%C7',
+        'http://duiyi.sina.com.cn/gibo/sanxing_gibo.asp?cur_page=14&key=2&keyword=%C8%FD%D0%C7'
     ]
     cx = sqlite3.connect("../src/sql.db")
     def parse(self, response):
