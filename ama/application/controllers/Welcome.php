@@ -35,6 +35,29 @@ class Welcome extends CI_Controller {
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
+
+	public function login(){
+		$idata = file_get_contents('php://input');
+		$jobj = json_decode($idata);
+		$result = "";
+		switch ($jobj->{'ACTION'}){
+			case 'postThread':
+			case 'postReply':
+				$result = $this->doPostThread($jobj);
+			break;
+			case 'loadThreadsTo':
+			case 'loadThreadsFrom':
+				$result = $this->doLoadThreads($jobj);
+                break;
+			case 'loadSgfsTo':
+			case 'loadSgfsFrom':
+				$result = $this->doLoadSgfs($jobj);
+			break;
+			default:
+			break;
+		}
+		echo json_encode_utf8($result);
+	}
 	
 	public function api(){
 		$idata = file_get_contents('php://input');
