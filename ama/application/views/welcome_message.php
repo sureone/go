@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="./static/js/form2json.js"></script>
     <script src="./static/js/common.js?v=6"></script>
     <?php $url_prefix='./index.php' ?>
@@ -58,5 +59,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="split-panel-section"><h4 class="modal-title">登入</h4><form id="login-form" method="post" action="<?=$url_prefix?>/api" class="form-v2"><input type="hidden" name="action" value="login"><div class="c-form-group "><label for="user_login" class="screenreader-only">使用者名稱:</label><input value="" name="user" id="user_login" class="c-form-control" type="text" maxlength="20" tabindex="3" placeholder="使用者名稱"></div><div class="c-form-group "><label for="passwd_login" class="screenreader-only">密碼:</label><input id="passwd_login" class="c-form-control" name="passwd" type="password" tabindex="3" placeholder="密碼"><div class="c-form-control-feedback-wrapper "><span class="c-form-control-feedback c-form-control-feedback-throbber"></span><span class="c-form-control-feedback c-form-control-feedback-error" title=""></span><span class="c-form-control-feedback c-form-control-feedback-success"></span></div></div><div class="c-checkbox"><input type="checkbox" name="rem" id="rem_login" tabindex="3"><label for="rem_login">記住我</label><a href="/password" class="c-pull-right">重設密碼</a></div><div class="spacer"><div class="c-form-group g-recaptcha" data-sitekey="6LeTnxkTAAAAAN9QEuDZRpn90WwKk_R1TRW_g-JC"></div><span class="error BAD_CAPTCHA field-captcha" style="display:none"></span></div><div class="c-clearfix c-submit-group"><span class="c-form-throbber"></span><button type="submit" class="c-btn c-btn-primary c-pull-right" tabindex="3">登入</button></div><div><div class="c-alert c-alert-danger"></div></div></form></div></div><p class="login-disclaimer">By signing up, you agree to our <a href="https://www.reddit.com/help/useragreement/">任期</a> and that you have read our <a href="https://www.reddit.com/help/privacypolicy/">隱私權政策</a> and <a href="https://www.reddit.com/help/contentpolicy/">內容政策</a>.</p></div></div></div></div></div>
 
 </body>
- <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
+<script type="text/x-handlebars" id="tpl-thread-item">
+	<div class="thing odd  link self" id="thing_{{thingid}}" data-thingid={{thingid}}>
+		<p class="parent"></p>
+		<span class="rank">{{no}}</span>
+		<div class="midcol unvoted">
+			<div class="arrow up login-required access-required" tabindex="0"></div>
+			<div class="score dislikes" title="77">{{dislikes}}</div>
+			<div class="score unvoted" title="78">{{score}}</div>
+			<div class="score likes" title="79">{{likes}}</div>
+			<div class="arrow down login-required access-required" tabindex="0"></div>
+		</div>
+		<div class="entry unvoted">
+			<p class="title">
+				<a class="title may-blank loggedin " href="./coments/{{thingid}}">{{title}}</a> 
+				<span class="domain">(<a href="/r/AMA/">self.AMA</a>)</span>
+			</p>
+			<div class="expando-button collapsed selftext"></div>
+			<p class="tagline">发表 <time class="live-timestamp">{{timeago}}</time>by
+				 <a href="" class="author may-blank ">{{author}}</a>
+				 <span class="userattrs"></span>
+			</p>
+			<ul class="flat-list buttons">
+				<li class="first"><a href="">139 留言</a></li>
+				<li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li>
+				<li class="link-save-button save-button"><a href="#">儲存</a></li>
+				<li>
+					<form action="/post/hide" method="post" class="state-button hide-button">
+						<input type="hidden" name="executed" value="隱藏">
+						<span>
+							<a href="javascript:void(0)" class=" " onclick="change_state(this, 'hide', hide_thing);">隱藏</a>
+						</span>
+					</form>
+				</li>
+				<li class="report-button">
+					<a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">檢舉</a>
+				</li>
+			</ul>
+			<div class="reportform"></div>
+			<div class="expando expando-uninitialized" style="display: none">
+				<span class="error">loading...</span>
+			</div>
+		</div>
+		<div class="child"></div>
+		<div class="clearleft"></div>
+	</div>
+
+</script>
+
+<script type="text/javascript" src="./static/js/ama.js?v=8"></script>
 </html>

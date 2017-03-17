@@ -1,15 +1,43 @@
 
-
 $(document).ready(function () {
 // <div class="modal-backdrop fade in"></div>
 
-    var things=[{
+    var threads=[{
+        thingid:1,
         title:'18 year old female, fed via NG tube AMA',
-        text:'i'm an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+        text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
         cdate:new Date(),
         author:'chloegbih',
-        ups:200,
-        downs:160       
+        likes:200,
+        dislikes:160,
+        score:78   
+    },{
+        thingid:2,
+        title:'I was tried and convicted of manslaughter for killing one of my closest friends, AMA',
+        text:'',
+        cdate:new Date(),
+        author:'mathamatazz',
+        likes:200,
+        dislikes:160,
+        score:96
+    },{
+        thingid:3,
+        title:'18 year old female, fed via NG tube AMA',
+        text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+        cdate:new Date(),
+        author:'chloegbih',
+        likes:200,
+        dislikes:160,
+        score:78   
+    },{
+        thingid:4,
+        title:'I was tried and convicted of manslaughter for killing one of my closest friends, AMA',
+        text:'',
+        cdate:new Date(),
+        author:'mathamatazz',
+        likes:200,
+        dislikes:160,
+        score:96
     }];
     function showLoginModal(){
         $(".login-modal").addClass('in');
@@ -19,6 +47,12 @@ $(document).ready(function () {
         $(".login-modal").removeClass('in');
         $(".modal-backdrop").remove();
     }
+
+    $(document).delegate("#siteTable .thing .expando-button.collapsed", "click", function(e){
+        $(e.target).parent().closest('.thing').attr('data-thingid');
+    })
+
+
     $(document).delegate(".login-required", "click", function(){
         showLoginModal();
         return false;
@@ -84,4 +118,24 @@ $(document).ready(function () {
         return false;
 
     })
+
+
+    function renderThreads(){
+
+        var tpl = Handlebars.compile($("#tpl-thread-item").html());
+        var container = $("#siteTable");
+        container.html('');
+        for(var i=0;i<threads.length;i++){
+            var t = threads[i];
+            t['no']=i+1;
+            var html = tpl(t);
+            container.append(html);
+
+        }
+
+    }
+
+    renderThreads();
+
+
 });

@@ -537,3 +537,186 @@ h4.modal-title, h5.modal-title, h6.modal-title {
 .c-clearfix:after {
     clear: both;
 }
+
+
+.link {
+    margin: 0;
+    margin-bottom: 8px;
+    padding-left: 3px;
+}
+.sitetable {
+    list-style-type: none;
+}
+
+.link .rank {
+    float: left;
+    margin-top: 15px;
+    color: #c6c6c6;
+    font-family: arial;
+    font-size: medium;
+    text-align: right;
+}
+.rank {
+    overflow: hidden;
+}
+
+body >.content .link .midcol, .midcol-spacer {
+    width: 4.1ex;
+}
+.link .midcol {
+    font-weight: bold;
+    font-size: small;
+}
+.midcol {
+    float: left;
+    margin-right: 7px;
+    margin-left: 7px;
+    background: transparent;
+    overflow: hidden;
+}
+.entry {
+    overflow: hidden;
+    margin-left: 3px;
+    opacity: 1;
+}
+.link .title {
+    font-size: medium;
+    font-weight: normal;
+    margin-bottom: 1px;
+}
+.thing .title {
+    color: #0000ff;
+}
+.thing .title {
+    outline: none;
+    margin-right: .4em;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.thing .title:visited {
+    color: #551a8b;
+}
+.link .title {
+    font-size: medium;
+    font-weight: normal;
+    margin-bottom: 1px;
+}
+.link .score {
+    text-align: center;
+    color: #c6c6c6;
+}
+.link .score.dislikes {
+    color: #9494FF;
+}
+.score.likes, .score.dislikes {
+    display: none;
+}
+
+.link .score.likes {
+    color: #FF8B60;
+}
+.arrow {
+    margin: 2px 0px 0px 0px;
+    width: 100%;
+    height: 14px;
+    display: block;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+}
+.arrow.up {
+    background-image: url(../images/sprite.png);
+    background-position: -84px -1618px;
+    background-repeat: no-repeat;
+}
+.arrow.down {
+    background-image: url(../images/sprite.png);
+    background-position: -42px -1618px;
+    background-repeat: no-repeat;
+}
+.domain {
+    color: #888;
+    font-size: x-small;
+    white-space: nowrap;
+}
+.expando-button.selftext.collapsed {
+    background-image: url(../images/sprite.png);
+    background-position: 0px -1406px;
+    background-repeat: no-repeat;
+}
+.expando-button.collapsed.selftext:hover{background-image:url(../images/sprite-expando.png);background-position:0px -428px;background-repeat:no-repeat}
+.expando-button.collapsed.selftext {
+    background-image: url(../images/sprite-expando.png);
+    background-position: 0px -457px;
+    background-repeat: no-repeat;
+}
+.expando-button.expanded.selftext {
+    background-image: url(../images/sprite-expando.png);
+    background-position: 0px -341px;
+    background-repeat: no-repeat;
+}
+.expando-button.selftext.expanded, .eb-se {
+    margin-bottom: 5px;
+    background-image: url(../images/sprite.png);
+    background-position: -58px -1406px;
+    background-repeat: no-repeat;
+}
+.expando-button.expanded.selftext:hover{
+    background-image:url(../images/sprite-expando.png);
+    background-position:0px -312px;
+    background-repeat:no-repeat
+}
+.expando-button {
+    float: left;
+    height: 23px;
+    width: 23px;
+    margin: 2px 5px 2px 0;
+    background: transparent none no-repeat scroll center center;
+    cursor: pointer;
+}
+.tagline, .search-result-meta {
+    color: #888;
+    font-size: x-small;
+}
+.link .flat-list {
+    display: block;
+    padding: 1px 0;
+}
+.flat-list {
+    list-style-type: none;
+    display: inline;
+}
+.entry .buttons li {
+    display: inline-block;
+    border: none;
+    padding-right: 4px;
+    line-height: 1.6em;
+}
+.flat-list li, .flat-list form {
+    display: inline;
+    white-space: nowrap;
+}
+.entry .buttons li a {
+    color: #888;
+    font-weight: bold;
+    padding: 0 1px;
+}
+.reportform {
+    position: relative;
+    display: none;
+    max-width: 450px;
+}
+.expando {
+    clear: left;
+    margin: 5px 0 5px 0;
+    position: relative;
+}
+.clearleft {
+    clear: left;
+    height: 0px;
+}
