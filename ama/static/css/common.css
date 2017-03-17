@@ -103,7 +103,9 @@ a {
 .user {
     color: gray;
 }
-
+.logout {
+    display: inline;
+}
 .flat-list {
     list-style-type: none;
     display: inline;

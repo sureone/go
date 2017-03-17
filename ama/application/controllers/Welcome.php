@@ -29,6 +29,16 @@ class Welcome extends CI_Controller {
 	}
 	public function index()
 	{
+		$user_info = $this->session->userdata('user.info');
+		$this->load->view('welcome_message',array('user'=>$user_info));
+        #$query = $this->db->query("select * from sgfs");
+		#$rows = $query->result_array();
+		//$this->db->query("insert into threads(content) values('hello')");
+		#echo json_encode_utf8($rows);
+	}
+	public function logout()
+	{
+		$this->session->unset_userdata('user.info');
 		$this->load->view('welcome_message');
         #$query = $this->db->query("select * from sgfs");
 		#$rows = $query->result_array();

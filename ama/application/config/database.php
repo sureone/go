@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sqlite:../src/sql.db',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'pdo',
+	'hostname' => '127.0.0.1',
+	'username' => 'ama',
+	'password' => 'amagood123',
+	'database' => 'ama',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

@@ -21,9 +21,58 @@ $(document).ready(function () {
     })
 
 
-    $("#login-form").submit(function(){
-         var param = $(this).serializeFormStandard();
-         alert(JSON.stringify(param));
-         return false;
+    $("#login-form").submit(function(e){
+        e.preventDefault();
+        $$.ajaxPostForm(
+            //action
+            $(this).attr('action'),
+            //form id
+            '#'+$(this).attr('id'),
+            //addition params
+            null,
+            //callback
+            function(sucess,data){
+
+                window.location.href="./";
+                
+            }
+        )
+        return false;
+    })
+
+    $("#register-form").submit(function(e){
+        e.preventDefault();
+        $$.ajaxPostForm(
+            //action
+            $(this).attr('action'),
+            //form id
+            '#'+$(this).attr('id'),
+            //addition params
+            null,
+            //callback
+            function(sucess,data){
+                window.location.href="./";
+            }
+        )
+        return false;
+    })
+
+    $("#logout-form").submit(function(e){
+        e.preventDefault();
+        $$.ajaxPostForm(
+            //action
+            $(this).attr('action'),
+            //form id
+            '#'+$(this).attr('id'),
+            //addition params
+            null,
+            //callback
+            function(sucess,data){
+               window.location.href="./";
+            }
+        )
+
+        return false;
+
     })
 });
