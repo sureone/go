@@ -36,7 +36,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="spacer"><div class="sidebox submit submit-text"><div class="morelink"><a href="https://www.reddit.com/r/AMA/submit?selftext=true" data-event-action="submit" data-type="subreddit" data-event-detail="self" class="login-required access-required" target="_top">發表新文章</a><div class="nub"></div></div></div></div>
 </div>
 
-<div class="content"></div>
+<div class="content">
+	<div class="spacer">
+		<div id="siteTable" class="sitetable linklisting">
+			
+		</div>
+	</div>
+</div>
 
 <div id="footer"></div>
 
