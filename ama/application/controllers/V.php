@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class V extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$user_info = $this->session->userdata('user.info');
-		$this->load->view('welcome_message',array('user'=>$user_info));
+		$this->load->view('hot',array('user'=>$user_info));
         #$query = $this->db->query("select * from sgfs");
 		#$rows = $query->result_array();
 		//$this->db->query("insert into threads(content) values('hello')");
@@ -39,60 +39,19 @@ class Welcome extends CI_Controller {
 	public function logout()
 	{
 		$this->session->unset_userdata('user.info');
-		$this->load->view('welcome_message');
+		$this->load->view('hot');
         #$query = $this->db->query("select * from sgfs");
 		#$rows = $query->result_array();
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
 
-	public function login(){
-		$idata = file_get_contents('php://input');
-		$jobj = json_decode($idata);
-		$result = "";
-		switch ($jobj->{'ACTION'}){
-			case 'postThread':
-			case 'postReply':
-				$result = $this->doPostThread($jobj);
-			break;
-			case 'loadThreadsTo':
-			case 'loadThreadsFrom':
-				$result = $this->doLoadThreads($jobj);
-                break;
-			case 'loadSgfsTo':
-			case 'loadSgfsFrom':
-				$result = $this->doLoadSgfs($jobj);
-			break;
-			default:
-			break;
-		}
-		echo json_encode_utf8($result);
-	}
-	
-	public function api(){
-		$idata = file_get_contents('php://input');
-		$jobj = json_decode($idata);
-		$result = "";
-		switch ($jobj->{'ACTION'}){
-			case 'postThread':
-			case 'postReply':
-				$result = $this->doPostThread($jobj);
-			break;
-			case 'loadThreadsTo':
-			case 'loadThreadsFrom':
-				$result = $this->doLoadThreads($jobj);
-                break;
-			case 'loadSgfsTo':
-			case 'loadSgfsFrom':
-				$result = $this->doLoadSgfs($jobj);
-			break;
-			default:
-			break;
-		}
-		echo json_encode_utf8($result);
-		
+	public function comments($thingid){
+		$user_info = $this->session->userdata('user.info');
+		$this->load->view('comments',array('user'=>$user_info));
 	}
 
+	
 	function doPostThread($json){
 		$date = new DateTime();
 		$data = array(

@@ -13,7 +13,7 @@ $(document).ready(function () {
         score:78   
     },{
         thingid:2,
-        title:'I was tried and convicted of manslaughter for killing one of my closest friends, AMA',
+        title:'Journey down the rabbit hole with fellow Alice in Wonderland fans as you exchange awesome gifts related to her magic, and her world. Join Reddit Gifts for this exchange, and explore your imagination!',
         text:'',
         cdate:new Date(),
         author:'mathamatazz',
@@ -49,7 +49,37 @@ $(document).ready(function () {
     }
 
     $(document).delegate("#siteTable .thing .expando-button.collapsed", "click", function(e){
-        $(e.target).parent().closest('.thing').attr('data-thingid');
+
+
+        var idx = $(e.target).parent().closest('.thing').attr('data-idx');
+
+        $(e.target).removeClass("collapsed");
+        $(e.target).addClass("expanded");
+
+
+        $(".expando-"+idx).css('display','block');
+
+
+
+        var tpl = Handlebars.compile($("#tpl-thread-text").html());
+
+
+        $(".expando-"+idx).html(tpl(threads[idx]));
+    })
+
+
+    $(document).delegate("#siteTable .thing .expando-button.expanded", "click", function(e){
+
+        
+        var idx = $(e.target).parent().closest('.thing').attr('data-idx');
+
+        $(e.target).removeClass("expanded");
+        $(e.target).addClass("collapsed");
+
+
+        $(".expando-"+idx).css('display','none');
+
+        $(".expando-"+idx).html('');
     })
 
 
@@ -127,6 +157,7 @@ $(document).ready(function () {
         container.html('');
         for(var i=0;i<threads.length;i++){
             var t = threads[i];
+            t['idx']=i;
             t['no']=i+1;
             var html = tpl(t);
             container.append(html);

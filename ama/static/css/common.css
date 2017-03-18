@@ -5,7 +5,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 
 body{
     font: normal x-small verdana,arial,helvetica,sans-serif;
-    background-color: white;
+        background-color: #FAFAFA;
     z-index: 1;
     min-height: 100%;
 }
@@ -117,9 +117,6 @@ a {
 }
 
 
-.side {
-    background-color: #FAFAFA;
-}
 
 .side {
     float: right;
@@ -127,6 +124,11 @@ a {
     margin: 0px 5px 0 5px;
     width: 300px;
 }
+
+.side {
+    background-color: #FAFAFA;
+}
+
 .side .spacer {
     margin: 7px 0 12px 0;
 }
@@ -655,15 +657,16 @@ body >.content .link .midcol, .midcol-spacer {
     background-position: 0px -457px;
     background-repeat: no-repeat;
 }
-.expando-button.expanded.selftext {
-    background-image: url(../images/sprite-expando.png);
-    background-position: 0px -341px;
-    background-repeat: no-repeat;
-}
+
 .expando-button.selftext.expanded, .eb-se {
     margin-bottom: 5px;
     background-image: url(../images/sprite.png);
     background-position: -58px -1406px;
+    background-repeat: no-repeat;
+}
+.expando-button.expanded.selftext {
+    background-image: url(../images/sprite-expando.png);
+    background-position: 0px -341px;
     background-repeat: no-repeat;
 }
 .expando-button.expanded.selftext:hover{
@@ -719,4 +722,46 @@ body >.content .link .midcol, .midcol-spacer {
 .clearleft {
     clear: left;
     height: 0px;
+}
+
+
+.linklisting .thing:first-child {
+    border-top: 0;
+}
+.linklisting .link ~ .odd, .sitetable>.link:first-child {
+    /*background-color: #fdfdfd;*/
+}
+
+.linklisting .thing {
+    /*background-color: #fff;*/
+    padding: 5px 0 20px 30px;
+    position: relative;
+/*    border-bottom: 1px solid #F6F7F8;
+    border-right: 1px solid #F6F7F8;*/
+    margin: 0 310px 0px 0;
+}
+
+.usertext-body .md {
+    background-color: #fafafa;
+    border: 1px solid #369;
+    border-radius: 7px;
+}
+.usertext-body .md {
+    padding: 5px 10px;
+}
+.linklisting .md, .commentarea .md {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.md {
+    font-size: 1.0769230769230769em;
+}
+.md, .md h6 {
+    font-weight: 400;
+}
+.md {
+    color: #222222;
+    max-width: 60em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
