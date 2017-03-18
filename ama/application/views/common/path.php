@@ -3,3 +3,5 @@
     $_SERVER['SERVER_PORT']);
 echo $strOut;
 ?>">
+
+<?php $url_prefix='./index.php' ?>

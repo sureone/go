@@ -1,8 +1,4 @@
-
-$(document).ready(function () {
-// <div class="modal-backdrop fade in"></div>
-
-    var threads=[{
+var threads=[{
         thingid:1,
         title:'18 year old female, fed via NG tube AMA',
         text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
@@ -10,7 +6,74 @@ $(document).ready(function () {
         author:'chloegbih',
         likes:200,
         dislikes:160,
-        score:78   
+        score:78,
+        child:[
+            {
+                thingid:11,
+                title:'18 year old female, fed via NG tube AMA',
+                text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+                cdate:new Date(),
+                author:'chloegbih',
+                likes:200,
+                dislikes:160,
+                score:78,
+                child:[
+                    {
+                        thingid:111,
+                        title:'18 year old female, fed via NG tube AMA',
+                        text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+                        cdate:new Date(),
+                        author:'chloegbih',
+                        likes:200,
+                        dislikes:160,
+                        score:78,
+                        child:[
+                            {
+                                thingid:1111,
+                                title:'18 year old female, fed via NG tube AMA',
+                                text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+                                cdate:new Date(),
+                                author:'chloegbih',
+                                likes:200,
+                                dislikes:160,
+                                score:78,
+                                child:[
+                                    {
+                                        thingid:11111,
+                                        title:'18 year old female, fed via NG tube AMA',
+                                        text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+                                        cdate:new Date(),
+                                        author:'chloegbih',
+                                        likes:200,
+                                        dislikes:160,
+                                        score:78,
+                                        child:[
+                                            
+                                        ]
+                                    }
+                                    
+                                ]
+                            }
+                                
+                        ]
+                    }
+                    
+                ]
+            },{
+                thingid:12,
+                title:'18 year old female, fed via NG tube AMA',
+                text:'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+                cdate:new Date(),
+                author:'chloegbih',
+                likes:200,
+                dislikes:160,
+                score:78,
+                child:[
+                ]
+            }
+
+
+        ]   
     },{
         thingid:2,
         title:'Journey down the rabbit hole with fellow Alice in Wonderland fans as you exchange awesome gifts related to her magic, and her world. Join Reddit Gifts for this exchange, and explore your imagination!',
@@ -39,6 +102,11 @@ $(document).ready(function () {
         dislikes:160,
         score:96
     }];
+
+$(document).ready(function () {
+// <div class="modal-backdrop fade in"></div>
+
+  
     function showLoginModal(){
         $(".login-modal").addClass('in');
         $(".login-modal").parent().append('<div class="modal-backdrop fade in"></div>');
@@ -59,11 +127,8 @@ $(document).ready(function () {
 
         $(".expando-"+idx).css('display','block');
 
-
-
         var tpl = Handlebars.compile($("#tpl-thread-text").html());
-
-
+        
         $(".expando-"+idx).html(tpl(threads[idx]));
     })
 
@@ -150,23 +215,6 @@ $(document).ready(function () {
     })
 
 
-    function renderThreads(){
-
-        var tpl = Handlebars.compile($("#tpl-thread-item").html());
-        var container = $("#siteTable");
-        container.html('');
-        for(var i=0;i<threads.length;i++){
-            var t = threads[i];
-            t['idx']=i;
-            t['no']=i+1;
-            var html = tpl(t);
-            container.append(html);
-
-        }
-
-    }
-
-    renderThreads();
 
 
 });

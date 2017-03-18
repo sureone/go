@@ -30,7 +30,7 @@ class V extends CI_Controller {
 	public function index()
 	{
 		$user_info = $this->session->userdata('user.info');
-		$this->load->view('hot',array('user'=>$user_info));
+		$this->load->view('hot',array('user'=>$user_info,'page'=>'hot',));
         #$query = $this->db->query("select * from sgfs");
 		#$rows = $query->result_array();
 		//$this->db->query("insert into threads(content) values('hello')");
@@ -48,7 +48,7 @@ class V extends CI_Controller {
 
 	public function comments($thingid){
 		$user_info = $this->session->userdata('user.info');
-		$this->load->view('comments',array('user'=>$user_info));
+		$this->load->view('comments',array('user'=>$user_info,'page'=>'comments','thingid'=>$thingid));
 	}
 
 	

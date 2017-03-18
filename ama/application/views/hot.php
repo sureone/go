@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<?php $url_prefix='./index.php' ?>
+
 <html lang="en">
 <head>
-<?php include 'common/path.php' ?>	
 <?php include 'common/page-header.php' ?>
 </head>
-<body>
+<?php include 'common/thread-tpl.php'?>
+<body class="listing-page <?php if(isset($user)){ echo 'loggedin';} ?> hot-page">
 
 
 <div id="header">
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="footer"></div>
 <?php include 'common/login-modal.php' ?>
 </body>
-<?php include 'common/thread-tpl.php'?>
 
-<script type="text/javascript" src="./static/js/ama.js?v=8"></script>
+
+<script type="text/javascript" src="./static/js/hot.js?v=8"></script>
 </html>

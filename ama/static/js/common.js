@@ -1,3 +1,42 @@
+
+try {
+
+    function toggle(e, t, n) {
+        
+        var i = $(e).parent().addBack().filter(".option"), s = i.removeClass("active").siblings().addClass("active").get(0);
+        return n && !s.onclick && (s.onclick = function () {
+            return toggle(s, n, t)
+        }), t && t(e), !1
+    }
+
+    function helpon(e) {
+        $(e).parents(".usertext-edit:first").children(".markhelp:first").show()
+    }
+
+    function helpoff(e) {
+        $(e).parents(".usertext-edit:first").children(".markhelp:first").hide()
+    }
+
+   
+    function reply(e){
+
+
+        var thingid = $(e).attr('data-thingid');
+        
+        if($("#form-comment-"+thingid).length>0) return;
+        var tpl = Handlebars.compile($("#tpl-comment-edit").html());
+        h = (tpl({thingid:thingid}));
+
+        $('#child_'+thingid).prepend(h);
+
+    }
+
+    function cancel_usertext(e){
+        $(e).parent().closest("form.usertext").remove();
+    }
+} catch (err) {
+    console.log(err.toString())
+};
 var $$ = (function () {
     Date.prototype.format = function(format) {
         var o = {
@@ -85,3 +124,5 @@ var $$ = (function () {
         },
     }
 })();
+
+

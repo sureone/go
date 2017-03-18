@@ -733,22 +733,25 @@ body >.content .link .midcol, .midcol-spacer {
 }
 
 .linklisting .thing {
-    /*background-color: #fff;*/
-    padding: 5px 0 20px 30px;
+
     position: relative;
-/*    border-bottom: 1px solid #F6F7F8;
-    border-right: 1px solid #F6F7F8;*/
+
     margin: 0 310px 0px 0;
 }
 
-.usertext-body .md {
+.linklisting .md, .commentarea .md {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.md {
+    font-size: 1.0769230769230769em;
+}
+.link .usertext-body .md {
     background-color: #fafafa;
     border: 1px solid #369;
     border-radius: 7px;
 }
-.usertext-body .md {
-    padding: 5px 10px;
-}
+
 .linklisting .md, .commentarea .md {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -764,4 +767,304 @@ body >.content .link .midcol, .midcol-spacer {
     max-width: 60em;
     overflow-wrap: break-word;
     word-wrap: break-word;
+}
+
+.link .usertext .md {
+    padding: 5px 10px;
+}
+.linkinfo {
+    padding: 5px;
+    border: 1px solid #5f99cf;
+    background-color: #EFF7FF;
+    font-family: arial,helvetica,sans-serif;
+    font-size: larger;
+    border-radius: 3px;
+}
+
+.linkinfo .score .number {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.linkinfo .score .word {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.linkinfo .shortlink input {
+    border: 1px solid gray;
+    font-family: monospace;
+    font-size: 140%;
+    padding: 3px 2px;
+    width: 175px;
+}
+
+.panestack-title {
+    margin: 10px 310px 0px 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px dotted gray;
+}
+
+.panestack-title .title {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.panestack-title a.title-button {
+    font-size: 12px;
+    margin-left: 8px;
+}
+.menuarea {
+    border-bottom: 1px dotted gray;
+    padding: 5px 10px;
+    margin: 5px;
+    overflow: hidden;
+    font-size: larger;
+}
+.commentarea .menuarea {
+    border: none;
+    margin: 0 310px 10px 10px;
+    padding: 0;
+    color: gray;
+}
+
+
+
+.menuarea .spacer {
+    display: inline;
+    margin-right: 15px;
+}
+
+
+.dropdown {
+    cursor: default;
+    display: inline;
+    position: relative;
+}
+.drop-choices {
+    position: absolute;
+    left: 0px;
+    border: 1px solid gray;
+    z-index: 100;
+    background-color: white;
+    white-space: nowrap;
+    line-height: normal;
+    margin-top: 1px;
+    display: none;
+}
+.drop-choices.lightdrop {
+    margin-top: 2px;
+}
+
+
+.drop-choices a.choice {
+    cursor: pointer;
+    padding: 2px 3px 1px 3px;
+    display: block;
+}
+
+.dropdown.lightdrop .selected {
+    position: relative;
+    background: none no-repeat scroll center right;
+    background-image: url(../images/droparrowgray.gif);
+    padding-right: 21px;
+    text-decoration: underline;
+    color: gray;
+}
+
+.selected, .choice.primary {
+    font-weight: bold;
+}
+
+
+.commentarea>.usertext {
+    margin: 0 0 10px 10px;
+    overflow: auto;
+}
+.usertext {
+    font-size: small;
+}
+
+input[type=hidden] {
+    position: absolute;
+}
+
+.usertext-edit {
+    margin-top: 5px;
+    padding: 0 1px;
+    width: 500px;
+}
+.md-container-small, .md-container {
+    font-size: small;
+}
+.md>:last-child, .md .-cells>:last-child, .md .-lists>:last-child, .md .-blocks>:last-child, .md .-headers>:last-child, .md h1>:last-child, .md h2>:last-child, .md h3>:last-child, .md h4>:last-child, .md h5>:last-child, .md h6>:last-child, .md th>:last-child, .md td>:last-child, .md ul>:last-child, .md ol>:last-child, .md .-lists>:last-child, .md pre>:last-child, .md blockquote>:last-child, .md table>:last-child, .md p>:last-child, .md ul>:last-child, .md ol>:last-child {
+    margin-bottom: 0;
+}
+.md>:first-child, .md .-cells>:first-child, .md .-lists>:first-child, .md .-blocks>:first-child, .md .-headers>:first-child, .md h1>:first-child, .md h2>:first-child, .md h3>:first-child, .md h4>:first-child, .md h5>:first-child, .md h6>:first-child, .md th>:first-child, .md td>:first-child, .md ul>:first-child, .md ol>:first-child, .md .-lists>:first-child, .md pre>:first-child, .md blockquote>:first-child, .md table>:first-child, .md p>:first-child, .md ul>:first-child, .md ol>:first-child {
+    margin-top: 0;
+}
+.usertext-edit textarea {
+    width: 500px;
+    height: 100px;
+}
+.md textarea, .md .-text, .md p, .md pre>code, .md th, .md td, .md li {
+    font-size: 1em;
+    line-height: 1.4285714285714286em;
+}
+
+.usertext .bottom-area {
+    overflow: hidden;
+    width: 100%;
+}
+
+.usertext .help-toggle, .usertext a.reddiquette {
+    font-size: smaller;
+    float: right;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.usertext button {
+    margin: 5px 5px 10px 0;
+}
+.toggle .option {
+    display: none;
+}
+.toggle .option.active {
+    display: inline;
+}
+
+.comment, .content .details {
+    margin-left: 10px;
+}
+
+.comment.noncollapsed .midcol {
+    visibility: visible;
+}
+.comment .midcol {
+    margin-left: 0px;
+    width: 15px;
+}
+
+.tagline, .search-result-meta {
+    color: #888;
+    font-size: x-small;
+}
+
+.comment.noncollapsed .usertext, .comment.noncollapsed .child, .comment.noncollapsed .buttons {
+    display: block;
+}
+
+.md-container-small, .md-container {
+    font-size: small;
+}
+
+.linklisting .md, .commentarea .md {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment.noncollapsed .usertext, .comment.noncollapsed .child, .comment.noncollapsed .buttons {
+    display: block;
+}
+.comment .child, .comment .showreplies {
+    margin-top: 10px;
+    margin-left: 15px;
+    border-left: 1px dotted #DDF;
+}
+
+.comment .author {
+    font-weight: bold;
+}
+.tagline .submitter, .search-result-meta .submitter {
+    color: #0055df;
+}
+a.author {
+    margin-right: 0.5em;
+}
+
+.arrow.down {
+    display: none;
+}
+
+.usertext .markhelp {
+    padding: 4px;
+    margin: 5px 0px;
+    border-top: 1px dotted #c0c0c0;
+}
+
+
+.usertext .markhelp table {
+    width: 100%;
+    margin: 5px 0px;
+}
+
+.usertext .markhelp tr, .usertext .markhelp td {
+    width: 50%;
+    border: 1px solid #c0c0c0;
+}
+
+.md a {
+    color: #0079d3;
+    text-decoration: none;
+}
+
+.md textarea, .md .-text, .md p, .md pre>code, .md th, .md td, .md li {
+    font-size: 1em;
+    line-height: 1.4285714285714286em;
+}
+.md * {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.md ul {
+    list-style-type: disc;
+}
+
+.usertext .markhelp tr, .usertext .markhelp td {
+    width: 50%;
+    border: 1px solid #c0c0c0;
+}
+
+.md pre, .md .-cells, .md th, .md td {
+    padding: 4px 9px;
+}
+.md .-lists, .md ul, .md ol {
+    padding-left: 40px;
+}
+
+.md pre {
+    overflow: auto;
+}
+.md code, .md pre {
+    border: 1px solid #e6e6de;
+    background-color: #fcfcfb;
+    border-radius: 2px;
+}
+.usertext .markhelp .spaces {
+    background-color: #c0c0c0;
+}
+.usertext .markhelp tr, .usertext .markhelp td {
+    width: 50%;
+    border: 1px solid #c0c0c0;
+}
+table {
+    border-collapse: collapse;
+}
+
+.usertext-buttons .cancel{
+    display: none;
+}
+
+.child .usertext-buttons .cancel{
+    display: inline;
+}
+.md blockquote {
+    padding: 0 8px;
+    margin-left: 5px;
+}
+.md blockquote {
+    border-left: 2px solid #c5c1ad;
 }
