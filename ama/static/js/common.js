@@ -34,6 +34,16 @@ try {
     function cancel_usertext(e){
         $(e).parent().closest("form.usertext").remove();
     }
+
+    function voteit(e,d){
+
+        if(d==1){
+            console.log("vote up");
+        }else{
+            console.log("vote down");
+        }
+
+    }
 } catch (err) {
     console.log(err.toString())
 };

@@ -59,11 +59,11 @@
 		<p class="parent"></p>
 		<span class="rank">{{no}}</span>
 		<div class="midcol unvoted">
-			<div class="arrow up login-required access-required" tabindex="0"></div>
+			<div class="arrow up login-required access-required" tabindex="0"  data-thingid="{{thingid}}" onclick="voteit(this,1)"></div>
 			<div class="score dislikes" title="77">{{dislikes}}</div>
 			<div class="score unvoted" title="78">{{score}}</div>
 			<div class="score likes" title="79">{{likes}}</div>
-			<div class="arrow down login-required access-required" tabindex="0"></div>
+			<div class="arrow down login-required access-required" tabindex="0"  data-thingid="{{thingid}}" onclick="voteit(this,-1)"></div>
 		</div>
 		<div class="entry unvoted">
 			<p class="title">
@@ -106,8 +106,8 @@
     <div class=" thing id-{{thingid}} noncollapsed   comment " id="thing_{{thingid}}" onclick="">
         <p class="parent"><a name="df1l1xv"></a></p>
         <div class="midcol unvoted">
-            <div class="arrow up login-required access-required"></div>
-            <div class="arrow down login-required access-required"></div>
+            <div class="arrow up login-required access-required" data-thingid="{{thingid}}" onclick="voteit(this,1)"></div>
+            <div class="arrow down login-required access-required"  data-thingid="{{thingid}}" onclick="voteit(this,-1)"></div>
         </div>
         <div class="entry unvoted">
             <p class="tagline">
