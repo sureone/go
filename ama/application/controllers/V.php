@@ -26,16 +26,69 @@ class V extends CI_Controller {
 		$this->load->library('session');
 		$this->load->database();
 		$this->load->helper('file');
+		$this->load->library('ci_smarty');
 	}
 	public function index()
 	{
 		$user_info = $this->session->userdata('user.info');
-		$this->load->view('hot',array('user'=>$user_info,'page'=>'hot',));
+		$this->showHotView();
+		// $this->load->view('hot',array('user'=>$user_info,'page'=>'hot',));
         #$query = $this->db->query("select * from sgfs");
 		#$rows = $query->result_array();
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
+
+	function showHotView(){
+		$things=array(
+			array(
+	        'thingid'=>1,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>1,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'child'=>array()),
+	        array(
+	        'thingid'=>2,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>2,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'child'=>array()),
+	        array(
+	        'thingid'=>3,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>3,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'child'=>array())
+	        );
+
+        $this->ci_smarty->assign("logined","true");
+		$this->ci_smarty->assign("page","hot");
+		$this->ci_smarty->assign("things",$things);
+		$this->ci_smarty->display("hot.tpl");
+
+
+	}
+
+	public function test(){
+		$this->ci_smarty->assign("testary", array(array('name'=>'jerry',"old"=>2),array('name'=>'jack','old'=>3)));
+		$this->ci_smarty->display('test.tpl');
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('user.info');
@@ -47,8 +100,6 @@ class V extends CI_Controller {
 	}
 	public function submit(){
 		$user_info = $this->session->userdata('user.info');
-
-		
 		$this->load->view('submit',array('user'=>$user_info,'page'=>'submit'));
 	}
 	public function comments($thingid){
