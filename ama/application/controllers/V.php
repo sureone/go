@@ -45,7 +45,12 @@ class V extends CI_Controller {
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
+	public function submit(){
+		$user_info = $this->session->userdata('user.info');
 
+		
+		$this->load->view('submit',array('user'=>$user_info,'page'=>'submit'));
+	}
 	public function comments($thingid){
 		$user_info = $this->session->userdata('user.info');
 		$this->load->view('comments',array('user'=>$user_info,'page'=>'comments','thingid'=>$thingid));

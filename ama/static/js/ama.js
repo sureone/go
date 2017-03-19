@@ -149,6 +149,7 @@ $(document).ready(function () {
 
 
     $(document).delegate(".login-required", "click", function(){
+        if(g_logined==true) return true;
         showLoginModal();
         return false;
     })

@@ -9,3 +9,7 @@
     <script src="./static/js/form2json.js"></script>
     <script src="./static/js/common.js?v=6"></script>
     <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
+
+    <script type="text/javascript">
+    	<?php if(isset($user)){ echo "var g_logined = true;";}else{ echo "var g_logined = false;";} ?>
+    </script>
