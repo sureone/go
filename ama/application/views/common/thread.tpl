@@ -22,11 +22,11 @@
 						 <a href="" class="author may-blank ">{$things[a].author}</a>
 						 <span class="userattrs"></span>
 					</p>
-					{if $page eq "comments"}
-					<div class="expando"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p>I'm  a young programmer who wants to create a few apps for the African environment and beyond. As well as help promote African hip hop on the internet.</p>
+					
+					<div class="expando expando-{$things[a].thingid}" style="display: {if $page eq "comments"}block{else}none{/if};"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p>I'm  a young programmer who wants to create a few apps for the African environment and beyond. As well as help promote African hip hop on the internet.</p>
 					</div>
 					</div></form></div>
-					{/if}
+					
 					<ul class="flat-list buttons">
 						<li class="first"><a href="">139 留言</a></li>
 						<li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li>
@@ -45,9 +45,7 @@
 					</ul>
 					<div class="reportform"></div>
 
-					<div class="expando expando-uninitialized expando-{$things[a].thingid}" style="display: none">
-						<span class="error">loading...</span>
-					</div>
+					
 				</div>
 				<div class="child"></div>
 				<div class="clearleft"></div>

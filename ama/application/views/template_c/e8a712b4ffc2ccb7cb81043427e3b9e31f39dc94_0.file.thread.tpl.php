@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 14:37:48
+/* Smarty version 3.1.30, created on 2017-03-20 13:14:32
   from "D:\go\ama\application\views\common\thread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ce89ac177e01_28404062',
+  'unifunc' => 'content_58cfc7a87343d1_14906234',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1489930595,
+      1 => 1490012069,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ce89ac177e01_28404062 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cfc7a87343d1_14906234 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 			<div class="thing odd  link self" id="thing_<?php echo $_smarty_tpl->tpl_vars['things']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_a']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index'] : null)]['thingid'];?>
 " data-thingid=<?php echo $_smarty_tpl->tpl_vars['things']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_a']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index'] : null)]['thingid'];?>
@@ -58,11 +58,12 @@ function content_58ce89ac177e01_28404062 (Smarty_Internal_Template $_smarty_tpl)
 </a>
 						 <span class="userattrs"></span>
 					</p>
-					<?php if ($_smarty_tpl->tpl_vars['page']->value == "comments") {?>
-					<div class="expando"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p>I'm  a young programmer who wants to create a few apps for the African environment and beyond. As well as help promote African hip hop on the internet.</p>
+					
+					<div class="expando expando-<?php echo $_smarty_tpl->tpl_vars['things']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_a']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index'] : null)]['thingid'];?>
+" style="display: <?php if ($_smarty_tpl->tpl_vars['page']->value == "comments") {?>block<?php } else { ?>none<?php }?>;"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p>I'm  a young programmer who wants to create a few apps for the African environment and beyond. As well as help promote African hip hop on the internet.</p>
 					</div>
 					</div></form></div>
-					<?php }?>
+					
 					<ul class="flat-list buttons">
 						<li class="first"><a href="">139 留言</a></li>
 						<li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li>
@@ -81,10 +82,7 @@ function content_58ce89ac177e01_28404062 (Smarty_Internal_Template $_smarty_tpl)
 					</ul>
 					<div class="reportform"></div>
 
-					<div class="expando expando-uninitialized expando-<?php echo $_smarty_tpl->tpl_vars['things']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_a']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index'] : null)]['thingid'];?>
-" style="display: none">
-						<span class="error">loading...</span>
-					</div>
+					
 				</div>
 				<div class="child"></div>
 				<div class="clearleft"></div>

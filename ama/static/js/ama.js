@@ -119,32 +119,28 @@ $(document).ready(function () {
     $(document).delegate("#siteTable .thing .expando-button.collapsed", "click", function(e){
 
 
-        var idx = $(e.target).parent().closest('.thing').attr('data-idx');
+        var id = $(e.target).parent().closest('.thing').attr('data-thingid');
 
         $(e.target).removeClass("collapsed");
         $(e.target).addClass("expanded");
 
 
-        $(".expando-"+idx).css('display','block');
+        $(".expando-"+id).css('display','block');
 
-        var tpl = Handlebars.compile($("#tpl-thread-text").html());
-        
-        $(".expando-"+idx).html(tpl(threads[idx]));
     })
 
 
     $(document).delegate("#siteTable .thing .expando-button.expanded", "click", function(e){
 
         
-        var idx = $(e.target).parent().closest('.thing').attr('data-idx');
+        var id = $(e.target).parent().closest('.thing').attr('data-thingid');
 
+       
         $(e.target).removeClass("expanded");
         $(e.target).addClass("collapsed");
 
 
-        $(".expando-"+idx).css('display','none');
-
-        $(".expando-"+idx).html('');
+        $(".expando-"+id).css('display','none');
     })
 
 
