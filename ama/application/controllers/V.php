@@ -39,8 +39,7 @@ class V extends CI_Controller {
 		#echo json_encode_utf8($rows);
 	}
 
-	function showHotView(){
-		$things=array(
+	protected $things=array(
 			array(
 	        'thingid'=>1,
 	        'title'=>'18 year old female, fed via NG tube AMA',
@@ -75,10 +74,12 @@ class V extends CI_Controller {
 	        'score'=>78,
 	        'child'=>array())
 	        );
+	function showHotView(){
+		
 
         $this->ci_smarty->assign("logined","true");
 		$this->ci_smarty->assign("page","hot");
-		$this->ci_smarty->assign("things",$things);
+		$this->ci_smarty->assign("things",$this->things);
 		$this->ci_smarty->display("hot.tpl");
 
 
@@ -104,7 +105,14 @@ class V extends CI_Controller {
 	}
 	public function comments($thingid){
 		$user_info = $this->session->userdata('user.info');
-		$this->load->view('comments',array('user'=>$user_info,'page'=>'comments','thingid'=>$thingid));
+	
+        $this->ci_smarty->assign("logined","true");
+		$this->ci_smarty->assign("page","comments");
+		$this->ci_smarty->assign("thingid",$thingid);
+		$this->ci_smarty->assign("things",array($this->things[0]));
+		
+		$this->ci_smarty->display("comments.tpl");
+		// $this->load->view('comments',array('user'=>$user_info,'page'=>'comments','thingid'=>$thingid));
 	}
 
 	

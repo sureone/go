@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 13:35:44
+/* Smarty version 3.1.30, created on 2017-03-19 14:07:06
   from "D:\go\ama\application\views\test.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ce7b201e9294_03690921',
+  'unifunc' => 'content_58ce827a979621_63799035',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '63475b704d4c95a2be1ac7214057e98e32c1ac02' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\test.tpl',
-      1 => 1489926901,
+      1 => 1489927339,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ce7b201e9294_03690921 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ce827a979621_63799035 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 hello temple
 <?php
