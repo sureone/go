@@ -3,7 +3,7 @@
 	{include file="common/page-header.tpl"}
 </head>
 
-<body class="listing-page {if $logined eq "true"}loggedin{/if} hot-page">
+<body class="listing-page {if $logined eq "true"}loggedin{/if} {$page}-page">
 
 
 <div id="header">

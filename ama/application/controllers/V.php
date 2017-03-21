@@ -101,7 +101,9 @@ class V extends CI_Controller {
 	}
 	public function submit(){
 		$user_info = $this->session->userdata('user.info');
-		$this->load->view('submit',array('user'=>$user_info,'page'=>'submit'));
+        $this->ci_smarty->assign("logined","true");
+		$this->ci_smarty->assign("page","comments");
+		$this->ci_smarty->display("submit.tpl");
 	}
 	public function comments($thingid){
 		$user_info = $this->session->userdata('user.info');

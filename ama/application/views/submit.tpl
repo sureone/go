@@ -4,17 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <html lang="en">
 <head>
-    <?php include 'common/page-header.php' ?>
+    {include file='common/page-header.tpl'}
     <style type="text/css">
+        {literal}
         .infobar {
             background-color: #FFB6C1;
         }
+        {/literal}
     </style>
 </head>
-<?php include 'common/thread-tpl.php' ?>
-<body class="listing-page <?php if (isset($user)) {
-    echo 'loggedin';
-} ?> hot-page">
+
+<body class="listing-page {if $logined eq "true"}loggedin{/if} {$page}-page">
 
 
 <div id="header">
@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <ul class="tabmenu ">
             <li class="selected"><a href="./v/submit" class="choice">发表</a></li>
     </div>
-    <?php include 'common/header-bottom-right.php' ?>
+    {include file='common/header-bottom-right.tpl'}
 </div>
-<?php include 'common/side.php' ?>
+{include file='common/side.tpl'}
 
 <div class="content">
     <form class="submit content warn-on-unload" onsubmit="handleFormSubmit(this); return false;" action="" id="newlink"
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="usertext-edit md-container" style="">
                                 <div class="md"><textarea rows="1" cols="1" name="text" class=""></textarea></div>
                                 
-                                <?php include "common/markhelp.php" ?>
+                                {include file="common/markhelp.tpl"}
                             </div>
                         </div>
                         <span class="error NO_SELFS field-sr" style="display:none"></span></div>
@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div id="footer"></div>
-<?php include 'common/login-modal.php' ?>
+{include 'common/login-modal.tpl'}
 </body>
 
 
