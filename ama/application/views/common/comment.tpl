@@ -1,14 +1,15 @@
-    
-    <div class=" thing id-{thingid} noncollapsed   comment " id="thing_{thingid}" onclick="">
+{function name=renderComments level=0}
+    {foreach $data as $entry}
+    <div class=" thing id-{$entry.thingid} noncollapsed   comment " id="thing_{$entry.thingid}" onclick="">
         <p class="parent"><a name="df1l1xv"></a></p>
         <div class="midcol unvoted">
-            <div class="arrow up login-required access-required" data-thingid="{thingid}" onclick="voteit(this,1)"></div>
-            <div class="arrow down login-required access-required"  data-thingid="{thingid}" onclick="voteit(this,-1)"></div>
+            <div class="arrow up login-required access-required" data-thingid="{$entry.thingid}" onclick="voteit(this,1)"></div>
+            <div class="arrow down login-required access-required"  data-thingid="{$entry.thingid}" onclick="voteit(this,-1)"></div>
         </div>
         <div class="entry unvoted">
             <p class="tagline">
                 <a href="javascript:void(0)" class="expand" onclick="return togglecomment(this)">[–]</a>
-                <a href="./v/user/{userid}" class="author may-blank">{author}</a>
+                <a href="./v/user/{$entry.userid}" class="author may-blank">{$entry.author}</a>
                 <span class="userattrs"></span>
                 <span class="score dislikes" title="44">44 指標</span>
                 <span class="score unvoted" title="45">45 指標</span>
@@ -36,19 +37,20 @@
                                              class="embed-comment">embed</a></li>
                 <li class="comment-save-button save-button"><a href="javascript:void(0)">儲存</a></li>
                 <li class="report-button"><a href="javascript:void(0)" class="reportbtn access-required"
-                                              data-thingid="{thingid}">檢舉</a></li>
-                <li class="give-gold-button"><a href="/gold?goldtype=gift&amp;months=1&amp;thing=t1_df1l1xv"
-                                                title="give reddit gold in appreciation of this post."
-                                                class="give-gold login-required access-required"
-                                                data-event-action="gild">贈送金幣</a></li>
-                <li class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="{thingid}"  onclick="return reply(this)">回覆</a></li>
+                                              data-thingid="{$entry.thingid}">檢舉</a></li>
+                <li class="give-gold-button"><a href="">贈送金幣</a></li>
+                <li class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="{$entry.thingid}"  onclick="return reply(this)">回覆</a></li>
             </ul>
             <div class="reportform report-t1_df1l1xv"></div>
         </div>
-        <div class="child" id="child_{thingid}">
-            <div id="siteTable_child_{thingid}" class="sitetable listing">
-
+        <div class="child" id="child_{$entry.thingid}">
+            <div id="siteTable_child_{$entry.thingid}" class="sitetable listing">
+                {if is_array($entry.comments)}
+                    {renderComments data=$entry.comments level=$level+1}
+                {/if}
             </div>
         </div>
         <div class="clearleft"></div>
     </div>
+    {/foreach}
+{/function}

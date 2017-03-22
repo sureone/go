@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 14:18:47
+/* Smarty version 3.1.30, created on 2017-03-22 16:14:53
   from "D:\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ce853771c408_64368061',
+  'unifunc' => 'content_58d294ed8d4786_69796079',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '698fa06f07caff7f8c617daf21469f0c8127ca2d' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\hot.tpl',
-      1 => 1489929341,
+      1 => 1490195626,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58ce853771c408_64368061 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d294ed8d4786_69796079 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -34,7 +34,8 @@ function content_58ce853771c408_64368061 (Smarty_Internal_Template $_smarty_tpl)
 
 </head>
 
-<body class="listing-page <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> hot-page">
+<body class="listing-page <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+-page">
 
 
 <div id="header">
@@ -54,12 +55,9 @@ function content_58ce853771c408_64368061 (Smarty_Internal_Template $_smarty_tpl)
 	<div class="spacer">
 		<div id="siteTable" class="sitetable linklisting">
 			<?php
-$__section_a_0_saved = isset($_smarty_tpl->tpl_vars['__smarty_section_a']) ? $_smarty_tpl->tpl_vars['__smarty_section_a'] : false;
-$__section_a_0_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['things']->value) ? count($_loop) : max(0, (int) $_loop));
-$__section_a_0_total = $__section_a_0_loop;
-$_smarty_tpl->tpl_vars['__smarty_section_a'] = new Smarty_Variable(array());
-if ($__section_a_0_total != 0) {
-for ($__section_a_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index'] = 0; $__section_a_0_iteration <= $__section_a_0_total; $__section_a_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index']++){
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['things']->value, 'entry');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 ?>
 				<?php $_smarty_tpl->_subTemplateRender("file:common/thread.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
@@ -67,10 +65,9 @@ for ($__section_a_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_a']-
 			<?php
 }
 }
-if ($__section_a_0_saved) {
-$_smarty_tpl->tpl_vars['__smarty_section_a'] = $__section_a_0_saved;
-}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
+
 
 		</div>
 	</div>

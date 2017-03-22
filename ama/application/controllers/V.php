@@ -38,6 +38,81 @@ class V extends CI_Controller {
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
+	const lv2=array(array(
+	        'thingid'=>1,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>1,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'comments'=>array()),
+	        array(
+	        'thingid'=>2,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>2,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'comments'=>array()),
+	        array(
+	        'thingid'=>3,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>3,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'comments'=>array())
+	        );
+
+	const lv1=array(array(
+	        'thingid'=>1,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>1,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'comments'=>self::lv2),
+	        array(
+	        'thingid'=>2,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>2,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'comments'=>array()),
+	        array(
+	        'thingid'=>3,
+	        'title'=>'18 year old female, fed via NG tube AMA',
+	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
+	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
+	        'likes'=>200,
+	        'timeago'=>'',
+	        'no'=>3,
+	        'dislikes'=>160,
+	        'score'=>78,
+	        'comments'=>array())
+	        );
 
 	protected $things=array(
 			array(
@@ -45,34 +120,37 @@ class V extends CI_Controller {
 	        'title'=>'18 year old female, fed via NG tube AMA',
 	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
 	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
 	        'likes'=>200,
 	        'timeago'=>'',
 	        'no'=>1,
 	        'dislikes'=>160,
 	        'score'=>78,
-	        'child'=>array()),
+	        'comments'=>self::lv1),
 	        array(
 	        'thingid'=>2,
 	        'title'=>'18 year old female, fed via NG tube AMA',
 	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
 	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
 	        'likes'=>200,
 	        'timeago'=>'',
 	        'no'=>2,
 	        'dislikes'=>160,
 	        'score'=>78,
-	        'child'=>array()),
+	        'comments'=>array()),
 	        array(
 	        'thingid'=>3,
 	        'title'=>'18 year old female, fed via NG tube AMA',
 	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
 	        'author'=>'chloegbih',
+	        'userid'=>'chloegbih',
 	        'likes'=>200,
 	        'timeago'=>'',
 	        'no'=>3,
 	        'dislikes'=>160,
 	        'score'=>78,
-	        'child'=>array())
+	        'comments'=>array())
 	        );
 	function showHotView(){
 		

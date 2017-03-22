@@ -1,4 +1,4 @@
-<script type="text/x-handlebars" id="tpl-thread-item-new">
+    <script type="text/x-handlebars" id="tpl-thread-item-new">
 <div class=" thing linkflair linkflair-music odd  link self" id="thing_{{thingid}}" data-thingid="{{thingid}}">
 	<p class="parent"></p>
 	<span class="rank">{{no}}</span>

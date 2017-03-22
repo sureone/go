@@ -18,9 +18,9 @@
 <div class="content">
 	<div class="spacer">
 		<div id="siteTable" class="sitetable linklisting">
-			{section loop=$things name=a}
+			{foreach $things as $entry}
 				{include file="common/thread.tpl"}
-			{/section}
+			{/foreach}
 
 		</div>
 	</div>

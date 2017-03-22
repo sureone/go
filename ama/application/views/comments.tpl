@@ -20,9 +20,9 @@
 <div class="content">
 
     <div id="siteTable" class="sitetable linklisting">
-        {section loop=$things name=a}
+        {foreach $things as $entry}
             {include file="common/thread.tpl"}
-        {/section}    
+        {/foreach}    
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">頭 200 則留言</span><a
@@ -63,7 +63,8 @@
     </form>
 
     <div id="siteTable_{$thingid}" class="sitetable nestedlisting">
-        
+        {include file="common/comment.tpl"}
+        {call name=renderComments data=$things[0].comments}
     </div>
 
 </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 14:37:50
+/* Smarty version 3.1.30, created on 2017-03-22 16:14:55
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ce89ae871953_29016644',
+  'unifunc' => 'content_58d294ef6bdbb1_51596011',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1489930662,
+      1 => 1490195690,
       2 => 'file',
     ),
   ),
@@ -23,10 +23,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/side.tpl' => 1,
     'file:common/thread.tpl' => 1,
     'file:common/markhelp.tpl' => 1,
+    'file:common/comment.tpl' => 1,
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58ce89ae871953_29016644 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d294ef6bdbb1_51596011 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <html lang="en">
@@ -35,7 +36,8 @@ function content_58ce89ae871953_29016644 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
 </head>
-<body class="<?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> comments-page">
+<body class="<?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+-page">
 
 
 <div id="header">
@@ -57,12 +59,9 @@ function content_58ce89ae871953_29016644 (Smarty_Internal_Template $_smarty_tpl)
 
     <div id="siteTable" class="sitetable linklisting">
         <?php
-$__section_a_0_saved = isset($_smarty_tpl->tpl_vars['__smarty_section_a']) ? $_smarty_tpl->tpl_vars['__smarty_section_a'] : false;
-$__section_a_0_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['things']->value) ? count($_loop) : max(0, (int) $_loop));
-$__section_a_0_total = $__section_a_0_loop;
-$_smarty_tpl->tpl_vars['__smarty_section_a'] = new Smarty_Variable(array());
-if ($__section_a_0_total != 0) {
-for ($__section_a_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index'] = 0; $__section_a_0_iteration <= $__section_a_0_total; $__section_a_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_a']->value['index']++){
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['things']->value, 'entry');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 ?>
             <?php $_smarty_tpl->_subTemplateRender("file:common/thread.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
@@ -70,10 +69,9 @@ for ($__section_a_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_a']-
         <?php
 }
 }
-if ($__section_a_0_saved) {
-$_smarty_tpl->tpl_vars['__smarty_section_a'] = $__section_a_0_saved;
-}
-?>    
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+    
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">頭 200 則留言</span><a
@@ -119,7 +117,11 @@ $_smarty_tpl->tpl_vars['__smarty_section_a'] = $__section_a_0_saved;
 
     <div id="siteTable_<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
 " class="sitetable nestedlisting">
-        
+        <?php $_smarty_tpl->_subTemplateRender("file:common/comment.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+        <?php $_smarty_tpl->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'renderComments', array('data'=>$_smarty_tpl->tpl_vars['things']->value[0]['comments']), true);?>
+
     </div>
 
 </div>
