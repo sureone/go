@@ -152,10 +152,20 @@ class V extends CI_Controller {
 	        'score'=>78,
 	        'comments'=>array())
 	        );
-	function showHotView(){
-		
 
-        $this->ci_smarty->assign("logined","true");
+
+	function common(){
+		$user_info = $this->session->userdata('user.info');
+		if($user_info!=null){
+			$this->ci_smarty->assign("user",$user_info);
+	        $this->ci_smarty->assign("logined","true");
+    	}else{
+    		$this->ci_smarty->assign("logined","false");
+    	}
+	}
+	function showHotView(){
+		$this->common();
+
 		$this->ci_smarty->assign("page","hot");
 		$this->ci_smarty->assign("things",$this->things);
 		$this->ci_smarty->display("hot.tpl");
@@ -168,9 +178,22 @@ class V extends CI_Controller {
 		$this->ci_smarty->display('test.tpl');
 	}
 
+
+	public function user($userid,$page='home')
+	{
+		$this->common();
+		
+		$this->ci_smarty->assign("page","user-{$page}");
+		$this->ci_smarty->assign("things",array());
+		if($page == "home"){
+
+		}
+		$this->ci_smarty->display("user-{$page}.tpl");
+	}
+
 	public function logout()
 	{
-		$this->session->unset_userdata('user.info');
+		$this->common();
 		$this->load->view('hot');
         #$query = $this->db->query("select * from sgfs");
 		#$rows = $query->result_array();
@@ -178,15 +201,13 @@ class V extends CI_Controller {
 		#echo json_encode_utf8($rows);
 	}
 	public function submit(){
-		$user_info = $this->session->userdata('user.info');
-        $this->ci_smarty->assign("logined","true");
+
+        $this->common();
 		$this->ci_smarty->assign("page","comments");
 		$this->ci_smarty->display("submit.tpl");
 	}
 	public function comments($thingid){
-		$user_info = $this->session->userdata('user.info');
-	
-        $this->ci_smarty->assign("logined","true");
+		$this->common();
 		$this->ci_smarty->assign("page","comments");
 		$this->ci_smarty->assign("thingid",$thingid);
 		$this->ci_smarty->assign("things",array($this->things[0]));
