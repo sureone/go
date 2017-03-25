@@ -1,12 +1,12 @@
 			<div class="thing odd  link self" id="thing_{$entry.thingid}" data-thingid={$entry.thingid}>
 				<p class="parent"></p>
 				{if $page neq "comments"}
-				<span class="rank">{$entry.no}</span>
+				<span class="rank"></span>
 				{/if}
 				<div class="midcol unvoted">
 					<div class="arrow up login-required access-required" tabindex="0"  data-thingid="{$entry.thingid}" onclick="voteit(this,1)"></div>
 					<div class="score dislikes" title="77">{$entry.dislikes}</div>
-					<div class="score unvoted" title="78">{$entry.score}</div>
+					<div class="score unvoted" title="78">{$entry.likes-$entry.dislikes}</div>
 					<div class="score likes" title="79">{$entry.likes}</div>
 					<div class="arrow down login-required access-required" tabindex="0"  data-thingid="{$entry.thingid}" onclick="voteit(this,-1)"></div>
 				</div>
@@ -18,12 +18,12 @@
 					{if $page neq "comments"}
 						<div class="expando-button collapsed selftext"></div>
 					{/if}
-					<p class="tagline">发表 <time class="live-timestamp">{$entry.timeago}</time>by
+					<p class="tagline">发表 <time class="live-timestamp"></time>by
 						 <a href="" class="author may-blank ">{$entry.author}</a>
 						 <span class="userattrs"></span>
 					</p>
 					
-					<div class="expando expando-{$entry.thingid}" style="display: {if $page eq "comments"}block{else}none{/if};"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p>I'm  a young programmer who wants to create a few apps for the African environment and beyond. As well as help promote African hip hop on the internet.</p>
+					<div class="expando expando-{$entry.thingid}" style="display: {if $page eq "comments"}block{else}none{/if};"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p>{$entry.text}</p>
 					</div>
 					</div></form></div>
 					

@@ -39,6 +39,9 @@ class Api extends CI_Controller {
             case 'reg':
                 $result = $this->doReg($jobj);
             break;
+            case 'submit-new-link':
+                $result = $this->doSubmitNewLink($jobj);
+            break;
             case 'logout':
                 $result = $this->doLogout($jobj);
             default:
@@ -49,6 +52,27 @@ class Api extends CI_Controller {
     function doLogout($json){
         $this->session->unset_userdata('user.info');
         return array('code'=>200);
+    }
+
+
+    function doSubmitNewLink($json){
+        $user = $this->session->userdata('user.info');
+        if(isset($_SESSION['user.info'])){
+        
+            $this->db->insert('things',
+                array('author'=>$user['userid'],
+                    'title'=>$json->{'title'},
+                    'content'=>$json->{'content'},
+                    'cdate'=>$this->curTime(),
+                    'udate'=>$this->curTime()));
+                return array('code'=>200,'thingid'=>$this->db->insert_id());
+
+        }else{
+            return array('code'=>404);
+
+        }
+
+        
     }
 
     function doLogin($json){
@@ -90,6 +114,11 @@ class Api extends CI_Controller {
         return array('code'=>$code);
     }
     
+
+    function curTime(){
+        $ms = time()*1000-90*24*60*60*1000;
+        return $ms;
+    }
  
 
     function doPostThread($json){

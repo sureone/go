@@ -28,9 +28,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 {include file='common/side.tpl'}
 
 <div class="content">
-    <form class="submit content warn-on-unload" onsubmit="handleFormSubmit(this); return false;" action="" id="newlink"
-          method="post"><input type="hidden" name="uh" value="30rij8g6va0ca3449b2951f463f6f4146a35b9c0135e54bd03">
-
+    <form class="submit content warn-on-unload" onsubmit="handleFormSubmit(this); return false;" action="./api" id="newlink" method="post">
+        <input name="action" value="submit-new-link" type="hidden">
+        
         <div class="formtabs-content">
             <div class="spacer">
                 <div id="text-desc" class="infobar">
@@ -38,30 +38,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="spacer">
-                <div class="roundfield " id="title-field"><span class="title required-roundfield">標題</span>
-
-                    <div class="roundfield-content"><textarea name="title" rows="2" required=""></textarea>
-
+                <div class="roundfield " id="title-field">
+                    <span class="title required-roundfield">標題</span>
+                    <div class="roundfield-content">
+                        <textarea name="title" rows="2" required=""></textarea>
                         <div class="error NO_TEXT field-title" style="display:none"></div>
                         <div class="error TOO_LONG field-title" style="display:none"></div>
                     </div>
                 </div>
             </div>
             <div class="spacer">
-                <div class="roundfield " id="text-field"><span class="title ">文字</span> <span
-                        class="little gray roundfield-description">(非必填項目)</span>
-
+                <div class="roundfield " id="text-field">
+                    <span class="title ">文字</span> 
+                    <span class="little gray roundfield-description">(非必填項目)</span>
                     <div class="roundfield-content"><input name="kind" value="self" type="hidden">
 
-                        <div class="usertext"><input type="hidden" name="thing_id" value="">
-
+                        <div class="usertext">
+                            <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
-                                <div class="md"><textarea rows="1" cols="1" name="text" class=""></textarea></div>
+                                <div class="md">
+                                    <textarea rows="1" cols="1" name="content" class=""></textarea>
+                                </div>
                                 
                                 {include file="common/markhelp.tpl"}
                             </div>
                         </div>
-                        <span class="error NO_SELFS field-sr" style="display:none"></span></div>
+                        <span class="error NO_SELFS field-sr" style="display:none"></span>
+                    </div>
                 </div>
             </div>
 
@@ -69,24 +72,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="spacer">
                 <div class="roundfield "><span class="title ">選項</span>
 
-                    <div class="roundfield-content"><input class="nomargin" type="checkbox" checked="checked"
-                                                           name="sendreplies" id="sendreplies" data-send-checked="true"><label
-                            for="sendreplies">將回覆寄到我的收件匣</label></div>
+                    <div class="roundfield-content">
+                        <input class="nomargin" type="checkbox" checked="checked" name="sendreplies" id="sendreplies" data-send-checked="true">
+                        <label for="sendreplies">將回覆寄到我的收件匣</label></div>
                 </div>
             </div>
 
-        <div class="roundfield info-notice">please be mindful of reddit's <a
-                href="https://www.reddit.com/help/contentpolicy" target="_blank">內容政策</a> and practice <a
-                href="https://www.reddit.com/wiki/reddiquette" target="_blank">良好的 reddit 站規</a>.
+        <div class="roundfield info-notice">please be mindful of reddit's 
+            <a href="https://www.reddit.com/help/contentpolicy" target="_blank">內容政策</a>
+             and practice 
+            <a href="https://www.reddit.com/wiki/reddiquette" target="_blank">良好的 reddit 站規</a>.
         </div>
         <div id="items-required">*required</div>
         <input name="resubmit" value="" type="hidden">
 
         <div class="spacer">
             <button class="btn" name="submit" value="form" type="submit">送出</button>
-            <span class="status"></span><span class="error RATELIMIT field-ratelimit" style="display:none"></span><span
-                class="error INVALID_OPTION field-sr" style="display:none"></span><span
-                class="error IN_TIMEOUT field-sr" style="display:none"></span></div>
+            <span class="status"></span>
+            <span class="error RATELIMIT field-ratelimit" style="display:none"></span>
+            <span class="error INVALID_OPTION field-sr" style="display:none"></span>
+            <span class="error IN_TIMEOUT field-sr" style="display:none"></span>
+        </div>
     </form>
 </div>
 

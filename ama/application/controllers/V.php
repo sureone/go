@@ -27,6 +27,7 @@ class V extends CI_Controller {
 		$this->load->database();
 		$this->load->helper('file');
 		$this->load->library('ci_smarty');
+		$this->load->model('amamodel');
 	}
 	public function index()
 	{
@@ -166,8 +167,12 @@ class V extends CI_Controller {
 	function showHotView(){
 		$this->common();
 
+		$rows = $this->amamodel->readHotThings('30',10);
+
+
+
 		$this->ci_smarty->assign("page","hot");
-		$this->ci_smarty->assign("things",$this->things);
+		$this->ci_smarty->assign("things",$rows);
 		$this->ci_smarty->display("hot.tpl");
 
 
