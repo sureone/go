@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-03-23 01:05:27
+-- Generation Time: 2017-03-26 15:35:39
 -- 服务器版本： 5.6.21
 -- PHP Version: 5.6.3
 
@@ -47,8 +47,11 @@ CREATE TABLE IF NOT EXISTS `things` (
   `udate` int(11) NOT NULL,
   `title` varchar(1024) CHARACTER SET utf8 NOT NULL,
   `author` varchar(100) NOT NULL,
-  `content` text CHARACTER SET utf8
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `content` text CHARACTER SET utf8,
+  `main` bigint(20) NOT NULL DEFAULT '0',
+  `parent` bigint(20) NOT NULL DEFAULT '0',
+  `replies` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `things`
 --
 ALTER TABLE `things`
-MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `users`
 --

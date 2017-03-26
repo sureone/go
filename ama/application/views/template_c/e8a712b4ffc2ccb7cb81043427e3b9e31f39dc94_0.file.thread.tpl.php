@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-25 03:15:10
+/* Smarty version 3.1.30, created on 2017-03-26 15:25:44
   from "D:\go\ama\application\views\common\thread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d5d2ae56fc89_09212075',
+  'unifunc' => 'content_58d7c158c55221_79051204',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1490408108,
+      1 => 1490534700,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d5d2ae56fc89_09212075 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d7c158c55221_79051204 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 			<div class="thing odd  link self" id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " data-thingid=<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
@@ -47,14 +47,19 @@ function content_58d5d2ae56fc89_09212075 (Smarty_Internal_Template $_smarty_tpl)
 "><?php echo $_smarty_tpl->tpl_vars['entry']->value['title'];?>
 </a> 
 						
-					</p>
+					</p>s
 					<?php if ($_smarty_tpl->tpl_vars['page']->value != "comments") {?>
 						<div class="expando-button collapsed selftext"></div>
 					<?php }?>
-					<p class="tagline">发表 <time class="live-timestamp"></time>by
-						 <a href="" class="author may-blank "><?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
+					<p class="tagline">
+						 <a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
+" class="author may-blank "><?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
 </a>
 						 <span class="userattrs"></span>
+						 发表于 
+						 <time class="live-timestamp timeago" datetime="<?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
+"></time>
+						 
 					</p>
 					
 					<div class="expando expando-<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
@@ -64,7 +69,8 @@ function content_58d5d2ae56fc89_09212075 (Smarty_Internal_Template $_smarty_tpl)
 					</div></form></div>
 					
 					<ul class="flat-list buttons">
-						<li class="first"><a href="">139 留言</a></li>
+						<li class="first"><a href=""><?php echo $_smarty_tpl->tpl_vars['entry']->value['replies'];?>
+ 留言</a></li>
 						<li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li>
 						<li class="link-save-button save-button"><a href="#">儲存</a></li>
 						<li>

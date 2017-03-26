@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-22 16:16:13
+/* Smarty version 3.1.30, created on 2017-03-26 15:26:43
   from "D:\go\ama\application\views\common\comment.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d2953dd53391_23813177',
+  'unifunc' => 'content_58d7c1934bd2c8_81840442',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd03b8025f8ee3e41174be16b12370503e817c2fd' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\comment.tpl',
-      1 => 1490195770,
+      1 => 1490534740,
       2 => 'file',
     ),
   ),
@@ -20,19 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d2953dd53391_23813177 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d7c1934bd2c8_81840442 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
     'compiled_filepath' => 'D:\\go\\ama\\application\\views\\template_c\\d03b8025f8ee3e41174be16b12370503e817c2fd_0.file.comment.tpl.php',
     'uid' => 'd03b8025f8ee3e41174be16b12370503e817c2fd',
-    'call_name' => 'smarty_template_function_renderComments_2790858d2953dce5d70_07915890',
+    'call_name' => 'smarty_template_function_renderComments_1804258d7c193447fa5_68609173',
   ),
 ));
 }
-/* smarty_template_function_renderComments_2790858d2953dce5d70_07915890 */
-if (!function_exists('smarty_template_function_renderComments_2790858d2953dce5d70_07915890')) {
-function smarty_template_function_renderComments_2790858d2953dce5d70_07915890($_smarty_tpl,$params) {
+/* smarty_template_function_renderComments_1804258d7c193447fa5_68609173 */
+if (!function_exists('smarty_template_function_renderComments_1804258d7c193447fa5_68609173')) {
+function smarty_template_function_renderComments_1804258d7c193447fa5_68609173($_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -55,25 +55,28 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
         <div class="entry unvoted">
             <p class="tagline">
                 <a href="javascript:void(0)" class="expand" onclick="return togglecomment(this)">[–]</a>
-                <a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['userid'];?>
+                <a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
 " class="author may-blank"><?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
 </a>
                 <span class="userattrs"></span>
-                <span class="score dislikes" title="44">44 指標</span>
-                <span class="score unvoted" title="45">45 指標</span>
-                <span class="score likes" title="46">46 指標</span>
-                <time class="live-timestamp"> 22小時前 </time>
+                <span class="score dislikes" title="44"><?php echo $_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
+</span>
+                <span class="score unvoted" title="45"><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes']-$_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
+指標</span>
+                <span class="score likes" title="46"><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes'];?>
+指標</span>
+                <time class="live-timestamp timeago" datetime="<?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
+"></time>
                 &nbsp;
-                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">(39下層留言)</a></p>
+                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">(<?php echo $_smarty_tpl->tpl_vars['entry']->value['replies'];?>
+下層留言)</a></p>
             <form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')"
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                    <div class="md"><p>What was your daily routine ?</p>
+                    <div class="md">
+                        <?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
 
-                        <p>What did they give you uppon arrival (other than your razor) ?</p>
-
-                        <p>How did you cope with boredom ?</p>
                     </div>
                 </div>
             </form>
@@ -97,9 +100,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 ">
             <div id="siteTable_child_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " class="sitetable listing">
+                <?php if (isset($_smarty_tpl->tpl_vars['entry']->value['comments'])) {?>
                 <?php if (is_array($_smarty_tpl->tpl_vars['entry']->value['comments'])) {?>
                     <?php $_smarty_tpl->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'renderComments', array('data'=>$_smarty_tpl->tpl_vars['entry']->value['comments'],'level'=>$_smarty_tpl->tpl_vars['level']->value+1), true);?>
 
+                <?php }?>
                 <?php }?>
             </div>
         </div>
@@ -113,5 +118,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 <?php
 }}
-/*/ smarty_template_function_renderComments_2790858d2953dce5d70_07915890 */
+/*/ smarty_template_function_renderComments_1804258d7c193447fa5_68609173 */
 }

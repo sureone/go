@@ -9,23 +9,20 @@
         <div class="entry unvoted">
             <p class="tagline">
                 <a href="javascript:void(0)" class="expand" onclick="return togglecomment(this)">[–]</a>
-                <a href="./v/user/{$entry.userid}" class="author may-blank">{$entry.author}</a>
+                <a href="./v/user/{$entry.author}" class="author may-blank">{$entry.author}</a>
                 <span class="userattrs"></span>
-                <span class="score dislikes" title="44">44 指標</span>
-                <span class="score unvoted" title="45">45 指標</span>
-                <span class="score likes" title="46">46 指標</span>
-                <time class="live-timestamp"> 22小時前 </time>
+                <span class="score dislikes" title="44">{$entry.dislikes}</span>
+                <span class="score unvoted" title="45">{$entry.likes-$entry.dislikes}指標</span>
+                <span class="score likes" title="46">{$entry.likes}指標</span>
+                <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
                 &nbsp;
-                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">(39下層留言)</a></p>
+                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">({$entry.replies}下層留言)</a></p>
             <form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')"
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                    <div class="md"><p>What was your daily routine ?</p>
-
-                        <p>What did they give you uppon arrival (other than your razor) ?</p>
-
-                        <p>How did you cope with boredom ?</p>
+                    <div class="md">
+                        {$entry.text}
                     </div>
                 </div>
             </form>
@@ -45,8 +42,10 @@
         </div>
         <div class="child" id="child_{$entry.thingid}">
             <div id="siteTable_child_{$entry.thingid}" class="sitetable listing">
+                {if isset($entry.comments)}
                 {if is_array($entry.comments)}
                     {renderComments data=$entry.comments level=$level+1}
+                {/if}
                 {/if}
             </div>
         </div>

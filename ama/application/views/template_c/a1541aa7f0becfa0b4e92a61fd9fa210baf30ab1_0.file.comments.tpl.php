@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-22 16:14:55
+/* Smarty version 3.1.30, created on 2017-03-26 15:33:26
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d294ef6bdbb1_51596011',
+  'unifunc' => 'content_58d7c326d77df7_26814239',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1490195690,
+      1 => 1490535204,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/header-bottom-right.tpl' => 1,
     'file:common/side.tpl' => 1,
     'file:common/thread.tpl' => 1,
-    'file:common/markhelp.tpl' => 1,
+    'file:common/markhelp.tpl' => 2,
     'file:common/comment.tpl' => 1,
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58d294ef6bdbb1_51596011 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d7c326d77df7_26814239 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <html lang="en">
@@ -74,9 +74,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     
     </div>
     <div class="commentarea">
-        <div class="panestack-title"><span class="title">頭 200 則留言</span><a
+        <div class="panestack-title"><span class="title">頭<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['comments_count'];?>
+則留言</span><a
                 href="/r/AMA/comments/5zwc09/i_have_been_to_prison_in_ny_and_nj_several_times/?limit=500"
-                class="title-button ">顯示所有387</a></div>
+                class="title-button ">顯示所有<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['replies'];?>
+</a></div>
         <div class="menuarea">
             <div class="spacer"><span class="dropdown-title lightdrop">排序依據: </span>
 
@@ -101,13 +103,39 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div>
     </div>
 
-    <form action="#" class="usertext cloneable warn-on-unload" onsubmit="return post_form(this, 'comment')" id="form-comment-<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
+    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
 ">
-        <input type="hidden" name="thingid" value="<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
+        <input type="hidden" name="action" value="submit-new-comment">
+        <input type="hidden" name="main" value="<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
+">
+        <input type="hidden" name="parent" value="<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
 ">
         <div class="usertext-edit md-container" style="">
             <div class="md">
-                <textarea rows="1" cols="1" name="text" class="" data-event-action="comment" data-type="link"></textarea>
+                <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
+            </div>
+            <div class="bottom-area">
+                <span class="help-toggle toggle" style="">
+                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
+                    <a class="option " href="#">隱藏說明</a>
+                </span>
+                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
+                <span class="error TOO_LONG field-text" style="display:none"></span>
+                <span
+                    class="error RATELIMIT field-ratelimit" style="display:none">
+                </span>
+                <span class="error NO_TEXT field-text" style="display:none"></span>
+                <span class="error TOO_OLD field-parent" style="display:none"></span>
+                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
+                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
+                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
+                <span class="error USER_MUTED field-parent" style="display:none"></span>
+                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
+
+                <div class="usertext-buttons">
+                    <button type="submit" onclick="" class="save">保存</button>
+                    <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="display:none;">取消</button>
+                </div>
             </div>
             <?php $_smarty_tpl->_subTemplateRender("file:common/markhelp.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -130,6 +158,52 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 <?php $_smarty_tpl->_subTemplateRender("file:common/login-modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+
+<?php echo '<script'; ?>
+ id="tpl-comment-edit" type="text/x-handlebars-template">
+    
+    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-{{thingid}}">
+    
+        <input type="hidden" name="action" value="submit-new-comment">
+        <input type="hidden" name="main" value="<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
+">
+        
+        <input type="hidden" name="parent" value="{{thingid}}">
+        
+        <div class="usertext-edit md-container" style="">
+            <div class="md">
+                <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
+            </div>
+            <div class="bottom-area">
+                <span class="help-toggle toggle" style="">
+                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
+                    <a class="option " href="#">隱藏說明</a>
+                </span>
+                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
+                <span class="error TOO_LONG field-text" style="display:none"></span>
+                <span
+                    class="error RATELIMIT field-ratelimit" style="display:none">
+                </span>
+                <span class="error NO_TEXT field-text" style="display:none"></span>
+                <span class="error TOO_OLD field-parent" style="display:none"></span>
+                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
+                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
+                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
+                <span class="error USER_MUTED field-parent" style="display:none"></span>
+                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
+
+                <div class="usertext-buttons">
+                    <button type="submit" onclick="" class="save">保存</button>
+                    <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="">取消</button>
+                </div>
+            </div>
+            <?php $_smarty_tpl->_subTemplateRender("file:common/markhelp.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+
+        </div>
+    </form>
+<?php echo '</script'; ?>
+>
 </body>
 
 

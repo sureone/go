@@ -1,25 +1,4 @@
-                                <div class="bottom-area"><span class="help-toggle toggle" style=""><a
-                                            class="option active " href="#" tabindex="100"
-                                            onclick="return toggle(this, helpon, helpoff)">格式說明</a><a class="option "
-                                                                                                      href="#">隱藏說明</a></span><a
-                                        href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a><span
-                                        class="error TOO_LONG field-text" style="display:none"></span><span
-                                        class="error RATELIMIT field-ratelimit" style="display:none"></span><span
-                                        class="error NO_TEXT field-text" style="display:none"></span><span
-                                        class="error TOO_OLD field-parent" style="display:none"></span><span
-                                        class="error THREAD_LOCKED field-parent" style="display:none"></span><span
-                                        class="error DELETED_COMMENT field-parent" style="display:none"></span><span
-                                        class="error USER_BLOCKED field-parent" style="display:none"></span><span
-                                        class="error USER_MUTED field-parent" style="display:none"></span><span
-                                        class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
 
-                                    <div class="usertext-buttons">
-                                        <button type="submit" onclick="" class="save" style="display:none">save</button>
-                                        <button type="button" onclick="return cancel_usertext(this);" class="cancel"
-                                                style="display:none">cancel
-                                        </button>
-                                    </div>
-                                </div>
                                 <div class="markhelp" style="display:none"><p></p>
 
                                     <p>reddit 使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>

@@ -14,13 +14,16 @@
 					<p class="title">
 						<a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a> 
 						
-					</p>
+					</p>s
 					{if $page neq "comments"}
 						<div class="expando-button collapsed selftext"></div>
 					{/if}
-					<p class="tagline">发表 <time class="live-timestamp"></time>by
-						 <a href="" class="author may-blank ">{$entry.author}</a>
+					<p class="tagline">
+						 <a href="./v/user/{$entry.author}" class="author may-blank ">{$entry.author}</a>
 						 <span class="userattrs"></span>
+						 发表于 
+						 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
+						 
 					</p>
 					
 					<div class="expando expando-{$entry.thingid}" style="display: {if $page eq "comments"}block{else}none{/if};"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p>{$entry.text}</p>
@@ -28,7 +31,7 @@
 					</div></form></div>
 					
 					<ul class="flat-list buttons">
-						<li class="first"><a href="">139 留言</a></li>
+						<li class="first"><a href="">{$entry.replies} 留言</a></li>
 						<li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li>
 						<li class="link-save-button save-button"><a href="#">儲存</a></li>
 						<li>

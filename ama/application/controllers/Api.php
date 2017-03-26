@@ -42,6 +42,9 @@ class Api extends CI_Controller {
             case 'submit-new-link':
                 $result = $this->doSubmitNewLink($jobj);
             break;
+            case 'submit-new-comment':
+                $result = $this->doSubmitNewComment($jobj);
+            break;
             case 'logout':
                 $result = $this->doLogout($jobj);
             default:
@@ -74,6 +77,42 @@ class Api extends CI_Controller {
 
         
     }
+
+    function doSubmitNewComment($json){
+        $user = $this->session->userdata('user.info');
+        if(isset($_SESSION['user.info'])){
+
+            $this->db->trans_start();
+        
+            $this->db->insert('things',
+                array('author'=>$user['userid'],
+                    'title'=>'',
+                    'content'=>$json->{'content'},
+                    'main'=>$json->{'main'},
+                    'parent'=>$json->{'parent'},
+                    'cdate'=>$this->curTime(),
+                    'udate'=>$this->curTime()));
+
+            $commentid = $this->db->insert_id();
+            
+            $this->db->set('replies','replies+1',FALSE);
+            $this->db->where('ID',$json->{'main'});
+            $this->db->or_where('ID',$json->{'parent'});
+            $this->db->update('things');
+
+
+
+            $this->db->trans_complete();
+            return array('code'=>200,'commentid'=>$commentid);
+
+        }else{
+            return array('code'=>404);
+
+        }
+
+        
+    }
+
 
     function doLogin($json){
 
@@ -116,85 +155,9 @@ class Api extends CI_Controller {
     
 
     function curTime(){
-        $ms = time()*1000-90*24*60*60*1000;
+        $ms = time();
         return $ms;
     }
  
-
-    function doPostThread($json){
-        $date = new DateTime();
-        $data = array(
-            'uid'=>$json->{'uid'},
-            'content'=>$json->{'content'},
-            'sn'=>$json->{'sn'},
-            'rid'=>0,
-            'rcount'=>0,
-            'uname'=>$json->{'uname'},
-            'cdate'=>$date->format('Y-m-d H:i:s')
-        );
-        if(array_key_exists('rid', $json)){
-            $data['rid']= $json->{'rid'};
-        }
-        $this->db->insert('threads',$data);
-        if(array_key_exists('rid', $json) && $json->{'rid'}>0){
-            $this->db->set('rcount','rcount+1',FALSE);
-            $this->db->where('id',$json->{'rid'});
-            $this->db->update('threads');
-        }
-        return 'OK';
-        
-    }
-    
-    function doLoadThreads($json){
-        $action = $json->{'ACTION'};
-        $id = $json->{'id'};
-        $sql = "select * from threads";
-        $sql = $sql . " where rid='" . $json->{'rid'} . "'";
-        if($id!='now'){
-            if($action=='loadThreadsTo'){
-                $sql = $sql . " and id < '{$id}'";
-            }else{
-                $sql = $sql . " and id > '{$id}'";
-            }
-        }
-        $sql = $sql . " order by id desc limit " . $json->{'max'};
-        
-        $query = $this->db->query($sql);
-        $rows = $query->result_array();
-        $result = array(
-            'ACTION'=>$json->{'ACTION'},
-            'threads'=>$rows
-        );
-        return $result;
-    }
-    
-    function doLoadSgfs($json){
-        $action = $json->{'ACTION'};
-        $id = $json->{'id'};
-        $sql = "select * from sgfs where 1=1";
-         
-        if($id!='now'){
-            if($action=='loadSgfsTo'){
-                $sql = $sql . " and id < '{$id}'";
-            }else{
-                $sql = $sql . " and id > '{$id}'";
-            }
-        }
-
-        if(array_key_exists('skey', $json)){
-            $skey = $json->{'skey'};
-            $sql = $sql . " and (black like '%{$skey}' or white like '%{$skey}' or name like '%{$skey}')";
-        }
-        
-        $sql = $sql . " order by id desc limit " . $json->{'max'};
-        
-        $query = $this->db->query($sql);
-        $rows = $query->result_array();
-        $result = array(
-            'ACTION'=>$json->{'ACTION'},
-            'rows'=>$rows
-        );
-        return $result;
-    }
 
 }

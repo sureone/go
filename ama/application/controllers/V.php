@@ -39,121 +39,6 @@ class V extends CI_Controller {
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
-	const lv2=array(array(
-	        'thingid'=>1,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>1,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>array()),
-	        array(
-	        'thingid'=>2,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>2,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>array()),
-	        array(
-	        'thingid'=>3,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>3,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>array())
-	        );
-
-	const lv1=array(array(
-	        'thingid'=>1,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>1,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>self::lv2),
-	        array(
-	        'thingid'=>2,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>2,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>array()),
-	        array(
-	        'thingid'=>3,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>3,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>array())
-	        );
-
-	protected $things=array(
-			array(
-	        'thingid'=>1,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>1,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>self::lv1),
-	        array(
-	        'thingid'=>2,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>2,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>array()),
-	        array(
-	        'thingid'=>3,
-	        'title'=>'18 year old female, fed via NG tube AMA',
-	        'text'=>'i am an 18 year old girl, fed via an NG tube (and have been for over 2 years) due to illness. normally people have a lot of questions about my tube, and currently i am in hospital with no entertainment so i thought i would answer any questions people have!',
-	        'author'=>'chloegbih',
-	        'userid'=>'chloegbih',
-	        'likes'=>200,
-	        'timeago'=>'',
-	        'no'=>3,
-	        'dislikes'=>160,
-	        'score'=>78,
-	        'comments'=>array())
-	        );
-
 
 	function common(){
 		$user_info = $this->session->userdata('user.info');
@@ -167,10 +52,7 @@ class V extends CI_Controller {
 	function showHotView(){
 		$this->common();
 
-		$rows = $this->amamodel->readHotThings('30',10);
-
-
-
+		$rows = $this->amamodel->readHotThings(0,10);
 		$this->ci_smarty->assign("page","hot");
 		$this->ci_smarty->assign("things",$rows);
 		$this->ci_smarty->display("hot.tpl");
@@ -178,9 +60,16 @@ class V extends CI_Controller {
 
 	}
 
-	public function test(){
-		$this->ci_smarty->assign("testary", array(array('name'=>'jerry',"old"=>2),array('name'=>'jack','old'=>3)));
-		$this->ci_smarty->display('test.tpl');
+	public function test($param){
+
+
+		$thing = $this->amamodel->readThing($param)['0'];
+
+		$thing['comments'] = $this->amamodel->readComments($param,0,100);
+
+
+		echo json_encode_utf8($thing);
+		
 	}
 
 
@@ -215,87 +104,19 @@ class V extends CI_Controller {
 		$this->common();
 		$this->ci_smarty->assign("page","comments");
 		$this->ci_smarty->assign("thingid",$thingid);
-		$this->ci_smarty->assign("things",array($this->things[0]));
+
+
+		$thing = $this->amamodel->readThing($thingid)['0'];
+
+		$comments_result = $this->amamodel->readComments($thingid,0,100);
+		$thing['comments']=$comments_result['comments'];
+		$thing['comments_count']=$comments_result['comments_count'];
+
+		$this->ci_smarty->assign("things",array($thing));
 		
 		$this->ci_smarty->display("comments.tpl");
 		// $this->load->view('comments',array('user'=>$user_info,'page'=>'comments','thingid'=>$thingid));
 	}
 
-	
-	function doPostThread($json){
-		$date = new DateTime();
-		$data = array(
-			'uid'=>$json->{'uid'},
-			'content'=>$json->{'content'},
-			'sn'=>$json->{'sn'},
-			'rid'=>0,
-			'rcount'=>0,
-			'uname'=>$json->{'uname'},
-			'cdate'=>$date->format('Y-m-d H:i:s')
-		);
-		if(array_key_exists('rid', $json)){
-			$data['rid']= $json->{'rid'};
-		}
-		$this->db->insert('threads',$data);
-		if(array_key_exists('rid', $json) && $json->{'rid'}>0){
-			$this->db->set('rcount','rcount+1',FALSE);
-			$this->db->where('id',$json->{'rid'});
-			$this->db->update('threads');
-		}
-		return 'OK';
-		
-	}
-	
-	function doLoadThreads($json){
-		$action = $json->{'ACTION'};
-		$id = $json->{'id'};
-		$sql = "select * from threads";
-		$sql = $sql . " where rid='" . $json->{'rid'} . "'";
-		if($id!='now'){
-			if($action=='loadThreadsTo'){
-				$sql = $sql . " and id < '{$id}'";
-			}else{
-				$sql = $sql . " and id > '{$id}'";
-			}
-		}
-		$sql = $sql . " order by id desc limit " . $json->{'max'};
-		
-		$query = $this->db->query($sql);
-		$rows = $query->result_array();
-		$result = array(
-			'ACTION'=>$json->{'ACTION'},
-			'threads'=>$rows
-		);
-		return $result;
-	}
-	
-	function doLoadSgfs($json){
-		$action = $json->{'ACTION'};
-		$id = $json->{'id'};
-		$sql = "select * from sgfs where 1=1";
-         
-		if($id!='now'){
-			if($action=='loadSgfsTo'){
-				$sql = $sql . " and id < '{$id}'";
-			}else{
-				$sql = $sql . " and id > '{$id}'";
-			}
-		}
-
-		if(array_key_exists('skey', $json)){
-            $skey = $json->{'skey'};
-            $sql = $sql . " and (black like '%{$skey}' or white like '%{$skey}' or name like '%{$skey}')";
-        }
-        
-		$sql = $sql . " order by id desc limit " . $json->{'max'};
-		
-		$query = $this->db->query($sql);
-		$rows = $query->result_array();
-		$result = array(
-			'ACTION'=>$json->{'ACTION'},
-			'rows'=>$rows
-		);
-		return $result;
-	}
 
 }
