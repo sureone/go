@@ -14,7 +14,7 @@
 					<p class="title">
 						<a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a> 
 						
-					</p>s
+					</p>
 					{if $page neq "comments"}
 						<div class="expando-button collapsed selftext"></div>
 					{/if}
@@ -31,7 +31,7 @@
 					</div></form></div>
 					
 					<ul class="flat-list buttons">
-						<li class="first"><a href="">{$entry.replies} 留言</a></li>
+						<li class="first"><a href="./v/comments/{$entry.thingid}">{$entry.replies} 留言</a></li>
 						<li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li>
 						<li class="link-save-button save-button"><a href="#">儲存</a></li>
 						<li>
