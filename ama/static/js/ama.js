@@ -1,4 +1,22 @@
-
+function voteit(url,elm,v,thingid){
+    var map={
+        action:'vote-link',
+        thingid:thingid,
+        idata:v
+    };
+    var postdata = JSON.stringify(map);
+    $.ajax({
+        dataType : 'json',
+        type : 'POST',
+        url : url,
+        data : postdata,
+        success : function(data) {
+            console.log(data);
+        },
+        error : function() {
+        }
+    });
+}
 $(document).ready(function () {
 // <div class="modal-backdrop fade in"></div>
 
@@ -26,6 +44,7 @@ $(document).ready(function () {
     })
 
 
+ 
     $(document).delegate("#siteTable .thing .expando-button.expanded", "click", function(e){
 
         

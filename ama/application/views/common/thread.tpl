@@ -4,11 +4,11 @@
 				<span class="rank"></span>
 				{/if}
 				<div class="midcol unvoted">
-					<div class="arrow up login-required access-required" tabindex="0"  data-thingid="{$entry.thingid}" onclick="voteit(this,1)"></div>
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,{$entry.thingid})"></div>
 					<div class="score dislikes" title="77">{$entry.dislikes}</div>
 					<div class="score unvoted" title="78">{$entry.likes-$entry.dislikes}</div>
 					<div class="score likes" title="79">{$entry.likes}</div>
-					<div class="arrow down login-required access-required" tabindex="0"  data-thingid="{$entry.thingid}" onclick="voteit(this,-1)"></div>
+					<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,{$entry.thingid})"></div>
 				</div>
 				<div class="entry unvoted">
 					<p class="title">

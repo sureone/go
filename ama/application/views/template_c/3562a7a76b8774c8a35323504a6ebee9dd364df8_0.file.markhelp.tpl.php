@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 01:49:06
+/* Smarty version 3.1.30, created on 2017-03-27 05:53:53
   from "D:\work\go\ama\application\views\common\markhelp.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d07882475f20_42148569',
+  'unifunc' => 'content_58d88cd1692f16_85710514',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3562a7a76b8774c8a35323504a6ebee9dd364df8' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\markhelp.tpl',
-      1 => 1489975520,
+      1 => 1490586688,
       2 => 'file',
     ),
   ),
@@ -20,30 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d07882475f20_42148569 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d88cd1692f16_85710514 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-                                <div class="bottom-area"><span class="help-toggle toggle" style=""><a
-                                            class="option active " href="#" tabindex="100"
-                                            onclick="return toggle(this, helpon, helpoff)">格式說明</a><a class="option "
-                                                                                                      href="#">隱藏說明</a></span><a
-                                        href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a><span
-                                        class="error TOO_LONG field-text" style="display:none"></span><span
-                                        class="error RATELIMIT field-ratelimit" style="display:none"></span><span
-                                        class="error NO_TEXT field-text" style="display:none"></span><span
-                                        class="error TOO_OLD field-parent" style="display:none"></span><span
-                                        class="error THREAD_LOCKED field-parent" style="display:none"></span><span
-                                        class="error DELETED_COMMENT field-parent" style="display:none"></span><span
-                                        class="error USER_BLOCKED field-parent" style="display:none"></span><span
-                                        class="error USER_MUTED field-parent" style="display:none"></span><span
-                                        class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
 
-                                    <div class="usertext-buttons">
-                                        <button type="submit" onclick="" class="save" style="display:none">save</button>
-                                        <button type="button" onclick="return cancel_usertext(this);" class="cancel"
-                                                style="display:none">cancel
-                                        </button>
-                                    </div>
-                                </div>
                                 <div class="markhelp" style="display:none"><p></p>
 
                                     <p>reddit 使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>

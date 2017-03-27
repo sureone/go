@@ -42,6 +42,9 @@ class Api extends CI_Controller {
             case 'submit-new-link':
                 $result = $this->doSubmitNewLink($jobj);
             break;
+            case 'vote-link':
+                $result = $this->doVoteLink($jobj);
+            break;
             case 'submit-new-comment':
                 $result = $this->doSubmitNewComment($jobj);
             break;
@@ -52,11 +55,83 @@ class Api extends CI_Controller {
         }
         echo json_encode_utf8($result);
     }
+    
     function doLogout($json){
         $this->session->unset_userdata('user.info');
         return array('code'=>200);
     }
 
+   
+
+    function doVoteLink($json){
+        $user = $this->session->userdata('user.info');
+        $result = array('code'=>404);
+        if(isset($_SESSION['user.info'])){
+            $id = $user['userid'] . '-' . $json->{'thingid'} . '-vote';
+            $query = $this->db->select(['idata'])
+                              ->where('id',$id)
+                              ->get('user_thing_map');
+            $rows = $query->result_array();
+
+            $idata_new = $json->{'idata'};
+            $this->db->trans_start();
+            if(count($rows)==1){
+
+                $idata_old = $rows[0]['idata'];
+                if($idata_old == $idata_new){
+                    $this->db->where('id',$id);
+                    $this->db->delete('user_thing_map');
+
+                    if($idata_new==1){
+                        $this->db->set('ups','ups-1',FALSE);
+                    }else{
+                        $this->db->set('downs','downs-1',FALSE);
+                    }
+                    $this->db->where('ID',$json->{'thingid'});
+                    $this->db->update('things');
+
+                }else{
+                    $this->db->set('idata',$json->{'idata'});
+                    $this->db->where('id',$id);
+                    $this->db->update('user_thing_map');
+
+
+                    if($idata_new==1){
+                        $this->db->set('ups','ups+1',FALSE);
+                        $this->db->set('downs','downs-1',FALSE);
+                    }else if($idata_new==-1){
+                        $this->db->set('ups','ups-1',FALSE);
+                        $this->db->set('downs','downs+1',FALSE);
+                    }
+                    $this->db->where('ID',$json->{'thingid'});
+                    $this->db->update('things');
+                }
+
+            }else{
+                $this->db->insert('user_thing_map',
+                    array('id'=>$id,
+                        'idata'=>$json->{'idata'},
+                        'userid'=>$user['userid'],
+                        'thingid'=>$json->{'thingid'},
+                        'maptype'=>'vote',
+                        'cdate'=>$this->curTime(),
+                        'udate'=>$this->curTime()));
+                if($idata_new==1){
+                    $this->db->set('ups','ups+1',FALSE);
+                }else{
+                    $this->db->set('downs','downs+1',FALSE);
+                }
+                $this->db->where('ID',$json->{'thingid'});
+                $this->db->update('things');
+            }
+            $result = array('code'=>200,'mapid'=>$id);
+            $this->db->trans_complete();
+
+        }
+        return $result;
+
+        
+    }
 
     function doSubmitNewLink($json){
         $user = $this->session->userdata('user.info');
