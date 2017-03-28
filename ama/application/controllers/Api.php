@@ -45,6 +45,9 @@ class Api extends CI_Controller {
             case 'vote-link':
                 $result = $this->doVoteLink($jobj);
             break;
+            case 'save-link':
+                $result = $this->doSaveLink($jobj);
+            break;
             case 'submit-new-comment':
                 $result = $this->doSubmitNewComment($jobj);
             break;
@@ -61,7 +64,31 @@ class Api extends CI_Controller {
         return array('code'=>200);
     }
 
-   
+    function doSaveLink($json){
+        $user = $this->session->userdata('user.info');
+        $result = array('code'=>404);
+        if(isset($_SESSION['user.info'])){
+            $id = $user['userid'] . '-' . $json->{'thingid'} . '-save';
+            $query = $this->db->select(['idata'])
+                              ->where('id',$id)
+                              ->get('user_thing_map');
+            $rows = $query->result_array();
+            if(count($rows)==0){
+                 $this->db->insert('user_thing_map',
+                    array('id'=>$id,
+                        'userid'=>$user['userid'],
+                        'thingid'=>$json->{'thingid'},
+                        'maptype'=>'save',
+                        'cdate'=>$this->curTime(),
+                        'udate'=>$this->curTime()));
+
+            }
+            $result = array('code'=>200,'mapid'=>$id);
+        }
+        return $result;
+
+
+    }
 
     function doVoteLink($json){
         $user = $this->session->userdata('user.info');

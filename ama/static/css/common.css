@@ -1135,3 +1135,13 @@ form .spacer+.spacer {
     margin: 5px 305px 5px 0px;
     padding: 5px 10px;
 }
+
+.comment .title {
+    font-size: small;
+    margin-top: 10px;
+}
+
+.md textarea, .md .-text, .md p, .md pre>code, .md th, .md td, .md li {
+    font-size: 1em;
+    line-height: 1.4285714285714286em;
+}

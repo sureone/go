@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 01:44:32
+/* Smarty version 3.1.30, created on 2017-03-28 03:14:21
   from "D:\go\ama\application\views\common\thread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d852604d1f08_99422573',
+  'unifunc' => 'content_58d9b8ed9e1dd3_38209317',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1490571869,
+      1 => 1490663659,
       2 => 'file',
     ),
   ),
@@ -20,35 +20,75 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d852604d1f08_99422573 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9b8ed9e1dd3_38209317 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-			<div class="thing odd  link self" id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+			<div class="thing odd <?php if ($_smarty_tpl->tpl_vars['entry']->value['parent'] != 0) {?>comment<?php } else { ?>link self<?php }?>" id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " data-thingid=<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 >
-				<p class="parent"></p>
+				<?php if ($_smarty_tpl->tpl_vars['entry']->value['parent'] != 0) {?>
+				<p class="parent">
+					<a name="dffeipd"></a>
+					<a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_id'];?>
+" class="title">
+						<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['p_title']) && $_smarty_tpl->tpl_vars['entry']->value['p_title'] != '') {?>
+							<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_title'];?>
+
+						<?php } else { ?>
+							<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_text'];?>
+
+						<?php }?>
+					</a>
+					 by 
+					<a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_author'];?>
+" class="author may-blank id-t2_11v90c"><?php echo $_smarty_tpl->tpl_vars['entry']->value['p_author'];?>
+</a>
+					<span class="userattrs"></span>
+				</p>
+				<?php }?>
+
 				<?php if ($_smarty_tpl->tpl_vars['page']->value != "comments") {?>
 				<span class="rank"></span>
 				<?php }?>
 				<div class="midcol unvoted">
-					<div class="arrow up login-required access-required" tabindex="0"  data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-" onclick="voteit(this,1)"></div>
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+)"></div>
+
+					<?php if ($_smarty_tpl->tpl_vars['entry']->value['parent'] == 0) {?>
 					<div class="score dislikes" title="77"><?php echo $_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
 </div>
 					<div class="score unvoted" title="78"><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes']-$_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
 </div>
 					<div class="score likes" title="79"><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes'];?>
 </div>
-					<div class="arrow down login-required access-required" tabindex="0"  data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-" onclick="voteit(this,-1)"></div>
+					<?php }?>
+					<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+)"></div>
 				</div>
 				<div class="entry unvoted">
-					<p class="title">
-						<a class="title may-blank loggedin " href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+					
+						<?php if ($_smarty_tpl->tpl_vars['pagetype']->value == "list") {?>
+						 <p class="title"><a class="title may-blank loggedin " href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 "><?php echo $_smarty_tpl->tpl_vars['entry']->value['title'];?>
-</a> 
+</a></p>
+						<?php } else { ?>
 						
-					</p>
-					<?php if ($_smarty_tpl->tpl_vars['page']->value != "comments") {?>
+							<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['title']) && $_smarty_tpl->tpl_vars['entry']->value['title'] != '') {?>
+								 <p class="title"><a class="title may-blank loggedin " href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+"><?php echo $_smarty_tpl->tpl_vars['entry']->value['title'];?>
+</a></p>
+							<?php } else { ?>
+							<div class="usertext-body may-blank-within md-container ">
+								<div class="md">
+								<?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
+
+								</div>
+							</div>
+							<?php }?>
+							
+						<?php }?>
+					
+
+					<?php if ($_smarty_tpl->tpl_vars['page']->value == "hot") {?>
 						<div class="expando-button collapsed selftext"></div>
 					<?php }?>
 					<p class="tagline">
@@ -61,19 +101,28 @@ function content_58d852604d1f08_99422573 (Smarty_Internal_Template $_smarty_tpl)
 "></time>
 						 
 					</p>
-					
+					<?php if ($_smarty_tpl->tpl_vars['pagetype']->value == "list") {?>
 					<div class="expando expando-<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-" style="display: <?php if ($_smarty_tpl->tpl_vars['page']->value == "comments") {?>block<?php } else { ?>none<?php }?>;"><form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt"><input type="hidden" name="thing_id" value="t3_609l7s"><div class="usertext-body may-blank-within md-container "><div class="md"><p><?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
+" style="display: <?php if ($_smarty_tpl->tpl_vars['page']->value == "comments") {?>block<?php } else { ?>none<?php }?>;">
+						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
+							<input type="hidden" name="thing_id" value="t3_609l7s">
+							<div class="usertext-body may-blank-within md-container ">
+								<div class="md">
+									<p><?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
 </p>
+								</div>
+							</div>
+						</form>
 					</div>
-					</div></form></div>
+					<?php }?>
 					
 					<ul class="flat-list buttons">
 						<li class="first"><a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 "><?php echo $_smarty_tpl->tpl_vars['entry']->value['replies'];?>
  留言</a></li>
 						<li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li>
-						<li class="link-save-button save-button"><a href="#">儲存</a></li>
+						<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+);return false;">儲存</a></li>
 						<li>
 							<form action="/post/hide" method="post" class="state-button hide-button">
 								<input type="hidden" name="executed" value="隱藏">

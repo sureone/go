@@ -3,8 +3,8 @@
     <div class=" thing id-{$entry.thingid} noncollapsed   comment " id="thing_{$entry.thingid}" onclick="">
         <p class="parent"><a name="df1l1xv"></a></p>
         <div class="midcol unvoted">
-            <div class="arrow up login-required access-required" data-thingid="{$entry.thingid}" onclick="voteit(this,1)"></div>
-            <div class="arrow down login-required access-required"  data-thingid="{$entry.thingid}" onclick="voteit(this,-1)"></div>
+            <div class="arrow up login-required access-required" onclick="voteit('./api',this,1,{$entry.thingid})"></div>
+            <div class="arrow down login-required access-required"  onclick="voteit('./api',this,-1,{$entry.thingid})"></div>
         </div>
         <div class="entry unvoted">
             <p class="tagline">

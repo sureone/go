@@ -42,6 +42,7 @@ class V extends CI_Controller {
 
 	function common(){
 		$user_info = $this->session->userdata('user.info');
+		$this->ci_smarty->assign("pagetype","list");
 		if($user_info!=null){
 			$this->ci_smarty->assign("user",$user_info);
 	        $this->ci_smarty->assign("logined","true");
@@ -76,12 +77,38 @@ class V extends CI_Controller {
 	public function user($userid,$page='home')
 	{
 		$this->common();
+
+		$things= array();
 		
 		$this->ci_smarty->assign("page","user-{$page}");
-		$this->ci_smarty->assign("things",array());
+		$this->ci_smarty->assign("userid",$userid);
+		$this->ci_smarty->assign("pagetype","archive");
+		
 		if($page == "home"){
-
+			$things = $this->amamodel->readThingsByUser(0,100,$userid);
 		}
+
+		if($page == "replies"){
+			$things = $this->amamodel->readThingsByUser(0,100,$userid,"reply");
+		}
+
+		if($page == "submitted"){
+			$things = $this->amamodel->readThingsByUser(0,100,$userid,"main");
+		}
+
+		if($page == "saved"){
+			$things = $this->amamodel->readThingsByUser(0,100,$userid,"saved");
+		}
+
+		if($page == "upvoted"){
+			$things = $this->amamodel->readThingsByUser(0,100,$userid,"ups");
+		}
+
+		if($page == "downvoted"){
+			$things = $this->amamodel->readThingsByUser(0,100,$userid,"downs");
+		}
+
+		$this->ci_smarty->assign("things",$things);
 		$this->ci_smarty->display("user-{$page}.tpl");
 	}
 

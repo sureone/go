@@ -17,6 +17,25 @@ function voteit(url,elm,v,thingid){
         }
     });
 }
+
+function saveit(url,elm,thingid){
+    var map={
+        action:'save-link',
+        thingid:thingid
+    };
+    var postdata = JSON.stringify(map);
+    $.ajax({
+        dataType : 'json',
+        type : 'POST',
+        url : url,
+        data : postdata,
+        success : function(data) {
+            console.log(data);
+        },
+        error : function() {
+        }
+    });
+}
 $(document).ready(function () {
 // <div class="modal-backdrop fade in"></div>
 
