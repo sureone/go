@@ -16,6 +16,8 @@ class AmaModel extends CI_Model{
     	    $this->db->join('users', 'users.userid = things.author');
     		$this->db->where('main',0);
     		$this->db->where('parent',0);
+            $this->db->where('stype','link');
+            
             if($maxid!=0)
     		  $this->db->where('things.id<',$maxid);
             else
@@ -30,6 +32,22 @@ class AmaModel extends CI_Model{
     }
 
 
+    public function readMessagesAndRepliesByUser($maxid,$limit,$userid,$type='all'){
+
+
+        $sql1 = "select '' as p_text,'' as p_title, FROM_UNIXTIME(cdate) as timeago,title,content as text,
+            id as thingid,ups as likes,downs as dislikes,replies,stype from things where recipients='{$userid}'";
+        $sql2 = "select a.content as p_text,a.title as p_title, FROM_UNIXTIME(b.cdate) as timeago,b.title,b.content as text,
+            b.id as thingid,b.ups as likes,b.downs as dislikes,b.replies,b.stype from things a 
+            inner join things b on b.parent = a.id where a.author='{$userid}'";
+
+        $sql = "({$sql1}) union ({$sql2})";
+
+        $query = $this->db->query($sql);
+        $rows = $query->result_array();
+
+        return $rows;
+    }
 
 
 
@@ -55,10 +73,12 @@ class AmaModel extends CI_Model{
              $this->db->join('user_thing_map b', "b.userid='" . $userid . "' and b.maptype='vote' and b.idata='-1' and b.thingid=things.id",'INNER',TRUE);
         }
         
-        if($maxid!=0)
+        if($maxid!=0)   
           $this->db->where('things.id<',$maxid);
         else
           $this->db->order_by('things.id','DESC');
+
+        $this->db->where('things.stype','link');
         if($type=="main"){
             $this->db->where('things.author',$userid);
             $this->db->where('things.parent','0');

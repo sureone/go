@@ -64,15 +64,16 @@ class V extends CI_Controller {
 
 	}
 
-	public function test($param){
+	public function test(){
+		$user_info = $this->session->userdata('user.info');
 
+		// $thing = $this->amamodel->readThing($param)['0'];
 
-		$thing = $this->amamodel->readThing($param)['0'];
+		// $thing['comments'] = $this->amamodel->readComments($param,0,100);
 
-		$thing['comments'] = $this->amamodel->readComments($param,0,100);
+		$things = $this->amamodel->readMessagesAndRepliesByUser(0,20,$user_info['userid']);
 
-
-		echo json_encode_utf8($thing);
+		echo json_encode_utf8($things);
 		
 	}
 
@@ -84,10 +85,11 @@ class V extends CI_Controller {
 
 		$things= array();
 		
+		$user_info = $this->session->userdata('user.info');
 		$this->ci_smarty->assign("page","message-{$page}");
 		$this->ci_smarty->assign("pagetype","archive");
 		if($page == "home"){
-			
+			$things = $this->amamodel->readMessagesAndRepliesByUser(0,20,$user_info['userid']);	
 		}
 
 		$this->ci_smarty->assign("things",$things);

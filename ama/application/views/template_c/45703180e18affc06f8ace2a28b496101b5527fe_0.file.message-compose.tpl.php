@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 15:11:56
+/* Smarty version 3.1.30, created on 2017-03-29 14:49:41
   from "D:\go\ama\application\views\message-compose.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58da611ce0ca69_82675959',
+  'unifunc' => 'content_58dbad65ebc550_55982698',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '45703180e18affc06f8ace2a28b496101b5527fe' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\message-compose.tpl',
-      1 => 1490706642,
+      1 => 1490791384,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58da611ce0ca69_82675959 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbad65ebc550_55982698 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -53,7 +53,7 @@ function content_58da611ce0ca69_82675959 (Smarty_Internal_Template $_smarty_tpl)
 	
 		<h1>傳送一個私人訊息</h1>
 	    <form class="submit content warn-on-unload" onsubmit="handleFormSubmit(this); return false;" action="./api" id="newlink" method="post">
-        <input name="action" value="submit-new-link" type="hidden">
+        <input name="action" value="submit-new-message" type="hidden">
         
         <div class="formtabs-content">
 	        <div class="spacer">
@@ -61,7 +61,7 @@ function content_58da611ce0ca69_82675959 (Smarty_Internal_Template $_smarty_tpl)
 	        		<span class="title ">至</span> 
 	        		<span class="little gray roundfield-description">(username)</span>
 	        		<div class="roundfield-content">
-	        			<input type="text" name="to" value="" onchange="admincheck(this)">
+	        			<input type="text" name="recipients" value="" onchange="admincheck(this)">
 	        			<span class="error NO_USER field-to" style="display:none"></span>
 	        			<span class="error USER_DOESNT_EXIST field-to" style="display:none">
 	        			</span>
@@ -87,10 +87,10 @@ function content_58da611ce0ca69_82675959 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="roundfield " id="text-field">
                     <span class="title ">文字</span> 
                     <span class="little gray roundfield-description">(非必填項目)</span>
-                    <div class="roundfield-content"><input name="kind" value="self" type="hidden">
+                    <div class="roundfield-content">
+                        <input name="kind" value="self" type="hidden">
 
                         <div class="usertext">
-                            <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
                                 <div class="md">
                                     <textarea rows="1" cols="1" name="content" class=""></textarea>
@@ -143,7 +143,7 @@ function content_58da611ce0ca69_82675959 (Smarty_Internal_Template $_smarty_tpl)
 
 
 <?php echo '<script'; ?>
- type="text/javascript" src="./static/js/user-home.js?v=8"><?php echo '</script'; ?>
+ type="text/javascript" src="./static/js/message-compose.js?v=8"><?php echo '</script'; ?>
 >
 </html><?php }
 }
