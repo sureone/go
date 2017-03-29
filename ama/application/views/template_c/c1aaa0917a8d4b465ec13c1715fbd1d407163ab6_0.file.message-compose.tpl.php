@@ -1,9 +1,40 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-03-29 07:58:29
+  from "D:\work\go\ama\application\views\message-compose.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58db4d059f30b8_44960581',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'c1aaa0917a8d4b465ec13c1715fbd1d407163ab6' => 
+    array (
+      0 => 'D:\\work\\go\\ama\\application\\views\\message-compose.tpl',
+      1 => 1490767061,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:common/page-header.tpl' => 1,
+    'file:common/header-bottom-right.tpl' => 1,
+    'file:common/markhelp.tpl' => 1,
+    'file:common/login-modal.tpl' => 1,
+  ),
+),false)) {
+function content_58db4d059f30b8_44960581 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <html lang="en">
 <head>
-	{include file="common/page-header.tpl"}
+	<?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </head>
 
-<body class="listing-page {if $logined eq "true"}loggedin{/if} {$page}-page">
+<body class="listing-page <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+-page">
 
 
 <div id="header">
@@ -14,7 +45,9 @@
 		<li><a href="./v/message/inbox" class="choice">收件匣</a></li>
 		<li><a href="./v/message/sent" class="choice">发件箱</a></li>
 </div>
-{include file="common/header-bottom-right.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:common/header-bottom-right.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </div>
 <div class="content">
 	
@@ -80,7 +113,9 @@
 					                <span class="error USER_MUTED field-parent" style="display:none"></span>
 					                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
 					            </div>
-                                {include file="common/markhelp.tpl"}
+                                <?php $_smarty_tpl->_subTemplateRender("file:common/markhelp.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
                             </div>
                         </div>
                         <span class="error NO_SELFS field-sr" style="display:none"></span>
@@ -101,9 +136,14 @@
 </div>
 
 <div id="footer"></div>
-{include file="common/login-modal.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:common/login-modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </body>
 
 
-<script type="text/javascript" src="./static/js/message-compose.js?v=8"></script>
-</html>
+<?php echo '<script'; ?>
+ type="text/javascript" src="./static/js/message-compose.js?v=8"><?php echo '</script'; ?>
+>
+</html><?php }
+}

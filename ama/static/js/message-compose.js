@@ -1,6 +1,6 @@
 function handleFormSubmit(form){
 
-
+     $(form).find(".status").html("消息发送中。。。");
     $$.ajaxPostForm(
         //action
         $(form).attr('action'),
@@ -10,11 +10,12 @@ function handleFormSubmit(form){
         null,
         //callback
         function(sucess,data){
-            window.location.href="./";    
+
             console.log(data);
 
+            $(form).find(".status").html("消息已送达。");
         }
     )
 
-	
+    
 }

@@ -42,6 +42,9 @@ class Api extends CI_Controller {
             case 'submit-new-link':
                 $result = $this->doSubmitNewLink($jobj);
             break;
+            case 'submit-new-message':
+                $result = $this->doSubmitNewMessage($jobj);
+            break;
             case 'vote-link':
                 $result = $this->doVoteLink($jobj);
             break;
@@ -86,8 +89,6 @@ class Api extends CI_Controller {
             $result = array('code'=>200,'mapid'=>$id);
         }
         return $result;
-
-
     }
 
     function doVoteLink($json){
@@ -167,6 +168,26 @@ class Api extends CI_Controller {
             $this->db->insert('things',
                 array('author'=>$user['userid'],
                     'title'=>$json->{'title'},
+                    'stype'=>'link',
+                    'content'=>$json->{'content'},
+                    'cdate'=>$this->curTime(),
+                    'udate'=>$this->curTime()));
+                return array('code'=>200,'thingid'=>$this->db->insert_id());
+
+        }else{
+            return array('code'=>404);
+        }
+    }
+
+    function doSubmitNewMessage($json){
+        $user = $this->session->userdata('user.info');
+        if(isset($_SESSION['user.info'])){
+        
+            $this->db->insert('things',
+                array('author'=>$user['userid'],
+                    'title'=>$json->{'title'},
+                    'recipients'=>$json->{'recipients'},
+                    'stype'=>'message',
                     'content'=>$json->{'content'},
                     'cdate'=>$this->curTime(),
                     'udate'=>$this->curTime()));
@@ -176,7 +197,6 @@ class Api extends CI_Controller {
             return array('code'=>404);
 
         }
-
         
     }
 
@@ -190,6 +210,7 @@ class Api extends CI_Controller {
                 array('author'=>$user['userid'],
                     'title'=>'',
                     'content'=>$json->{'content'},
+                    'stype'=>'comment',
                     'main'=>$json->{'main'},
                     'parent'=>$json->{'parent'},
                     'cdate'=>$this->curTime(),

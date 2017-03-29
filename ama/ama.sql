@@ -37,9 +37,8 @@ CREATE TABLE IF NOT EXISTS `datas` (
 --
 -- 表的结构 `things`
 --
-
 CREATE TABLE IF NOT EXISTS `things` (
-`ID` bigint(20) NOT NULL,
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `ups` int(11) NOT NULL DEFAULT '0',
   `downs` int(11) NOT NULL DEFAULT '0',
   `type` varchar(12) NOT NULL,
@@ -50,9 +49,11 @@ CREATE TABLE IF NOT EXISTS `things` (
   `content` text CHARACTER SET utf8,
   `main` bigint(20) NOT NULL DEFAULT '0',
   `parent` bigint(20) NOT NULL DEFAULT '0',
-  `replies` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
-
+  `replies` int(11) NOT NULL DEFAULT '0',
+  `recipients` varchar(200) DEFAULT NULL,
+  `stype` varchar(20) NOT NULL DEFAULT 'link',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
 -- --------------------------------------------------------
 
 --
