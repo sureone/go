@@ -1145,3 +1145,10 @@ form .spacer+.spacer {
     font-size: 1em;
     line-height: 1.4285714285714286em;
 }
+
+.gray {
+    color: #808080;
+}
+.little {
+    font-size: smaller;
+}

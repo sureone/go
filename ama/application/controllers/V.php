@@ -46,10 +46,13 @@ class V extends CI_Controller {
 		if($user_info!=null){
 			$this->ci_smarty->assign("user",$user_info);
 	        $this->ci_smarty->assign("logined","true");
+	        return true;
     	}else{
     		$this->ci_smarty->assign("logined","false");
+    		return false;
     	}
 	}
+
 	function showHotView(){
 		$this->common();
 
@@ -71,6 +74,25 @@ class V extends CI_Controller {
 
 		echo json_encode_utf8($thing);
 		
+	}
+
+
+	public function message($page='inbox'){
+		if($this->common()==false){
+			return;
+		}
+
+		$things= array();
+		
+		$this->ci_smarty->assign("page","message-{$page}");
+		$this->ci_smarty->assign("pagetype","archive");
+		if($page == "home"){
+			
+		}
+
+		$this->ci_smarty->assign("things",$things);
+		$this->ci_smarty->display("message-{$page}.tpl");
+
 	}
 
 
