@@ -3,7 +3,7 @@
 	{include file="common/page-header.tpl"}
 </head>
 
-<body class="listing-page {if $logined eq "true"}loggedin{/if} {$page}-page">
+<body class="{if $logined eq "true"}loggedin{/if} {$page}-page">
 
 
 <div id="header">
@@ -34,7 +34,7 @@
 		<div id="siteTable" class="sitetable linklisting">
 
 			{foreach $things as $entry}
-				{include file="common/thread.tpl"}
+				{include file="common/message.tpl"}
 			{/foreach}
 
 		</div>

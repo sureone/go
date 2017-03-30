@@ -1,8 +1,8 @@
-			<div class="thing odd {if $entry.parent neq 0}comment{else}link self{/if}" id="thing_{$entry.thingid}" data-thingid={$entry.thingid}>
+			<div class="thing odd {$entry.stype}" id="thing_{$entry.thingid}" data-thingid={$entry.thingid}>
 				{if $entry.parent neq 0}
 				<p class="parent">
 					<a name="dffeipd"></a>
-					<a href="./v/comments/{$entry.p_id}" class="title">
+					<a href="./v/comments/{$entry.parent}" class="title">
 						{if isset($entry.p_title) and $entry.p_title neq '' }
 							{$entry.p_title}
 						{else}
@@ -18,6 +18,7 @@
 				{if $page neq "comments"}
 				<span class="rank"></span>
 				{/if}
+				{if $page neq "message-inbox"}
 				<div class="midcol unvoted">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,{$entry.thingid})"></div>
 
@@ -28,6 +29,7 @@
 					{/if}
 					<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,{$entry.thingid})"></div>
 				</div>
+				{/if}
 				<div class="entry unvoted">
 					
 						{if $pagetype eq "list"}
@@ -51,9 +53,16 @@
 						<div class="expando-button collapsed selftext"></div>
 					{/if}
 					<p class="tagline">
+						 {if $entry.stype eq 'message'}
+						 来自
+						 {/if}
 						 <a href="./v/user/{$entry.author}" class="author may-blank ">{$entry.author}</a>
+						 
 						 <span class="userattrs"></span>
-						 发表于 
+
+						 {if $entry.stype neq 'message'}
+						 发表于
+						 {/if} 
 						 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
 						 
 					</p>

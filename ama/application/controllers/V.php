@@ -39,6 +39,11 @@ class V extends CI_Controller {
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
+	public function hot()
+	{
+		$this->showHotView();
+		
+	}
 
 	function common(){
 		$user_info = $this->session->userdata('user.info');
@@ -88,7 +93,7 @@ class V extends CI_Controller {
 		$user_info = $this->session->userdata('user.info');
 		$this->ci_smarty->assign("page","message-{$page}");
 		$this->ci_smarty->assign("pagetype","archive");
-		if($page == "home"){
+		if($page == "inbox"){
 			$things = $this->amamodel->readMessagesAndRepliesByUser(0,20,$user_info['userid']);	
 		}
 

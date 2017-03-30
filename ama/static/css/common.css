@@ -732,7 +732,7 @@ body >.content .link .midcol, .midcol-spacer {
     /*background-color: #fdfdfd;*/
 }
 
-.linklisting .thing {
+.listing-page .linklisting .thing {
 
     position: relative;
 
@@ -1151,4 +1151,10 @@ form .spacer+.spacer {
 }
 .little {
     font-size: smaller;
+}
+
+.message {
+    padding-left: 5px;
+    margin: 10px 10px 20px 5px;
+    padding: 7px;
 }

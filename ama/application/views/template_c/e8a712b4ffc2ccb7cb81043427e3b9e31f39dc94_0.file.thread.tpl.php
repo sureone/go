@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 03:14:21
+/* Smarty version 3.1.30, created on 2017-03-30 14:21:37
   from "D:\go\ama\application\views\common\thread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9b8ed9e1dd3_38209317',
+  'unifunc' => 'content_58dcf8518e6455_89933065',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1490663659,
+      1 => 1490876496,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9b8ed9e1dd3_38209317 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dcf8518e6455_89933065 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-			<div class="thing odd <?php if ($_smarty_tpl->tpl_vars['entry']->value['parent'] != 0) {?>comment<?php } else { ?>link self<?php }?>" id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+			<div class="thing odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
+" id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " data-thingid=<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 >
 				<?php if ($_smarty_tpl->tpl_vars['entry']->value['parent'] != 0) {?>
 				<p class="parent">
 					<a name="dffeipd"></a>
-					<a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_id'];?>
+					<a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['parent'];?>
 " class="title">
 						<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['p_title']) && $_smarty_tpl->tpl_vars['entry']->value['p_title'] != '') {?>
 							<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_title'];?>
@@ -49,6 +50,7 @@ function content_58d9b8ed9e1dd3_38209317 (Smarty_Internal_Template $_smarty_tpl)
 				<?php if ($_smarty_tpl->tpl_vars['page']->value != "comments") {?>
 				<span class="rank"></span>
 				<?php }?>
+				<?php if ($_smarty_tpl->tpl_vars['page']->value != "message-inbox") {?>
 				<div class="midcol unvoted">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 )"></div>
@@ -64,6 +66,7 @@ function content_58d9b8ed9e1dd3_38209317 (Smarty_Internal_Template $_smarty_tpl)
 					<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 )"></div>
 				</div>
+				<?php }?>
 				<div class="entry unvoted">
 					
 						<?php if ($_smarty_tpl->tpl_vars['pagetype']->value == "list") {?>
@@ -92,11 +95,18 @@ function content_58d9b8ed9e1dd3_38209317 (Smarty_Internal_Template $_smarty_tpl)
 						<div class="expando-button collapsed selftext"></div>
 					<?php }?>
 					<p class="tagline">
+						 <?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] == 'message') {?>
+						 来自
+						 <?php }?>
 						 <a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
 " class="author may-blank "><?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
 </a>
+						 
 						 <span class="userattrs"></span>
-						 发表于 
+
+						 <?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] != 'message') {?>
+						 发表于
+						 <?php }?> 
 						 <time class="live-timestamp timeago" datetime="<?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
 "></time>
 						 
