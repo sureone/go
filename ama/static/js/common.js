@@ -22,10 +22,10 @@ try {
 
 
         var thingid = $(e).attr('data-thingid');
-        
+        var mainid =   $(e).attr('data-mainid');       
         if($("#form-comment-"+thingid).length>0) return;
         var tpl = Handlebars.compile($("#tpl-comment-edit").html());
-        h = (tpl({thingid:thingid}));
+        h = (tpl({thingid:thingid,mainid:mainid}));
 
         $('#child_'+thingid).prepend(h);
 

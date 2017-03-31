@@ -57,9 +57,13 @@
             <a href="javascript:void(0)" class=" access-required" data-event-action="mark_unread" onclick="return change_state(this, 'unread_message', unread_thing, true);">標記成未讀取</a></span>
         </form>
       </li>
+
+      {if $entry.stype neq "message"}
+      <li><a class="access-required" href="javascript:void(0)"  data-thingid="{$entry.thingid}" data-mainid="{$entry.main}"  onclick="return reply(this)">回覆</a></li>
+      {/if}
     </ul>
     <div class="reportform report-t4_7x41ei"></div>
   </div>
-  <div class="child"></div>
+  <div class="child" id="child_{$entry.thingid}"></div>
   <div class="clearleft"></div>
 </div>

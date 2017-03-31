@@ -43,8 +43,10 @@
 
 <div id="footer"></div>
 {include file="common/login-modal.tpl"}
+
+{include file='common/comment-reply-edit.tpl'}
 </body>
 
 
-<script type="text/javascript" src="./static/js/user-home.js?v=8"></script>
+<script type="text/javascript" src="./static/js/message-inbox.js?v=8"></script>
 </html>

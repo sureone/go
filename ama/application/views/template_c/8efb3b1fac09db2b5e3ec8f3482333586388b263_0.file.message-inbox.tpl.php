@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-30 14:49:52
+/* Smarty version 3.1.30, created on 2017-03-31 17:02:55
   from "D:\go\ama\application\views\message-inbox.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58dcfef0beb8d7_41843607',
+  'unifunc' => 'content_58de6f9f93d6e9_32390414',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8efb3b1fac09db2b5e3ec8f3482333586388b263' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\message-inbox.tpl',
-      1 => 1490878190,
+      1 => 1490971798,
       2 => 'file',
     ),
   ),
@@ -22,9 +22,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/header-bottom-right.tpl' => 1,
     'file:common/message.tpl' => 1,
     'file:common/login-modal.tpl' => 1,
+    'file:common/comment-reply-edit.tpl' => 1,
   ),
 ),false)) {
-function content_58dcfef0beb8d7_41843607 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58de6f9f93d6e9_32390414 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -89,11 +90,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 <?php $_smarty_tpl->_subTemplateRender("file:common/login-modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+
+<?php $_smarty_tpl->_subTemplateRender("file:common/comment-reply-edit.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </body>
 
 
 <?php echo '<script'; ?>
- type="text/javascript" src="./static/js/user-home.js?v=8"><?php echo '</script'; ?>
+ type="text/javascript" src="./static/js/message-inbox.js?v=8"><?php echo '</script'; ?>
 >
 </html><?php }
 }

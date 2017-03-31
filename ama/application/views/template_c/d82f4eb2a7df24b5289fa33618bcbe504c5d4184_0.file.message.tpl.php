@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-30 14:45:44
+/* Smarty version 3.1.30, created on 2017-03-31 17:02:55
   from "D:\go\ama\application\views\common\message.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58dcfdf8c92cf9_80421456',
+  'unifunc' => 'content_58de6f9f970372_40112874',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd82f4eb2a7df24b5289fa33618bcbe504c5d4184' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\message.tpl',
-      1 => 1490877942,
+      1 => 1490972461,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58dcfdf8c92cf9_80421456 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58de6f9f970372_40112874 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class=" thing id-t4_7x41ei noncollapsed recipient odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
  ">
@@ -90,10 +90,17 @@ function content_58dcfdf8c92cf9_80421456 (Smarty_Internal_Template $_smarty_tpl)
             <a href="javascript:void(0)" class=" access-required" data-event-action="mark_unread" onclick="return change_state(this, 'unread_message', unread_thing, true);">標記成未讀取</a></span>
         </form>
       </li>
+
+      <?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] != "message") {?>
+      <li><a class="access-required" href="javascript:void(0)"  data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+" data-mainid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['main'];?>
+"  onclick="return reply(this)">回覆</a></li>
+      <?php }?>
     </ul>
     <div class="reportform report-t4_7x41ei"></div>
   </div>
-  <div class="child"></div>
+  <div class="child" id="child_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+"></div>
   <div class="clearleft"></div>
 </div>
 <?php }

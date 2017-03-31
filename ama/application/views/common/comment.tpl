@@ -36,7 +36,7 @@
                 <li class="report-button"><a href="javascript:void(0)" class="reportbtn access-required"
                                               data-thingid="{$entry.thingid}">檢舉</a></li>
                 <li class="give-gold-button"><a href="">贈送金幣</a></li>
-                <li class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="{$entry.thingid}"  onclick="return reply(this)">回覆</a></li>
+                <li class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="{$entry.thingid}"  data-mainid="{$entry.main}" onclick="return reply(this)">回覆</a></li>
             </ul>
             <div class="reportform report-t1_df1l1xv"></div>
         </div>

@@ -203,7 +203,7 @@ class Api extends CI_Controller {
     function doSubmitNewComment($json){
         $user = $this->session->userdata('user.info');
         if(isset($_SESSION['user.info'])){
-
+            
             $this->db->trans_start();
         
             $this->db->insert('things',

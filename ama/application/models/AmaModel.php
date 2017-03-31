@@ -35,11 +35,11 @@ class AmaModel extends CI_Model{
     public function readMessagesByUser($maxid,$limit,$userid,$type='all'){
 
 
-        $sql1 = "select '' as p_text,'' as p_title, m.parent, FROM_UNIXTIME(m.cdate) as timeago,
+        $sql1 = "select '' as p_text,'' as p_title, m.parent,m.main, FROM_UNIXTIME(m.cdate) as timeago,
             m.title,m.content as text,
             m.id as thingid,m.ups as likes,m.author,m.downs as dislikes,m.replies,
             m.stype from things m where m.recipients='{$userid}'";
-        $sql2 = "select a.content as p_text,a.title as p_title, b.parent, FROM_UNIXTIME(b.cdate) as timeago,b.title,b.content as text,
+        $sql2 = "select a.content as p_text,a.title as p_title, b.parent, b.main,FROM_UNIXTIME(b.cdate) as timeago,b.title,b.content as text,
             b.id as thingid,b.ups as likes,b.author,b.downs as dislikes,b.replies,b.stype from things a 
             inner join things b on b.parent = a.id where a.author='{$userid}'";
         $sql = "{$sql1} order by m.id DESC"; 
