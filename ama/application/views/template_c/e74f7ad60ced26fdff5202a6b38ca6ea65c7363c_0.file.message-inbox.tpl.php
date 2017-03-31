@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-29 03:23:07
+/* Smarty version 3.1.30, created on 2017-03-31 02:23:18
   from "D:\work\go\ama\application\views\message-inbox.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58db0c7bda07d5_12528272',
+  'unifunc' => 'content_58dda176b9e119_79696835',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e74f7ad60ced26fdff5202a6b38ca6ea65c7363c' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\message-inbox.tpl',
-      1 => 1490750532,
+      1 => 1490919774,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:common/page-header.tpl' => 1,
     'file:common/header-bottom-right.tpl' => 1,
-    'file:common/thread.tpl' => 1,
+    'file:common/message.tpl' => 1,
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58db0c7bda07d5_12528272 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dda176b9e119_79696835 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -33,7 +33,7 @@ function content_58db0c7bda07d5_12528272 (Smarty_Internal_Template $_smarty_tpl)
 
 </head>
 
-<body class="listing-page <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+<body class="<?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 -page">
 
 
@@ -71,7 +71,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 ?>
-				<?php $_smarty_tpl->_subTemplateRender("file:common/thread.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+				<?php $_smarty_tpl->_subTemplateRender("file:common/message.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
 
 			<?php

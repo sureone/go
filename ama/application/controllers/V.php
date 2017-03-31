@@ -76,7 +76,7 @@ class V extends CI_Controller {
 
 		// $thing['comments'] = $this->amamodel->readComments($param,0,100);
 
-		$things = $this->amamodel->readMessagesAndRepliesByUser(0,20,$user_info['userid']);
+		$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'all');
 
 		echo json_encode_utf8($things);
 		
@@ -94,7 +94,11 @@ class V extends CI_Controller {
 		$this->ci_smarty->assign("page","message-{$page}");
 		$this->ci_smarty->assign("pagetype","archive");
 		if($page == "inbox"){
-			$things = $this->amamodel->readMessagesAndRepliesByUser(0,20,$user_info['userid']);	
+			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'all');	
+		}
+
+		if($page == "messages"){
+			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'message');	
 		}
 
 		$this->ci_smarty->assign("things",$things);

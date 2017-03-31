@@ -10,7 +10,7 @@ class AmaModel extends CI_Model{
     }
 
     public function readHotThings($maxid,$limit){
-    		$this->db->select(['author','stype','FROM_UNIXTIME(cdate) as timeago','title','content as text','cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
+    		$this->db->select(['author','stype','FROM_UNIXTIME(things.cdate) as timeago','title','content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
                 'parent','main','replies']);
     		$this->db->from('things');
     	    $this->db->join('users', 'users.userid = things.author');
@@ -32,7 +32,7 @@ class AmaModel extends CI_Model{
     }
 
 
-    public function readMessagesAndRepliesByUser($maxid,$limit,$userid,$type='all'){
+    public function readMessagesByUser($maxid,$limit,$userid,$type='all'){
 
 
         $sql1 = "select '' as p_text,'' as p_title, m.parent, FROM_UNIXTIME(m.cdate) as timeago,
@@ -42,9 +42,10 @@ class AmaModel extends CI_Model{
         $sql2 = "select a.content as p_text,a.title as p_title, b.parent, FROM_UNIXTIME(b.cdate) as timeago,b.title,b.content as text,
             b.id as thingid,b.ups as likes,b.author,b.downs as dislikes,b.replies,b.stype from things a 
             inner join things b on b.parent = a.id where a.author='{$userid}'";
-
-        $sql = "select u.* from (({$sql1}) union ({$sql2})) u order by u.thingid DESC";
-
+        $sql = "{$sql1} order by m.id DESC"; 
+        if($type=='all'){
+            $sql = "select u.* from (({$sql1}) union ({$sql2})) u order by u.thingid DESC";
+        }
         $query = $this->db->query($sql);
         $rows = $query->result_array();
 
@@ -99,8 +100,8 @@ class AmaModel extends CI_Model{
     }
 
     public function readThing($thingid){
-        $this->db->select(['author','stype','FROM_UNIXTIME(cdate) as timeago','title',
-            'content as text','cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
+        $this->db->select(['author','stype','FROM_UNIXTIME(things.cdate) as timeago','title',
+            'content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
             'parent','main','replies']);
         $this->db->from('things');
         $this->db->join('users', 'users.userid = things.author');
@@ -133,8 +134,8 @@ class AmaModel extends CI_Model{
     
 
     public function readComments($main,$parent,$limit){
-        $this->db->select(['author','stype','FROM_UNIXTIME(cdate) as timeago','title',
-            'content as text','cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
+        $this->db->select(['author','stype','FROM_UNIXTIME(things.cdate) as timeago','title',
+            'content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
             'parent','main','replies']);
         $this->db->from('things');
         $this->db->join('users', 'users.userid = things.author');

@@ -1158,3 +1158,7 @@ form .spacer+.spacer {
     margin: 10px 10px 20px 5px;
     padding: 7px;
 }
+
+.flat-list li.selected a {
+    color: orangered;
+}

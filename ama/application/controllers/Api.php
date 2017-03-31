@@ -250,6 +250,10 @@ class Api extends CI_Controller {
         if(count($rows)==1){
             $this->session->set_userdata('user.info',$rows[0]);
             $this->session->set_userdata('logged',true);
+
+            $this->db->set('lastdate',$this->curTime())
+                ->where('userid',$id)
+                ->update('users');
         }
         return array('code'=>200,'rows'=>$rows);
     }
@@ -268,7 +272,12 @@ class Api extends CI_Controller {
 
         $code = 400;
         if(count($rows)==0){
-            $this->db->insert('users',array('userid'=>$id,'passwd'=>md5($passwd),'name'=>$name,'email'=>$email));
+            $this->db->insert('users',
+                array(
+                    'userid'=>$id,'passwd'=>md5($passwd),
+                    'name'=>$name,'email'=>$email,
+                'cdate'=>$this->curTime(),'lastdate'=>$this->curTime())
+                );
             $code = 200;
             return $this->doLogin($json);
         }
