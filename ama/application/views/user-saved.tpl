@@ -7,16 +7,7 @@
 
 
 <div id="header">
-<div id="header-bottom-left">
-	<span class="hover pagename"><a href="./">AMA</a></span>
-	<ul class="tabmenu ">
-		<li><a href="./v/user/{$userid}/home" class="choice">总览</a></li>
-		<li><a href="./v/user/{$userid}/replies" class="choice">留言</a></li>
-		<li><a href="./v/user/{$userid}/submitted" class="choice">已发表</a></li>
-		<li class="selected"><a href="./v/user/{$userid}/saved" class="choice">收藏</a></li>
-		<li><a href="./v/user/{$userid}/upvoted" class="choice">推</a></li>
-		<li><a href="./v/user/{$userid}/downvoted" class="choice">嘘</a></li></ul>
-</div>
+{include file="user-header-bottom-left.tpl"}
 {include file="common/header-bottom-right.tpl"}
 </div>
 {include file="common/side.tpl"}

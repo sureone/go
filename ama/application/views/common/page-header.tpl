@@ -7,7 +7,7 @@
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="./static/js/form2json.js"></script>
-    <script src="./static/js/common.js?v=6"></script>
+    <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
     <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
 

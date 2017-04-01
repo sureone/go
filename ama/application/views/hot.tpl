@@ -7,18 +7,7 @@
 
 
 <div id="header">
-<div id="header-bottom-left">
-	<span class="hover pagename"><a href="./">AMA</a></span>
-	<ul class="tabmenu ">
-		<li class="selected"><a href="./v/hot" class="choice">熱門</a></li>
-		<li><a href="./v/new" class="choice">最新</a></li>
-		<li><a href="./v/rising" class="choice">好評上升中</a></li>
-		<li><a href="./v/controversial" class="choice">具爭議的</a></li>
-		<li><a href="./v/top" class="choice">頭等</a></li>
-		<li><a href="./v/gilded" class="choice">精選</a></li>
-		<li><a href="./v/wiki" class="choice">wiki</a></li>
-		<li><a href="./v/ads" class="choice">宣傳過的</a></li></ul>
-</div>
+{include file="header-bottom-left.tpl"}
 
 {include file="common/header-bottom-right.tpl"}
 </div>

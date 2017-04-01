@@ -39,12 +39,19 @@ class AmaModel extends CI_Model{
             m.title,m.content as text,
             m.id as thingid,m.ups as likes,m.author,m.downs as dislikes,m.replies,
             m.stype from things m where m.recipients='{$userid}'";
-        $sql2 = "select a.content as p_text,a.title as p_title, b.parent, b.main,FROM_UNIXTIME(b.cdate) as timeago,b.title,b.content as text,
-            b.id as thingid,b.ups as likes,b.author,b.downs as dislikes,b.replies,b.stype from things a 
-            inner join things b on b.parent = a.id where a.author='{$userid}'";
+        $sql2 = "select mn.content as p_text,mn.title as p_title, b.parent, b.main,FROM_UNIXTIME(b.cdate) as timeago,b.title,b.content as text,
+            b.id as thingid,b.ups as likes,b.author,b.downs as dislikes,b.replies,b.stype
+            from things a 
+            inner join things b on b.parent = a.id
+            left join things mn on mn.id = b.main 
+            where a.author='{$userid}'";
         $sql = "{$sql1} order by m.id DESC"; 
         if($type=='all'){
             $sql = "select u.* from (({$sql1}) union ({$sql2})) u order by u.thingid DESC";
+        }
+
+        if($type=='comments'){
+
         }
         $query = $this->db->query($sql);
         $rows = $query->result_array();

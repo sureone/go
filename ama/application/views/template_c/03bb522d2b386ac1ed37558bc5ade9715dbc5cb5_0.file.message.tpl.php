@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-31 02:23:18
+/* Smarty version 3.1.30, created on 2017-04-01 03:11:25
   from "D:\work\go\ama\application\views\common\message.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58dda176bd4c14_62355661',
+  'unifunc' => 'content_58defe3dd4b7b7_22208035',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '03bb522d2b386ac1ed37558bc5ade9715dbc5cb5' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\message.tpl',
-      1 => 1490919774,
+      1 => 1491009082,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58dda176bd4c14_62355661 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58defe3dd4b7b7_22208035 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class=" thing id-t4_7x41ei noncollapsed recipient odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
  ">
@@ -36,7 +36,7 @@ function content_58dda176bd4c14_62355661 (Smarty_Internal_Template $_smarty_tpl)
     	<?php }?>
     </span>
 	<?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] != "message") {?>
-	<a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['parent'];?>
+	<a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['main'];?>
 " class="title">
 		<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['p_title'])) {?>
 			<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_title'];?>
@@ -90,10 +90,17 @@ function content_58dda176bd4c14_62355661 (Smarty_Internal_Template $_smarty_tpl)
             <a href="javascript:void(0)" class=" access-required" data-event-action="mark_unread" onclick="return change_state(this, 'unread_message', unread_thing, true);">標記成未讀取</a></span>
         </form>
       </li>
+
+      <?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] != "message") {?>
+      <li><a class="access-required" href="javascript:void(0)"  data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+" data-mainid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['main'];?>
+"  onclick="return reply(this)">回覆</a></li>
+      <?php }?>
     </ul>
     <div class="reportform report-t4_7x41ei"></div>
   </div>
-  <div class="child"></div>
+  <div class="child" id="child_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+"></div>
   <div class="clearleft"></div>
 </div>
 <?php }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 05:54:07
+/* Smarty version 3.1.30, created on 2017-04-01 02:27:06
   from "D:\work\go\ama\application\views\common\comment.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d88cdf605883_65319974',
+  'unifunc' => 'content_58def3dad6e4e2_29985791',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd11d83a48a54417dc41bff77b99ab3e80061c4a' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\comment.tpl',
-      1 => 1490586688,
+      1 => 1491006408,
       2 => 'file',
     ),
   ),
@@ -20,19 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d88cdf605883_65319974 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58def3dad6e4e2_29985791 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
     'compiled_filepath' => 'D:\\work\\go\\ama\\application\\views\\template_c\\bd11d83a48a54417dc41bff77b99ab3e80061c4a_0.file.comment.tpl.php',
     'uid' => 'bd11d83a48a54417dc41bff77b99ab3e80061c4a',
-    'call_name' => 'smarty_template_function_renderComments_1502458d88cdf5a7c67_11981837',
+    'call_name' => 'smarty_template_function_renderComments_232458def3dace97c9_54367514',
   ),
 ));
 }
-/* smarty_template_function_renderComments_1502458d88cdf5a7c67_11981837 */
-if (!function_exists('smarty_template_function_renderComments_1502458d88cdf5a7c67_11981837')) {
-function smarty_template_function_renderComments_1502458d88cdf5a7c67_11981837($_smarty_tpl,$params) {
+/* smarty_template_function_renderComments_232458def3dace97c9_54367514 */
+if (!function_exists('smarty_template_function_renderComments_232458def3dace97c9_54367514')) {
+function smarty_template_function_renderComments_232458def3dace97c9_54367514($_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -47,10 +47,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 " onclick="">
         <p class="parent"><a name="df1l1xv"></a></p>
         <div class="midcol unvoted">
-            <div class="arrow up login-required access-required" data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-" onclick="voteit(this,1)"></div>
-            <div class="arrow down login-required access-required"  data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-" onclick="voteit(this,-1)"></div>
+            <div class="arrow up login-required access-required" onclick="voteit('./api',this,1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+)"></div>
+            <div class="arrow down login-required access-required"  onclick="voteit('./api',this,-1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+)"></div>
         </div>
         <div class="entry unvoted">
             <p class="tagline">
@@ -92,7 +92,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 ">檢舉</a></li>
                 <li class="give-gold-button"><a href="">贈送金幣</a></li>
                 <li class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-"  onclick="return reply(this)">回覆</a></li>
+"  data-mainid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['main'];?>
+" onclick="return reply(this)">回覆</a></li>
             </ul>
             <div class="reportform report-t1_df1l1xv"></div>
         </div>
@@ -118,5 +119,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 <?php
 }}
-/*/ smarty_template_function_renderComments_1502458d88cdf5a7c67_11981837 */
+/*/ smarty_template_function_renderComments_232458def3dace97c9_54367514 */
 }
