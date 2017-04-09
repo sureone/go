@@ -36,12 +36,12 @@ class AmaModel extends CI_Model{
 
 
         $sql1 = "select '' as p_text,'' as p_title,'' as m_author, m.parent,m.main, 
-            FROM_UNIXTIME(m.cdate) as timeago,
+            FROM_UNIXTIME(m.cdate) as timeago,m.readed,
             m.title,m.content as text,
             m.id as thingid,m.ups as likes,m.author,m.downs as dislikes,m.replies,
             m.stype from things m where m.recipients='{$userid}'";
         $sql2 = "select mn.content as p_text,mn.title as p_title,mn.author as m_author, b.parent, mn.id as main,
-            FROM_UNIXTIME(b.cdate) as timeago,
+            FROM_UNIXTIME(b.cdate) as timeago,b.readed,
             b.title,b.content as text,
             b.id as thingid,b.ups as likes,b.author,b.downs as dislikes,b.replies,
             b.stype from things a 
@@ -51,6 +51,11 @@ class AmaModel extends CI_Model{
         $sql = "{$sql1} order by m.id DESC"; 
         if($type=='all'){
             $sql = "select u.* from (({$sql1}) union ({$sql2})) u order by u.thingid DESC";
+            // $sql = "({$sql2})";
+        }
+
+        if($type=='unread'){
+            $sql = "select u.* from (({$sql1} and m.readed='0') union ({$sql2} and b.readed='0')) u order by u.thingid DESC";
             // $sql = "({$sql2})";
         }
 
@@ -67,6 +72,14 @@ class AmaModel extends CI_Model{
         $query = $this->db->query($sql);
         $rows = $query->result_array();
 
+
+        //set the thing as read
+        $this->db->set('readed','1',FALSE);
+        foreach ($rows as $row) {
+            $this->db->or_where('ID',$row['thingid']);
+        }
+        $this->db->update('things');
+        
         return $rows;
     }
 

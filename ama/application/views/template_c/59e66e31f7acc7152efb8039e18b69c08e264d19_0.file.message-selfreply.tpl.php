@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-09 05:04:09
+/* Smarty version 3.1.30, created on 2017-04-09 14:48:19
   from "D:\go\ama\application\views\message-selfreply.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58e9a4a9e8c7e7_60594371',
+  'unifunc' => 'content_58ea2d93ba5f05_26631839',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '59e66e31f7acc7152efb8039e18b69c08e264d19' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\message-selfreply.tpl',
-      1 => 1491706960,
+      1 => 1491742093,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/comment-reply-edit.tpl' => 1,
   ),
 ),false)) {
-function content_58e9a4a9e8c7e7_60594371 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ea2d93ba5f05_26631839 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -58,7 +58,7 @@ function content_58e9a4a9e8c7e7_60594371 (Smarty_Internal_Template $_smarty_tpl)
 				<li><span class="separator">|</span><a href="./v/message/unread/" class="choice">未讀</a></li>
 				<li><span class="separator">|</span><a href="./v/message/messages/" class="choice">信息</a></li>
 				<li><span class="separator">|</span><a href="./v/message/comments/" class="choice">留言回覆</a></li>
-				<li><span class="separator selected">|</span><a href="./v/message/selfreply/" class="choice">貼文回覆</a></li>
+				<li class="selected"><span class="separator">|</span><a href="./v/message/selfreply/" class="choice">貼文回覆</a></li>
 				<li><span class="separator">|</span><a href="./v/message/mentions/" class="choice">用戶名被提及</a></li>
 			</ul>
 		</div>

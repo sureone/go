@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-09 14:48:18
-  from "D:\go\ama\application\views\message-comments.tpl" */
+/* Smarty version 3.1.30, created on 2017-04-09 14:48:16
+  from "D:\go\ama\application\views\message-unread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ea2d92c59695_34722569',
+  'unifunc' => 'content_58ea2d90730945_22630924',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '9d561ddcffa746883cabaa459b0737630bf2968d' => 
+    '8e4e7f41ee66307b5f8db4a89aeeb27648e1b613' => 
     array (
-      0 => 'D:\\go\\ama\\application\\views\\message-comments.tpl',
-      1 => 1491742074,
+      0 => 'D:\\go\\ama\\application\\views\\message-unread.tpl',
+      1 => 1491742079,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/comment-reply-edit.tpl' => 1,
   ),
 ),false)) {
-function content_58ea2d92c59695_34722569 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ea2d90730945_22630924 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -55,9 +55,9 @@ function content_58ea2d92c59695_34722569 (Smarty_Internal_Template $_smarty_tpl)
 		<div class="spacer">
 			<ul class="flat-list hover">
 				<li><a href="./v/message/inbox/" class="choice">所有</a></li>
-				<li><span class="separator">|</span><a href="./v/message/unread/" class="choice">未讀</a></li>
+				<li class="selected"><span class="separator">|</span><a href="./v/message/unread/" class="choice">未讀</a></li>
 				<li><span class="separator">|</span><a href="./v/message/messages/" class="choice">信息</a></li>
-				<li class="selected"><span class="separator selected">|</span><a href="./v/message/comments/" class="choice">留言回覆</a></li>
+				<li><span class="separator">|</span><a href="./v/message/comments/" class="choice">留言回覆</a></li>
 				<li><span class="separator">|</span><a href="./v/message/selfreply/" class="choice">貼文回覆</a></li>
 				<li><span class="separator">|</span><a href="./v/message/mentions/" class="choice">用戶名被提及</a></li>
 			</ul>

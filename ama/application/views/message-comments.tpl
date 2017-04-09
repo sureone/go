@@ -23,7 +23,7 @@
 				<li><a href="./v/message/inbox/" class="choice">所有</a></li>
 				<li><span class="separator">|</span><a href="./v/message/unread/" class="choice">未讀</a></li>
 				<li><span class="separator">|</span><a href="./v/message/messages/" class="choice">信息</a></li>
-				<li><span class="separator selected">|</span><a href="./v/message/comments/" class="choice">留言回覆</a></li>
+				<li class="selected"><span class="separator selected">|</span><a href="./v/message/comments/" class="choice">留言回覆</a></li>
 				<li><span class="separator">|</span><a href="./v/message/selfreply/" class="choice">貼文回覆</a></li>
 				<li><span class="separator">|</span><a href="./v/message/mentions/" class="choice">用戶名被提及</a></li>
 			</ul>
