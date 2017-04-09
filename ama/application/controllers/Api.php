@@ -260,6 +260,7 @@ class Api extends CI_Controller {
     //{"action":"reg","user":"fdsa","user_name":"fdsaf","passwd":"fdsafsd","passwd2":"fdsafd","email":"fdsafds","digest_subscribe":"true"}
     function doReg($json){
 
+
         $id = $json->{'user'};
         $passwd = $json->{'passwd'};
         $name = $json->{'user_name'};

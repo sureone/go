@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-31 17:02:55
+/* Smarty version 3.1.30, created on 2017-04-09 04:49:46
   from "D:\go\ama\application\views\common\message.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58de6f9f970372_40112874',
+  'unifunc' => 'content_58e9a14a3aec90_42689436',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd82f4eb2a7df24b5289fa33618bcbe504c5d4184' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\message.tpl',
-      1 => 1490972461,
+      1 => 1491706183,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58de6f9f970372_40112874 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58e9a14a3aec90_42689436 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class=" thing id-t4_7x41ei noncollapsed recipient odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
  ">
@@ -36,7 +36,7 @@ function content_58de6f9f970372_40112874 (Smarty_Internal_Template $_smarty_tpl)
     	<?php }?>
     </span>
 	<?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] != "message") {?>
-	<a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['parent'];?>
+	<a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['main'];?>
 " class="title">
 		<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['p_title'])) {?>
 			<?php echo $_smarty_tpl->tpl_vars['entry']->value['p_title'];?>

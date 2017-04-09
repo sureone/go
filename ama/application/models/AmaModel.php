@@ -35,24 +35,35 @@ class AmaModel extends CI_Model{
     public function readMessagesByUser($maxid,$limit,$userid,$type='all'){
 
 
-        $sql1 = "select '' as p_text,'' as p_title, m.parent,m.main, FROM_UNIXTIME(m.cdate) as timeago,
+        $sql1 = "select '' as p_text,'' as p_title,'' as m_author, m.parent,m.main, 
+            FROM_UNIXTIME(m.cdate) as timeago,
             m.title,m.content as text,
             m.id as thingid,m.ups as likes,m.author,m.downs as dislikes,m.replies,
             m.stype from things m where m.recipients='{$userid}'";
-        $sql2 = "select mn.content as p_text,mn.title as p_title, b.parent, b.main,FROM_UNIXTIME(b.cdate) as timeago,b.title,b.content as text,
-            b.id as thingid,b.ups as likes,b.author,b.downs as dislikes,b.replies,b.stype
-            from things a 
+        $sql2 = "select mn.content as p_text,mn.title as p_title,mn.author as m_author, b.parent, mn.id as main,
+            FROM_UNIXTIME(b.cdate) as timeago,
+            b.title,b.content as text,
+            b.id as thingid,b.ups as likes,b.author,b.downs as dislikes,b.replies,
+            b.stype from things a 
             inner join things b on b.parent = a.id
-            left join things mn on mn.id = b.main 
+            inner join things mn on mn.id = b.main 
             where a.author='{$userid}'";
         $sql = "{$sql1} order by m.id DESC"; 
         if($type=='all'){
             $sql = "select u.* from (({$sql1}) union ({$sql2})) u order by u.thingid DESC";
+            // $sql = "({$sql2})";
         }
 
         if($type=='comments'){
-
+            $sql = "{$sql2} and mn.author <> '{$userid}' order by b.id DESC";
         }
+
+
+        if($type=='selfreply'){
+            $sql = "{$sql2} and mn.author = '{$userid}' order by b.id DESC";
+        }
+
+
         $query = $this->db->query($sql);
         $rows = $query->result_array();
 

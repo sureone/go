@@ -101,6 +101,16 @@ class V extends CI_Controller {
 			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'message');	
 		}
 
+
+		if($page == "comments"){
+			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'comments');	
+		}
+
+
+		if($page == "selfreply"){
+			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'selfreply');	
+		}
+
 		$this->ci_smarty->assign("things",$things);
 		$this->ci_smarty->display("message-{$page}.tpl");
 
