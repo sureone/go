@@ -31,6 +31,29 @@ class AmaModel extends CI_Model{
     	return $rows;
     }
 
+     public function readNewThings($maxid,$limit){
+            $this->db->select(['author','stype','FROM_UNIXTIME(things.cdate) as timeago','title','content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
+                'parent','main','replies']);
+            $this->db->from('things');
+            $this->db->join('users', 'users.userid = things.author');
+            $this->db->where('main',0);
+            $this->db->where('parent',0);
+            $this->db->where('stype','link');
+            
+            if($maxid!=0)
+              $this->db->where('things.id<',$maxid);
+            else
+              $this->db->order_by('things.id','DESC');
+            $this->db->limit($limit);
+            // .get('things');
+            $query = $this->db->get();
+
+        $rows = $query->result_array();
+
+        return $rows;
+    }
+
+
 
     public function readMessagesByUser($maxid,$limit,$userid,$type='all'){
 

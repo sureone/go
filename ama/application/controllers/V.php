@@ -44,6 +44,11 @@ class V extends CI_Controller {
 		$this->showHotView();
 		
 	}
+	public function news()
+	{
+		$this->showNewView();
+		
+	}
 
 	function common(){
 		$user_info = $this->session->userdata('user.info');
@@ -65,6 +70,18 @@ class V extends CI_Controller {
 		$this->ci_smarty->assign("page","hot");
 		$this->ci_smarty->assign("things",$rows);
 		$this->ci_smarty->display("hot.tpl");
+
+
+	}
+
+
+	function showNewView(){
+		$this->common();
+
+		$rows = $this->amamodel->readNewThings(0,10);
+		$this->ci_smarty->assign("page","new");
+		$this->ci_smarty->assign("things",$rows);
+		$this->ci_smarty->display("new.tpl");
 
 
 	}
