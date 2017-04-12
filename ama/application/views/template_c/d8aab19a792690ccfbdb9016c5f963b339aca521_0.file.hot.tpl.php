@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-01 02:42:38
+/* Smarty version 3.1.30, created on 2017-04-12 05:55:24
   from "D:\work\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58def77e6a9088_61641985',
+  'unifunc' => 'content_58eda52c50df34_94235910',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8aab19a792690ccfbdb9016c5f963b339aca521' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\hot.tpl',
-      1 => 1491007342,
+      1 => 1491969318,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58def77e6a9088_61641985 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58eda52c50df34_94235910 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>

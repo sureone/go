@@ -91,6 +91,7 @@ class Api extends CI_Controller {
         return $result;
     }
 
+
     function doVoteLink($json){
         $user = $this->session->userdata('user.info');
         $result = array('code'=>404);

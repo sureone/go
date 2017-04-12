@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-10 11:23:39
+/* Smarty version 3.1.30, created on 2017-04-12 05:55:00
   from "D:\work\go\ama\application\views\header-bottom-left.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58eb4f1b0eae38_23863774',
+  'unifunc' => 'content_58eda51455aa00_74344492',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '60fa3e11c1f4314b315f8259b36371c39276f334' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\header-bottom-left.tpl',
-      1 => 1491816210,
+      1 => 1491816961,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58eb4f1b0eae38_23863774 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58eda51455aa00_74344492 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div id="header-bottom-left">
     <span class="hover pagename"><a href="./">AMA</a></span>
