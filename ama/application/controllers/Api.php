@@ -24,6 +24,7 @@ class Api extends CI_Controller {
         parent::__construct();
         $this->load->helper('json');
         $this->load->library('session');
+        // $this->load->library('markdown');
         $this->load->database();
         $this->load->helper('file');
     }
@@ -206,11 +207,12 @@ class Api extends CI_Controller {
         if(isset($_SESSION['user.info'])){
             
             $this->db->trans_start();
-        
+            // $content = str_replace("\r", "\n", $json->{'content'});
+            $content = $json->{'content'};
             $this->db->insert('things',
                 array('author'=>$user['userid'],
                     'title'=>'',
-                    'content'=>$json->{'content'},
+                    'content'=>$content,
                     'stype'=>'comment',
                     'main'=>$json->{'main'},
                     'parent'=>$json->{'parent'},

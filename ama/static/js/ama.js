@@ -149,5 +149,12 @@ $(document).ready(function () {
 
     jQuery("time.timeago").timeago();
 
+    // $(".out.md").each(function(){
+    //     var md = $(this).text();
+    //     md = md.replace(/\r/g,"\n");
+    //     var h = markdown.toHTML(md);
+    //     $(this).html(h);
+    // })
+
 
 });

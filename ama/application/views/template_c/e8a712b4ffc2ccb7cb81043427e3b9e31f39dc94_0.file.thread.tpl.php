@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-30 14:21:37
+/* Smarty version 3.1.30, created on 2017-04-14 12:17:08
   from "D:\go\ama\application\views\common\thread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58dcf8518e6455_89933065',
+  'unifunc' => 'content_58f0a1a4093672_40306113',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1490876496,
+      1 => 1492164982,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58dcf8518e6455_89933065 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f0a1a4093672_40306113 (Smarty_Internal_Template $_smarty_tpl) {
+if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
 			<div class="thing odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
 " id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
@@ -81,10 +82,10 @@ function content_58dcf8518e6455_89933065 (Smarty_Internal_Template $_smarty_tpl)
 </a></p>
 							<?php } else { ?>
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="md">
-								<?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
-
-								</div>
+								<div class="out md"><?php echo '<script'; ?>
+>document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n');?>
+"));<?php echo '</script'; ?>
+></div>
 							</div>
 							<?php }?>
 							
@@ -117,10 +118,10 @@ function content_58dcf8518e6455_89933065 (Smarty_Internal_Template $_smarty_tpl)
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="md">
-									<p><?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
-</p>
-								</div>
+								<div class="out md"><?php echo '<script'; ?>
+>document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n');?>
+"));<?php echo '</script'; ?>
+></div>
 							</div>
 						</form>
 					</div>

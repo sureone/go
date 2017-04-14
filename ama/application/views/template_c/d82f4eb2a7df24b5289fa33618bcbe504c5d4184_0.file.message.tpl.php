@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-09 04:49:46
+/* Smarty version 3.1.30, created on 2017-04-14 12:16:46
   from "D:\go\ama\application\views\common\message.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58e9a14a3aec90_42689436',
+  'unifunc' => 'content_58f0a18ec2f385_46911779',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd82f4eb2a7df24b5289fa33618bcbe504c5d4184' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\message.tpl',
-      1 => 1491706183,
+      1 => 1492164931,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58e9a14a3aec90_42689436 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f0a18ec2f385_46911779 (Smarty_Internal_Template $_smarty_tpl) {
+if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
 <div class=" thing id-t4_7x41ei noncollapsed recipient odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
  ">
@@ -63,10 +64,10 @@ function content_58e9a14a3aec90_42689436 (Smarty_Internal_Template $_smarty_tpl)
 " class=""></time></span>
     </p>
     <div class="md-container">
-      <div class="md">
-        <p><?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
-</p>
-      </div>
+      <div class="out md"><?php echo '<script'; ?>
+>document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n');?>
+"));<?php echo '</script'; ?>
+></div>
     </div>
     <ul class="flat-list buttons">
       <li class="first">

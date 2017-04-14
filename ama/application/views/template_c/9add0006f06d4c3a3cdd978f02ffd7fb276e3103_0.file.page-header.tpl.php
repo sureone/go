@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-02 09:13:13
+/* Smarty version 3.1.30, created on 2017-04-14 10:53:32
   from "D:\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58e0a48923ed62_76411528',
+  'unifunc' => 'content_58f08e0c1c4816_70386410',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9add0006f06d4c3a3cdd978f02ffd7fb276e3103' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1491117155,
+      1 => 1492160008,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58e0a48923ed62_76411528 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f08e0c1c4816_70386410 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
     <base href="http://127.0.0.1/ama/index.php">
 	<meta charset="utf-8">
@@ -42,6 +42,9 @@ function content_58e0a48923ed62_76411528 (Smarty_Internal_Template $_smarty_tpl)
 >
     <?php echo '<script'; ?>
  src="./static/js/jquery.timeago.js?v=1"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="./static/js/markdown.js?v=1"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
  type="text/javascript" src="./static/js/ama.js?v=8"><?php echo '</script'; ?>

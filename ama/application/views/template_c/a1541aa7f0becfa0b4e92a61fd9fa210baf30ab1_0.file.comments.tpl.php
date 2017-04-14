@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-31 16:14:36
+/* Smarty version 3.1.30, created on 2017-04-14 12:17:08
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58de644c50fc90_78771640',
+  'unifunc' => 'content_58f0a1a40221d0_44450621',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1490969499,
+      1 => 1492165004,
       2 => 'file',
     ),
   ),
@@ -28,7 +28,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/comment-reply-edit.tpl' => 1,
   ),
 ),false)) {
-function content_58de644c50fc90_78771640 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f0a1a40221d0_44450621 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <html lang="en">

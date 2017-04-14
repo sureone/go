@@ -31,9 +31,7 @@
         <time class="timeago" datetime="{$entry.timeago}" class=""></time></span>
     </p>
     <div class="md-container">
-      <div class="md">
-        <p>{$entry.text}</p>
-      </div>
+      <div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'}"));</script></div>
     </div>
     <ul class="flat-list buttons">
       <li class="first">
