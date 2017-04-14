@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-14 12:17:08
+/* Smarty version 3.1.30, created on 2017-04-14 12:46:40
   from "D:\go\ama\application\views\common\thread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f0a1a4093672_40306113',
+  'unifunc' => 'content_58f0a8901216a1_13430051',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1492164982,
+      1 => 1492166782,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f0a1a4093672_40306113 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f0a8901216a1_13430051 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
 			<div class="thing odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
@@ -83,7 +83,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
 							<?php } else { ?>
 							<div class="usertext-body may-blank-within md-container ">
 								<div class="out md"><?php echo '<script'; ?>
->document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n');?>
+>document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\"]/','\\\"'),'/[\']/','\\\'');?>
 "));<?php echo '</script'; ?>
 ></div>
 							</div>
@@ -119,7 +119,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
 								<div class="out md"><?php echo '<script'; ?>
->document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n');?>
+>document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\"]/','\\\"'),'/[\']/','\\\'');?>
 "));<?php echo '</script'; ?>
 ></div>
 							</div>
