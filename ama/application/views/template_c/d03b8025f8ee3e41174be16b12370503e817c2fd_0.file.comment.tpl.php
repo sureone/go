@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-14 12:46:40
+/* Smarty version 3.1.30, created on 2017-04-15 08:26:40
   from "D:\go\ama\application\views\common\comment.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f0a89016f8b4_88371134',
+  'unifunc' => 'content_58f1bd20084631_47881925',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd03b8025f8ee3e41174be16b12370503e817c2fd' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\comment.tpl',
-      1 => 1492166788,
+      1 => 1492237592,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f0a89016f8b4_88371134 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f1bd20084631_47881925 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
     'compiled_filepath' => 'D:\\go\\ama\\application\\views\\template_c\\d03b8025f8ee3e41174be16b12370503e817c2fd_0.file.comment.tpl.php',
     'uid' => 'd03b8025f8ee3e41174be16b12370503e817c2fd',
-    'call_name' => 'smarty_template_function_renderComments_2359258f0a89012d226_14973093',
+    'call_name' => 'smarty_template_function_renderComments_1009758f1bd20013195_56959505',
   ),
 ));
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 }
-/* smarty_template_function_renderComments_2359258f0a89012d226_14973093 */
-if (!function_exists('smarty_template_function_renderComments_2359258f0a89012d226_14973093')) {
-function smarty_template_function_renderComments_2359258f0a89012d226_14973093($_smarty_tpl,$params) {
+/* smarty_template_function_renderComments_1009758f1bd20013195_56959505 */
+if (!function_exists('smarty_template_function_renderComments_1009758f1bd20013195_56959505')) {
+function smarty_template_function_renderComments_1009758f1bd20013195_56959505($_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -57,7 +57,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
             <p class="tagline">
                 <a href="javascript:void(0)" class="expand" onclick="return togglecomment(this)">[–]</a>
                 <a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
-" class="author may-blank"><?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
+" class="author may-blank"><?php echo $_smarty_tpl->tpl_vars['entry']->value['author_name'];?>
 </a>
                 <span class="userattrs"></span>
                 <span class="score dislikes" title="44"><?php echo $_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
@@ -120,5 +120,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 <?php
 }}
-/*/ smarty_template_function_renderComments_2359258f0a89012d226_14973093 */
+/*/ smarty_template_function_renderComments_1009758f1bd20013195_56959505 */
 }

@@ -25,7 +25,7 @@
     <p class="tagline">
       <span class="head">来自
         <span class="sender">
-          <a href="./v/user/{$entry.author}" class="author may-blank">{$entry.author}</a>
+          <a href="./v/user/{$entry.author}" class="author may-blank">{$entry.author_name}</a>
           <span class="userattrs"></span>
         </span>
         <time class="timeago" datetime="{$entry.timeago}" class=""></time></span>

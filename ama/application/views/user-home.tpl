@@ -15,7 +15,7 @@
 <div class="content">
 	<div class="spacer">
 		<div id="siteTable" class="sitetable linklisting">
-
+			
 			{foreach $things as $entry}
 				{include file="common/thread.tpl"}
 			{/foreach}

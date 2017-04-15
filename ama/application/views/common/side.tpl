@@ -47,7 +47,7 @@
     <div class="spacer">
         <div class="sidebox submit submit-text">
             <div class="morelink">
-            	<a href="./v/submit" class="login-required access-required" target="_top">發表新文章</a>
+            	<a href="./v/submit" class="login-required access-required" target="_top">发表新文章</a>
                 <div class="nub"></div>
             </div>
         </div>

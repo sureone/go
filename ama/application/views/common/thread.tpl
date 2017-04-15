@@ -1,7 +1,10 @@
 			<div class="thing odd {$entry.stype}" id="thing_{$entry.thingid}" data-thingid={$entry.thingid}>
 				{if $entry.parent neq 0}
+				 
 				<p class="parent">
+					<span class="subject-text">回帖</span>
 					<a name="dffeipd"></a>
+
 					<a href="./v/comments/{$entry.parent}" class="title">
 						{if isset($entry.p_title) and $entry.p_title neq '' }
 							{$entry.p_title}
@@ -10,7 +13,7 @@
 						{/if}
 					</a>
 					 by 
-					<a href="./v/user/{$entry.p_author}" class="author may-blank id-t2_11v90c">{$entry.p_author}</a>
+					<a href="./v/user/{$entry.p_author}" class="author may-blank id-t2_11v90c">{$entry.p_author_name}</a>
 					<span class="userattrs"></span>
 				</p>
 				{/if}
@@ -54,7 +57,7 @@
 						 {if $entry.stype eq 'message'}
 						 来自
 						 {/if}
-						 <a href="./v/user/{$entry.author}" class="author may-blank ">{$entry.author}</a>
+						 <a href="./v/user/{$entry.author}" class="author may-blank ">{$entry.author_name}</a>
 						 
 						 <span class="userattrs"></span>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-14 12:44:01
+/* Smarty version 3.1.30, created on 2017-04-15 08:29:44
   from "D:\go\ama\application\views\common\message.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f0a7f12b3693_41944482',
+  'unifunc' => 'content_58f1bdd8ea3ec9_83028043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd82f4eb2a7df24b5289fa33618bcbe504c5d4184' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\message.tpl',
-      1 => 1492166633,
+      1 => 1492237772,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f0a7f12b3693_41944482 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f1bdd8ea3ec9_83028043 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
 <div class=" thing id-t4_7x41ei noncollapsed recipient odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
@@ -56,7 +56,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
       <span class="head">来自
         <span class="sender">
           <a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
-" class="author may-blank"><?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
+" class="author may-blank"><?php echo $_smarty_tpl->tpl_vars['entry']->value['author_name'];?>
 </a>
           <span class="userattrs"></span>
         </span>
@@ -65,7 +65,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
     </p>
     <div class="md-container">
      <div class="out md"><?php echo '<script'; ?>
->document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\'\"]/','\\\"');?>
+>document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\"]/','\\\"'),'/[\']/','\\\'');?>
 "));<?php echo '</script'; ?>
 ></div>
     </div>

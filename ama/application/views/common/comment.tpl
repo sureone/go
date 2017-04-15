@@ -9,7 +9,7 @@
         <div class="entry unvoted">
             <p class="tagline">
                 <a href="javascript:void(0)" class="expand" onclick="return togglecomment(this)">[–]</a>
-                <a href="./v/user/{$entry.author}" class="author may-blank">{$entry.author}</a>
+                <a href="./v/user/{$entry.author}" class="author may-blank">{$entry.author_name}</a>
                 <span class="userattrs"></span>
                 <span class="score dislikes" title="44">{$entry.dislikes}</span>
                 <span class="score unvoted" title="45">{$entry.likes-$entry.dislikes}指標</span>

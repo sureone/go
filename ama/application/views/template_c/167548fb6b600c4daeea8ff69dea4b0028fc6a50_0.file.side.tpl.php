@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 13:13:16
+/* Smarty version 3.1.30, created on 2017-04-14 13:19:23
   from "D:\go\ama\application\views\common\side.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ce75dc144b25_25910803',
+  'unifunc' => 'content_58f0b03b837195_20150603',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '167548fb6b600c4daeea8ff69dea4b0028fc6a50' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\side.tpl',
-      1 => 1489925024,
+      1 => 1492168761,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ce75dc144b25_25910803 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f0b03b837195_20150603 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="side">
     <div class="spacer">
@@ -71,7 +71,7 @@ function content_58ce75dc144b25_25910803 (Smarty_Internal_Template $_smarty_tpl)
     <div class="spacer">
         <div class="sidebox submit submit-text">
             <div class="morelink">
-            	<a href="./v/submit" class="login-required access-required" target="_top">發表新文章</a>
+            	<a href="./v/submit" class="login-required access-required" target="_top">发表新文章</a>
                 <div class="nub"></div>
             </div>
         </div>

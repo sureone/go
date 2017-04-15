@@ -145,7 +145,7 @@ class V extends CI_Controller {
 		$this->ci_smarty->assign("pagetype","archive");
 		
 		if($page == "home"){
-			$things = $this->amamodel->readThingsByUser(0,100,$userid);
+			$things = $this->amamodel->readThingsByUser(0,100,$userid,'home');
 		}
 
 		if($page == "replies"){
