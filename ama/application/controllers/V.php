@@ -200,6 +200,7 @@ class V extends CI_Controller {
 		$thing['comments_count']=$comments_result['comments_count'];
 
 		$this->ci_smarty->assign("things",array($thing));
+		$this->ci_smarty->assign("page_title",$thing['title']);
 		
 		$this->ci_smarty->display("comments.tpl");
 		// $this->load->view('comments',array('user'=>$user_info,'page'=>'comments','thingid'=>$thingid));
