@@ -66,7 +66,7 @@ class V extends CI_Controller {
 	function showHotView(){
 		$this->common();
 
-		$rows = $this->amamodel->readHotThings(0,10);
+		$rows = $this->amaModel->readHotThings(0,10);
 		$this->ci_smarty->assign("page","hot");
 		$this->ci_smarty->assign("things",$rows);
 		$this->ci_smarty->display("hot.tpl");
@@ -78,7 +78,7 @@ class V extends CI_Controller {
 	function showNewView(){
 		$this->common();
 
-		$rows = $this->amamodel->readNewThings(0,10);
+		$rows = $this->amaModel->readNewThings(0,10);
 		$this->ci_smarty->assign("page","new");
 		$this->ci_smarty->assign("things",$rows);
 		$this->ci_smarty->display("new.tpl");
@@ -89,11 +89,11 @@ class V extends CI_Controller {
 	public function test(){
 		$user_info = $this->session->userdata('user.info');
 
-		// $thing = $this->amamodel->readThing($param)['0'];
+		// $thing = $this->amaModel->readThing($param)['0'];
 
-		// $thing['comments'] = $this->amamodel->readComments($param,0,100);
+		// $thing['comments'] = $this->amaModel->readComments($param,0,100);
 
-		$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'all');
+		$things = $this->amaModel->readMessagesByUser(0,20,$user_info['userid'],'all');
 
 		echo json_encode_utf8($things);
 		
@@ -111,21 +111,21 @@ class V extends CI_Controller {
 		$this->ci_smarty->assign("page","message-{$page}");
 		$this->ci_smarty->assign("pagetype","archive");
 		if($page == "inbox"){
-			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'all');	
+			$things = $this->amaModel->readMessagesByUser(0,20,$user_info['userid'],'all');	
 		}
 
 		if($page == "messages"){
-			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'message');	
+			$things = $this->amaModel->readMessagesByUser(0,20,$user_info['userid'],'message');	
 		}
 
 
 		if($page == "comments"){
-			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'comments');	
+			$things = $this->amaModel->readMessagesByUser(0,20,$user_info['userid'],'comments');	
 		}
 
 
 		if($page == "selfreply"){
-			$things = $this->amamodel->readMessagesByUser(0,20,$user_info['userid'],'selfreply');	
+			$things = $this->amaModel->readMessagesByUser(0,20,$user_info['userid'],'selfreply');	
 		}
 
 		$this->ci_smarty->assign("things",$things);
@@ -145,27 +145,27 @@ class V extends CI_Controller {
 		$this->ci_smarty->assign("pagetype","archive");
 		
 		if($page == "home"){
-			$things = $this->amamodel->readThingsByUser(0,100,$userid,'home');
+			$things = $this->amaModel->readThingsByUser(0,100,$userid,'home');
 		}
 
 		if($page == "replies"){
-			$things = $this->amamodel->readThingsByUser(0,100,$userid,"reply");
+			$things = $this->amaModel->readThingsByUser(0,100,$userid,"reply");
 		}
 
 		if($page == "submitted"){
-			$things = $this->amamodel->readThingsByUser(0,100,$userid,"main");
+			$things = $this->amaModel->readThingsByUser(0,100,$userid,"main");
 		}
 
 		if($page == "saved"){
-			$things = $this->amamodel->readThingsByUser(0,100,$userid,"saved");
+			$things = $this->amaModel->readThingsByUser(0,100,$userid,"saved");
 		}
 
 		if($page == "upvoted"){
-			$things = $this->amamodel->readThingsByUser(0,100,$userid,"ups");
+			$things = $this->amaModel->readThingsByUser(0,100,$userid,"ups");
 		}
 
 		if($page == "downvoted"){
-			$things = $this->amamodel->readThingsByUser(0,100,$userid,"downs");
+			$things = $this->amaModel->readThingsByUser(0,100,$userid,"downs");
 		}
 
 		$this->ci_smarty->assign("things",$things);
@@ -193,9 +193,9 @@ class V extends CI_Controller {
 		$this->ci_smarty->assign("thingid",$thingid);
 
 
-		$thing = $this->amamodel->readThing($thingid)['0'];
+		$thing = $this->amaModel->readThing($thingid)['0'];
 
-		$comments_result = $this->amamodel->readComments($thingid,0,100);
+		$comments_result = $this->amaModel->readComments($thingid,0,100);
 		$thing['comments']=$comments_result['comments'];
 		$thing['comments_count']=$comments_result['comments_count'];
 
