@@ -33,16 +33,20 @@
         </form>
     </div>
     {if $page eq "comments"}
+
+        {foreach $things as $entry}
         <div class="spacer">
             <div class="linkinfo">
-                <div class="date"><span>本文發表於  </span>
-                    <time datetime="2017-03-17T07:51:21+00:00">17 Mar 2017</time>
+                <div class="date"><span>本文发表于 </span>
+                    <time datetime="{$entry.timeago}">{$entry.timeago}</time>
                 </div>
-                <div class="score"><span class="number">392</span> <span class="word">指標</span> (89% upvoted)</div>
-                <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
-                                                         id="shortlink-text"></div>
+                <div class="score"><span class="number">{$entry.likes-$entry.dislikes}</span> <span class="word">指标</span> (其中{$entry.likes}票赞成)</div>
+<!--                 <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
+                                                         id="shortlink-text"></div> -->
             </div>
         </div>
+        {/foreach}   
+        
     {/if}
     <div class="spacer">
         <div class="sidebox submit submit-text">

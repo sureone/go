@@ -11,6 +11,28 @@ function voteit(url,elm,v,thingid){
         url : url,
         data : postdata,
         success : function(data) {
+
+            var score_elm = $("#vote-"+thingid+" .score.unvoted");
+            if($(elm).hasClass('upmod')){
+                $(elm).removeClass('upmod').addClass("up");
+                score_elm.html(parseInt(score_elm.text())-1);
+
+            }else if($(elm).hasClass('downmod')){
+                $(elm).removeClass('downmod').addClass("down");
+
+                score_elm.html(parseInt(score_elm.text())+1);
+            }else if($(elm).hasClass('down')){
+                $("#vote-"+thingid+" .upmod").removeClass("upmod").addClass("up");
+                $(elm).removeClass('down').addClass("downmod");
+
+                score_elm.html(parseInt(score_elm.text())-1);
+            }else if($(elm).hasClass('up')){
+
+                $("#vote-"+thingid+" .downmod").removeClass("downmod").addClass("down");
+                $(elm).removeClass('up').addClass("upmod");
+
+                score_elm.html(parseInt(score_elm.text())+1);
+            }
             console.log(data);
         },
         error : function() {

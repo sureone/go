@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-14 13:19:23
+/* Smarty version 3.1.30, created on 2017-04-16 02:39:55
   from "D:\go\ama\application\views\common\side.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f0b03b837195_20150603',
+  'unifunc' => 'content_58f2bd5ba3c9b4_92004122',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '167548fb6b600c4daeea8ff69dea4b0028fc6a50' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\side.tpl',
-      1 => 1492168761,
+      1 => 1492303192,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f0b03b837195_20150603 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f2bd5ba3c9b4_92004122 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="side">
     <div class="spacer">
@@ -57,16 +57,33 @@ function content_58f0b03b837195_20150603 (Smarty_Internal_Template $_smarty_tpl)
         </form>
     </div>
     <?php if ($_smarty_tpl->tpl_vars['page']->value == "comments") {?>
+
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['things']->value, 'entry');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
+?>
         <div class="spacer">
             <div class="linkinfo">
-                <div class="date"><span>本文發表於  </span>
-                    <time datetime="2017-03-17T07:51:21+00:00">17 Mar 2017</time>
+                <div class="date"><span>本文发表于 </span>
+                    <time datetime="<?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
+"><?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
+</time>
                 </div>
-                <div class="score"><span class="number">392</span> <span class="word">指標</span> (89% upvoted)</div>
-                <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
-                                                         id="shortlink-text"></div>
+                <div class="score"><span class="number"><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes']-$_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
+</span> <span class="word">指标</span> (其中<?php echo $_smarty_tpl->tpl_vars['entry']->value['likes'];?>
+票赞成)</div>
+<!--                 <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
+                                                         id="shortlink-text"></div> -->
             </div>
         </div>
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+   
+        
     <?php }?>
     <div class="spacer">
         <div class="sidebox submit submit-text">

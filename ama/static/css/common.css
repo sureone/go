@@ -641,6 +641,18 @@ body >.content .link .midcol, .midcol-spacer {
     background-position: -42px -1618px;
     background-repeat: no-repeat;
 }
+
+.arrow.upmod {
+    background-repeat: no-repeat;
+    background-image: url(../images/sprite.png);
+    background-position: -105px -1618px;
+}
+
+.arrow.downmod{
+    background-image:url(../images/sprite.png);
+    background-position:-63px -1618px;
+    background-repeat:no-repeat
+}
 .domain {
     color: #888;
     font-size: x-small;

@@ -2,9 +2,9 @@
     {foreach $data as $entry}
     <div class=" thing id-{$entry.thingid} noncollapsed   comment " id="thing_{$entry.thingid}" onclick="">
         <p class="parent"><a name="df1l1xv"></a></p>
-        <div class="midcol unvoted">
-            <div class="arrow up login-required access-required" onclick="voteit('./api',this,1,{$entry.thingid})"></div>
-            <div class="arrow down login-required access-required"  onclick="voteit('./api',this,-1,{$entry.thingid})"></div>
+        <div class="midcol unvoted" id="vote-{$entry.thingid}">
+            <div class="arrow {if isset($entry.vote) and $entry.vote eq '1' }upmod{else}up{/if} login-required access-required" onclick="voteit('./api',this,1,{$entry.thingid})"></div>
+            <div class="arrow {if isset($entry.vote) and $entry.vote eq '-1' }downmod{else}down{/if} login-required access-required"  onclick="voteit('./api',this,-1,{$entry.thingid})"></div>
         </div>
         <div class="entry unvoted">
             <p class="tagline">

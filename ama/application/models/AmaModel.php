@@ -10,18 +10,33 @@ class AmaModel extends CI_Model{
     }
 
     public function readHotThings($maxid,$limit){
-    		$this->db->select(['author','users.name as author_name','stype','FROM_UNIXTIME(things.cdate) as timeago','title','content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
-                'parent','main','replies']);
-    		$this->db->from('things');
-    	    $this->db->join('users', 'users.userid = things.author');
-    		$this->db->where('main',0);
+
+        $user_info = $this->session->userdata('user.info');
+
+        $fields = ['a.author','users.name as author_name','a.stype',
+                'FROM_UNIXTIME(a.cdate) as timeago','a.title','a.content as text',
+                'a.cdate','a.udate','a.id as thingid','a.ups as likes',
+                'a.downs as dislikes',
+                'a.parent','a.main','a.replies'];
+        if($user_info!=null){
+            array_push($fields,'ut.idata as vote');
+        }
+    		$this->db->select($fields);
+    		$this->db->from('things a');
+    	    $this->db->join('users', 'users.userid = a.author');
+            if($user_info!=null){
+                $this->db->join('user_thing_map ut',
+                    // "ut.thingid=a.id and ut.maptype='vote' and ut.userid='" . $user_info['userid'] . "'","LEFT",TRUE);
+                    "ut.id=CONCAT('" . $user_info['userid'] . "-',a.id,'-vote')","LEFT",TRUE);
+    		}
+            $this->db->where('main',0);
     		$this->db->where('parent',0);
             $this->db->where('stype','link');
             
             if($maxid!=0)
-    		  $this->db->where('things.id<',$maxid);
+    		  $this->db->where('a.id<',$maxid);
             else
-              $this->db->order_by('things.id','DESC');
+              $this->db->order_by('a.id','DESC');
     		$this->db->limit($limit);
     		// .get('things');
     		$query = $this->db->get();
@@ -32,18 +47,33 @@ class AmaModel extends CI_Model{
     }
 
      public function readNewThings($maxid,$limit){
-            $this->db->select(['author','users.name as author_name','stype','FROM_UNIXTIME(things.cdate) as timeago','title','content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
-                'parent','main','replies']);
-            $this->db->from('things');
-            $this->db->join('users', 'users.userid = things.author');
+
+        $user_info = $this->session->userdata('user.info');
+
+        $fields = ['a.author','users.name as author_name','a.stype',
+                'FROM_UNIXTIME(a.cdate) as timeago','a.title','a.content as text',
+                'a.cdate','a.udate','a.id as thingid','a.ups as likes',
+                'a.downs as dislikes',
+                'a.parent','a.main','a.replies'];
+        if($user_info!=null){
+            array_push($fields,'ut.idata as vote');
+        }
+            $this->db->select($fields);
+            $this->db->from('things a');
+            $this->db->join('users', 'users.userid = a.author');
+            if($user_info!=null){
+                $this->db->join('user_thing_map ut',
+                    // "ut.thingid=a.id and ut.maptype='vote' and ut.userid='" . $user_info['userid'] . "'","LEFT",TRUE);
+                    "ut.id=CONCAT('" . $user_info['userid'] . "-',a.id,'-vote')","LEFT",TRUE);
+            }
             $this->db->where('main',0);
             $this->db->where('parent',0);
             $this->db->where('stype','link');
             
             if($maxid!=0)
-              $this->db->where('things.id<',$maxid);
+              $this->db->where('a.id<',$maxid);
             else
-              $this->db->order_by('things.id','DESC');
+              $this->db->order_by('a.id','DESC');
             $this->db->limit($limit);
             // .get('things');
             $query = $this->db->get();
@@ -58,14 +88,17 @@ class AmaModel extends CI_Model{
     public function readMessagesByUser($maxid,$limit,$userid,$type='all'){
 
 
-        $sql1 = "select '' as p_text,'' as p_title,'' as m_author,'' as m_author_name, m.parent,m.main, 
+        $sql1 = "select '' as p_text,'' as p_title,'' as m_author,
+            '' as m_author_name,m.parent,m.main, 
             FROM_UNIXTIME(m.cdate) as timeago,m.readed,
             m.title,m.content as text,
-            m.id as thingid,m.ups as likes,m.author,bu.name as author_name,m.downs as dislikes,m.replies,
+            m.id as thingid,m.ups as likes,m.author,bu.name as author_name,
+            m.downs as dislikes,m.replies,
             m.stype from things m 
             left join users bu on bu.userid=m.author
             where m.recipients='{$userid}'";
-        $sql2 = "select mn.content as p_text,mn.title as p_title,mn.author as m_author,mnu.name as m_author_name,b.parent, mn.id as main,
+        $sql2 = "select mn.content as p_text,mn.title as p_title,mn.author as m_author,
+            mnu.name as m_author_name,b.parent, mn.id as main,
             FROM_UNIXTIME(b.cdate) as timeago,b.readed,
             b.title,b.content as text,
             b.id as thingid,b.ups as likes,b.author,bu.name as author_name,b.downs as dislikes,b.replies,
@@ -118,7 +151,8 @@ class AmaModel extends CI_Model{
             'things.content as text','things.cdate','things.udate','things.id as thingid',
             'things.ups as likes','things.parent','things.downs as dislikes',
             'things.parent','things.main','things.replies',
-            'a.title as p_title','a.author as p_author','au.name  as p_author_name','a.content as p_text']);
+            'a.title as p_title','a.author as p_author',
+            'au.name  as p_author_name','a.content as p_text']);
         $this->db->from('things');
         $this->db->join('users', 'users.userid = things.author');
         $this->db->join('things a','a.id = things.parent','LEFT',TRUE);
@@ -168,13 +202,26 @@ class AmaModel extends CI_Model{
     }
 
     public function readThing($thingid){
-        $this->db->select(['author','users.name as author_name','stype','FROM_UNIXTIME(things.cdate) as timeago','title',
-            'content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
-            'parent','main','replies']);
-        $this->db->from('things');
-        $this->db->join('users', 'users.userid = things.author');
-        $this->db->where('things.id',$thingid);
-        $query = $this->db->get();
+
+              $user_info = $this->session->userdata('user.info');
+
+        $fields = ['a.author','users.name as author_name','a.stype',
+                'FROM_UNIXTIME(a.cdate) as timeago','a.title','a.content as text',
+                'a.cdate','a.udate','a.id as thingid','a.ups as likes',
+                'a.downs as dislikes',
+                'a.parent','a.main','a.replies'];
+        if($user_info!=null){
+            array_push($fields,'ut.idata as vote');
+        }
+            $this->db->select($fields);
+            $this->db->from('things a');
+            $this->db->join('users', 'users.userid = a.author');
+            if($user_info!=null){
+                $this->db->join('user_thing_map ut',
+                   "ut.id=CONCAT('" . $user_info['userid'] . "-',a.id,'-vote')","LEFT",TRUE);
+            }
+              $this->db->where('a.id',$thingid);
+            $query = $this->db->get();
 
         $rows = $query->result_array();
 
@@ -202,15 +249,30 @@ class AmaModel extends CI_Model{
     
 
     public function readComments($main,$parent,$limit){
-        $this->db->select(['author','users.name as author_name','stype','FROM_UNIXTIME(things.cdate) as timeago','title',
-            'content as text','things.cdate','udate','things.id as thingid','ups as likes','downs as dislikes',
-            'parent','main','replies']);
-        $this->db->from('things');
-        $this->db->join('users', 'users.userid = things.author');
-        $this->db->where('main',$main);
+
+         $user_info = $this->session->userdata('user.info');
+        $fields = ['a.author','users.name as author_name','a.stype',
+        'FROM_UNIXTIME(a.cdate) as timeago','a.title',
+            'a.content as text','a.cdate','a.udate','a.id as thingid',
+            'a.ups as likes','a.downs as dislikes',
+            'a.parent','a.main','a.replies'];
+
+    if($user_info!=null){
+            array_push($fields,'ut.idata as vote');
+        }
+
+        $this->db->select($fields);
+        $this->db->from('things a');
+        $this->db->join('users', 'users.userid = a.author');
+
+        if($user_info!=null){
+                $this->db->join('user_thing_map ut',
+                    "ut.id=CONCAT('" . $user_info['userid'] . "-',a.id,'-vote')","LEFT",TRUE);
+            }
+        $this->db->where('a.main',$main);
         if($parent!=0)
-            $this->db->where('parent',$parent);
-        $this->db->order_by('things.id','DESC');
+            $this->db->where('a.parent',$parent);
+        $this->db->order_by('a.id','DESC');
         $this->db->limit($limit);
         // .get('things');
         $query = $this->db->get();

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-15 08:26:40
+/* Smarty version 3.1.30, created on 2017-04-16 02:27:13
   from "D:\go\ama\application\views\common\comment.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f1bd20084631_47881925',
+  'unifunc' => 'content_58f2ba61204a42_14306792',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd03b8025f8ee3e41174be16b12370503e817c2fd' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\comment.tpl',
-      1 => 1492237592,
+      1 => 1492302207,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f1bd20084631_47881925 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f2ba61204a42_14306792 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
     'compiled_filepath' => 'D:\\go\\ama\\application\\views\\template_c\\d03b8025f8ee3e41174be16b12370503e817c2fd_0.file.comment.tpl.php',
     'uid' => 'd03b8025f8ee3e41174be16b12370503e817c2fd',
-    'call_name' => 'smarty_template_function_renderComments_1009758f1bd20013195_56959505',
+    'call_name' => 'smarty_template_function_renderComments_152058f2ba6118b8a0_25372673',
   ),
 ));
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 }
-/* smarty_template_function_renderComments_1009758f1bd20013195_56959505 */
-if (!function_exists('smarty_template_function_renderComments_1009758f1bd20013195_56959505')) {
-function smarty_template_function_renderComments_1009758f1bd20013195_56959505($_smarty_tpl,$params) {
+/* smarty_template_function_renderComments_152058f2ba6118b8a0_25372673 */
+if (!function_exists('smarty_template_function_renderComments_152058f2ba6118b8a0_25372673')) {
+function smarty_template_function_renderComments_152058f2ba6118b8a0_25372673($_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -47,10 +47,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
  noncollapsed   comment " id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " onclick="">
         <p class="parent"><a name="df1l1xv"></a></p>
-        <div class="midcol unvoted">
-            <div class="arrow up login-required access-required" onclick="voteit('./api',this,1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+        <div class="midcol unvoted" id="vote-<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+">
+            <div class="arrow <?php if (isset($_smarty_tpl->tpl_vars['entry']->value['vote']) && $_smarty_tpl->tpl_vars['entry']->value['vote'] == '1') {?>upmod<?php } else { ?>up<?php }?> login-required access-required" onclick="voteit('./api',this,1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 )"></div>
-            <div class="arrow down login-required access-required"  onclick="voteit('./api',this,-1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+            <div class="arrow <?php if (isset($_smarty_tpl->tpl_vars['entry']->value['vote']) && $_smarty_tpl->tpl_vars['entry']->value['vote'] == '-1') {?>downmod<?php } else { ?>down<?php }?> login-required access-required"  onclick="voteit('./api',this,-1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 )"></div>
         </div>
         <div class="entry unvoted">
@@ -120,5 +121,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 <?php
 }}
-/*/ smarty_template_function_renderComments_1009758f1bd20013195_56959505 */
+/*/ smarty_template_function_renderComments_152058f2ba6118b8a0_25372673 */
 }
