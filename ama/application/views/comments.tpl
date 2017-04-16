@@ -8,7 +8,7 @@
 
 <div id="header">
     <div id="header-bottom-left">
-        <span class="hover pagename"><a href="./">AMA</a></span>
+        <span class="hover pagename"><a href="./">&nbsp;AMA</a></span>
         <ul class="tabmenu ">
             <li class="selected"><a href="./v/comments/<?= $thingid ?>" class="choice">留言</a></li>
         </ul>
@@ -25,11 +25,11 @@
         {/foreach}    
     </div>
     <div class="commentarea">
-        <div class="panestack-title"><span class="title">頭{$things[0].comments_count}則留言</span><a
+        <div class="panestack-title"><span class="title">头{$things[0].comments_count}则留言</span><a
                 href="/r/AMA/comments/5zwc09/i_have_been_to_prison_in_ny_and_nj_several_times/?limit=500"
-                class="title-button ">顯示所有{$things[0].replies}</a></div>
+                class="title-button ">显示所有{$things[0].replies}</a></div>
         <div class="menuarea">
-            <div class="spacer"><span class="dropdown-title lightdrop">排序依據: </span>
+            <div class="spacer"><span class="dropdown-title lightdrop">排序依据: </span>
 
                 <div class="dropdown lightdrop" onclick="open_menu(this)"><span class="selected">最佳</span></div>
                 <div class="drop-choices lightdrop"><a

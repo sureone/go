@@ -12,11 +12,11 @@
                 <a href="./v/user/{$entry.author}" class="author may-blank">{$entry.author_name}</a>
                 <span class="userattrs"></span>
                 <span class="score dislikes" title="44">{$entry.dislikes}</span>
-                <span class="score unvoted" title="45">{$entry.likes-$entry.dislikes}指標</span>
+                <span class="score unvoted" title="45">{$entry.likes-$entry.dislikes}指标</span>
                 <span class="score likes" title="46">{$entry.likes}指標</span>
                 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
                 &nbsp;
-                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">({$entry.replies}下層留言)</a>
+                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">({$entry.replies}下层留言)</a>
 
                 <span class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="{$entry.thingid}"  data-mainid="{$entry.main}" onclick="return reply(this)">回复</a></span>
             </p>

@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-04-16 10:14:47
--- 服务器版本： 5.6.21
+-- Generation Time: Apr 16, 2017 at 11:16 AM
+-- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,13 +19,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `ama`
 --
+CREATE DATABASE IF NOT EXISTS `ama` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `ama`;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `datas`
+-- Table structure for table `datas`
 --
 
+DROP TABLE IF EXISTS `datas`;
 CREATE TABLE IF NOT EXISTS `datas` (
   `thing_id` int(11) NOT NULL,
   `key` varchar(20) NOT NULL,
@@ -35,9 +38,10 @@ CREATE TABLE IF NOT EXISTS `datas` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `things`
+-- Table structure for table `things`
 --
 
+DROP TABLE IF EXISTS `things`;
 CREATE TABLE IF NOT EXISTS `things` (
 `ID` bigint(20) NOT NULL,
   `ups` int(11) NOT NULL DEFAULT '0',
@@ -60,9 +64,28 @@ CREATE TABLE IF NOT EXISTS `things` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `users`
+-- Table structure for table `user_thing_map`
 --
 
+DROP TABLE IF EXISTS `user_thing_map`;
+CREATE TABLE IF NOT EXISTS `user_thing_map` (
+  `id` varchar(200) NOT NULL,
+  `userid` varchar(100) NOT NULL,
+  `thingid` bigint(20) NOT NULL,
+  `maptype` varchar(100) NOT NULL,
+  `idata` int(11) DEFAULT NULL,
+  `sdata` varchar(200) DEFAULT NULL,
+  `cdate` int(11) NOT NULL,
+  `udate` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
 `id` bigint(20) NOT NULL,
   `userid` varchar(64) NOT NULL,
@@ -75,23 +98,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastdate` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
--- --------------------------------------------------------
-
---
--- 表的结构 `user_thing_map`
---
-
-CREATE TABLE IF NOT EXISTS `user_thing_map` (
-  `id` varchar(200) NOT NULL,
-  `userid` varchar(100) NOT NULL,
-  `thingid` bigint(20) NOT NULL,
-  `maptype` varchar(100) NOT NULL,
-  `idata` int(11) DEFAULT NULL,
-  `sdata` varchar(200) DEFAULT NULL,
-  `cdate` int(11) NOT NULL,
-  `udate` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Indexes for dumped tables
 --
@@ -103,16 +109,16 @@ ALTER TABLE `things`
  ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `userid` (`userid`), ADD UNIQUE KEY `name` (`name`), ADD KEY `name_2` (`name`);
-
---
 -- Indexes for table `user_thing_map`
 --
 ALTER TABLE `user_thing_map`
  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `userid` (`userid`), ADD UNIQUE KEY `name` (`name`), ADD KEY `name_2` (`name`);
 
 --
 -- AUTO_INCREMENT for dumped tables

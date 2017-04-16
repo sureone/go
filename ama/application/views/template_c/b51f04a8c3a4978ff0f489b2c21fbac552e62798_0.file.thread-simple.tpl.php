@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-16 09:19:43
+/* Smarty version 3.1.30, created on 2017-04-16 10:22:52
   from "D:\go\ama\application\views\common\thread-simple.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f31b0f8714a5_44797150',
+  'unifunc' => 'content_58f329dc23b968_68122800',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b51f04a8c3a4978ff0f489b2c21fbac552e62798' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1492327181,
+      1 => 1492330968,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f31b0f8714a5_44797150 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f329dc23b968_68122800 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
 			
@@ -119,7 +119,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
 						 <a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 "><?php echo $_smarty_tpl->tpl_vars['entry']->value['replies'];?>
  留言</a>
-						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">檢舉</a>
+						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
 						 

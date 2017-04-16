@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-14 12:17:08
+/* Smarty version 3.1.30, created on 2017-04-16 10:27:41
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f0a1a40221d0_44450621',
+  'unifunc' => 'content_58f32afd36a750_02062657',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492165004,
+      1 => 1492331259,
       2 => 'file',
     ),
   ),
@@ -28,7 +28,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/comment-reply-edit.tpl' => 1,
   ),
 ),false)) {
-function content_58f0a1a40221d0_44450621 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f32afd36a750_02062657 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <html lang="en">
@@ -43,7 +43,7 @@ function content_58f0a1a40221d0_44450621 (Smarty_Internal_Template $_smarty_tpl)
 
 <div id="header">
     <div id="header-bottom-left">
-        <span class="hover pagename"><a href="./">AMA</a></span>
+        <span class="hover pagename"><a href="./">&nbsp;AMA</a></span>
         <ul class="tabmenu ">
             <li class="selected"><a href="./v/comments/<?php echo '<?=';?> $thingid <?php echo '?>';?>" class="choice">留言</a></li>
         </ul>
@@ -75,13 +75,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     
     </div>
     <div class="commentarea">
-        <div class="panestack-title"><span class="title">頭<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['comments_count'];?>
-則留言</span><a
+        <div class="panestack-title"><span class="title">头<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['comments_count'];?>
+则留言</span><a
                 href="/r/AMA/comments/5zwc09/i_have_been_to_prison_in_ny_and_nj_several_times/?limit=500"
-                class="title-button ">顯示所有<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['replies'];?>
+                class="title-button ">显示所有<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['replies'];?>
 </a></div>
         <div class="menuarea">
-            <div class="spacer"><span class="dropdown-title lightdrop">排序依據: </span>
+            <div class="spacer"><span class="dropdown-title lightdrop">排序依据: </span>
 
                 <div class="dropdown lightdrop" onclick="open_menu(this)"><span class="selected">最佳</span></div>
                 <div class="drop-choices lightdrop"><a

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-14 13:05:15
+/* Smarty version 3.1.30, created on 2017-04-16 10:25:46
   from "D:\go\ama\application\views\header-bottom-left.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f0acebc28e95_04391951',
+  'unifunc' => 'content_58f32a8a75bfa9_91216443',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '96d0a9d265c5db1f508c80d38d635e22d33f58a6' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\header-bottom-left.tpl',
-      1 => 1492167913,
+      1 => 1492331145,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f0acebc28e95_04391951 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f32a8a75bfa9_91216443 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div id="header-bottom-left">
-    <span class="hover pagename"><a href="./">AMA</a></span>
+    <span class="hover pagename"><a href="./">&nbsp;AMA</a></span>
     <ul class="tabmenu ">
-        <li <?php if ($_smarty_tpl->tpl_vars['page']->value == "hot") {?>class="selected"<?php }?>><a href="./v/hot" class="choice">熱門</a></li>
+        <li <?php if ($_smarty_tpl->tpl_vars['page']->value == "hot") {?>class="selected"<?php }?>><a href="./v/hot" class="choice">热门</a></li>
         <li <?php if ($_smarty_tpl->tpl_vars['page']->value == "new") {?>class="selected"<?php }?>><a href="./v/news" class="choice">最新</a></li>
 <!--         <li <?php if ($_smarty_tpl->tpl_vars['page']->value == "rising") {?>class="selected"<?php }?>><a href="./v/rising" class="choice">好評上升中</a></li>
         <li <?php if ($_smarty_tpl->tpl_vars['page']->value == "controversial") {?>class="selected"<?php }?>><a href="./v/controversial" class="choice">具爭議的</a></li>

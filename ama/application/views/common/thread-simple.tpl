@@ -68,7 +68,7 @@
 						 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
 
 						 <a href="./v/comments/{$entry.thingid}">{$entry.replies} 留言</a>
-						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">檢舉</a>
+						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
 						 
