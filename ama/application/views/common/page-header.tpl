@@ -1,4 +1,4 @@
-    <base href="http://127.0.0.1/ama/index.php">
+    <base href="http://www.askmeany.cn/index.php">
 	<meta charset="utf-8">
 	<title>问我任何事 Ask Me Anything </title>
 	<style type="text/css">
