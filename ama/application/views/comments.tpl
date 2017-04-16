@@ -10,7 +10,7 @@
     <div id="header-bottom-left">
         <span class="hover pagename"><a href="./">&nbsp;AMA</a></span>
         <ul class="tabmenu ">
-            <li class="selected"><a href="./v/comments/<?= $thingid ?>" class="choice">留言</a></li>
+            <li class="selected"><a href="./v/comments/{$things[0].thingid}" class="choice">留言</a></li>
         </ul>
     </div>
     {include file="common/header-bottom-right.tpl"}
