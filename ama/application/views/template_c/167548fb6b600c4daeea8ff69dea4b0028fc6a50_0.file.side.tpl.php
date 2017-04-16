@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-16 02:39:55
+/* Smarty version 3.1.30, created on 2017-04-16 02:50:09
   from "D:\go\ama\application\views\common\side.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f2bd5ba3c9b4_92004122',
+  'unifunc' => 'content_58f2bfc1051dc3_46486733',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '167548fb6b600c4daeea8ff69dea4b0028fc6a50' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\side.tpl',
-      1 => 1492303192,
+      1 => 1492303807,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f2bd5ba3c9b4_92004122 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f2bfc1051dc3_46486733 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="side">
-    <div class="spacer">
+<!--     <div class="spacer">
         <form action="https://www.reddit.com/r/AMA/search" id="search" role="search">
         	<input type="text" name="q" placeholder="搜尋" tabindex="20">
         	<input type="submit" value="" tabindex="22">
@@ -55,7 +55,7 @@ function content_58f2bd5ba3c9b4_92004122 (Smarty_Internal_Template $_smarty_tpl)
                     <p><a href="https://www.reddit.com/wiki/search">see the search faq for details.</a></p></div>
                 <p><a href="https://www.reddit.com/wiki/search" id="search_showmore">進階搜尋：依照作者、版面...</a></p></div>
         </form>
-    </div>
+    </div> -->
     <?php if ($_smarty_tpl->tpl_vars['page']->value == "comments") {?>
 
         <?php

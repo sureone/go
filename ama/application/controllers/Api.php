@@ -154,6 +154,10 @@ class Api extends CI_Controller {
                 $this->db->where('ID',$json->{'thingid'});
                 $this->db->update('things');
             }
+
+            $this->db->set('score','ups-downs',FALSE);
+            $this->db->where('ID',$json->{'thingid'});
+            $this->db->update('things');
             $result = array('code'=>200,'mapid'=>$id);
             $this->db->trans_complete();
 

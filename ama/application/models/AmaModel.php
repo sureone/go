@@ -33,10 +33,12 @@ class AmaModel extends CI_Model{
     		$this->db->where('parent',0);
             $this->db->where('stype','link');
             
-            if($maxid!=0)
-    		  $this->db->where('a.id<',$maxid);
-            else
-              $this->db->order_by('a.id','DESC');
+
+            $this->db->order_by('a.score','DESC');
+            
+            $this->db->order_by('a.id','DESC');
+
+
     		$this->db->limit($limit);
     		// .get('things');
     		$query = $this->db->get();

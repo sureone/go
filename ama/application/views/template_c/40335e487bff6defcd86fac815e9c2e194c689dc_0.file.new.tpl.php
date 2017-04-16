@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-13 03:31:06
+/* Smarty version 3.1.30, created on 2017-04-16 03:51:33
   from "D:\go\ama\application\views\new.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58eed4da261e88_80350220',
+  'unifunc' => 'content_58f2ce25f3d457_30889344',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '40335e487bff6defcd86fac815e9c2e194c689dc' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\new.tpl',
-      1 => 1491117155,
+      1 => 1492305523,
       2 => 'file',
     ),
   ),
@@ -22,11 +22,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:header-bottom-left.tpl' => 1,
     'file:common/header-bottom-right.tpl' => 1,
     'file:common/side.tpl' => 1,
-    'file:common/thread.tpl' => 1,
+    'file:common/thread-simple.tpl' => 1,
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58eed4da261e88_80350220 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f2ce25f3d457_30889344 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -60,7 +60,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 ?>
-                <?php $_smarty_tpl->_subTemplateRender("file:common/thread.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+                <?php $_smarty_tpl->_subTemplateRender("file:common/thread-simple.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
 
             <?php

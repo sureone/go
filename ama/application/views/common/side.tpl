@@ -1,5 +1,5 @@
 <div class="side">
-    <div class="spacer">
+<!--     <div class="spacer">
         <form action="https://www.reddit.com/r/AMA/search" id="search" role="search">
         	<input type="text" name="q" placeholder="搜尋" tabindex="20">
         	<input type="submit" value="" tabindex="22">
@@ -31,7 +31,7 @@
                     <p><a href="https://www.reddit.com/wiki/search">see the search faq for details.</a></p></div>
                 <p><a href="https://www.reddit.com/wiki/search" id="search_showmore">進階搜尋：依照作者、版面...</a></p></div>
         </form>
-    </div>
+    </div> -->
     {if $page eq "comments"}
 
         {foreach $things as $entry}
