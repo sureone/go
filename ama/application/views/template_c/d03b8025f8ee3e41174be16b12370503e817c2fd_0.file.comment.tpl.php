@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-16 02:27:13
+/* Smarty version 3.1.30, created on 2017-04-16 10:08:28
   from "D:\go\ama\application\views\common\comment.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f2ba61204a42_14306792',
+  'unifunc' => 'content_58f3267c8c9bd9_16858523',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd03b8025f8ee3e41174be16b12370503e817c2fd' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\comment.tpl',
-      1 => 1492302207,
+      1 => 1492330102,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f2ba61204a42_14306792 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f3267c8c9bd9_16858523 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
     'compiled_filepath' => 'D:\\go\\ama\\application\\views\\template_c\\d03b8025f8ee3e41174be16b12370503e817c2fd_0.file.comment.tpl.php',
     'uid' => 'd03b8025f8ee3e41174be16b12370503e817c2fd',
-    'call_name' => 'smarty_template_function_renderComments_152058f2ba6118b8a0_25372673',
+    'call_name' => 'smarty_template_function_renderComments_112658f3267c80e3a7_13103109',
   ),
 ));
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 }
-/* smarty_template_function_renderComments_152058f2ba6118b8a0_25372673 */
-if (!function_exists('smarty_template_function_renderComments_152058f2ba6118b8a0_25372673')) {
-function smarty_template_function_renderComments_152058f2ba6118b8a0_25372673($_smarty_tpl,$params) {
+/* smarty_template_function_renderComments_112658f3267c80e3a7_13103109 */
+if (!function_exists('smarty_template_function_renderComments_112658f3267c80e3a7_13103109')) {
+function smarty_template_function_renderComments_112658f3267c80e3a7_13103109($_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -71,7 +71,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 "></time>
                 &nbsp;
                 <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">(<?php echo $_smarty_tpl->tpl_vars['entry']->value['replies'];?>
-下層留言)</a></p>
+下層留言)</a>
+
+                <span class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+"  data-mainid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['main'];?>
+" onclick="return reply(this)">回复</a></span>
+            </p>
             <form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')"
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
@@ -83,7 +88,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
                 </div>
             </form>
             <ul class="flat-list buttons">
-                <li class="first"><a
+               <!--  <li class="first"><a
                         href="https://www.reddit.com/r/AMA/comments/5zwc09/i_have_been_to_prison_in_ny_and_nj_several_times/df1l1xv/"
                      >永久連結</a></li>
                 <li><a href="javascript:void(0)"
@@ -92,10 +97,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
                 <li class="report-button"><a href="javascript:void(0)" class="reportbtn access-required"
                                               data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 ">檢舉</a></li>
-                <li class="give-gold-button"><a href="">贈送金幣</a></li>
-                <li class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-"  data-mainid="<?php echo $_smarty_tpl->tpl_vars['entry']->value['main'];?>
-" onclick="return reply(this)">回覆</a></li>
+                <li class="give-gold-button"><a href="">贈送金幣</a></li> -->
+                
             </ul>
             <div class="reportform report-t1_df1l1xv"></div>
         </div>
@@ -121,5 +124,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 <?php
 }}
-/*/ smarty_template_function_renderComments_152058f2ba6118b8a0_25372673 */
+/*/ smarty_template_function_renderComments_112658f3267c80e3a7_13103109 */
 }

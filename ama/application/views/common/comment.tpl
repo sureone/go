@@ -16,7 +16,10 @@
                 <span class="score likes" title="46">{$entry.likes}指標</span>
                 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
                 &nbsp;
-                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">({$entry.replies}下層留言)</a></p>
+                <a href="javascript:void(0)" class="numchildren" onclick="return togglecomment(this)">({$entry.replies}下層留言)</a>
+
+                <span class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="{$entry.thingid}"  data-mainid="{$entry.main}" onclick="return reply(this)">回复</a></span>
+            </p>
             <form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')"
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
@@ -25,7 +28,7 @@
                 </div>
             </form>
             <ul class="flat-list buttons">
-                <li class="first"><a
+               <!--  <li class="first"><a
                         href="https://www.reddit.com/r/AMA/comments/5zwc09/i_have_been_to_prison_in_ny_and_nj_several_times/df1l1xv/"
                      >永久連結</a></li>
                 <li><a href="javascript:void(0)"
@@ -33,8 +36,8 @@
                 <li class="comment-save-button save-button"><a href="javascript:void(0)">儲存</a></li>
                 <li class="report-button"><a href="javascript:void(0)" class="reportbtn access-required"
                                               data-thingid="{$entry.thingid}">檢舉</a></li>
-                <li class="give-gold-button"><a href="">贈送金幣</a></li>
-                <li class="reply-button"><a class="access-required" href="javascript:void(0)" data-thingid="{$entry.thingid}"  data-mainid="{$entry.main}" onclick="return reply(this)">回覆</a></li>
+                <li class="give-gold-button"><a href="">贈送金幣</a></li> -->
+                
             </ul>
             <div class="reportform report-t1_df1l1xv"></div>
         </div>

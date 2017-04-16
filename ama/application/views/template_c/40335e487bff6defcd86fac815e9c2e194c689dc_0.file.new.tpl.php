@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-16 03:51:33
+/* Smarty version 3.1.30, created on 2017-04-16 09:20:33
   from "D:\go\ama\application\views\new.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f2ce25f3d457_30889344',
+  'unifunc' => 'content_58f31b41b04ef3_41659841',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '40335e487bff6defcd86fac815e9c2e194c689dc' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\new.tpl',
-      1 => 1492305523,
+      1 => 1492327231,
       2 => 'file',
     ),
   ),
@@ -26,13 +26,34 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58f2ce25f3d457_30889344 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f31b41b04ef3_41659841 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
     <?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+    <style type="text/css">
+		.thing{
+			display: inline-block;
+			margin: 0 0px 0px 0; 
+			padding: 2px;
+		}
+
+		.listing-page .linklisting .thing {
+		    position: relative;
+		    margin: 0 0px 0px 0;
+		}
+
+		.link .title {
+		  
+		    /*max-width: 400px;*/
+		    min-width:200px;
+		    /*text-overflow: ellipsis;*/
+		    /*overflow: hidden;*/
+		    /*white-space: nowrap;*/
+		}
+	</style>
 </head>
 
 <body class="listing-page <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>

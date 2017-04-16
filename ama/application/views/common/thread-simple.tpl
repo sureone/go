@@ -23,7 +23,7 @@
 				<span class="rank"></span>
 				{/if}
 				{if $page neq "message-inbox"}
-				<!-- <div class="midcol unvoted" id="vote-{$entry.thingid}">
+				<div class="midcol unvoted" id="vote-{$entry.thingid}">
 					<div class="arrow {if isset($entry.vote) and $entry.vote eq '1' }upmod{else}up{/if} login-required access-required" tabindex="0" onclick="voteit('./api',this,1,{$entry.thingid})"></div>
 
 					{if $entry.parent eq 0}
@@ -32,9 +32,14 @@
 					<div class="score likes" title="79">{$entry.likes}</div>
 					{/if}
 					<div class="arrow {if isset($entry.vote) and $entry.vote eq '-1' }downmod{else}down{/if} login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,{$entry.thingid})"></div>
-				</div> -->
+				</div>
 				{/if}
 				<div class="entry unvoted">
+					{if $page eq "hot" or $page eq "new" }
+						{if isset($entry.text) and $entry.text neq ''}
+						<div class="expando-button collapsed selftext"></div>
+						{/if}
+					{/if}
 					
 						{if $pagetype eq "list"}
 						 <p class="title"><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
@@ -51,9 +56,7 @@
 						{/if}
 					
 
-					{if $page eq "hot"}
-						<div class="expando-button collapsed selftext"></div>
-					{/if}
+					
 					<p class="tagline">
 						 {if $entry.stype eq 'message'}
 						 来自
@@ -81,15 +84,7 @@
 					</div>
 					{/if}
 					
-					<ul class="flat-list buttons">
-						<li class="first"></li>
-						
-						<li class="report-button">
-							
-						</li>
-					</ul>
-					<div class="reportform"></div>
-
+					
 					
 				</div>
 				<div class="child"></div>

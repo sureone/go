@@ -18,7 +18,7 @@
                     <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
                     <a class="option " href="#">隱藏說明</a>
                 </span>
-                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
+                <a class="reddiquette" target="_blank" tabindex="100">內容政策</a>
                 <span class="error TOO_LONG field-text" style="display:none"></span>
                 <span
                     class="error RATELIMIT field-ratelimit" style="display:none">

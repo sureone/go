@@ -184,7 +184,7 @@ class V extends CI_Controller {
 	public function submit(){
 
         $this->common();
-		$this->ci_smarty->assign("page","comments");
+		$this->ci_smarty->assign("page","submit");
 		$this->ci_smarty->display("submit.tpl");
 	}
 	public function comments($thingid){

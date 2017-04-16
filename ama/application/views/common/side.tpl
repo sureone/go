@@ -33,7 +33,7 @@
         </form>
     </div> -->
     {if $page eq "comments"}
-
+        {if isset($things)}
         {foreach $things as $entry}
         <div class="spacer">
             <div class="linkinfo">
@@ -45,7 +45,8 @@
                                                          id="shortlink-text"></div> -->
             </div>
         </div>
-        {/foreach}   
+        {/foreach} 
+        {/if}  
         
     {/if}
     <div class="spacer">

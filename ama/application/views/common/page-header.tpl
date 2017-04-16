@@ -1,6 +1,6 @@
     <base href="http://127.0.0.1/ama/index.php">
 	<meta charset="utf-8">
-	<title>Ask Me Anything</title>
+	<title>问我任何事 Ask Me Anything </title>
 	<style type="text/css">
 	</style>
 	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />

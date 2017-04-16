@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-16 04:19:24
+/* Smarty version 3.1.30, created on 2017-04-16 09:16:13
   from "D:\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f2d4ac344f04_25805089',
+  'unifunc' => 'content_58f31a3d2a0e18_33226618',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '698fa06f07caff7f8c617daf21469f0c8127ca2d' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\hot.tpl',
-      1 => 1492309161,
+      1 => 1492326971,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58f2d4ac344f04_25805089 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f31a3d2a0e18_33226618 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -37,6 +37,7 @@ function content_58f2d4ac344f04_25805089 (Smarty_Internal_Template $_smarty_tpl)
 		.thing{
 			display: inline-block;
 			margin: 0 0px 0px 0; 
+			padding: 2px;
 		}
 
 		.listing-page .linklisting .thing {
@@ -46,11 +47,11 @@ function content_58f2d4ac344f04_25805089 (Smarty_Internal_Template $_smarty_tpl)
 
 		.link .title {
 		  
-		    max-width: 400px;
+		    /*max-width: 400px;*/
 		    min-width:200px;
-		    text-overflow: ellipsis;
-		    overflow: hidden;
-		    white-space: nowrap;
+		    /*text-overflow: ellipsis;*/
+		    /*overflow: hidden;*/
+		    /*white-space: nowrap;*/
 		}
 	</style>
 </head>

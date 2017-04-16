@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-03-26 15:35:39
+-- Generation Time: 2017-04-16 10:14:47
 -- 服务器版本： 5.6.21
 -- PHP Version: 5.6.3
 
@@ -37,10 +37,12 @@ CREATE TABLE IF NOT EXISTS `datas` (
 --
 -- 表的结构 `things`
 --
+
 CREATE TABLE IF NOT EXISTS `things` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+`ID` bigint(20) NOT NULL,
   `ups` int(11) NOT NULL DEFAULT '0',
   `downs` int(11) NOT NULL DEFAULT '0',
+  `score` int(11) NOT NULL DEFAULT '0',
   `type` varchar(12) NOT NULL,
   `cdate` int(11) NOT NULL,
   `udate` int(11) NOT NULL,
@@ -52,8 +54,9 @@ CREATE TABLE IF NOT EXISTS `things` (
   `replies` int(11) NOT NULL DEFAULT '0',
   `recipients` varchar(200) DEFAULT NULL,
   `stype` varchar(20) NOT NULL DEFAULT 'link',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
+  `readed` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -67,15 +70,27 @@ CREATE TABLE IF NOT EXISTS `users` (
   `passwd` varchar(128) NOT NULL,
   `email` varchar(128) DEFAULT NULL,
   `mobile` varchar(18) DEFAULT NULL,
-  `status` varchar(24) NOT NULL DEFAULT 'normal'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+  `status` varchar(24) NOT NULL DEFAULT 'normal',
+  `cdate` int(11) DEFAULT NULL,
+  `lastdate` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- --------------------------------------------------------
 
 --
--- 转存表中的数据 `users`
+-- 表的结构 `user_thing_map`
 --
 
-INSERT INTO `users` (`id`, `userid`, `name`, `passwd`, `email`, `mobile`, `status`) VALUES
-(1, 'sureone', '小网', '81dc9bdb52d04dc20036dbd8313ed055', 'yang.xiaowang@wcare.cn', NULL, 'normal');
+CREATE TABLE IF NOT EXISTS `user_thing_map` (
+  `id` varchar(200) NOT NULL,
+  `userid` varchar(100) NOT NULL,
+  `thingid` bigint(20) NOT NULL,
+  `maptype` varchar(100) NOT NULL,
+  `idata` int(11) DEFAULT NULL,
+  `sdata` varchar(200) DEFAULT NULL,
+  `cdate` int(11) NOT NULL,
+  `udate` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -91,7 +106,13 @@ ALTER TABLE `things`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `userid` (`userid`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `userid` (`userid`), ADD UNIQUE KEY `name` (`name`), ADD KEY `name_2` (`name`);
+
+--
+-- Indexes for table `user_thing_map`
+--
+ALTER TABLE `user_thing_map`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -101,12 +122,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `things`
 --
 ALTER TABLE `things`
-MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=207;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

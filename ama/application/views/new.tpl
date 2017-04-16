@@ -1,6 +1,27 @@
 <html lang="en">
 <head>
     {include file="common/page-header.tpl"}
+    <style type="text/css">
+		.thing{
+			display: inline-block;
+			margin: 0 0px 0px 0; 
+			padding: 2px;
+		}
+
+		.listing-page .linklisting .thing {
+		    position: relative;
+		    margin: 0 0px 0px 0;
+		}
+
+		.link .title {
+		  
+		    /*max-width: 400px;*/
+		    min-width:200px;
+		    /*text-overflow: ellipsis;*/
+		    /*overflow: hidden;*/
+		    /*white-space: nowrap;*/
+		}
+	</style>
 </head>
 
 <body class="listing-page {if $logined eq "true"}loggedin{/if} {$page}-page">

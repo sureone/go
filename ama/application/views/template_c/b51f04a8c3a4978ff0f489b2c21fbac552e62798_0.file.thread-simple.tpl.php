@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-16 04:07:35
+/* Smarty version 3.1.30, created on 2017-04-16 09:19:43
   from "D:\go\ama\application\views\common\thread-simple.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f2d1e779c204_47266642',
+  'unifunc' => 'content_58f31b0f8714a5_44797150',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b51f04a8c3a4978ff0f489b2c21fbac552e62798' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1492308437,
+      1 => 1492327181,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f2d1e779c204_47266642 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f31b0f8714a5_44797150 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
 			
@@ -56,7 +56,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
 				<span class="rank"></span>
 				<?php }?>
 				<?php if ($_smarty_tpl->tpl_vars['page']->value != "message-inbox") {?>
-				<!-- <div class="midcol unvoted" id="vote-<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+				<div class="midcol unvoted" id="vote-<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 ">
 					<div class="arrow <?php if (isset($_smarty_tpl->tpl_vars['entry']->value['vote']) && $_smarty_tpl->tpl_vars['entry']->value['vote'] == '1') {?>upmod<?php } else { ?>up<?php }?> login-required access-required" tabindex="0" onclick="voteit('./api',this,1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 )"></div>
@@ -71,9 +71,14 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
 					<?php }?>
 					<div class="arrow <?php if (isset($_smarty_tpl->tpl_vars['entry']->value['vote']) && $_smarty_tpl->tpl_vars['entry']->value['vote'] == '-1') {?>downmod<?php } else { ?>down<?php }?> login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 )"></div>
-				</div> -->
+				</div>
 				<?php }?>
 				<div class="entry unvoted">
+					<?php if ($_smarty_tpl->tpl_vars['page']->value == "hot" || $_smarty_tpl->tpl_vars['page']->value == "new") {?>
+						<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['text']) && $_smarty_tpl->tpl_vars['entry']->value['text'] != '') {?>
+						<div class="expando-button collapsed selftext"></div>
+						<?php }?>
+					<?php }?>
 					
 						<?php if ($_smarty_tpl->tpl_vars['pagetype']->value == "list") {?>
 						 <p class="title"><a class="title may-blank loggedin " href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
@@ -97,9 +102,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
 						<?php }?>
 					
 
-					<?php if ($_smarty_tpl->tpl_vars['page']->value == "hot") {?>
-						<div class="expando-button collapsed selftext"></div>
-					<?php }?>
+					
 					<p class="tagline">
 						 <?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] == 'message') {?>
 						 来自
@@ -136,15 +139,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\ap
 					</div>
 					<?php }?>
 					
-					<ul class="flat-list buttons">
-						<li class="first"></li>
-						
-						<li class="report-button">
-							
-						</li>
-					</ul>
-					<div class="reportform"></div>
-
+					
 					
 				</div>
 				<div class="child"></div>

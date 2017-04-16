@@ -1,8 +1,8 @@
 
                                 <div class="markhelp" style="display:none"><p></p>
 
-                                    <p>reddit 使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
-                                        版本，作為文字格式的設定方式。請參閱下方的部分基本格式，或查看<a href="/wiki/commenting">留言維基頁面</a>中的更詳細說明和常見問題解決方式。
+                                    <p>使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
+                                        版本，作為文字格式的設定方式。請參閱下方的部分基本格式。
                                     </p>
 
                                     <p></p>
@@ -53,10 +53,7 @@
                                             <td>~~strikethrough~~</td>
                                             <td><strike>strikethrough</strike></td>
                                         </tr>
-                                        <tr>
-                                            <td>super^script</td>
-                                            <td>super<sup>script</sup></td>
-                                        </tr>
+                                       
                                         </tbody>
                                     </table>
                                 </div>

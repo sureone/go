@@ -5,6 +5,7 @@
 		.thing{
 			display: inline-block;
 			margin: 0 0px 0px 0; 
+			padding: 2px;
 		}
 
 		.listing-page .linklisting .thing {
@@ -14,11 +15,11 @@
 
 		.link .title {
 		  
-		    max-width: 400px;
+		    /*max-width: 400px;*/
 		    min-width:200px;
-		    text-overflow: ellipsis;
-		    overflow: hidden;
-		    white-space: nowrap;
+		    /*text-overflow: ellipsis;*/
+		    /*overflow: hidden;*/
+		    /*white-space: nowrap;*/
 		}
 	</style>
 </head>
