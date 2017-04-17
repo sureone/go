@@ -27,7 +27,7 @@ class Mm extends CI_Controller {
         $this->load->database();
         $this->load->helper('file');
         $this->load->library('ci_smarty');
-        $this->load->model('amamodel');
+        $this->load->model('amaModel');
     }
     public function index()
     {   
