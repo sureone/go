@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 01:49:03
+/* Smarty version 3.1.30, created on 2017-04-17 04:21:30
   from "D:\work\go\ama\application\views\common\side.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d0787f47d176_53311020',
+  'unifunc' => 'content_58f426aa5d0437_50257387',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '909714a59f76f675a88c2ed245e2941851f8dac9' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\side.tpl',
-      1 => 1489975520,
+      1 => 1492390703,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d0787f47d176_53311020 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f426aa5d0437_50257387 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="side">
-    <div class="spacer">
+<!--     <div class="spacer">
         <form action="https://www.reddit.com/r/AMA/search" id="search" role="search">
         	<input type="text" name="q" placeholder="搜尋" tabindex="20">
         	<input type="submit" value="" tabindex="22">
@@ -55,23 +55,41 @@ function content_58d0787f47d176_53311020 (Smarty_Internal_Template $_smarty_tpl)
                     <p><a href="https://www.reddit.com/wiki/search">see the search faq for details.</a></p></div>
                 <p><a href="https://www.reddit.com/wiki/search" id="search_showmore">進階搜尋：依照作者、版面...</a></p></div>
         </form>
-    </div>
+    </div> -->
     <?php if ($_smarty_tpl->tpl_vars['page']->value == "comments") {?>
+        <?php if (isset($_smarty_tpl->tpl_vars['things']->value)) {?>
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['things']->value, 'entry');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
+?>
         <div class="spacer">
             <div class="linkinfo">
-                <div class="date"><span>本文發表於  </span>
-                    <time datetime="2017-03-17T07:51:21+00:00">17 Mar 2017</time>
+                <div class="date"><span>本文发表于 </span>
+                    <time datetime="<?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
+"><?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
+</time>
                 </div>
-                <div class="score"><span class="number">392</span> <span class="word">指標</span> (89% upvoted)</div>
-                <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
-                                                         id="shortlink-text"></div>
+                <div class="score"><span class="number"><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes']-$_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
+</span> <span class="word">指标</span> (其中<?php echo $_smarty_tpl->tpl_vars['entry']->value['likes'];?>
+票赞成)</div>
+<!--                 <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
+                                                         id="shortlink-text"></div> -->
             </div>
         </div>
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+ 
+        <?php }?>  
+        
     <?php }?>
     <div class="spacer">
         <div class="sidebox submit submit-text">
             <div class="morelink">
-            	<a href="./v/submit" class="login-required access-required" target="_top">發表新文章</a>
+            	<a href="./v/submit" class="login-required access-required" target="_top">发表新文章</a>
                 <div class="nub"></div>
             </div>
         </div>

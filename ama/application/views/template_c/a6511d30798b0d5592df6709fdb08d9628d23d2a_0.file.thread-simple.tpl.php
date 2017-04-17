@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 05:32:19
-  from "D:\work\go\ama\application\views\common\thread.tpl" */
+/* Smarty version 3.1.30, created on 2017-04-17 05:14:46
+  from "D:\work\go\ama\application\views\common\thread-simple.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f43743497db5_49143891',
+  'unifunc' => 'content_58f4332621e1d3_81974026',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '64fc306606431e9d5e18d170ac85e1f62dcf4f19' => 
+    'a6511d30798b0d5592df6709fdb08d9628d23d2a' => 
     array (
-      0 => 'D:\\work\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1492399935,
+      0 => 'D:\\work\\go\\ama\\application\\views\\common\\thread-simple.tpl',
+      1 => 1492398848,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f43743497db5_49143891 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f4332621e1d3_81974026 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
+			
 			<div class="thing odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
 " id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " data-thingid=<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
@@ -73,6 +74,11 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\a
 				</div>
 				<?php }?>
 				<div class="entry unvoted">
+					<?php if ($_smarty_tpl->tpl_vars['page']->value == "hot" || $_smarty_tpl->tpl_vars['page']->value == "new") {?>
+						<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['text']) && $_smarty_tpl->tpl_vars['entry']->value['text'] != '') {?>
+						<div class="expando-button collapsed selftext"></div>
+						<?php }?>
+					<?php }?>
 					
 						<?php if ($_smarty_tpl->tpl_vars['pagetype']->value == "list") {?>
 						 <p class="title"><a class="title may-blank loggedin " href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
@@ -96,9 +102,7 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\a
 						<?php }?>
 					
 
-					<?php if ($_smarty_tpl->tpl_vars['page']->value == "hot") {?>
-						<div class="expando-button collapsed selftext"></div>
-					<?php }?>
+					
 					<p class="tagline">
 						 <?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] == 'message') {?>
 						 来自
@@ -109,41 +113,24 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\a
 						 
 						 <span class="userattrs"></span>
 
-						 <?php if ($_smarty_tpl->tpl_vars['entry']->value['stype'] != 'message') {?>
-						 发表于
-						 <?php }?> 
 						 <time class="live-timestamp timeago" datetime="<?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
 "></time>
 
-						 <ul class="flat-list buttons" style="display: inline-block;">
-							<li class="first"><a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+						 <a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 "><?php echo $_smarty_tpl->tpl_vars['entry']->value['replies'];?>
- 留言</a></li>
-							<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
-							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-);return false;">收藏</a></li>
-							<!-- <li>
-								<form action="/post/hide" method="post" class="state-button hide-button">
-									<input type="hidden" name="executed" value="隱藏">
-									<span>
-										<a href="javascript:void(0)" class=" " onclick="change_state(this, 'hide', hide_thing);">隱藏</a>
-									</span>
-								</form>
-							</li> -->
-							<li class="report-button">
-								<a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
-							</li>
+ 留言</a>
+						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
-							<?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>
-							<?php if ($_smarty_tpl->tpl_vars['user']->value['userid'] == $_smarty_tpl->tpl_vars['entry']->value['author']) {?>
-							<li class="edit-button">
+
+						<?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>
+						<?php if ($_smarty_tpl->tpl_vars['user']->value['userid'] == $_smarty_tpl->tpl_vars['entry']->value['author']) {?>
 								<a href="./v/submit/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " data-thingid=<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
  class="editbtn access-required" data-event-action="edit">编辑</a>
-							</li>
-							<?php }?>
-							<?php }?>
-						</ul>
+						<?php }?>
+						<?php }?>
+
+
 						 
 					</p>
 					<?php if ($_smarty_tpl->tpl_vars['pagetype']->value == "list") {?>
@@ -162,8 +149,6 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\a
 					<?php }?>
 					
 					
-					<div class="reportform"></div>
-
 					
 				</div>
 				<div class="child"></div>
