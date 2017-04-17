@@ -6,7 +6,7 @@
             display: inline-block;
             margin: 0 0px 0px 0; 
             padding: 2px;
-            min-width:220px;
+            min-width:260px;
         }
 
         .listing-page .linklisting .thing {
