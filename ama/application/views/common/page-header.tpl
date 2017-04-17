@@ -17,7 +17,7 @@
     <script src="./static/js/form2json.js"></script>
     <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
-    <script src="./static/js/markdown.js?v=2"></script>
+    <script src="./static/js/markdown.js?v=3"></script>
     <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
 
     <script type="text/javascript">

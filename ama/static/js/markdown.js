@@ -722,7 +722,7 @@
         // There might also be adjacent code block to merge.
 
         var ret = [],
-            re = /^(?: {0,5}\t| {4})(.*)\n?/;
+            re = /^(?: {0,3}\t| {5})(.*)\n?/;
 
         // 4 spaces + content
         if ( !block.match( re ) )
