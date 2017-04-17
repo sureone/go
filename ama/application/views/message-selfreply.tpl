@@ -1,5 +1,4 @@
-<html lang="en">
-<head>
+
 	{include file="common/page-header.tpl"}
 </head>
 

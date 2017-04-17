@@ -40,6 +40,26 @@ function voteit(url,elm,v,thingid){
     });
 }
 
+function deleteit(thingid){
+    var map={
+        action:'delete-link',
+        thingid:thingid
+    };
+    var postdata = JSON.stringify(map);
+    $.ajax({
+        dataType : 'json',
+        type : 'POST',
+        url : "./api",
+        data : postdata,
+        success : function(data) {
+            window.location.href="./";
+         
+        },
+        error : function() {
+        }
+    });
+}
+
 function saveit(url,elm,thingid){
     var map={
         action:'save-link',

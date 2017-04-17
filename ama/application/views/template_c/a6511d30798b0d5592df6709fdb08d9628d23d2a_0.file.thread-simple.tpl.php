@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 05:14:46
+/* Smarty version 3.1.30, created on 2017-04-17 06:16:30
   from "D:\work\go\ama\application\views\common\thread-simple.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f4332621e1d3_81974026',
+  'unifunc' => 'content_58f4419e6d0c09_36118473',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a6511d30798b0d5592df6709fdb08d9628d23d2a' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1492398848,
+      1 => 1492402492,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f4332621e1d3_81974026 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f4419e6d0c09_36118473 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
 ?>
 			
@@ -127,6 +127,11 @@ if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\a
 								<a href="./v/submit/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
 " data-thingid=<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
  class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+)" data-thingid=<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+ class="delbtn access-required" data-event-action="delete">删除</a>
 						<?php }?>
 						<?php }?>
 

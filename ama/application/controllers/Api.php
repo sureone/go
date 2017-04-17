@@ -49,6 +49,9 @@ class Api extends CI_Controller {
             case 'vote-link':
                 $result = $this->doVoteLink($jobj);
             break;
+            case 'delete-link':
+                $result = $this->doDeleteLink($jobj);
+            break;
             case 'save-link':
                 $result = $this->doSaveLink($jobj);
             break;
@@ -88,6 +91,17 @@ class Api extends CI_Controller {
 
             }
             $result = array('code'=>200,'mapid'=>$id);
+        }
+        return $result;
+    }
+
+
+    function doDeleteLink($json){
+        $user = $this->session->userdata('user.info');
+        $result = array('code'=>404);
+        if(isset($_SESSION['user.info'])){
+           $this->amaModel->deleteThing($json->{'thingid'},$user['userid']);
+           $result = array('code'=>200,'thingid'=>$json->{'thingid'});
         }
         return $result;
     }

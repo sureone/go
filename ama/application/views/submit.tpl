@@ -1,9 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
 
-<html lang="en">
-<head>
     {include file='common/page-header.tpl'}
     <style type="text/css">
         {literal}
