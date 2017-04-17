@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 06:17:39
+/* Smarty version 3.1.30, created on 2017-04-17 09:39:36
   from "D:\work\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f441e30c97c5_85464202',
+  'unifunc' => 'content_58f47138879f76_20288021',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492402654,
+      1 => 1492414545,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f441e30c97c5_85464202 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f47138879f76_20288021 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-    
+<!DOCTYPE html>
+<html>
+<head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<meta charset="utf-8">
     <base href="http://127.0.0.1/ama/index.php">

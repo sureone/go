@@ -25,6 +25,7 @@ class Api extends CI_Controller {
         $this->load->helper('json');
         $this->load->library('session');
         // $this->load->library('markdown');
+        $this->load->model("amaModel");
         $this->load->database();
         $this->load->helper('file');
     }

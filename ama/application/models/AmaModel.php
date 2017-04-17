@@ -207,9 +207,9 @@ class AmaModel extends CI_Model{
         return false;
     }
 
-    public function deleteThink($thingid,$userid){
+    public function deleteThing($thingid,$userid){
         $thing = $this->readThing($thingid);
-        if($this->isAdmin($userid) || $thing['thingid'] == $thingid){
+        if($this->isAdmin($userid) || (  count($thing)==1 && $thing[0]['thingid'] == $thingid && $thing[0]['author']==$userid)){
             $this->db->where('id', $thingid);
             $this->db->delete('things');
             return true;
