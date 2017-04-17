@@ -93,8 +93,10 @@ $(document).ready(function () {
 
     $(document).delegate("#siteTable .thing .expando-button.collapsed", "click", function(e){
 
+        var thing = $(e.target).parent().closest('.thing');
+        var id = thing.attr('data-thingid');
 
-        var id = $(e.target).parent().closest('.thing').attr('data-thingid');
+    
 
         $(e.target).removeClass("collapsed");
         $(e.target).addClass("expanded");
@@ -109,8 +111,10 @@ $(document).ready(function () {
     $(document).delegate("#siteTable .thing .expando-button.expanded", "click", function(e){
 
         
-        var id = $(e.target).parent().closest('.thing').attr('data-thingid');
+        var thing = $(e.target).parent().closest('.thing');
+        var id = thing.attr('data-thingid');
 
+     
        
         $(e.target).removeClass("expanded");
         $(e.target).addClass("collapsed");

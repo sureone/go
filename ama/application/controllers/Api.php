@@ -28,7 +28,10 @@ class Api extends CI_Controller {
         $this->load->model("amaModel");
         $this->load->database();
         $this->load->helper('file');
+        $this->load->library('ci_smarty');
     }
+
+
     public function index()
     {
         $idata = file_get_contents('php://input');
@@ -43,15 +46,23 @@ class Api extends CI_Controller {
             break;
             case 'submit-new-link':
                 $result = $this->doSubmitNewLink($jobj);
+                $this->ci_smarty->clearCache("new.tpl"); 
+                $this->ci_smarty->clearCache("hot.tpl"); 
             break;
             case 'submit-new-message':
                 $result = $this->doSubmitNewMessage($jobj);
+
             break;
             case 'vote-link':
                 $result = $this->doVoteLink($jobj);
+                $this->ci_smarty->clearCache("new.tpl"); 
+                $this->ci_smarty->clearCache("hot.tpl"); 
+
             break;
             case 'delete-link':
                 $result = $this->doDeleteLink($jobj);
+                $this->ci_smarty->clearCache("new.tpl"); 
+                $this->ci_smarty->clearCache("hot.tpl"); 
             break;
             case 'save-link':
                 $result = $this->doSaveLink($jobj);
