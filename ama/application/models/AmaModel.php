@@ -203,9 +203,25 @@ class AmaModel extends CI_Model{
         return $rows;
     }
 
+    function isAdmin($userid){
+        return false;
+    }
+
+    public function deleteThink($thingid,$userid){
+        $thing = $this->readThing($thingid);
+        if($this->isAdmin($userid) || $thing['thingid'] == $thingid){
+            $this->db->where('id', $thingid);
+            $this->db->delete('things');
+            return true;
+        }
+
+        return false;
+
+
+    }
     public function readThing($thingid){
 
-              $user_info = $this->session->userdata('user.info');
+        $user_info = $this->session->userdata('user.info');
 
         $fields = ['a.author','users.name as author_name','a.stype',
                 'FROM_UNIXTIME(a.cdate) as timeago','a.title','a.content as text',

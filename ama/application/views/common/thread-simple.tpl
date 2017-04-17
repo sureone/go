@@ -74,6 +74,9 @@
 						{if $logined eq "true"}
 						{if $user.userid eq $entry.author}
 								<a href="./v/submit/{$entry.thingid}" data-thingid={$entry.thingid} class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit({$entry.thingid})" data-thingid={$entry.thingid} class="delbtn access-required" data-event-action="delete">删除</a>
 						{/if}
 						{/if}
 

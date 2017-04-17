@@ -1,6 +1,4 @@
 
-<html lang="en">
-<head>
     {include file="common/page-header.tpl"}
 </head>
 <body class="{if $logined eq "true"}loggedin{/if} {$page}-page">
