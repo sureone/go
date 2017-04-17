@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 05:31:17
+/* Smarty version 3.1.30, created on 2017-04-17 09:55:43
   from "D:\work\go\ama\application\views\submit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f43705b4c927_55567210',
+  'unifunc' => 'content_58f474ff1fb046_32984077',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b710352eec7eb26dbdfbebd3f8c857b5d5139495' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\submit.tpl',
-      1 => 1492399652,
+      1 => 1492414498,
       2 => 'file',
     ),
   ),
@@ -25,13 +25,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58f43705b4c927_55567210 (Smarty_Internal_Template $_smarty_tpl) {
-echo '<?php
-';?>defined('BASEPATH') OR exit('No direct script access allowed');
-<?php echo '?>';?><!DOCTYPE html>
+function content_58f474ff1fb046_32984077 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-<html lang="en">
-<head>
     <?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
