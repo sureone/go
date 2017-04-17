@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['cache_lifetime'] = 30;
+$config['cache_lifetime'] = 10;
 $config['caching'] = true;
 $config['template_dir'] = APPPATH .'views';
 $config['compile_dir'] = APPPATH .'views/template_c';
