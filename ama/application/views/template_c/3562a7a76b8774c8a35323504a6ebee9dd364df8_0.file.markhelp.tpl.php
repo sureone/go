@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 05:53:53
+/* Smarty version 3.1.30, created on 2017-04-17 04:22:03
   from "D:\work\go\ama\application\views\common\markhelp.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d88cd1692f16_85710514',
+  'unifunc' => 'content_58f426cb28fbe0_12001847',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3562a7a76b8774c8a35323504a6ebee9dd364df8' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\markhelp.tpl',
-      1 => 1490586688,
+      1 => 1492390703,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d88cd1692f16_85710514 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f426cb28fbe0_12001847 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
                                 <div class="markhelp" style="display:none"><p></p>
 
-                                    <p>reddit 使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
-                                        版本，作為文字格式的設定方式。請參閱下方的部分基本格式，或查看<a href="/wiki/commenting">留言維基頁面</a>中的更詳細說明和常見問題解決方式。
+                                    <p>使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
+                                        版本，作為文字格式的設定方式。請參閱下方的部分基本格式。
                                     </p>
 
                                     <p></p>
@@ -77,10 +77,7 @@ function content_58d88cd1692f16_85710514 (Smarty_Internal_Template $_smarty_tpl)
                                             <td>~~strikethrough~~</td>
                                             <td><strike>strikethrough</strike></td>
                                         </tr>
-                                        <tr>
-                                            <td>super^script</td>
-                                            <td>super<sup>script</sup></td>
-                                        </tr>
+                                       
                                         </tbody>
                                     </table>
                                 </div><?php }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-01 02:27:06
+/* Smarty version 3.1.30, created on 2017-04-17 04:22:03
   from "D:\work\go\ama\application\views\common\comment-reply-edit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58def3dad85be6_93931582',
+  'unifunc' => 'content_58f426cb3a1328_14432700',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '118fd7b10ea75402fecd4f2e94fb33ab790642da' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\comment-reply-edit.tpl',
-      1 => 1491006408,
+      1 => 1492390703,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/markhelp.tpl' => 1,
   ),
 ),false)) {
-function content_58def3dad85be6_93931582 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f426cb3a1328_14432700 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <?php echo '<script'; ?>
@@ -44,7 +44,7 @@ function content_58def3dad85be6_93931582 (Smarty_Internal_Template $_smarty_tpl)
                     <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
                     <a class="option " href="#">隱藏說明</a>
                 </span>
-                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
+                <a class="reddiquette" target="_blank" tabindex="100">內容政策</a>
                 <span class="error TOO_LONG field-text" style="display:none"></span>
                 <span
                     class="error RATELIMIT field-ratelimit" style="display:none">

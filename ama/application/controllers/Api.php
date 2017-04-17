@@ -170,8 +170,20 @@ class Api extends CI_Controller {
     function doSubmitNewLink($json){
         $user = $this->session->userdata('user.info');
         if(isset($_SESSION['user.info'])){
-        
-            $this->db->insert('things',
+
+            if($json->{'thingid'}>0){
+
+                $this->db->set('title',$json->{'title'});
+                $this->db->set('content',$json->{'content'});
+                $this->db->set('udate',$this->curTime());
+                $this->db->where('author',$user['userid']);
+                $this->db->where('id',$json->{'thingid'});
+                $this->db->update('things');
+                return array('code'=>200,'thingid'=>$json->{'thingid'});
+
+            }else{
+
+                $this->db->insert('things',
                 array('author'=>$user['userid'],
                     'title'=>$json->{'title'},
                     'stype'=>'link',
@@ -179,6 +191,9 @@ class Api extends CI_Controller {
                     'cdate'=>$this->curTime(),
                     'udate'=>$this->curTime()));
                 return array('code'=>200,'thingid'=>$this->db->insert_id());
+
+            }
+
 
         }else{
             return array('code'=>404);

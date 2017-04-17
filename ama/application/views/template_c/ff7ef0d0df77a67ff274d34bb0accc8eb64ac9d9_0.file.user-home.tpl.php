@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-01 02:37:19
+/* Smarty version 3.1.30, created on 2017-04-17 04:21:56
   from "D:\work\go\ama\application\views\user-home.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58def63f442c13_89347479',
+  'unifunc' => 'content_58f426c436cd96_78992342',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ff7ef0d0df77a67ff274d34bb0accc8eb64ac9d9' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\user-home.tpl',
-      1 => 1491007034,
+      1 => 1492390703,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58def63f442c13_89347479 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f426c436cd96_78992342 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="en">
 <head>
@@ -54,7 +54,7 @@ function content_58def63f442c13_89347479 (Smarty_Internal_Template $_smarty_tpl)
 <div class="content">
 	<div class="spacer">
 		<div id="siteTable" class="sitetable linklisting">
-
+			
 			<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['things']->value, 'entry');
 if ($_from !== null) {

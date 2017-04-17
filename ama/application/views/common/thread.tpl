@@ -65,6 +65,31 @@
 						 发表于
 						 {/if} 
 						 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
+
+						 <ul class="flat-list buttons" style="display: inline-block;">
+							<li class="first"><a href="./v/comments/{$entry.thingid}">{$entry.replies} 留言</a></li>
+							<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
+							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,{$entry.thingid});return false;">收藏</a></li>
+							<!-- <li>
+								<form action="/post/hide" method="post" class="state-button hide-button">
+									<input type="hidden" name="executed" value="隱藏">
+									<span>
+										<a href="javascript:void(0)" class=" " onclick="change_state(this, 'hide', hide_thing);">隱藏</a>
+									</span>
+								</form>
+							</li> -->
+							<li class="report-button">
+								<a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
+							</li>
+
+							{if $logined eq "true"}
+							{if $user.userid eq $entry.author}
+							<li class="edit-button">
+								<a href="./v/submit/{$entry.thingid}" data-thingid={$entry.thingid} class="editbtn access-required" data-event-action="edit">编辑</a>
+							</li>
+							{/if}
+							{/if}
+						</ul>
 						 
 					</p>
 					{if $pagetype eq "list"}
@@ -78,22 +103,7 @@
 					</div>
 					{/if}
 					
-					<ul class="flat-list buttons">
-						<li class="first"><a href="./v/comments/{$entry.thingid}">{$entry.replies} 留言</a></li>
-						<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
-						<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,{$entry.thingid});return false;">收藏</a></li>
-						<!-- <li>
-							<form action="/post/hide" method="post" class="state-button hide-button">
-								<input type="hidden" name="executed" value="隱藏">
-								<span>
-									<a href="javascript:void(0)" class=" " onclick="change_state(this, 'hide', hide_thing);">隱藏</a>
-								</span>
-							</form>
-						</li> -->
-						<li class="report-button">
-							<a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
-						</li>
-					</ul>
+					
 					<div class="reportform"></div>
 
 					

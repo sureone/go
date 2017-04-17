@@ -181,9 +181,19 @@ class V extends CI_Controller {
 		//$this->db->query("insert into threads(content) values('hello')");
 		#echo json_encode_utf8($rows);
 	}
-	public function submit(){
+	public function submit($thingid=0){
 
         $this->common();
+        $user_info = $this->session->userdata('user.info');
+        if($thingid!=0 && $user_info!=null){
+
+        	$thing = $this->amaModel->readThing($thingid)['0'];
+        	if($thing['author']==$user_info['userid']){
+        		$this->ci_smarty->assign("thing",$thing);	
+        	}
+        	
+        }
+
 		$this->ci_smarty->assign("page","submit");
 		$this->ci_smarty->display("submit.tpl");
 	}

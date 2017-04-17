@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="header-bottom-left">
         <span class="hover pagename"><a href="./">AMA</a></span>
         <ul class="tabmenu ">
-            <li class="selected"><a href="./v/submit" class="choice">发表</a></li>
+            <li class="selected"><a href="./v/submit" class="choice">{if isset($thing)}编辑{else}发表{/if}</a></li>
     </div>
     {include file='common/header-bottom-right.tpl'}
 </div>
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="roundfield " id="title-field">
                     <span class="title required-roundfield">标题</span>
                     <div class="roundfield-content">
-                        <textarea name="title" rows="2" required=""></textarea>
+                        <textarea name="title" rows="2" required="">{if isset($thing)}{$thing.title}{/if}</textarea>
                         <div class="error NO_TEXT field-title" style="display:none"></div>
                         <div class="error TOO_LONG field-title" style="display:none"></div>
                     </div>
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
                                 <div class="md">
-                                    <textarea rows="1" cols="1" name="content" class=""></textarea>
+                                    <textarea rows="1" cols="1" name="content" class="">{if isset($thing)}{$thing.text}{/if}</textarea>
                                 </div>
 
                                 <div class="bottom-area">
@@ -77,11 +77,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <span class="error USER_BLOCKED field-parent" style="display:none"></span>
                                     <span class="error USER_MUTED field-parent" style="display:none"></span>
                                     <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
-
-                                    <div class="usertext-buttons">
-                                        <button type="submit" onclick="" class="save">保存</button>
-                                        <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="">取消</button>
-                                    </div>
                                 </div>
                                 
                                 {include file="common/markhelp.tpl"}
@@ -109,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div> -->
         <!-- <div id="items-required">*required</div> -->
         <input name="resubmit" value="" type="hidden">
-
+        <input name="thingid" value="{if isset($thing)}{$thing.thingid}{else}0{/if}" type="hidden">
         <div class="spacer">
             <button class="btn" name="submit" value="form" type="submit">送出</button>
             <span class="status"></span>
