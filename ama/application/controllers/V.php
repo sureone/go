@@ -66,10 +66,15 @@ class V extends CI_Controller {
 	function showHotView(){
 		$this->common();
 
-		$rows = $this->amaModel->readHotThings(0,10);
-		$this->ci_smarty->assign("page","hot");
-		$this->ci_smarty->assign("things",$rows);
-		$this->ci_smarty->display("hot.tpl");
+		if(!$this->ci_smarty->isCached('hot.tpl')){ 
+			$rows = $this->amaModel->readHotThings(0,10);
+			$this->ci_smarty->assign("page","hot");
+			$this->ci_smarty->assign("things",$rows);
+			$this->ci_smarty->display("hot.tpl");
+		}else{
+			$this->ci_smarty->display("hot.tpl");
+		}
+
 
 
 	}
@@ -77,11 +82,14 @@ class V extends CI_Controller {
 
 	function showNewView(){
 		$this->common();
-
-		$rows = $this->amaModel->readNewThings(0,10);
-		$this->ci_smarty->assign("page","new");
-		$this->ci_smarty->assign("things",$rows);
-		$this->ci_smarty->display("new.tpl");
+		if(!$this->ci_smarty->isCached('new.tpl')){ 
+			$rows = $this->amaModel->readNewThings(0,10);
+			$this->ci_smarty->assign("page","new");
+			$this->ci_smarty->assign("things",$rows);
+			$this->ci_smarty->display("new.tpl");
+		}else{
+			$this->ci_smarty->display("new.tpl");
+		}
 
 
 	}

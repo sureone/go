@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:12:09
+/* Smarty version 3.1.30, created on 2017-04-17 10:31:34
   from "D:\work\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f478d9413c08_06419232',
+  'unifunc' => 'content_58f47d6687f332_17638287',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f478d9413c08_06419232 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f47d6687f332_17638287 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2443958f47d66877634_91859586';
 ?>
 <!DOCTYPE html>
 <html>
