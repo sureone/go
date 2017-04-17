@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
->>>>>>> a8ad162794ae262574086568335518b6ef1afe20
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <base href="http://www.askmeany.cn/index.php">
     {if isset($page_title)}
 	<title>{$page_title}</title>
