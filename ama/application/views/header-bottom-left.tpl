@@ -1,5 +1,5 @@
 <div id="header-bottom-left">
-    <span class="hover pagename"><a href="./">&nbsp;后园小亭</a></span>
+    <span class="hover pagename"><a href="./"><img src="./static/images/logo.gif" alt="后园小亭" height="20"></a></span>
     <ul class="tabmenu ">
         <li {if $page eq "hot"}class="selected"{/if}><a href="./v/hot" class="choice">热门</a></li>
         <li {if $page eq "new"}class="selected"{/if}><a href="./v/news" class="choice">最新</a></li>

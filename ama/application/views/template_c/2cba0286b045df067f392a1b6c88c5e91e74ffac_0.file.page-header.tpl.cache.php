@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 11:51:44
+/* Smarty version 3.1.30, created on 2017-04-18 03:44:39
   from "D:\work\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f49030a15ed1_57642511',
+  'unifunc' => 'content_58f56f87173bb9_96500896',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492421807,
+      1 => 1492478170,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f49030a15ed1_57642511 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '3081058f490309e70c1_48875463';
+function content_58f56f87173bb9_96500896 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2240158f56f87148c33_49642017';
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@ $_smarty_tpl->compiled->nocache_hash = '3081058f490309e70c1_48875463';
 	<title><?php echo $_smarty_tpl->tpl_vars['page_title']->value;?>
 </title>
     <?php } else { ?>
-    <title>问吧 Ask Me Anything </title>
+    <title>后园小亭</title>
     <?php }?>
 	<style type="text/css">
 	</style>
