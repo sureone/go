@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:31:34
+/* Smarty version 3.1.30, created on 2017-04-17 11:51:44
   from "D:\work\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f47d6687f332_17638287',
+  'unifunc' => 'content_58f49030a15ed1_57642511',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492416008,
+      1 => 1492421807,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f47d6687f332_17638287 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2443958f47d66877634_91859586';
+function content_58f49030a15ed1_57642511 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '3081058f490309e70c1_48875463';
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +54,7 @@ $_smarty_tpl->compiled->nocache_hash = '2443958f47d66877634_91859586';
  src="./static/js/jquery.timeago.js?v=1"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
- src="./static/js/markdown.min.js?v=1"><?php echo '</script'; ?>
+ src="./static/js/markdown.js?v=3"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
  type="text/javascript" src="./static/js/ama.js?v=8"><?php echo '</script'; ?>
