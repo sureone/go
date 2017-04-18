@@ -14,7 +14,7 @@
 
 <div id="header">
     <div id="header-bottom-left">
-        <span class="hover pagename"><a href="./">AMA</a></span>
+        {include file="common/page-logo.tpl"}
         <ul class="tabmenu ">
             <li class="selected"><a href="./v/submit" class="choice">{if isset($thing)}编辑{else}发表{/if}</a></li>
     </div>

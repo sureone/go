@@ -7,7 +7,7 @@
 
 <div id="header">
 <div id="header-bottom-left">
-    <span class="hover pagename"><a href="./">信息</a></span>
+    {include file="common/page-logo.tpl"}
     <ul class="tabmenu ">
         <li><a href="./v/message/compose" class="choice">傳送一個私人訊息</a></li>
         <li class="selected"><a href="./v/message/inbox" class="choice">收件匣</a></li>
