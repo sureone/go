@@ -7,7 +7,7 @@
     {if isset($page_title)}
 	<title>{$page_title}</title>
     {else}
-    <title>问吧 Ask Me Anything </title>
+    <title>后园小亭</title>
     {/if}
 	<style type="text/css">
 	</style>

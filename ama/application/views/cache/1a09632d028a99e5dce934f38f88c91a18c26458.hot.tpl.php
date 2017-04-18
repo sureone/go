@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:45:05
+/* Smarty version 3.1.30, created on 2017-04-17 11:54:44
   from "D:\work\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f48091344ca0_36888260',
+  'unifunc' => 'content_58f490e4de7b35_11852720',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8aab19a792690ccfbdb9016c5f963b339aca521' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\hot.tpl',
-      1 => 1492418044,
+      1 => 1492422843,
       2 => 'file',
     ),
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492416008,
+      1 => 1492421807,
       2 => 'file',
     ),
     '60fa3e11c1f4314b315f8259b36371c39276f334' => 
@@ -52,9 +52,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
       2 => 'file',
     ),
   ),
-  'cache_lifetime' => 30,
+  'cache_lifetime' => 10,
 ),true)) {
-function content_58f48091344ca0_36888260 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f490e4de7b35_11852720 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 	<!DOCTYPE html>
 <html>
@@ -71,7 +71,7 @@ function content_58f48091344ca0_36888260 (Smarty_Internal_Template $_smarty_tpl)
     <script src="./static/js/form2json.js"></script>
     <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
-    <script src="./static/js/markdown.min.js?v=1"></script>
+    <script src="./static/js/markdown.js?v=3"></script>
     <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
 
     <script type="text/javascript">
@@ -89,6 +89,7 @@ function content_58f48091344ca0_36888260 (Smarty_Internal_Template $_smarty_tpl)
 		    position: relative;
 		    margin: 0 0px 0px 0;
 		}
+
 
 		.link .title {
 		  

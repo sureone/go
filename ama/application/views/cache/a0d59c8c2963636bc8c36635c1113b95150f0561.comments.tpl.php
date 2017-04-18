@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:39:21
+/* Smarty version 3.1.30, created on 2017-04-17 11:54:49
   from "D:\work\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f47f3918c9f6_52110351',
+  'unifunc' => 'content_58f490e92f7e03_00466117',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492416008,
+      1 => 1492421807,
       2 => 'file',
     ),
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
@@ -64,9 +64,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
       2 => 'file',
     ),
   ),
-  'cache_lifetime' => 60,
+  'cache_lifetime' => 10,
 ),true)) {
-function content_58f47f3918c9f6_52110351 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f490e92f7e03_00466117 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
@@ -83,7 +83,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<meta charset="utf-8">
     <base href="http://127.0.0.1/ama/index.php">
-    	<title>gfdsgfdsgfdsg3rertwetre</title>
+    	<title>fdsafds</title>
     	<style type="text/css">
 	</style>
 	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
@@ -92,7 +92,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
     <script src="./static/js/form2json.js"></script>
     <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
-    <script src="./static/js/markdown.min.js?v=1"></script>
+    <script src="./static/js/markdown.js?v=3"></script>
     <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
 
     <script type="text/javascript">
@@ -106,7 +106,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
     <div id="header-bottom-left">
         <span class="hover pagename"><a href="./">&nbsp;AMA</a></span>
         <ul class="tabmenu ">
-            <li class="selected"><a href="./v/comments/72" class="choice">留言</a></li>
+            <li class="selected"><a href="./v/comments/74" class="choice">留言</a></li>
         </ul>
     </div>
     <div id="header-bottom-right">
@@ -157,7 +157,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                             <div class="spacer">
             <div class="linkinfo">
                 <div class="date"><span>本文发表于 </span>
-                    <time datetime="2017-04-17 16:38:30">2017-04-17 16:38:30</time>
+                    <time datetime="2017-04-17 16:44:57">2017-04-17 16:44:57</time>
                 </div>
                 <div class="score"><span class="number">0</span> <span class="word">指标</span> (其中0票赞成)</div>
 <!--                 <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
@@ -180,19 +180,19 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 <div class="content">
 
     <div id="siteTable" class="sitetable linklisting">
-                    			<div class="thing odd link" id="thing_72" data-thingid=72>
+                    			<div class="thing odd link" id="thing_74" data-thingid=74>
 				
-												<div class="midcol unvoted" id="vote-72">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,72)"></div>
+												<div class="midcol unvoted" id="vote-74">
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,74)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
-										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,72)"></div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,74)"></div>
 				</div>
 								<div class="entry unvoted">
 					
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/72">gfdsgfdsgfdsg3rertwetre</a></p>
+												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/74">fdsafds</a></p>
 											
 
 										<p class="tagline">
@@ -202,12 +202,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 
 						 						 发表于
 						  
-						 <time class="live-timestamp timeago" datetime="2017-04-17 16:38:30"></time>
+						 <time class="live-timestamp timeago" datetime="2017-04-17 16:44:57"></time>
 
 						 <ul class="flat-list buttons" style="display: inline-block;">
-							<li class="first"><a href="./v/comments/72">0 留言</a></li>
+							<li class="first"><a href="./v/comments/74">0 留言</a></li>
 							<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
-							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,72);return false;">收藏</a></li>
+							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,74);return false;">收藏</a></li>
 							<!-- <li>
 								<form action="/post/hide" method="post" class="state-button hide-button">
 									<input type="hidden" name="executed" value="隱藏">
@@ -221,16 +221,16 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 							</li>
 
 																					<li class="edit-button">
-								<a href="./v/submit/72" data-thingid=72 class="editbtn access-required" data-event-action="edit">编辑</a>
+								<a href="./v/submit/74" data-thingid=74 class="editbtn access-required" data-event-action="edit">编辑</a>
 							</li>
 																				</ul>
 						 
 					</p>
-										<div class="expando expando-72" style="display: block;">
+										<div class="expando expando-74" style="display: block;">
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("dsfafdsafsafsd\n\n*fdsafsdafd*fdsafdsa*fdsafdsa*"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("fdsafds"));</script></div>
 							</div>
 						</form>
 					</div>
@@ -273,10 +273,10 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
         </div>
     </div>
 
-    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-72">
+    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-74">
         <input type="hidden" name="action" value="submit-new-comment">
-        <input type="hidden" name="main" value="72">
-        <input type="hidden" name="parent" value="72">
+        <input type="hidden" name="main" value="74">
+        <input type="hidden" name="parent" value="74">
         <div class="usertext-edit md-container" style="">
             <div class="md">
                 <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
@@ -366,7 +366,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
         </div>
     </form>
 
-    <div id="siteTable_72" class="sitetable nestedlisting">
+    <div id="siteTable_74" class="sitetable nestedlisting">
         
             
 
