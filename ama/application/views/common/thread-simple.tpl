@@ -42,7 +42,7 @@
 					{/if}
 					
 						{if $pagetype eq "list"}
-						 <p class="title"><span class="score unvoted" title="指标 78">{$entry.likes-$entry.dislikes}</span><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
+						 <p class="title"><span class="score unvoted" title="指标 {$entry.likes-$entry.dislikes}">{$entry.likes-$entry.dislikes}</span><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
 						{else}
 						
 							{if isset($entry.title) and $entry.title neq '' }
