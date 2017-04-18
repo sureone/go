@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 08:20:25
-  from "D:\work\go\ama\application\views\submit.tpl" */
+/* Smarty version 3.1.30, created on 2017-04-18 04:08:46
+  from "D:\work\go\ama\application\views\message-compose.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f5b0292d2aa6_14173611',
+  'unifunc' => 'content_58f5752e21aca5_25084863',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'b710352eec7eb26dbdfbebd3f8c857b5d5139495' => 
+    'c1aaa0917a8d4b465ec13c1715fbd1d407163ab6' => 
     array (
-      0 => 'D:\\work\\go\\ama\\application\\views\\submit.tpl',
-      1 => 1492489586,
+      0 => 'D:\\work\\go\\ama\\application\\views\\message-compose.tpl',
+      1 => 1492481284,
       2 => 'file',
     ),
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492496396,
+      1 => 1492478170,
       2 => 'file',
     ),
     'f9425a6b5d947a44cc0dd8983944da6b322d1daa' => 
@@ -30,12 +30,6 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492481504,
-      2 => 'file',
-    ),
-    '909714a59f76f675a88c2ed245e2941851f8dac9' => 
-    array (
-      0 => 'D:\\work\\go\\ama\\application\\views\\common\\side.tpl',
       1 => 1492390703,
       2 => 'file',
     ),
@@ -54,10 +48,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f5752e21aca5_25084863 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-    <!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -73,25 +67,27 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
     <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
     <script src="./static/js/markdown.js?v=3"></script>
-    <script type="text/javascript" src="./static/js/ama.js?v=9"></script>
+    <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
 
     <script type="text/javascript">
     	var g_logined = true;
     </script>
-    
 </head>
 
-<body class="listing-page loggedin submit-page">
+<body class="listing-page loggedin message-compose-page">
 
 
 <div id="header">
-    <div id="header-bottom-left">
-        <span class="hover pagename"><a href="./"><img src="./static/images/logo.gif" alt="后园小亭" height="20"></a></span>
-        <ul class="tabmenu ">
-            <li class="selected"><a href="./v/submit" class="choice">编辑</a></li>
-    </div>
-    <div id="header-bottom-right">
-<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<div id="header-bottom-left">
+	<span class="hover pagename"><a href="./"><img src="./static/images/logo.gif" alt="后园小亭" height="20"></a></span>
+	<ul class="tabmenu ">
+		<li class="selected"><a href="./v/message/compose" class="choice">傳送一個私人訊息</a></li>
+		<li><a href="./v/message/inbox" class="choice">收件匣</a></li>
+		<li><a href="./v/message/sent" class="choice">发件箱</a></li>
+    </ul>
+</div>
+<div id="header-bottom-right">
+<span class="user"><a href="./v/user/sureone/">sureone</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>
@@ -101,65 +97,35 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
 
 </div>
 </div>
-<div class="side">
-<!--     <div class="spacer">
-        <form action="https://www.reddit.com/r/AMA/search" id="search" role="search">
-        	<input type="text" name="q" placeholder="搜尋" tabindex="20">
-        	<input type="submit" value="" tabindex="22">
-
-            <div id="searchexpando" class="infobar" style="display: none;">
-            	<label><input type="checkbox" name="restrict_sr" tabindex="21">搜尋範圍僅限 r/AMA</label>
-
-                <div id="moresearchinfo" style=""><a href="#" id="search_hidemore">[-]</a>
-
-                    <p>use the following search parameters to narrow your results:</p>
-                    <dl>
-                        <dt>subreddit:<i>subreddit</i></dt>
-                        <dd>find submissions in "subreddit"</dd>
-                        <dt>author:<i>username</i></dt>
-                        <dd>依「使用者名稱」尋找發文</dd>
-                        <dt>site:<i>example.com</i></dt>
-                        <dd>find submissions from "example.com"</dd>
-                        <dt>url:<i>text</i></dt>
-                        <dd>search for "text" in url</dd>
-                        <dt>selftext:<i>text</i></dt>
-                        <dd>在自行發文的內容中搜尋「文字」</dd>
-                        <dt>self:yes (or self:no)</dt>
-                        <dd>包含 (或排除) 自己的文章</dd>
-                        <dt>nsfw:yes (or nsfw:no)</dt>
-                        <dd>納入 (或排除) 標記為不適合公開閱覽的結果</dd>
-                    </dl>
-                    <p>e.g. <code>subreddit:aww site:imgur.com dog</code></p>
-
-                    <p><a href="https://www.reddit.com/wiki/search">see the search faq for details.</a></p></div>
-                <p><a href="https://www.reddit.com/wiki/search" id="search_showmore">進階搜尋：依照作者、版面...</a></p></div>
-        </form>
-    </div> -->
-        <div class="spacer">
-        <div class="sidebox submit submit-text">
-            <div class="morelink">
-            	<a href="./v/submit" class="login-required access-required" target="_top">发表新文章</a>
-                <div class="nub"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="content">
-    <form class="submit content warn-on-unload" onsubmit="handleFormSubmit(this); return false;" action="./api" id="newlink" method="post">
-        <input name="action" value="submit-new-link" type="hidden">
+	
+		<h1>傳送一個私人訊息</h1>
+	    <form class="submit content warn-on-unload" onsubmit="handleFormSubmit(this); return false;" action="./api" id="newlink" method="post">
+        <input name="action" value="submit-new-message" type="hidden">
         
         <div class="formtabs-content">
-            <div class="spacer">
-                <div id="text-desc" class="infobar">
-                    你正要发表以文字为主的文章，请畅所欲言。发文时必须注明标题，但不一定要在文字栏中长篇大论。使用「如果你...请帮我加分」作为主题，是违反后园法规的。
-                </div>
-            </div>
+	        <div class="spacer">
+	        	<div class="roundfield ">
+	        		<span class="title ">至</span> 
+	        		<span class="little gray roundfield-description">(username)</span>
+	        		<div class="roundfield-content">
+	        			<input type="text" name="recipients" value="" onchange="admincheck(this)">
+	        			<span class="error NO_USER field-to" style="display:none"></span>
+	        			<span class="error USER_DOESNT_EXIST field-to" style="display:none">
+	        			</span>
+	        			<span class="error SUBREDDIT_NOEXIST field-to" style="display:none"></span><span class="error USER_BLOCKED field-to" style="display:none"></span>
+	        			<span class="error USER_BLOCKED_MESSAGE field-to" style="display:none"></span>
+	        			<span class="error USER_MUTED field-to" style="display:none"></span>
+	        			<span class="error MUTED_FROM_SUBREDDIT field-to" style="display:none"></span>
+	        		</div>
+	        	</div>
+	        </div>
+
             <div class="spacer">
                 <div class="roundfield " id="title-field">
-                    <span class="title required-roundfield">标题</span>
+                    <span class="title required-roundfield">標題</span>
                     <div class="roundfield-content">
-                        <textarea class="thing-title key-monitor" name="title" rows="2" required="">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。</textarea>
+                        <textarea name="title" rows="2" required=""></textarea>
                         <div class="error NO_TEXT field-title" style="display:none"></div>
                         <div class="error TOO_LONG field-title" style="display:none"></div>
                     </div>
@@ -168,49 +134,33 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
             <div class="spacer">
                 <div class="roundfield " id="text-field">
                     <span class="title ">文字</span> 
-                    <span class="little gray roundfield-description">(非必填项目)</span>
-                    <div class="roundfield-content"><input name="kind" value="self" type="hidden">
+                    <span class="little gray roundfield-description">(非必填項目)</span>
+                    <div class="roundfield-content">
+                        <input name="kind" value="self" type="hidden">
 
                         <div class="usertext">
-                            <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
                                 <div class="md">
-                                    <textarea rows="1" cols="1" name="content" class="thing-title key-monitor" > 寒蝉凄切， 对长亭晚， 骤雨初歇。
-
-都门帐饮无绪， 留恋处， 兰舟催发。
-
-执手相看泪眼， 竟无语凝噎。
-
-念去去， 千里烟波， 暮霭沉沉楚天阔。
-
-多情自古伤离别， 更那堪， 冷落清秋节！
-
-今宵酒醒何处？ 杨柳岸， 晓风残月。
-
-此去经年， 应是良辰好景虚设。
-
-便纵有千种风情， 更与何人说？ </textarea>
+                                    <textarea rows="1" cols="1" name="content" class=""></textarea>
                                 </div>
-
                                 <div class="bottom-area">
-                                    <span class="help-toggle toggle" style="">
-                                        <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
-                                        <a class="option " href="#">隱藏說明</a>
-                                    </span>
-                                    <a class="reddiquette" target="_blank" tabindex="100">內容政策</a>
-                                    <span class="error TOO_LONG field-text" style="display:none"></span>
-                                    <span
-                                        class="error RATELIMIT field-ratelimit" style="display:none">
-                                    </span>
-                                    <span class="error NO_TEXT field-text" style="display:none"></span>
-                                    <span class="error TOO_OLD field-parent" style="display:none"></span>
-                                    <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
-                                    <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
-                                    <span class="error USER_BLOCKED field-parent" style="display:none"></span>
-                                    <span class="error USER_MUTED field-parent" style="display:none"></span>
-                                    <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
-                                </div>
-                                
+					                <span class="help-toggle toggle" style="">
+					                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
+					                    <a class="option " href="#">隱藏說明</a>
+					                </span>
+					                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
+					                <span class="error TOO_LONG field-text" style="display:none"></span>
+					                <span
+					                    class="error RATELIMIT field-ratelimit" style="display:none">
+					                </span>
+					                <span class="error NO_TEXT field-text" style="display:none"></span>
+					                <span class="error TOO_OLD field-parent" style="display:none"></span>
+					                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
+					                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
+					                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
+					                <span class="error USER_MUTED field-parent" style="display:none"></span>
+					                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
+					            </div>
                                 
                                 <div class="markhelp" style="display:none"><p></p>
 
@@ -277,24 +227,8 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
                 </div>
             </div>
 
-            
-            <!-- <div class="spacer">
-                <div class="roundfield "><span class="title ">選項</span>
-
-                    <div class="roundfield-content">
-                        <input class="nomargin" type="checkbox" checked="checked" name="sendreplies" id="sendreplies" data-send-checked="true">
-                        <label for="sendreplies">將回覆寄到我的收件匣</label></div>
-                </div>
-            </div> -->
-
-       <!--  <div class="roundfield info-notice">please be mindful of reddit's 
-            <a href="https://www.reddit.com/help/contentpolicy" target="_blank">內容政策</a>
-             and practice 
-            <a href="https://www.reddit.com/wiki/reddiquette" target="_blank">良好的 reddit 站規</a>.
-        </div> -->
-        <!-- <div id="items-required">*required</div> -->
         <input name="resubmit" value="" type="hidden">
-        <input name="thingid" value="69" type="hidden">
+
         <div class="spacer">
             <button class="btn" name="submit" value="form" type="submit">送出</button>
             <span class="status"></span>
@@ -332,6 +266,6 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
 </body>
 
 
-<script type="text/javascript" src="./static/js/submit.js?v=8"></script>
+<script type="text/javascript" src="./static/js/message-compose.js?v=8"></script>
 </html><?php }
 }

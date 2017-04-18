@@ -1,30 +1,36 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 11:54:49
+/* Smarty version 3.1.30, created on 2017-04-18 08:25:04
   from "D:\work\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f490e92f7e03_00466117',
+  'unifunc' => 'content_58f5b1409086f1_60770571',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f8846c91599403e56524f123b881493efbca7e6' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492414446,
+      1 => 1492480873,
       2 => 'file',
     ),
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492421807,
+      1 => 1492496511,
+      2 => 'file',
+    ),
+    'f9425a6b5d947a44cc0dd8983944da6b322d1daa' => 
+    array (
+      0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-logo.tpl',
+      1 => 1492480911,
       2 => 'file',
     ),
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492390703,
+      1 => 1492481504,
       2 => 'file',
     ),
     '909714a59f76f675a88c2ed245e2941851f8dac9' => 
@@ -66,7 +72,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58f490e92f7e03_00466117 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f5b1409086f1_60770571 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
@@ -83,7 +89,9 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<meta charset="utf-8">
     <base href="http://127.0.0.1/ama/index.php">
-    	<title>fdsafds</title>
+    	<title>雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
+
+多情自古伤离别， 更那堪， 冷落清秋节！</title>
     	<style type="text/css">
 	</style>
 	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
@@ -93,24 +101,26 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
     <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
     <script src="./static/js/markdown.js?v=3"></script>
-    <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
+    <script type="text/javascript" src="./static/js/ama.js?v=9"></script>
 
     <script type="text/javascript">
     	var g_logined = true;
     </script>
+    
 </head>
 <body class="loggedin comments-page">
 
 
 <div id="header">
     <div id="header-bottom-left">
-        <span class="hover pagename"><a href="./">&nbsp;AMA</a></span>
+        <span class="hover pagename"><a href="./"><img src="./static/images/logo.gif" alt="后园小亭" height="20"></a></span>
+        
         <ul class="tabmenu ">
-            <li class="selected"><a href="./v/comments/74" class="choice">留言</a></li>
+            <li class="selected"><a href="./v/comments/69" class="choice">留言</a></li>
         </ul>
     </div>
     <div id="header-bottom-right">
-<span class="user"><a href="./v/user/sureone/">sureone</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>
@@ -157,7 +167,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                             <div class="spacer">
             <div class="linkinfo">
                 <div class="date"><span>本文发表于 </span>
-                    <time datetime="2017-04-17 16:44:57">2017-04-17 16:44:57</time>
+                    <time datetime="2017-04-17 16:12:31">2017-04-17 16:12:31</time>
                 </div>
                 <div class="score"><span class="number">0</span> <span class="word">指标</span> (其中0票赞成)</div>
 <!--                 <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
@@ -180,19 +190,21 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 <div class="content">
 
     <div id="siteTable" class="sitetable linklisting">
-                    			<div class="thing odd link" id="thing_74" data-thingid=74>
+                    			<div class="thing odd link" id="thing_69" data-thingid=69>
 				
-												<div class="midcol unvoted" id="vote-74">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,74)"></div>
+												<div class="midcol unvoted" id="vote-69">
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,69)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
-										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,74)"></div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,69)"></div>
 				</div>
 								<div class="entry unvoted">
 					
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/74">fdsafds</a></p>
+												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/69">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
+
+多情自古伤离别， 更那堪， 冷落清秋节！</a></p>
 											
 
 										<p class="tagline">
@@ -202,12 +214,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 
 						 						 发表于
 						  
-						 <time class="live-timestamp timeago" datetime="2017-04-17 16:44:57"></time>
+						 <time class="live-timestamp timeago" datetime="2017-04-17 16:12:31"></time>
 
 						 <ul class="flat-list buttons" style="display: inline-block;">
-							<li class="first"><a href="./v/comments/74">0 留言</a></li>
+							<li class="first"><a href="./v/comments/69">0 留言</a></li>
 							<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
-							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,74);return false;">收藏</a></li>
+							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,69);return false;">收藏</a></li>
 							<!-- <li>
 								<form action="/post/hide" method="post" class="state-button hide-button">
 									<input type="hidden" name="executed" value="隱藏">
@@ -221,16 +233,16 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 							</li>
 
 																					<li class="edit-button">
-								<a href="./v/submit/74" data-thingid=74 class="editbtn access-required" data-event-action="edit">编辑</a>
+								<a href="./v/submit/69" data-thingid=69 class="editbtn access-required" data-event-action="edit">编辑</a>
 							</li>
 																				</ul>
 						 
 					</p>
-										<div class="expando expando-74" style="display: block;">
+										<div class="expando expando-69" style="display: block;">
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("fdsafds"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML(" 寒蝉凄切， 对长亭晚， 骤雨初歇。\n\n\n\n都门帐饮无绪， 留恋处， 兰舟催发。\n\n\n\n执手相看泪眼， 竟无语凝噎。\n\n\n\n念去去， 千里烟波， 暮霭沉沉楚天阔。\n\n\n\n多情自古伤离别， 更那堪， 冷落清秋节！\n\n\n\n今宵酒醒何处？ 杨柳岸， 晓风残月。\n\n\n\n此去经年， 应是良辰好景虚设。\n\n\n\n便纵有千种风情， 更与何人说？ "));</script></div>
 							</div>
 						</form>
 					</div>
@@ -273,10 +285,10 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
         </div>
     </div>
 
-    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-74">
+    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-69">
         <input type="hidden" name="action" value="submit-new-comment">
-        <input type="hidden" name="main" value="74">
-        <input type="hidden" name="parent" value="74">
+        <input type="hidden" name="main" value="69">
+        <input type="hidden" name="parent" value="69">
         <div class="usertext-edit md-container" style="">
             <div class="md">
                 <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
@@ -366,7 +378,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
         </div>
     </form>
 
-    <div id="siteTable_74" class="sitetable nestedlisting">
+    <div id="siteTable_69" class="sitetable nestedlisting">
         
             
 

@@ -1,26 +1,6 @@
 	{include file="common/page-header.tpl"}
 	<style type="text/css">
-		.thing{
-			display: inline-block;
-			margin: 0 0px 0px 0; 
-			padding: 2px;
-            min-width:300px;
-		}
 
-		.listing-page .linklisting .thing {
-		    position: relative;
-		    margin: 0 0px 0px 0;
-		}
-
-
-		.link .title {
-		  
-		    /*max-width: 400px;*/
-		   
-		    /*text-overflow: ellipsis;*/
-		    /*overflow: hidden;*/
-		    /*white-space: nowrap;*/
-		}
 	</style>
 </head>
 

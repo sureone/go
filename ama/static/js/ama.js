@@ -1,3 +1,4 @@
+
 function voteit(url,elm,v,thingid){
     var map={
         action:'vote-link',
@@ -104,6 +105,11 @@ $(document).ready(function () {
 
         $(".expando-"+id).css('display','block');
 
+    })
+
+    $(document).delegate(".key-monitor", "keyup", function(e){
+        var input = $(e.target);
+        // console.log(e.keyCode);
     })
 
 

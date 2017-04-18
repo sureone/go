@@ -23,7 +23,7 @@
 				<span class="rank"></span>
 				{/if}
 				{if $page neq "message-inbox"}
-				<div class="midcol unvoted" id="vote-{$entry.thingid}">
+<!-- 				<div class="midcol unvoted" id="vote-{$entry.thingid}">
 					<div class="arrow {if isset($entry.vote) and $entry.vote eq '1' }upmod{else}up{/if} login-required access-required" tabindex="0" onclick="voteit('./api',this,1,{$entry.thingid})"></div>
 
 					{if $entry.parent eq 0}
@@ -32,7 +32,7 @@
 					<div class="score likes" title="79">{$entry.likes}</div>
 					{/if}
 					<div class="arrow {if isset($entry.vote) and $entry.vote eq '-1' }downmod{else}down{/if} login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,{$entry.thingid})"></div>
-				</div>
+				</div> -->
 				{/if}
 				<div class="entry unvoted">
 					{if $page eq "hot" or $page eq "new" }
@@ -42,7 +42,7 @@
 					{/if}
 					
 						{if $pagetype eq "list"}
-						 <p class="title"><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
+						 <p class="title"><span class="score unvoted" title="指标 78">{$entry.likes-$entry.dislikes}</span><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
 						{else}
 						
 							{if isset($entry.title) and $entry.title neq '' }

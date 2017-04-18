@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 04:08:42
+/* Smarty version 3.1.30, created on 2017-04-18 08:25:02
   from "D:\work\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f5752ad87d82_03258653',
+  'unifunc' => 'content_58f5b13e0d24e7_47253876',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8aab19a792690ccfbdb9016c5f963b339aca521' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\hot.tpl',
-      1 => 1492422843,
+      1 => 1492496316,
       2 => 'file',
     ),
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492478170,
+      1 => 1492496511,
       2 => 'file',
     ),
     '60fa3e11c1f4314b315f8259b36371c39276f334' => 
@@ -36,7 +36,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492390703,
+      1 => 1492481504,
       2 => 'file',
     ),
     '909714a59f76f675a88c2ed245e2941851f8dac9' => 
@@ -48,7 +48,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'a6511d30798b0d5592df6709fdb08d9628d23d2a' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1492402492,
+      1 => 1492496671,
       2 => 'file',
     ),
     '4b6dd1202b4b103f1802898db3a09d2c6f39e99e' => 
@@ -60,7 +60,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 	<!DOCTYPE html>
 <html>
@@ -78,33 +78,46 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
     <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
     <script src="./static/js/markdown.js?v=3"></script>
-    <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
+    <script type="text/javascript" src="./static/js/ama.js?v=9"></script>
 
     <script type="text/javascript">
     	var g_logined = true;
     </script>
+        <style type="text/css">
+        .link .score {
+            text-align: center;
+            color: #ec4a36;
+            background: #dbd0b6;
+            border: 1px solid #eddeaa;
+            font-size: small;
+            padding-left: 2px;
+            padding-right: 2px;
+            font-weight: normal;
+            margin-right: 4px;
+        }
+        .thing{
+            display: inline-block;
+            margin: 0 0px 0px 0; 
+            padding: 2px;
+            min-width:240px;
+        }
+
+        .listing-page .linklisting .thing {
+            position: relative;
+            margin: 0 0px 0px 0;
+        }
+        .link .title {
+          
+         
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 700px;
+        }
+    </style>
+    
 	<style type="text/css">
-		.thing{
-			display: inline-block;
-			margin: 0 0px 0px 0; 
-			padding: 2px;
-            min-width:300px;
-		}
 
-		.listing-page .linklisting .thing {
-		    position: relative;
-		    margin: 0 0px 0px 0;
-		}
-
-
-		.link .title {
-		  
-		    /*max-width: 400px;*/
-		   
-		    /*text-overflow: ellipsis;*/
-		    /*overflow: hidden;*/
-		    /*white-space: nowrap;*/
-		}
 	</style>
 </head>
 
@@ -127,7 +140,7 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 
 <div id="header-bottom-right">
-<span class="user"><a href="./v/user/sureone/">sureone</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>
@@ -188,18 +201,18 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="thing odd link" id="thing_73" data-thingid=73>
 				
 								<span class="rank"></span>
-												<div class="midcol unvoted" id="vote-73">
+								<!-- 				<div class="midcol unvoted" id="vote-73">
 					<div class="arrow upmod login-required access-required" tabindex="0" onclick="voteit('./api',this,1,73)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">1</div>
 					<div class="score likes" title="79">1</div>
 										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,73)"></div>
-				</div>
+				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/73">dfsafdsa111111111</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 78">1</span><a class="title may-blank loggedin " href="./v/comments/73">dfsafdsa111111111</a></p>
 											
 
 					
@@ -241,18 +254,18 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="thing odd link" id="thing_75" data-thingid=75>
 				
 								<span class="rank"></span>
-												<div class="midcol unvoted" id="vote-75">
+								<!-- 				<div class="midcol unvoted" id="vote-75">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,75)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
 										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,75)"></div>
-				</div>
+				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/75">121212</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/75">121212</a></p>
 											
 
 					
@@ -294,18 +307,18 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="thing odd link" id="thing_74" data-thingid=74>
 				
 								<span class="rank"></span>
-												<div class="midcol unvoted" id="vote-74">
+								<!-- 				<div class="midcol unvoted" id="vote-74">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,74)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
 										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,74)"></div>
-				</div>
+				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/74">fdsafds</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/74">fdsafds</a></p>
 											
 
 					
@@ -347,18 +360,18 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="thing odd link" id="thing_72" data-thingid=72>
 				
 								<span class="rank"></span>
-												<div class="midcol unvoted" id="vote-72">
+								<!-- 				<div class="midcol unvoted" id="vote-72">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,72)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
 										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,72)"></div>
-				</div>
+				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/72">gfdsgfdsgfdsg3rertwetre</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/72">gfdsgfdsgfdsg3rertwetre</a></p>
 											
 
 					
@@ -400,18 +413,18 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="thing odd link" id="thing_71" data-thingid=71>
 				
 								<span class="rank"></span>
-												<div class="midcol unvoted" id="vote-71">
+								<!-- 				<div class="midcol unvoted" id="vote-71">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,71)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
 										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,71)"></div>
-				</div>
+				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/71">dfsafdsafsd</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/71">dfsafdsafsd</a></p>
 											
 
 					
@@ -453,18 +466,18 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="thing odd link" id="thing_70" data-thingid=70>
 				
 								<span class="rank"></span>
-												<div class="midcol unvoted" id="vote-70">
+								<!-- 				<div class="midcol unvoted" id="vote-70">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,70)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
 										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,70)"></div>
-				</div>
+				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/70">test</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/70">test</a></p>
 											
 
 					
@@ -506,18 +519,20 @@ function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="thing odd link" id="thing_69" data-thingid=69>
 				
 								<span class="rank"></span>
-												<div class="midcol unvoted" id="vote-69">
+								<!-- 				<div class="midcol unvoted" id="vote-69">
 					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,69)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
 										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,69)"></div>
-				</div>
+				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><a class="title may-blank loggedin " href="./v/comments/69">雨霖铃·寒蝉凄切</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/69">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
+
+多情自古伤离别， 更那堪， 冷落清秋节！</a></p>
 											
 
 					
