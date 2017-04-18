@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 03:44:39
+/* Smarty version 3.1.30, created on 2017-04-18 08:24:39
   from "D:\work\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f56f87173bb9_96500896',
+  'unifunc' => 'content_58f5b127f19886_42389058',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492478170,
+      1 => 1492496511,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f56f87173bb9_96500896 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2240158f56f87148c33_49642017';
+function content_58f5b127f19886_42389058 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '684058f5b127edeef8_90529825';
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,7 +57,7 @@ $_smarty_tpl->compiled->nocache_hash = '2240158f56f87148c33_49642017';
  src="./static/js/markdown.js?v=3"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
- type="text/javascript" src="./static/js/ama.js?v=8"><?php echo '</script'; ?>
+ type="text/javascript" src="./static/js/ama.js?v=9"><?php echo '</script'; ?>
 >
 
     <?php echo '<script'; ?>
@@ -65,5 +65,40 @@ $_smarty_tpl->compiled->nocache_hash = '2240158f56f87148c33_49642017';
     	var g_logined = <?php echo $_smarty_tpl->tpl_vars['logined']->value;?>
 ;
     <?php echo '</script'; ?>
-><?php }
+>
+    <?php if ($_smarty_tpl->tpl_vars['page']->value == "hot" || $_smarty_tpl->tpl_vars['page']->value == "new") {?>
+    <style type="text/css">
+        .link .score {
+            text-align: center;
+            color: #ec4a36;
+            background: #dbd0b6;
+            border: 1px solid #eddeaa;
+            font-size: small;
+            padding-left: 2px;
+            padding-right: 2px;
+            font-weight: normal;
+            margin-right: 4px;
+        }
+        .thing{
+            display: inline-block;
+            margin: 0 0px 0px 0; 
+            padding: 2px;
+            min-width:240px;
+        }
+
+        .listing-page .linklisting .thing {
+            position: relative;
+            margin: 0 0px 0px 0;
+        }
+        .link .title {
+          
+         
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 700px;
+        }
+    </style>
+    <?php }
+}
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 11:54:06
+/* Smarty version 3.1.30, created on 2017-04-18 08:18:51
   from "D:\work\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f490be22af15_31513550',
+  'unifunc' => 'content_58f5afcbb0eb04_83040036',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8aab19a792690ccfbdb9016c5f963b339aca521' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\hot.tpl',
-      1 => 1492422843,
+      1 => 1492496316,
       2 => 'file',
     ),
   ),
@@ -26,34 +26,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58f490be22af15_31513550 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '599258f490be1ec709_55300882';
+function content_58f5afcbb0eb04_83040036 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '616558f5afcbac4770_29853911';
 ?>
 	<?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 	<style type="text/css">
-		.thing{
-			display: inline-block;
-			margin: 0 0px 0px 0; 
-			padding: 2px;
-            min-width:300px;
-		}
 
-		.listing-page .linklisting .thing {
-		    position: relative;
-		    margin: 0 0px 0px 0;
-		}
-
-
-		.link .title {
-		  
-		    /*max-width: 400px;*/
-		   
-		    /*text-overflow: ellipsis;*/
-		    /*overflow: hidden;*/
-		    /*white-space: nowrap;*/
-		}
 	</style>
 </head>
 

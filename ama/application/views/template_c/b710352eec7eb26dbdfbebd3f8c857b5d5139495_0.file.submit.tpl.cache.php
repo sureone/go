@@ -1,44 +1,38 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:37:17
+/* Smarty version 3.1.30, created on 2017-04-18 06:31:09
   from "D:\work\go\ama\application\views\submit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f47ebd3da249_28692477',
+  'unifunc' => 'content_58f5968d3905f2_35717356',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b710352eec7eb26dbdfbebd3f8c857b5d5139495' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\submit.tpl',
-      1 => 1492414498,
+      1 => 1492489586,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:common/page-header.tpl' => 1,
+    'file:common/page-logo.tpl' => 1,
     'file:common/header-bottom-right.tpl' => 1,
     'file:common/side.tpl' => 1,
     'file:common/markhelp.tpl' => 1,
     'file:common/login-modal.tpl' => 1,
   ),
 ),false)) {
-function content_58f47ebd3da249_28692477 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2183858f47ebd3881a9_84542077';
+function content_58f5968d3905f2_35717356 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2608658f5968d32acd0_68482665';
 ?>
 
     <?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-    <style type="text/css">
-        
-        .infobar {
-            background-color: #FFB6C1;
-        }
-        
-    </style>
 </head>
 
 <body class="listing-page <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
@@ -47,7 +41,9 @@ $_smarty_tpl->compiled->nocache_hash = '2183858f47ebd3881a9_84542077';
 
 <div id="header">
     <div id="header-bottom-left">
-        <span class="hover pagename"><a href="./">AMA</a></span>
+        <?php $_smarty_tpl->_subTemplateRender("file:common/page-logo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
         <ul class="tabmenu ">
             <li class="selected"><a href="./v/submit" class="choice"><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {?>编辑<?php } else { ?>发表<?php }?></a></li>
     </div>
@@ -66,14 +62,14 @@ $_smarty_tpl->compiled->nocache_hash = '2183858f47ebd3881a9_84542077';
         <div class="formtabs-content">
             <div class="spacer">
                 <div id="text-desc" class="infobar">
-                    你正要发表以文字为主的文章，请畅所欲言。发文时必须注明标题，但不一定要在文字栏中长篇大论。使用「如果你...请帮我加分」作为主题，是违反银河法规的。
+                    你正要发表以文字为主的文章，请畅所欲言。发文时必须注明标题，但不一定要在文字栏中长篇大论。使用「如果你...请帮我加分」作为主题，是违反后园法规的。
                 </div>
             </div>
             <div class="spacer">
                 <div class="roundfield " id="title-field">
                     <span class="title required-roundfield">标题</span>
                     <div class="roundfield-content">
-                        <textarea name="title" rows="2" required=""><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {
+                        <textarea class="thing-title key-monitor" name="title" rows="2" required=""><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {
 echo $_smarty_tpl->tpl_vars['thing']->value['title'];
 }?></textarea>
                         <div class="error NO_TEXT field-title" style="display:none"></div>
@@ -91,7 +87,7 @@ echo $_smarty_tpl->tpl_vars['thing']->value['title'];
                             <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
                                 <div class="md">
-                                    <textarea rows="1" cols="1" name="content" class=""><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {
+                                    <textarea rows="1" cols="1" name="content" class="thing-title key-monitor" ><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {
 echo $_smarty_tpl->tpl_vars['thing']->value['text'];
 }?></textarea>
                                 </div>

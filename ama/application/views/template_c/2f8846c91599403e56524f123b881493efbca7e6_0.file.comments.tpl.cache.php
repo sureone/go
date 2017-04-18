@@ -1,24 +1,25 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:39:20
+/* Smarty version 3.1.30, created on 2017-04-18 06:40:50
   from "D:\work\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f47f38f0da11_47550990',
+  'unifunc' => 'content_58f598d2733044_02586400',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f8846c91599403e56524f123b881493efbca7e6' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492414446,
+      1 => 1492480873,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:common/page-header.tpl' => 1,
+    'file:common/page-logo.tpl' => 1,
     'file:common/header-bottom-right.tpl' => 1,
     'file:common/side.tpl' => 1,
     'file:common/thread.tpl' => 1,
@@ -28,8 +29,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/comment-reply-edit.tpl' => 1,
   ),
 ),false)) {
-function content_58f47f38f0da11_47550990 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2910658f47f38eafe00_06135661';
+function content_58f598d2733044_02586400 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '522358f598d26d92a9_59945591';
 ?>
 
     <?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -42,7 +43,10 @@ $_smarty_tpl->compiled->nocache_hash = '2910658f47f38eafe00_06135661';
 
 <div id="header">
     <div id="header-bottom-left">
-        <span class="hover pagename"><a href="./">&nbsp;AMA</a></span>
+        <?php $_smarty_tpl->_subTemplateRender("file:common/page-logo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+        
         <ul class="tabmenu ">
             <li class="selected"><a href="./v/comments/<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['thingid'];?>
 " class="choice">留言</a></li>
