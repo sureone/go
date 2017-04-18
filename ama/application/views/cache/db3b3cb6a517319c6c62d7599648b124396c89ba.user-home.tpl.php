@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:41:35
+/* Smarty version 3.1.30, created on 2017-04-18 08:57:38
   from "D:\work\go\ama\application\views\user-home.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f47fbfaaf4a1_95312694',
+  'unifunc' => 'content_58f5b8e2260482_72537263',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,19 +18,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492416008,
+      1 => 1492496511,
       2 => 'file',
     ),
     'f6a422a540377ed7f7be4e15dc86471b0e809685' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\user-header-bottom-left.tpl',
-      1 => 1491007155,
+      1 => 1492498592,
+      2 => 'file',
+    ),
+    'f9425a6b5d947a44cc0dd8983944da6b322d1daa' => 
+    array (
+      0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-logo.tpl',
+      1 => 1492498622,
       2 => 'file',
     ),
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492390703,
+      1 => 1492481504,
       2 => 'file',
     ),
     '909714a59f76f675a88c2ed245e2941851f8dac9' => 
@@ -52,9 +58,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
       2 => 'file',
     ),
   ),
-  'cache_lifetime' => 30,
+  'cache_lifetime' => 10,
 ),true)) {
-function content_58f47fbfaaf4a1_95312694 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f5b8e2260482_72537263 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 	<!DOCTYPE html>
@@ -63,7 +69,7 @@ function content_58f47fbfaaf4a1_95312694 (Smarty_Internal_Template $_smarty_tpl)
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<meta charset="utf-8">
     <base href="http://127.0.0.1/ama/index.php">
-        <title>问吧 Ask Me Anything </title>
+        <title>后园小亭</title>
     	<style type="text/css">
 	</style>
 	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
@@ -72,12 +78,13 @@ function content_58f47fbfaaf4a1_95312694 (Smarty_Internal_Template $_smarty_tpl)
     <script src="./static/js/form2json.js"></script>
     <script src="./static/js/common.js?v=7"></script>
     <script src="./static/js/jquery.timeago.js?v=1"></script>
-    <script src="./static/js/markdown.min.js?v=1"></script>
-    <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
+    <script src="./static/js/markdown.js?v=3"></script>
+    <script type="text/javascript" src="./static/js/ama.js?v=9"></script>
 
     <script type="text/javascript">
     	var g_logined = true;
     </script>
+    
 </head>
 
 <body class="listing-page loggedin user-home-page">
@@ -85,7 +92,7 @@ function content_58f47fbfaaf4a1_95312694 (Smarty_Internal_Template $_smarty_tpl)
 
 <div id="header">
 <div id="header-bottom-left">
-    <span class="hover pagename"><a href="./">AMA</a></span>
+    <span class="hover pagename"><a href="./">小网</a></span>
     <ul class="tabmenu ">
         <li class="selected"><a href="./v/user/sureone/home" class="choice">总览</a></li>
         <li ><a href="./v/user/sureone/replies" class="choice">留言</a></li>
@@ -94,9 +101,11 @@ function content_58f47fbfaaf4a1_95312694 (Smarty_Internal_Template $_smarty_tpl)
         <li ><a href="./v/user/sureone/upvoted" class="choice">推</a></li>
         <li ><a href="./v/user/sureone/downvoted" class="choice">嘘</a></li>
     </ul>
+
+    
 </div>
 <div id="header-bottom-right">
-<span class="user"><a href="./v/user/sureone/">sureone</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>
@@ -154,6 +163,122 @@ function content_58f47fbfaaf4a1_95312694 (Smarty_Internal_Template $_smarty_tpl)
 	<div class="spacer">
 		<div id="siteTable" class="sitetable linklisting">
 			
+										<div class="thing odd link" id="thing_75" data-thingid=75>
+				
+								<span class="rank"></span>
+												<div class="midcol unvoted" id="vote-75">
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,75)"></div>
+
+										<div class="score dislikes" title="77">0</div>
+					<div class="score unvoted" title="78">0</div>
+					<div class="score likes" title="79">0</div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,75)"></div>
+				</div>
+								<div class="entry unvoted">
+					
+												
+															 <p class="title"><a class="title may-blank loggedin " href="./v/comments/75">121212</a></p>
+														
+											
+
+										<p class="tagline">
+						 						 <a href="./v/user/sureone" class="author may-blank ">小网</a>
+						 
+						 <span class="userattrs"></span>
+
+						 						 发表于
+						  
+						 <time class="live-timestamp timeago" datetime="2017-04-17 16:45:05"></time>
+
+						 <ul class="flat-list buttons" style="display: inline-block;">
+							<li class="first"><a href="./v/comments/75">0 留言</a></li>
+							<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
+							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,75);return false;">收藏</a></li>
+							<!-- <li>
+								<form action="/post/hide" method="post" class="state-button hide-button">
+									<input type="hidden" name="executed" value="隱藏">
+									<span>
+										<a href="javascript:void(0)" class=" " onclick="change_state(this, 'hide', hide_thing);">隱藏</a>
+									</span>
+								</form>
+							</li> -->
+							<li class="report-button">
+								<a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
+							</li>
+
+																					<li class="edit-button">
+								<a href="./v/submit/75" data-thingid=75 class="editbtn access-required" data-event-action="edit">编辑</a>
+							</li>
+																				</ul>
+						 
+					</p>
+										
+					
+					<div class="reportform"></div>
+
+					
+				</div>
+				<div class="child"></div>
+				<div class="clearleft"></div>
+			</div>
+										<div class="thing odd link" id="thing_74" data-thingid=74>
+				
+								<span class="rank"></span>
+												<div class="midcol unvoted" id="vote-74">
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,74)"></div>
+
+										<div class="score dislikes" title="77">0</div>
+					<div class="score unvoted" title="78">0</div>
+					<div class="score likes" title="79">0</div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,74)"></div>
+				</div>
+								<div class="entry unvoted">
+					
+												
+															 <p class="title"><a class="title may-blank loggedin " href="./v/comments/74">fdsafds</a></p>
+														
+											
+
+										<p class="tagline">
+						 						 <a href="./v/user/sureone" class="author may-blank ">小网</a>
+						 
+						 <span class="userattrs"></span>
+
+						 						 发表于
+						  
+						 <time class="live-timestamp timeago" datetime="2017-04-17 16:44:57"></time>
+
+						 <ul class="flat-list buttons" style="display: inline-block;">
+							<li class="first"><a href="./v/comments/74">0 留言</a></li>
+							<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
+							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,74);return false;">收藏</a></li>
+							<!-- <li>
+								<form action="/post/hide" method="post" class="state-button hide-button">
+									<input type="hidden" name="executed" value="隱藏">
+									<span>
+										<a href="javascript:void(0)" class=" " onclick="change_state(this, 'hide', hide_thing);">隱藏</a>
+									</span>
+								</form>
+							</li> -->
+							<li class="report-button">
+								<a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
+							</li>
+
+																					<li class="edit-button">
+								<a href="./v/submit/74" data-thingid=74 class="editbtn access-required" data-event-action="edit">编辑</a>
+							</li>
+																				</ul>
+						 
+					</p>
+										
+					
+					<div class="reportform"></div>
+
+					
+				</div>
+				<div class="child"></div>
+				<div class="clearleft"></div>
+			</div>
 										<div class="thing odd link" id="thing_73" data-thingid=73>
 				
 								<span class="rank"></span>
@@ -400,7 +525,9 @@ function content_58f47fbfaaf4a1_95312694 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 					
 												
-															 <p class="title"><a class="title may-blank loggedin " href="./v/comments/69">雨霖铃·寒蝉凄切</a></p>
+															 <p class="title"><a class="title may-blank loggedin " href="./v/comments/69">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
+
+多情自古伤离别， 更那堪， 冷落清秋节！</a></p>
 														
 											
 

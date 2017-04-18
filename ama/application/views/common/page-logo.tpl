@@ -1,1 +1,1 @@
-<span class="hover pagename"><a href="./"><img src="./static/images/logo.gif" alt="后园小亭" height="20"></a></span>
+<span class="hover pagename"><a href="./">{if isset($user_name)}{$user_name}{else}<img src="./static/images/logo.gif" alt="后园小亭" height="20">{/if}</a></span>

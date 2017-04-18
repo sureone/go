@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 08:25:02
+/* Smarty version 3.1.30, created on 2017-04-18 08:57:35
   from "D:\work\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f5b13e0d24e7_47253876',
+  'unifunc' => 'content_58f5b8dfafec55_13048606',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -30,7 +30,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'f9425a6b5d947a44cc0dd8983944da6b322d1daa' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-logo.tpl',
-      1 => 1492480911,
+      1 => 1492498622,
       2 => 'file',
     ),
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
@@ -48,7 +48,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'a6511d30798b0d5592df6709fdb08d9628d23d2a' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1492496671,
+      1 => 1492496920,
       2 => 'file',
     ),
     '4b6dd1202b4b103f1802898db3a09d2c6f39e99e' => 
@@ -60,7 +60,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f5b8dfafec55_13048606 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 	<!DOCTYPE html>
 <html>
@@ -212,7 +212,7 @@ function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 78">1</span><a class="title may-blank loggedin " href="./v/comments/73">dfsafdsa111111111</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 1">1</span><a class="title may-blank loggedin " href="./v/comments/73">dfsafdsa111111111</a></p>
 											
 
 					
@@ -265,7 +265,7 @@ function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/75">121212</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/comments/75">121212</a></p>
 											
 
 					
@@ -318,7 +318,7 @@ function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/74">fdsafds</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/comments/74">fdsafds</a></p>
 											
 
 					
@@ -371,7 +371,7 @@ function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/72">gfdsgfdsgfdsg3rertwetre</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/comments/72">gfdsgfdsgfdsg3rertwetre</a></p>
 											
 
 					
@@ -424,7 +424,7 @@ function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/71">dfsafdsafsd</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/comments/71">dfsafdsafsd</a></p>
 											
 
 					
@@ -477,7 +477,7 @@ function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/70">test</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/comments/70">test</a></p>
 											
 
 					
@@ -530,7 +530,7 @@ function content_58f5b13e0d24e7_47253876 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 78">0</span><a class="title may-blank loggedin " href="./v/comments/69">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/comments/69">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
 
 多情自古伤离别， 更那堪， 冷落清秋节！</a></p>
 											

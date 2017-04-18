@@ -8,4 +8,6 @@
         <li {if $page eq "user-upvoted"}class="selected"{/if}><a href="./v/user/{$userid}/upvoted" class="choice">推</a></li>
         <li {if $page eq "user-downvoted"}class="selected"{/if}><a href="./v/user/{$userid}/downvoted" class="choice">嘘</a></li>
     </ul>
+
+    
 </div>
