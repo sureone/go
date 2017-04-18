@@ -1,5 +1,5 @@
 <div id="header-bottom-left">
-    <span class="hover pagename"><a href="./">AMA</a></span>
+    {include file="common/page-logo.tpl"}
     <ul class="tabmenu ">
         <li {if $page eq "user-home"}class="selected"{/if}><a href="./v/user/{$userid}/home" class="choice">总览</a></li>
         <li {if $page eq "user-replies"}class="selected"{/if}><a href="./v/user/{$userid}/replies" class="choice">留言</a></li>
