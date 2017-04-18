@@ -29,7 +29,7 @@
                 <div class="roundfield " id="title-field">
                     <span class="title required-roundfield">标题</span>
                     <div class="roundfield-content">
-                        <textarea class="thing-title key-monitor" name="title" rows="2" required="">{if isset($thing)}{$thing.title}{/if}</textarea>
+                        <textarea class="thing-title key-monitor" name="title" rows="1" required="">{if isset($thing)}{$thing.title}{/if}</textarea>
                         <div class="error NO_TEXT field-title" style="display:none"></div>
                         <div class="error TOO_LONG field-title" style="display:none"></div>
                     </div>
@@ -45,7 +45,7 @@
                             <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
                                 <div class="md">
-                                    <textarea rows="1" cols="1" name="content" class="thing-title key-monitor" >{if isset($thing)}{$thing.text}{/if}</textarea>
+                                    <textarea rows="1" cols="1" name="content" style="height:240px;" class="thing-title key-monitor" >{if isset($thing)}{$thing.text}{/if}</textarea>
                                 </div>
 
                                 <div class="bottom-area">
