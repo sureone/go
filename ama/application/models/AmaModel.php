@@ -9,6 +9,16 @@ class AmaModel extends CI_Model{
         $this->load->library('session');
     }
 
+    public function readUser($userid){
+
+        $query = $this->db->get_where('users', array('userid' => $userid), 1, 0);  
+        $rows = $query->result_array();
+
+        if(count($rows)==1) return $rows[0];
+
+        return null;
+    }
+
     public function readHotThings($maxid,$limit){
 
         $user_info = $this->session->userdata('user.info');

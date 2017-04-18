@@ -146,10 +146,12 @@ class V extends CI_Controller {
 	{
 		$this->common();
 
+		$user = $this->amaModel->readUser($userid);
 		$things= array();
 		
 		$this->ci_smarty->assign("page","user-{$page}");
 		$this->ci_smarty->assign("userid",$userid);
+		$this->ci_smarty->assign("user_name",$user['name']);
 		$this->ci_smarty->assign("pagetype","archive");
 		
 		if($page == "home"){
