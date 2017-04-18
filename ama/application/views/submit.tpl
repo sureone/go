@@ -1,12 +1,5 @@
 
     {include file='common/page-header.tpl'}
-    <style type="text/css">
-        {literal}
-        .infobar {
-            background-color: #FFB6C1;
-        }
-        {/literal}
-    </style>
 </head>
 
 <body class="listing-page {if $logined eq "true"}loggedin{/if} {$page}-page">
