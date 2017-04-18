@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 03:50:16
+/* Smarty version 3.1.30, created on 2017-04-18 04:08:42
   from "D:\work\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f570d89a2ad3_42053157',
+  'unifunc' => 'content_58f5752ad87d82_03258653',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -24,7 +24,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '60fa3e11c1f4314b315f8259b36371c39276f334' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\header-bottom-left.tpl',
-      1 => 1492480006,
+      1 => 1492480921,
+      2 => 'file',
+    ),
+    'f9425a6b5d947a44cc0dd8983944da6b322d1daa' => 
+    array (
+      0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-logo.tpl',
+      1 => 1492480911,
       2 => 'file',
     ),
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
@@ -54,7 +60,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f5752ad87d82_03258653 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 	<!DOCTYPE html>
 <html>
@@ -75,7 +81,7 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
     <script type="text/javascript" src="./static/js/ama.js?v=8"></script>
 
     <script type="text/javascript">
-    	var g_logined = false;
+    	var g_logined = true;
     </script>
 	<style type="text/css">
 		.thing{
@@ -102,7 +108,7 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 	</style>
 </head>
 
-<body class="listing-page  hot-page">
+<body class="listing-page loggedin hot-page">
 
 
 <div id="header">
@@ -121,13 +127,13 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 
 <div id="header-bottom-right">
-<span class="user">想要加入?  一秒<a href="" class="login-required">登入或註冊</a></span>
-
-<!-- <span class="separator">|</span>
-<ul class="flat-list hover">
-	<li><a href="javascript:void(0)" class="pref-lang choice" onclick="return showlang();">中文</a></li>
+<span class="user"><a href="./v/user/sureone/">sureone</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<!-- 
+<span class="separator">|</span><ul class="flat-list hover">
+<li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>
 </ul>
  -->
+<span class="separator">|</span><form method="post" id="logout-form" action="./api" class="logout hover"><input type="hidden" name="uh" value="cqaeyi63ta407191a49905d7c0b26e7c2a75cb1b81ddd77995"><input type="hidden" name="top" value="off"><input type="hidden" name="action" value="logout"><a href="javascript:void(0)" onclick="$(this).parent().submit()">登出</a></form>
 
 </div>
 </div>
@@ -183,7 +189,7 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 				
 								<span class="rank"></span>
 												<div class="midcol unvoted" id="vote-73">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,73)"></div>
+					<div class="arrow upmod login-required access-required" tabindex="0" onclick="voteit('./api',this,1,73)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">1</div>
@@ -208,7 +214,11 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-						
+																				<a href="./v/submit/73" data-thingid=73 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(73)" data-thingid=73 class="delbtn access-required" data-event-action="delete">删除</a>
+												
 
 						 
 					</p>
@@ -257,7 +267,11 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-						
+																				<a href="./v/submit/75" data-thingid=75 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(75)" data-thingid=75 class="delbtn access-required" data-event-action="delete">删除</a>
+												
 
 						 
 					</p>
@@ -306,7 +320,11 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-						
+																				<a href="./v/submit/74" data-thingid=74 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(74)" data-thingid=74 class="delbtn access-required" data-event-action="delete">删除</a>
+												
 
 						 
 					</p>
@@ -355,7 +373,11 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-						
+																				<a href="./v/submit/72" data-thingid=72 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(72)" data-thingid=72 class="delbtn access-required" data-event-action="delete">删除</a>
+												
 
 						 
 					</p>
@@ -404,7 +426,11 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-						
+																				<a href="./v/submit/71" data-thingid=71 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(71)" data-thingid=71 class="delbtn access-required" data-event-action="delete">删除</a>
+												
 
 						 
 					</p>
@@ -453,7 +479,11 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-						
+																				<a href="./v/submit/70" data-thingid=70 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(70)" data-thingid=70 class="delbtn access-required" data-event-action="delete">删除</a>
+												
 
 						 
 					</p>
@@ -502,7 +532,11 @@ function content_58f570d89a2ad3_42053157 (Smarty_Internal_Template $_smarty_tpl)
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-						
+																				<a href="./v/submit/69" data-thingid=69 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(69)" data-thingid=69 class="delbtn access-required" data-event-action="delete">删除</a>
+												
 
 						 
 					</p>
