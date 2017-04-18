@@ -78,7 +78,7 @@ a {
 
 .pagename {
     font-weight: bold;
-    margin-right: 1ex;
+    /*margin-right: 1ex;*/
     font-variant: small-caps;
     font-size: 1.2em;
     vertical-align: bottom;
