@@ -41,7 +41,7 @@
                     <time datetime="{$entry.timeago}">{$entry.timeago}</time>
                 </div>
                 <div class="score"><span class="number">{$entry.likes-$entry.dislikes}</span> <span class="word">指标</span> (其中{$entry.likes}票赞成)</div>
-                <div class="shortlink">shortlink: <input type="text" value="http://boopo.cn/v/a/{$entry.thingid}" readonly="readonly"
+                <div class="shortlink">本文链接: <input type="text" value="http://boopo.cn/v/a/{$entry.thingid}" readonly="readonly"
                                                          id="shortlink-text"></div>
             </div>
         </div>
