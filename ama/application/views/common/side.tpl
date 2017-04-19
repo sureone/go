@@ -41,8 +41,8 @@
                     <time datetime="{$entry.timeago}">{$entry.timeago}</time>
                 </div>
                 <div class="score"><span class="number">{$entry.likes-$entry.dislikes}</span> <span class="word">指标</span> (其中{$entry.likes}票赞成)</div>
-<!--                 <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
-                                                         id="shortlink-text"></div> -->
+                <div class="shortlink">shortlink: <input type="text" value="http://boopo.cn/v/a/{$entry.thingid}" readonly="readonly"
+                                                         id="shortlink-text"></div>
             </div>
         </div>
         {/foreach} 
