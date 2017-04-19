@@ -49,6 +49,18 @@
         {/if}  
         
     {/if}
+
+    {if $logined eq "true" and isset($pagedir) and $pagedir eq "user"}
+    <div class="spacer">
+        <div class="sidebox submit submit-text">
+            <div class="morelink">
+                <a href="./v/message/compose/{$userid}" class="login-required access-required" target="_top">给{$username}发送私信</a>
+                <div class="nub"></div>
+            </div>
+        </div>
+    </div>
+    {/if}
+
     <div class="spacer">
         <div class="sidebox submit submit-text">
             <div class="morelink">

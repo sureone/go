@@ -228,12 +228,28 @@ class Api extends CI_Controller {
 
     function doSubmitNewMessage($json){
         $user = $this->session->userdata('user.info');
+      
         if(isset($_SESSION['user.info'])){
+
+            $this->db->where("userid",$json->{'recipients'});
+            $this->db->or_where("name",$json->{'recipients'});
+            $query = $this->db->get("users");
+            $rows = $query->result_array();
+
+            if(count($rows)==1){
+
+                $touserid = $rows[0]['userid'];
+
+            }
+            else{
+                return array('code'=>404);
+            }
+
         
             $this->db->insert('things',
                 array('author'=>$user['userid'],
                     'title'=>$json->{'title'},
-                    'recipients'=>$json->{'recipients'},
+                    'recipients'=>$touserid,
                     'stype'=>'message',
                     'content'=>$json->{'content'},
                     'cdate'=>$this->curTime(),
