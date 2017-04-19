@@ -37,7 +37,7 @@
         {foreach $things as $entry}
         <div class="spacer">
             <div class="linkinfo">
-                <div class="date"><span>本文发表于 </span>
+                <div class="date"><a style="font-size:medium;padding-right:4px;" href="./v/user/{$entry.author}">{$entry.author_name}</a><span>发表于 </span>
                     <time datetime="{$entry.timeago}">{$entry.timeago}</time>
                 </div>
                 <div class="score"><span class="number">{$entry.likes-$entry.dislikes}</span> <span class="word">指标</span> (其中{$entry.likes}票赞成)</div>
