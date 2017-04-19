@@ -191,7 +191,7 @@ class AmaModel extends CI_Model{
         if($type=="main"){
             $this->db->where('things.author',$userid);
             $this->db->where('things.parent','0');
-            $this->db->where('things.stype','link');
+           
         }
         if($type=="reply"){
             $this->db->where('things.author',$userid);
@@ -202,6 +202,8 @@ class AmaModel extends CI_Model{
             $this->db->where('things.author',$userid);
 
         }
+
+         $this->db->where('things.stype','link');
 
         $this->db->order_by('things.id','DESC');
 
