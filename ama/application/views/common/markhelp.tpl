@@ -22,7 +22,7 @@
                                         </tr>
                                         <tr>
                                             <td>[后园小亭](http://boopo.cn)</td>
-                                            <td><a href="https://reddit.com">reddit!</a></td>
+                                            <td><a href="http://boopo.cn">后园小亭</a></td>
                                         </tr>
                                         <tr>
                                             <td>* 項目 1<br>* 項目 2<br>* 項目 3</td>
