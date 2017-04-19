@@ -10,7 +10,7 @@
     	{/if}
     </span>
 	{if $entry.stype neq "message"}
-	<a href="./v/comments/{$entry.main}" class="title">
+	<a href="./v/a/{$entry.main}" class="title">
 		{if isset($entry.p_title)}
 			{$entry.p_title}
 		{else}

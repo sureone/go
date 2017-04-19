@@ -6,7 +6,7 @@
 					<span class="subject-text">回帖</span>
 					<a name="dffeipd"></a>
 
-					<a href="./v/comments/{$entry.parent}" class="title">
+					<a href="./v/a/{$entry.parent}" class="title">
 						{if isset($entry.p_title) and $entry.p_title neq '' }
 							{$entry.p_title}
 						{else}
@@ -42,11 +42,11 @@
 					{/if}
 					
 						{if $pagetype eq "list"}
-						 <p class="title"><span class="score unvoted" title="指标 {$entry.likes-$entry.dislikes}">{$entry.likes-$entry.dislikes}</span><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
+						 <p class="title"><span class="score unvoted" title="指标 {$entry.likes-$entry.dislikes}">{$entry.likes-$entry.dislikes}</span><a class="title may-blank loggedin " href="./v/a/{$entry.thingid}">{$entry.title}</a></p>
 						{else}
 						
 							{if isset($entry.title) and $entry.title neq '' }
-								 <p class="title"><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
+								 <p class="title"><a class="title may-blank loggedin " href="./v/a/{$entry.thingid}">{$entry.title}</a></p>
 							{else}
 							<div class="usertext-body may-blank-within md-container ">
 								<div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></div>
@@ -67,7 +67,7 @@
 
 						 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
 
-						 <a href="./v/comments/{$entry.thingid}">{$entry.replies} 留言</a>
+						 <a href="./v/a/{$entry.thingid}">{$entry.replies} 留言</a>
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 

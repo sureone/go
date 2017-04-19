@@ -146,12 +146,10 @@ class V extends CI_Controller {
 	{
 		$this->common();
 
-		$user = $this->amaModel->readUser($userid);
 		$things= array();
 		
 		$this->ci_smarty->assign("page","user-{$page}");
 		$this->ci_smarty->assign("userid",$userid);
-		$this->ci_smarty->assign("user_name",$user['name']);
 		$this->ci_smarty->assign("pagetype","archive");
 		
 		if($page == "home"){
@@ -207,7 +205,7 @@ class V extends CI_Controller {
 		$this->ci_smarty->assign("page","submit");
 		$this->ci_smarty->display("submit.tpl");
 	}
-	public function comments($thingid){
+	public function a($thingid){
 		$this->common();
 		$this->ci_smarty->assign("page","comments");
 		$this->ci_smarty->assign("thingid",$thingid);
