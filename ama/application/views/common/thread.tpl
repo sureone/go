@@ -5,7 +5,7 @@
 					<span class="subject-text">回帖</span>
 					<a name="dffeipd"></a>
 
-					<a href="./v/comments/{$entry.parent}" class="title">
+					<a href="./v/a/{$entry.parent}" class="title">
 						{if isset($entry.p_title) and $entry.p_title neq '' }
 							{$entry.p_title}
 						{else}
@@ -36,11 +36,11 @@
 				<div class="entry unvoted">
 					
 						{if $pagetype eq "list"}
-						 <p class="title"><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
+						 <p class="title"><a class="title may-blank loggedin " href="./v/a/{$entry.thingid}">{$entry.title}</a></p>
 						{else}
 						
 							{if isset($entry.title) and $entry.title neq '' }
-								 <p class="title"><a class="title may-blank loggedin " href="./v/comments/{$entry.thingid}">{$entry.title}</a></p>
+								 <p class="title"><a class="title may-blank loggedin " href="./v/a/{$entry.thingid}">{$entry.title}</a></p>
 							{else}
 							<div class="usertext-body may-blank-within md-container ">
 								<div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></div>
@@ -67,7 +67,7 @@
 						 <time class="live-timestamp timeago" datetime="{$entry.timeago}"></time>
 
 						 <ul class="flat-list buttons" style="display: inline-block;">
-							<li class="first"><a href="./v/comments/{$entry.thingid}">{$entry.replies} 留言</a></li>
+							<li class="first"><a href="./v/a/{$entry.thingid}">{$entry.replies} 留言</a></li>
 							<!-- <li class="share"><a class="post-sharing-button" href="javascript: void 0;">分享</a></li> -->
 							<li class="link-save-button save-button"><a href="" onclick="saveit('./api',this,{$entry.thingid});return false;">收藏</a></li>
 							<!-- <li>

@@ -9,7 +9,7 @@
         {include file="common/page-logo.tpl"}
         
         <ul class="tabmenu ">
-            <li class="selected"><a href="./v/comments/{$things[0].thingid}" class="choice">留言</a></li>
+            <li class="selected"><a href="./v/a/{$things[0].thingid}" class="choice">留言</a></li>
         </ul>
     </div>
     {include file="common/header-bottom-right.tpl"}
