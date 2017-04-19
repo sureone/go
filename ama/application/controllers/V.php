@@ -108,10 +108,12 @@ class V extends CI_Controller {
 	}
 
 
-	public function message($page='inbox'){
+	public function message($page='inbox',$msgto=null){
 		if($this->common()==false){
 			return;
 		}
+
+		$this->ci_smarty->assign("pagedir","message");
 
 		$things= array();
 		
@@ -136,6 +138,14 @@ class V extends CI_Controller {
 			$things = $this->amaModel->readMessagesByUser(0,20,$user_info['userid'],'selfreply');	
 		}
 
+		if($page == "compose"){
+			if($msgto!=null){
+				$userto = $this->amaModel->readUser($msgto);
+				$this->ci_smarty->assign("touserid",$msgto);
+				$this->ci_smarty->assign("tousername",$userto['name']);
+			}
+		}
+
 		$this->ci_smarty->assign("things",$things);
 		$this->ci_smarty->display("message-{$page}.tpl");
 
@@ -147,9 +157,13 @@ class V extends CI_Controller {
 		$this->common();
 
 		$things= array();
+
+		$user = $this->amaModel->readUser($userid);
+		$this->ci_smarty->assign("pagedir","user");
 		
 		$this->ci_smarty->assign("page","user-{$page}");
 		$this->ci_smarty->assign("userid",$userid);
+		$this->ci_smarty->assign("username",$user['name']);
 		$this->ci_smarty->assign("pagetype","archive");
 		
 		if($page == "home"){

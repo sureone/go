@@ -26,9 +26,9 @@
 	        <div class="spacer">
 	        	<div class="roundfield ">
 	        		<span class="title ">至</span> 
-	        		<span class="little gray roundfield-description">(username)</span>
+	        		<span class="little gray roundfield-description">(账号名)</span>
 	        		<div class="roundfield-content">
-	        			<input type="text" name="recipients" value="" onchange="admincheck(this)">
+	        			<input type="text" name="recipients" value="{if isset($tousername)}{$tousername}{/if}" onchange="admincheck(this)">
 	        			<span class="error NO_USER field-to" style="display:none"></span>
 	        			<span class="error USER_DOESNT_EXIST field-to" style="display:none">
 	        			</span>
