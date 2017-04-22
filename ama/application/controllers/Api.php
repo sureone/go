@@ -216,7 +216,17 @@ class Api extends CI_Controller {
                     'content'=>$json->{'content'},
                     'cdate'=>$this->curTime(),
                     'udate'=>$this->curTime()));
-                return array('code'=>200,'thingid'=>$this->db->insert_id());
+                $thingid=$this->db->insert_id();
+                $attches = $json->{'attaches'};
+                if($attches && count($attches)>0){
+                    foreach ($attches as $attach) {
+                        $this->db->where('id',$attach->{'file_id'});
+                        $this->db->update('thing_attach_map',
+                            array('thingid'=>$thingid,
+                            'file_comment'=>$attach->{'file_comment'}));
+                    }
+                }
+                return array('code'=>200,'thingid'=>$thingid);
 
             }
 

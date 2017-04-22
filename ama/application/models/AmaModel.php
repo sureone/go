@@ -320,4 +320,46 @@ class AmaModel extends CI_Model{
 
         return array('comments'=>$result,'comments_count'=>count($rows));
     }
+
+    function addAttach($json){
+        $user = $this->session->userdata('user.info');
+        if(isset($_SESSION['user.info'])){
+            $data =  array('userid'=>$user['userid'],
+                'file_type'=>$json['file_type'],
+                'file_name'=>$json['file_name'],
+                'file_path'=>$json['file_path'],
+                'file_size'=>$json['file_size'],
+                'cdate'=>$this->curTime());
+
+            if($json['is_image'] == "1"){
+                $data['image_width']=$json['image_width'];
+
+                $data['image_height']=$json['image_height'];
+            }
+            $this->db->insert('thing_attach_map',$data);
+           
+            return $this->db->insert_id();
+
+            
+
+        }else{
+            return -1;
+        }
+    }
+
+
+    public function readAttaches($thingid){
+      
+        
+            $query = $this->db->get_where("thing_attach_map",array("thingid"=>$thingid));
+          
+        $rows = $query->result_array();
+
+        return $rows;
+    }
+
+    function curTime(){
+        $ms = time();
+        return $ms;
+    }
 }

@@ -1174,3 +1174,13 @@ form .spacer+.spacer {
 .flat-list li.selected a {
     color: orangered;
 }
+
+.ico_att {
+    background: url("../images/compose127dee.gif") no-repeat scroll 0px 0px transparent;
+    width: 16px;
+    height: 15px;
+    padding: 0px;
+    border: medium none;
+    vertical-align: middle;
+    margin: 0px 1px 4px 0px;
+}

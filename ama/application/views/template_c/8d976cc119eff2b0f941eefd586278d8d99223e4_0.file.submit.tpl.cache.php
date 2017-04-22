@@ -1,23 +1,66 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-04-22 06:20:01
+  from "D:\go\ama\application\views\submit.tpl" */
 
-    {include file='common/page-header.tpl'}
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58fad9f1e4c891_66100327',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '8d976cc119eff2b0f941eefd586278d8d99223e4' => 
+    array (
+      0 => 'D:\\go\\ama\\application\\views\\submit.tpl',
+      1 => 1492834799,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:common/page-header.tpl' => 1,
+    'file:common/page-logo.tpl' => 1,
+    'file:common/header-bottom-right.tpl' => 1,
+    'file:common/side.tpl' => 1,
+    'file:common/markhelp.tpl' => 1,
+    'file:common/login-modal.tpl' => 1,
+    'file:common/file-attach.tpl' => 1,
+  ),
+),false)) {
+function content_58fad9f1e4c891_66100327 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '3121058fad9f1ddf273_94508176';
+?>
+
+    <?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 
-    <script type="text/javascript" src="./static/js/submit.js?v=8"></script>
+
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./static/js/submit.js?v=8"><?php echo '</script'; ?>
+>
 
 </head>
 
-<body class="listing-page {if $logined eq "true"}loggedin{/if} {$page}-page">
+<body class="listing-page <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+-page">
 
 
 <div id="header">
     <div id="header-bottom-left">
-        {include file="common/page-logo.tpl"}
+        <?php $_smarty_tpl->_subTemplateRender("file:common/page-logo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
         <ul class="tabmenu ">
-            <li class="selected"><a href="./v/submit" class="choice">{if isset($thing)}编辑{else}发表{/if}</a></li>
+            <li class="selected"><a href="./v/submit" class="choice"><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {?>编辑<?php } else { ?>发表<?php }?></a></li>
     </div>
-    {include file='common/header-bottom-right.tpl'}
+    <?php $_smarty_tpl->_subTemplateRender("file:common/header-bottom-right.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </div>
-{include file='common/side.tpl'}
+<?php $_smarty_tpl->_subTemplateRender("file:common/side.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
 <div class="content">
 
@@ -34,7 +77,9 @@
                 <div class="roundfield " id="title-field">
                     <span class="title required-roundfield">标题</span>
                     <div class="roundfield-content">
-                        <textarea class="thing-title key-monitor" name="title" rows="1" required="">{if isset($thing)}{$thing.title}{/if}</textarea>
+                        <textarea class="thing-title key-monitor" name="title" rows="1" required=""><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {
+echo $_smarty_tpl->tpl_vars['thing']->value['title'];
+}?></textarea>
                         <div class="error NO_TEXT field-title" style="display:none"></div>
                         <div class="error TOO_LONG field-title" style="display:none"></div>
                     </div>
@@ -50,7 +95,9 @@
                             <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
                                 <div class="md">
-                                    <textarea rows="1" cols="1" name="content" style="height:120px;" class="thing-title key-monitor" >{if isset($thing)}{$thing.text}{/if}</textarea>
+                                    <textarea rows="1" cols="1" name="content" style="height:120px;" class="thing-title key-monitor" ><?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {
+echo $_smarty_tpl->tpl_vars['thing']->value['text'];
+}?></textarea>
                                 </div>
 
                                 <div class="bottom-area">
@@ -73,7 +120,9 @@
                                     <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
                                 </div>
                                 
-                                {include file="common/markhelp.tpl"}
+                                <?php $_smarty_tpl->_subTemplateRender("file:common/markhelp.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
                             </div>
                         </div>
                         <span class="error NO_SELFS field-sr" style="display:none"></span>
@@ -98,7 +147,9 @@
         </div> -->
         <!-- <div id="items-required">*required</div> -->
         <input name="resubmit" value="" type="hidden">
-        <input name="thingid" value="{if isset($thing)}{$thing.thingid}{else}0{/if}" type="hidden">
+        <input name="thingid" value="<?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {
+echo $_smarty_tpl->tpl_vars['thing']->value['thingid'];
+} else { ?>0<?php }?>" type="hidden">
     </form>
     
        
@@ -131,11 +182,16 @@
 </div>
 
 <div id="footer"></div>
-{include 'common/login-modal.tpl'}
-{include 'common/file-attach.tpl'}
+<?php $_smarty_tpl->_subTemplateRender("file:common/login-modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+<?php $_smarty_tpl->_subTemplateRender("file:common/file-attach.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </body>
 
 
 
 
-</html>
+</html><?php }
+}

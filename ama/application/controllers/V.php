@@ -28,6 +28,7 @@ class V extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->library('ci_smarty');
 		$this->load->model('amaModel');
+		$this->load->helper(array('form', 'url'));
 	}
 	public function index()
 	{
@@ -191,7 +192,7 @@ class V extends CI_Controller {
 		}
 
 		$this->ci_smarty->assign("things",$things);
-		$this->ci_smarty->display("user-{$page}.tpl");
+		$this->ci_smarty->display("user-{$page}.tpl",$userid);
 	}
 
 	public function logout()
@@ -217,7 +218,7 @@ class V extends CI_Controller {
         }
 
 		$this->ci_smarty->assign("page","submit");
-		$this->ci_smarty->display("submit.tpl");
+		$this->ci_smarty->display("submit.tpl",$thingid);
 	}
 	public function a($thingid){
 		$this->common();
@@ -230,13 +231,57 @@ class V extends CI_Controller {
 		$comments_result = $this->amaModel->readComments($thingid,0,100);
 		$thing['comments']=$comments_result['comments'];
 		$thing['comments_count']=$comments_result['comments_count'];
+		$thing['attaches']=$this->amaModel->readAttaches($thingid);
 
 		$this->ci_smarty->assign("things",array($thing));
 		$this->ci_smarty->assign("page_title",$thing['title']);
 		
-		$this->ci_smarty->display("comments.tpl");
+		$this->ci_smarty->display("comments.tpl",$thingid);
 		// $this->load->view('comments',array('user'=>$user_info,'page'=>'comments','thingid'=>$thingid));
 	}
 
+
+	public function uploadform()
+    {
+            $this->load->view('upload_form', array('error' => ' ' ));
+    }
+
+
+	public function iframe()
+    {
+            $this->load->view('iframe', array('error' => ' ' ));
+    }
+
+
+    public function do_upload()
+    {
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 1024*1024*20;
+            $config['max_width']            = 4096;
+            $config['max_height']           = 4096;
+            $config['file_ext_tolower']     = TRUE;
+			$config['file_ext_tolower']     = TRUE;
+			$config['encrypt_name']     = FALSE;
+			$config['max_filename_increment']     = 100000000;
+
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('userfile'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('upload_success', $error);
+            }
+            else
+            {
+            		$result = $this->upload->data();
+            		$result['file_id']=$this->amaModel->addAttach($result);
+                    $data = array('upload_data' => $result);
+                    $this->load->view('upload_success', $data);
+
+            }
+    }
 
 }

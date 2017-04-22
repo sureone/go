@@ -21,7 +21,11 @@
     <div id="siteTable" class="sitetable linklisting">
         {foreach $things as $entry}
             {include file="common/thread.tpl"}
-        {/foreach}    
+        {/foreach}   
+
+        {foreach $things[0].attaches as $entry}
+                {include file="common/thing-attach.tpl"}
+        {/foreach} 
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">头{$things[0].comments_count}则留言</span><a
