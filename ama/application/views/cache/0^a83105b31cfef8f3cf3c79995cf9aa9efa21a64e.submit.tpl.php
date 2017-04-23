@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 06:26:30
+/* Smarty version 3.1.30, created on 2017-04-23 08:14:39
   from "D:\go\ama\application\views\submit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fadb76b30978_77626167',
+  'unifunc' => 'content_58fc464fc24d85_14733267',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8d976cc119eff2b0f941eefd586278d8d99223e4' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\submit.tpl',
-      1 => 1492834799,
+      1 => 1492926293,
       2 => 'file',
     ),
     '9add0006f06d4c3a3cdd978f02ffd7fb276e3103' => 
@@ -54,13 +54,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '92480ae619bca4be4858d7e757663330f94640b0' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\file-attach.tpl',
-      1 => 1492833408,
+      1 => 1492926284,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fadb76b30978_77626167 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fc464fc24d85_14733267 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <!DOCTYPE html>
@@ -305,7 +305,7 @@ function content_58fadb76b30978_77626167 (Smarty_Internal_Template $_smarty_tpl)
 
             <iframe src="" style="display:none;" id="iframe_upload" name="iframe_upload"></iframe>
             <ul id="attaches">
-
+                
             </ul>    
 
             <form action="http://127.0.0.1/ama/index.php/v/do_upload" enctype="multipart/form-data" method="post" accept-charset="utf-8" target="iframe_upload">
@@ -353,12 +353,15 @@ function content_58fadb76b30978_77626167 (Smarty_Internal_Template $_smarty_tpl)
 
 <script id="tpl-file-attach" type="text/x-handlebars-template">
     
-    <li class="attach-file" file_id="{{file_id}}">
-
+    <li class="attach-file new" file_id="{{file_id}}">
         {{#if _image_file}}
-            <a href="./uploads/{{file_name}}"><img width="160" src="./uploads/{{file_name}}"></a>
+        	<a href="./uploads/{{file_name}}"><img width="160" src="./uploads/{{file_name}}"></a>
         {{/if}}
-        <input type="text" name="attach-comment-{{file_id}}" value="" placeholder="附件说明">
+        <a href="javascript:removeNewAttach({{file_id}})">删除附件</a>
+        <a href="javascript:changeAttachOrder({{file_id}},-1)">向上</a>
+        <a href="javascript:changeAttachOrder({{file_id}},1)">向下</a>
+        
+        <input type="text" name="attach-comment-{{file_id}}" value="" placeholder="附件说明({{file_name}})">
     </li>
     
 </script>

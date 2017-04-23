@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 03:22:58
+/* Smarty version 3.1.30, created on 2017-04-23 08:24:57
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fab072833811_08863291',
+  'unifunc' => 'content_58fc48b9e77fc0_60913954',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492563435,
+      1 => 1492918737,
       2 => 'file',
     ),
     '9add0006f06d4c3a3cdd978f02ffd7fb276e3103' => 
@@ -42,7 +42,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1492563366,
+      1 => 1492918783,
       2 => 'file',
     ),
     '80f5f0c9f21973e46f2e4ad31a1a3daba18efcc9' => 
@@ -72,7 +72,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fab072833811_08863291 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fc48b9e77fc0_60913954 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
@@ -240,7 +240,15 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML(" 怒发冲冠，凭阑处、潇潇雨歇。抬望眼、仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。\n\n\n\n  靖康耻，犹未雪；臣子恨，何时灭。驾长车，踏破贺兰山缺。壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。\n\n"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML(" 怒发冲冠，凭阑处、潇潇雨歇。抬望眼、仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。\n\n\n\n  靖康耻，犹未雪；臣子恨，何时灭。驾长车，踏破贺兰山缺。壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。\n\n"));</script>
+	
+
+							        <div class="thing-attaches">
+									     
+							    	</div>
+								</div>
+
+							
 							</div>
 						</form>
 					</div>
@@ -253,7 +261,9 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 				<div class="child"></div>
 				<div class="clearleft"></div>
 			</div>
-            
+           
+
+
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">头8则留言</span><a

@@ -145,6 +145,11 @@ class AmaModel extends CI_Model{
         $rows = $query->result_array();
 
 
+        foreach ($rows as $row) {
+            $row['attaches']=$this->readAttaches($row['thingid']);
+            $this->db->or_where('ID',$row['thingid']);
+        }
+
         //set the thing as read
         $this->db->set('readed','1',FALSE);
         foreach ($rows as $row) {
@@ -311,11 +316,18 @@ class AmaModel extends CI_Model{
         $result = array();
 
         foreach ($rows as &$row){
+
+            $attaches = $this->readAttaches($row['thingid']);
+
+            $row['attaches'] = $attaches;
+
             if($row['parent']==$main){
                 $this->genThingsTree($rows,$row);
                 array_push($result, $row);
                 
             }
+
+
         }
 
         return array('comments'=>$result,'comments_count'=>count($rows));
@@ -350,8 +362,8 @@ class AmaModel extends CI_Model{
 
     public function readAttaches($thingid){
       
-        
-            $query = $this->db->get_where("thing_attach_map",array("thingid"=>$thingid));
+        $this->db->order_by("file_no","ASC");  
+        $query = $this->db->get_where("thing_attach_map",array("thingid"=>$thingid));
           
         $rows = $query->result_array();
 

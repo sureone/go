@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-19 02:01:39
+/* Smarty version 3.1.30, created on 2017-04-23 09:17:52
   from "D:\go\ama\application\views\common\comment-reply-edit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f6a8e38400b1_50548404',
+  'unifunc' => 'content_58fc5520625642_91606284',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8e352f3f10d8bdc0f289664303560737af49f0b6' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\comment-reply-edit.tpl',
-      1 => 1492329679,
+      1 => 1492931870,
       2 => 'file',
     ),
   ),
@@ -21,8 +21,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/markhelp.tpl' => 1,
   ),
 ),false)) {
-function content_58f6a8e38400b1_50548404 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2624458f6a8e37ee010_86120051';
+function content_58fc5520625642_91606284 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '327658fc5520619ac7_30963306';
 ?>
 
 <?php echo '<script'; ?>
@@ -41,6 +41,10 @@ $_smarty_tpl->compiled->nocache_hash = '2624458f6a8e37ee010_86120051';
                 <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
             </div>
             <div class="bottom-area">
+                <span class="attach-toggle toggle" style="">
+                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, attachon, attachoff)">添加附件</a>
+                    <a class="option " href="#">不添加附件</a>
+                </span>
                 <span class="help-toggle toggle" style="">
                     <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
                     <a class="option " href="#">隱藏說明</a>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 06:20:01
+/* Smarty version 3.1.30, created on 2017-04-23 07:47:07
   from "D:\go\ama\application\views\submit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fad9f1e4c891_66100327',
+  'unifunc' => 'content_58fc3fdbcc3190_17079592',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8d976cc119eff2b0f941eefd586278d8d99223e4' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\submit.tpl',
-      1 => 1492834799,
+      1 => 1492926293,
       2 => 'file',
     ),
   ),
@@ -27,8 +27,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/file-attach.tpl' => 1,
   ),
 ),false)) {
-function content_58fad9f1e4c891_66100327 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '3121058fad9f1ddf273_94508176';
+function content_58fc3fdbcc3190_17079592 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1731558fc3fdbc3a5f7_24425891';
 ?>
 
     <?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -160,6 +160,38 @@ echo $_smarty_tpl->tpl_vars['thing']->value['thingid'];
 
             <iframe src="" style="display:none;" id="iframe_upload" name="iframe_upload"></iframe>
             <ul id="attaches">
+                <?php if (isset($_smarty_tpl->tpl_vars['thing']->value)) {?>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['thing']->value['attaches'], 'attach');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['attach']->value) {
+?>
+                 <li class="attach-file old" file_id="<?php echo $_smarty_tpl->tpl_vars['attach']->value['id'];?>
+">
+                    <?php if ($_smarty_tpl->tpl_vars['attach']->value['image_width'] != 0) {?>
+                        <a href="./uploads/<?php echo $_smarty_tpl->tpl_vars['attach']->value['file_name'];?>
+"><img width="160" src="./uploads/<?php echo $_smarty_tpl->tpl_vars['attach']->value['file_name'];?>
+"></a>
+                    <?php }?>
+                    <a href="javascript:removeOldAttach(<?php echo $_smarty_tpl->tpl_vars['thing']->value['thingid'];?>
+,<?php echo $_smarty_tpl->tpl_vars['attach']->value['id'];?>
+)">删除附件</a>
+                    <a href="javascript:changeAttachOrder(<?php echo $_smarty_tpl->tpl_vars['attach']->value['id'];?>
+,-1)">向上</a>
+                    <a href="javascript:changeAttachOrder(<?php echo $_smarty_tpl->tpl_vars['attach']->value['id'];?>
+,1)">向下</a>
+                    <input type="text" name="attach-comment-<?php echo $_smarty_tpl->tpl_vars['attach']->value['id'];?>
+" value="<?php echo $_smarty_tpl->tpl_vars['attach']->value['file_comment'];?>
+" placeholder="附件说明(<?php echo $_smarty_tpl->tpl_vars['attach']->value['file_name'];?>
+)">
+                </li>
+                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+                <?php }?>
 
             </ul>    
 

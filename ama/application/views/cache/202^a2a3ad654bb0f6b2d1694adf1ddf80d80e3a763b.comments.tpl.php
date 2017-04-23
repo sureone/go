@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 05:49:37
+/* Smarty version 3.1.30, created on 2017-04-23 08:24:22
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fad2d1d4d565_18564905',
+  'unifunc' => 'content_58fc4896c8fab4_61852626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492563435,
+      1 => 1492918737,
       2 => 'file',
     ),
     '9add0006f06d4c3a3cdd978f02ffd7fb276e3103' => 
@@ -42,7 +42,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1492563366,
+      1 => 1492918783,
       2 => 'file',
     ),
     '80f5f0c9f21973e46f2e4ad31a1a3daba18efcc9' => 
@@ -72,7 +72,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fad2d1d4d565_18564905 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fc4896c8fab4_61852626 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
@@ -240,7 +240,15 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML(""));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML(""));</script>
+	
+
+							        <div class="thing-attaches">
+									     
+							    	</div>
+								</div>
+
+							
 							</div>
 						</form>
 					</div>
@@ -253,7 +261,9 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 				<div class="child"></div>
 				<div class="clearleft"></div>
 			</div>
-            
+           
+
+
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">头0则留言</span><a

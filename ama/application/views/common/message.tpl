@@ -31,7 +31,16 @@
         <time class="timeago" datetime="{$entry.timeago}" class=""></time></span>
     </p>
     <div class="md-container">
-     <div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></div>
+     <div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script>
+        {if isset($entry.attaches)}
+        <div class="thing-attaches">
+          {foreach $entry.attaches as $attach}
+                {include file="common/thing-attach.tpl"}
+          {/foreach} 
+        </div>
+        {/if}
+
+      </div>
     </div>
     <ul class="flat-list buttons">
       <li class="first">

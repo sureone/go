@@ -1,24 +1,36 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 04:26:58
+/* Smarty version 3.1.30, created on 2017-04-23 16:23:16
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fabf723b1ac5_43643484',
+  'unifunc' => 'content_58fcb8d4d3fb87_59888962',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492563435,
+      1 => 1492931852,
       2 => 'file',
     ),
     '9add0006f06d4c3a3cdd978f02ffd7fb276e3103' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\page-header.tpl',
       1 => 1492561527,
+      2 => 'file',
+    ),
+    '8e352f3f10d8bdc0f289664303560737af49f0b6' => 
+    array (
+      0 => 'D:\\go\\ama\\application\\views\\common\\comment-reply-edit.tpl',
+      1 => 1492931870,
+      2 => 'file',
+    ),
+    '80f5f0c9f21973e46f2e4ad31a1a3daba18efcc9' => 
+    array (
+      0 => 'D:\\go\\ama\\application\\views\\common\\markhelp.tpl',
+      1 => 1492563924,
       2 => 'file',
     ),
     'ba02905916e36335648b0f6c193dea096839e9bb' => 
@@ -42,19 +54,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1492563366,
+      1 => 1492918783,
       2 => 'file',
     ),
-    '80f5f0c9f21973e46f2e4ad31a1a3daba18efcc9' => 
+    'a39d0e36eaffb48329459f750f9953ef1ff45a6f' => 
     array (
-      0 => 'D:\\go\\ama\\application\\views\\common\\markhelp.tpl',
-      1 => 1492563924,
+      0 => 'D:\\go\\ama\\application\\views\\common\\thing-attach.tpl',
+      1 => 1492925473,
       2 => 'file',
     ),
     'd03b8025f8ee3e41174be16b12370503e817c2fd' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\comment.tpl',
-      1 => 1492331288,
+      1 => 1492932668,
       2 => 'file',
     ),
     'b1ed80734fcd156dc543efa5cb2c0efdf8a86984' => 
@@ -63,22 +75,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
       1 => 1492238906,
       2 => 'file',
     ),
-    '8e352f3f10d8bdc0f289664303560737af49f0b6' => 
+    '92480ae619bca4be4858d7e757663330f94640b0' => 
     array (
-      0 => 'D:\\go\\ama\\application\\views\\common\\comment-reply-edit.tpl',
-      1 => 1492329679,
+      0 => 'D:\\go\\ama\\application\\views\\common\\file-attach.tpl',
+      1 => 1492931325,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fabf723b1ac5_43643484 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fcb8d4d3fb87_59888962 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
     'compiled_filepath' => 'D:\\go\\ama\\application\\views\\template_c\\d03b8025f8ee3e41174be16b12370503e817c2fd_0.file.comment.tpl.cache.php',
     'uid' => 'd03b8025f8ee3e41174be16b12370503e817c2fd',
-    'call_name' => 'smarty_template_function_renderComments_1755958f6a8e3601ca5_58282284',
+    'call_name' => 'smarty_template_function_renderComments_1922158fc583f98b5d2_91583026',
   ),
 ));
 ?>
@@ -108,6 +120,109 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 </head>
 <body class="loggedin comments-page">
 
+<script id="tpl-comment-edit" type="text/x-handlebars-template">
+    
+    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-{{thingid}}">
+    
+        <input type="hidden" name="action" value="submit-new-comment">
+         
+        <input type="hidden" name="main" value="{{mainid}}">
+        
+        <input type="hidden" name="parent" value="{{thingid}}">
+        
+        <div class="usertext-edit md-container" style="">
+            <div class="md">
+                <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
+            </div>
+            <div class="bottom-area">
+                <span class="attach-toggle toggle" style="">
+                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, attachon, attachoff)">添加附件</a>
+                    <a class="option " href="#">不添加附件</a>
+                </span>
+                <span class="help-toggle toggle" style="">
+                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
+                    <a class="option " href="#">隱藏說明</a>
+                </span>
+                <a class="reddiquette" target="_blank" tabindex="100">內容政策</a>
+                <span class="error TOO_LONG field-text" style="display:none"></span>
+                <span
+                    class="error RATELIMIT field-ratelimit" style="display:none">
+                </span>
+                <span class="error NO_TEXT field-text" style="display:none"></span>
+                <span class="error TOO_OLD field-parent" style="display:none"></span>
+                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
+                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
+                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
+                <span class="error USER_MUTED field-parent" style="display:none"></span>
+                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
+
+                <div class="usertext-buttons">
+                    <button type="submit" onclick="" class="save">保存</button>
+                    <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="">取消</button>
+                </div>
+            </div>
+            
+                                <div class="markhelp" style="display:none"><p></p>
+
+                                    <p>使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
+                                        版本，作為文字格式的設定方式。請參閱下方的部分基本格式。
+                                    </p>
+
+                                    <p></p>
+                                    <table class="md">
+                                        <tbody>
+                                        <tr style="background-color: #ffff99; text-align: center">
+                                            <td><em>輸入的文字：</em></td>
+                                            <td><em>顯示的文字：</em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>*斜體*</td>
+                                            <td><em>斜體</em></td>
+                                        </tr>
+                                        <tr>
+                                            <td>**粗體**</td>
+                                            <td><b>粗體</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>[后园小亭](http://boopo.cn)</td>
+                                            <td><a href="http://boopo.cn">后园小亭</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>* 項目 1<br>* 項目 2<br>* 項目 3</td>
+                                            <td>
+                                                <ul>
+                                                    <li>項目 1</li>
+                                                    <li>項目 2</li>
+                                                    <li>項目 3</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>&gt; 引用文字</td>
+                                            <td>
+                                                <blockquote>引用文字</blockquote>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lines starting with four spaces<br>are treated like code:<br><br><span
+                                                    class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>if 1 * 2 &lt;
+                                                3:<br><span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>print
+                                                "hello, world!"<br></td>
+                                            <td>Lines starting with four spaces<br>are treated like code:<br>
+                                                <pre>if 1 * 2 &lt; 3:<br>&nbsp;&nbsp;&nbsp;&nbsp;print "hello, world!"</pre>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>~~strikethrough~~</td>
+                                            <td><strike>strikethrough</strike></td>
+                                        </tr>
+                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+        </div>
+    </form>
+</script>
 
 <div id="header">
     <div id="header-bottom-left">
@@ -240,7 +355,31 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("hello ama!"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("hello ama!"));</script>
+	
+
+							        <div class="thing-attaches">
+									    								            <div>
+	
+		
+	<a href="./uploads/Lighthouse2.jpg">
+		<img src="./uploads/Lighthouse2.jpg" style="max-width:700px;max-height:240px;"></a>
+	<br/>
+		<span class="attachment_order">附件1:</span>&nbsp;<a href="./uploads/Lighthouse2.jpg">111111111111</a>
+</div>
+								        								            <div>
+	
+		
+	<a href="./uploads/Koala3.jpg">
+		<img src="./uploads/Koala3.jpg" style="max-width:700px;max-height:240px;"></a>
+	<br/>
+		<span class="attachment_order">附件2:</span>&nbsp;<a href="./uploads/Koala3.jpg">Koala3.jpg</a>
+</div>
+								         
+							    	</div>
+								</div>
+
+							
 							</div>
 						</form>
 					</div>
@@ -253,7 +392,9 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 				<div class="child"></div>
 				<div class="clearleft"></div>
 			</div>
-            
+           
+
+
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">头95则留言</span><a
@@ -283,98 +424,16 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
         </div>
     </div>
 
-    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-48">
-        <input type="hidden" name="action" value="submit-new-comment">
-        <input type="hidden" name="main" value="48">
-        <input type="hidden" name="parent" value="48">
-        <div class="usertext-edit md-container" style="">
-            <div class="md">
-                <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
-            </div>
-            <div class="bottom-area">
-                <span class="help-toggle toggle" style="">
-                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
-                    <a class="option " href="#">隱藏說明</a>
-                </span>
-                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
-                <span class="error TOO_LONG field-text" style="display:none"></span>
-                <span
-                    class="error RATELIMIT field-ratelimit" style="display:none">
-                </span>
-                <span class="error NO_TEXT field-text" style="display:none"></span>
-                <span class="error TOO_OLD field-parent" style="display:none"></span>
-                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
-                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
-                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
-                <span class="error USER_MUTED field-parent" style="display:none"></span>
-                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
+    <script>
+      var thingid = 48;
+        var mainid =   48;       
+       
+        var tpl = Handlebars.compile($("#tpl-comment-edit").html());
+        h = (tpl({thingid:thingid,mainid:mainid}));
 
-                <div class="usertext-buttons">
-                    <button type="submit" onclick="" class="save">保存</button>
-                    <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="display:none;">取消</button>
-                </div>
-            </div>
-            
-                                <div class="markhelp" style="display:none"><p></p>
-
-                                    <p>使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
-                                        版本，作為文字格式的設定方式。請參閱下方的部分基本格式。
-                                    </p>
-
-                                    <p></p>
-                                    <table class="md">
-                                        <tbody>
-                                        <tr style="background-color: #ffff99; text-align: center">
-                                            <td><em>輸入的文字：</em></td>
-                                            <td><em>顯示的文字：</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>*斜體*</td>
-                                            <td><em>斜體</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>**粗體**</td>
-                                            <td><b>粗體</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>[后园小亭](http://boopo.cn)</td>
-                                            <td><a href="http://boopo.cn">后园小亭</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>* 項目 1<br>* 項目 2<br>* 項目 3</td>
-                                            <td>
-                                                <ul>
-                                                    <li>項目 1</li>
-                                                    <li>項目 2</li>
-                                                    <li>項目 3</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>&gt; 引用文字</td>
-                                            <td>
-                                                <blockquote>引用文字</blockquote>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lines starting with four spaces<br>are treated like code:<br><br><span
-                                                    class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>if 1 * 2 &lt;
-                                                3:<br><span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>print
-                                                "hello, world!"<br></td>
-                                            <td>Lines starting with four spaces<br>are treated like code:<br>
-                                                <pre>if 1 * 2 &lt; 3:<br>&nbsp;&nbsp;&nbsp;&nbsp;print "hello, world!"</pre>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>~~strikethrough~~</td>
-                                            <td><strike>strikethrough</strike></td>
-                                        </tr>
-                                       
-                                        </tbody>
-                                    </table>
-                                </div>
-        </div>
-    </form>
+        document.write(h);
+        
+    </script>
 
     <div id="siteTable_48" class="sitetable nestedlisting">
         
@@ -402,7 +461,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("sdafdsa\n\nfdsafdsa\n\nfdsafdsa\n\nfdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("sdafdsa\n\nfdsafdsa\n\nfdsafdsa\n\nfdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -451,7 +515,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("# 又来依旧"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("# 又来依旧"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -500,7 +569,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("##\"fdsafdsafd\""));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("##\"fdsafdsafd\""));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -549,7 +623,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#\"fdsafdsa\"\n\n\n\n##\'fdsafdsaf\'"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#\"fdsafdsa\"\n\n\n\n##\'fdsafdsaf\'"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -598,7 +677,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("\"\'fdsafds\"\'fdsafdsa\"\'fdasfds\'\'\"\"\"fsafds\'\"fdsaf"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("\"\'fdsafds\"\'fdsafdsa\"\'fdasfds\'\'\"\"\"fsafds\'\"fdsaf"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -647,7 +731,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("\"fdsafdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("\"fdsafdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -696,7 +785,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -745,7 +839,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -794,7 +893,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -843,7 +947,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("if 1 * 2 < 3:\n\n    print \"hello, world!\""));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("if 1 * 2 < 3:\n\n    print \"hello, world!\""));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -892,7 +1001,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<font color=red>fdsafd</font>"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<font color=red>fdsafd</font>"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -941,7 +1055,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<script>\n\nalert(\'tesst\');\n\n</script>"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<script>\n\nalert(\'tesst\');\n\n</script>"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -990,7 +1109,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("> 引用文字\n\n> 引用文字\n\n> 引用文字\n\n> 引用文字\n\n> 引用文字"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("> 引用文字\n\n> 引用文字\n\n> 引用文字\n\n> 引用文字\n\n> 引用文字"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1033,7 +1157,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#fafdsasdfsd\n\n#fafdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#fafdsasdfsd\n\n#fafdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1088,7 +1217,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<font color=red>dfasf<font>"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<font color=red>dfasf<font>"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1137,7 +1271,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("| Tables        | Are           | Cool  |\n\n| ------------- |:-------------:| -----:|\n\n| col 3 is      | right-aligned | $1600 |\n\n| col 2 is      | centered      |   $12 |\n\n| zebra stripes | are neat      |    $1 |"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("| Tables        | Are           | Cool  |\n\n| ------------- |:-------------:| -----:|\n\n| col 3 is      | right-aligned | $1600 |\n\n| col 2 is      | centered      |   $12 |\n\n| zebra stripes | are neat      |    $1 |"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1186,7 +1325,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#fdasfdsa\n\n#fsafdsa\n\n###fsafdsaf\n\n##fdafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#fdasfdsa\n\n#fsafdsa\n\n###fsafdsaf\n\n##fdafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1235,7 +1379,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#fdsafdsa\n\n@fdsafdsa\n\nfdsafads\n\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#fdsafdsa\n\n@fdsafdsa\n\nfdsafads\n\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1284,7 +1433,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("fdsafdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("fdsafdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1333,7 +1487,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("fdsafdsa\n\nfdsafdsa\n\nfdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("fdsafdsa\n\nfdsafdsa\n\nfdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1382,7 +1541,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML(""));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML(""));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1431,7 +1595,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<p>fdsafdsa</p>\n\n<p>fdsafdsa</p>\n\n<p>fdsafdsa</p>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<p>fdsafdsa</p>\n\n<p>fdsafdsa</p>\n\n<p>fdsafdsa</p>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1480,7 +1649,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<p>fdsafdsaf\nfdsafdsa\nfdsafdsa</p>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<p>fdsafdsaf\nfdsafdsa\nfdsafdsa</p>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1529,7 +1703,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1578,7 +1757,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("fdsafdas\n\n\n\n\n\nfdsafdsa\n\n\n\n\n\nfdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("fdsafdas\n\n\n\n\n\nfdsafdsa\n\n\n\n\n\nfdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1627,7 +1811,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("|fdsafdsla\'\n\nfsadfdsa\n\nfdsafdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("|fdsafdsla\'\n\nfsadfdsa\n\nfdsafdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1676,7 +1865,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<blockquote>\n  <p>dfsafds\n  fdsafds\n  ?fdsaf</p>\n</blockquote>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<blockquote>\n  <p>dfsafds\n  fdsafds\n  ?fdsaf</p>\n</blockquote>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1725,7 +1919,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<pre><code>if 1 * 2 &lt; 3:\n    print \"hello, world!\"\n</code></pre>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<pre><code>if 1 * 2 &lt; 3:\n    print \"hello, world!\"\n</code></pre>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1774,7 +1973,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<p>fdsfdsa\nfdsafds\nfdasfdsa\n</p>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<p>fdsfdsa\nfdsafds\nfdasfdsa\n</p>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1823,7 +2027,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<p>sdfdsafds\nfdsafdsafd\nfdsafdsa\nfdsafdsafsd</p>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<p>sdfdsafds\nfdsafdsafd\nfdsafdsa\nfdsafdsafsd</p>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1872,7 +2081,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<ul>\n<li>項目 1</li>\n<li>項目 2</li>\n<li>項目 3</li>\n</ul>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<ul>\n<li>項目 1</li>\n<li>項目 2</li>\n<li>項目 3</li>\n</ul>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1921,7 +2135,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<p>~~strikethrough~~</p>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<p>~~strikethrough~~</p>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -1970,7 +2189,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<h2>dsafdsaf</h2>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<h2>dsafdsaf</h2>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2019,7 +2243,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<p>fdsafdsa\nfdsafdsa\nfdsafdsafds</p>\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<p>fdsafdsa\nfdsafdsa\nfdsafdsafds</p>\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2068,7 +2297,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("yagafdsaf\n\nfdsafdsayf\n\nfdsafdlska\n\ndfsa;fdska\n\nfdskal;fdsaf\n\nfdsaljfld;sa\n\nfdsal;fkds;a\n\nfdjsal;fdsa\n\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("yagafdsaf\n\nfdsafdsayf\n\nfdsafdlska\n\ndfsa;fdska\n\nfdskal;fdsaf\n\nfdsaljfld;sa\n\nfdsal;fkds;a\n\nfdjsal;fdsa\n\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2117,7 +2351,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<>fdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<>fdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2166,7 +2405,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("^fadsfds&"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("^fadsfds&"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2215,7 +2459,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("**fdsafdsfd**"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("**fdsafdsfd**"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2264,7 +2513,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("**fasfdsafdsfsad"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("**fasfdsafdsfsad"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2313,7 +2567,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("FDSFDSAFDS\n\nFDSAFDSAFDSA\n\nFDSAFDSAFDS\n\nDSFFSFDSAFDSA"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("FDSFDSAFDS\n\nFDSAFDSAFDSA\n\nFDSAFDSAFDS\n\nDSFFSFDSAFDSA"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2362,7 +2621,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("~~SAFDA~~"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("~~SAFDA~~"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2411,7 +2675,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("fdsafdsa\n\nfdsafdsa\n\nfdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("fdsafdsa\n\nfdsafdsa\n\nfdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2460,7 +2729,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("~~fsdafsafdsaf"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("~~fsdafsafdsaf"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2509,7 +2783,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("hello world\n\nfdsafdsaf"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("hello world\n\nfdsafdsaf"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2558,7 +2837,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#ffsafdsa\n\nfdsafdasf\n\nfdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#ffsafdsa\n\nfdsafdasf\n\nfdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2607,7 +2891,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#fafdfafdsa\n\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#fafdfafdsa\n\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2656,7 +2945,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("**fdasfds**"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("**fdasfds**"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2705,7 +2999,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("_fdsafds_"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("_fdsafds_"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2754,7 +3053,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("__fdsafds__"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("__fdsafds__"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2803,7 +3107,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("##FSAFDSA"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("##FSAFDSA"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2852,7 +3161,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("~~DSAFASD~~"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("~~DSAFASD~~"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2901,7 +3215,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("~~FDSAFS~~"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("~~FDSAFS~~"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2950,7 +3269,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<s>fdsafd</s>"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<s>fdsafd</s>"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -2999,7 +3323,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("<s>fdsafds</s>"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("<s>fdsafds</s>"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3048,7 +3377,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("**fsafsafsd**"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("**fsafsafsd**"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3097,7 +3431,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("11111111111111"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("11111111111111"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3140,7 +3479,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("nnnnhjhjfftyftyghghgdhdrthdrdccvbdty"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("nnnnhjhjfftyftyghghgdhdrthdrdccvbdty"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3195,7 +3539,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("dsafdsafdsa222"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("dsafdsafdsa222"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3244,7 +3593,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("~~fsafdsafs~~"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("~~fsafdsafs~~"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3293,7 +3647,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("~fdsafds~"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("~fdsafds~"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3342,7 +3701,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("..fdsafds.."));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("..fdsafds.."));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3391,7 +3755,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML(".fdsafdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML(".fdsafdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3440,7 +3809,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#这是一个重要的决定\n\n_一定要记住"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#这是一个重要的决定\n\n_一定要记住"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3489,7 +3863,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML(">fewfe\n\ndsaffds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML(">fewfe\n\ndsaffds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3538,7 +3917,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML(">引用文字"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML(">引用文字"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3587,7 +3971,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML(">引用文字"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML(">引用文字"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3636,7 +4025,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("> 引用文字"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("> 引用文字"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3685,7 +4079,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("~~strikethrough~~"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("~~strikethrough~~"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3734,7 +4133,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("super^script"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("super^script"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3783,7 +4187,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("    if 1 * 2 < 3:\n\n        print \"hello, world!\""));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3832,7 +4241,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("* 項目 1\n\n* 項目 2\n\n* 項目 3"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("* 項目 1\n\n* 項目 2\n\n* 項目 3"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3881,7 +4295,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("[reddit!](https://reddit.com)"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("[reddit!](https://reddit.com)"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3930,7 +4349,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("@fdsfdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("@fdsfdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -3979,7 +4403,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("##fdsafdsaf\n\nfdsafds\n\nfdsafdsaf"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("##fdsafdsaf\n\nfdsafds\n\nfdsafdsaf"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4028,7 +4457,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("fdsfdsa\n\nfdsafdsa\n\nfdsafdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("fdsfdsa\n\nfdsafdsa\n\nfdsafdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4077,7 +4511,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("fsafdsafdsafdsadsafd\n\nfdsafdsafds\n\nfdsafdsafd\n\nfdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("fsafdsafdsafdsadsafd\n\nfdsafdsafds\n\nfdsafdsafd\n\nfdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4126,7 +4565,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML(">fdsafdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML(">fdsafdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4175,7 +4619,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML(">fdsafdsa\n\n"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML(">fdsafdsa\n\n"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4224,7 +4673,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("fsdafsafdsafdsafdsafdsafdsafdsafds\n\ndasfdsfdsaf"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("fsdafsafdsafdsafdsafdsafdsafdsafds\n\ndasfdsfdsaf"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4273,7 +4727,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#fdsafdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#fdsafdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4322,7 +4781,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#fdsafdsa\n\nfdsafdsafd\n\nfdsafdsa#"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#fdsafdsa\n\nfdsafdsafd\n\nfdsafdsa#"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4371,7 +4835,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("#dfsafdsafd\n\nfdsafdsa\n\nfdsafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("#dfsafdsafd\n\nfdsafdsa\n\nfdsafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4420,7 +4889,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("###fafdafdsa"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("###fafdafdsa"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4469,7 +4943,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("##fadfsaf"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("##fadfsaf"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4518,7 +4997,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("# fdsafd"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("# fdsafd"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4567,7 +5051,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("Hello *World*!"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("Hello *World*!"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4616,7 +5105,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("[reddit!](https://reddit.com)"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("[reddit!](https://reddit.com)"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4665,7 +5159,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("bnnnndsafdsadsds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("bnnnndsafdsadsds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4714,7 +5213,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("it\'s a reply"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("it\'s a reply"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4757,7 +5261,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("dsafdsfds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("dsafdsfds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4800,7 +5309,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("dfsafdsafds"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("dfsafdsafds"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4843,7 +5357,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("uuuu yang 22222222222222"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("uuuu yang 22222222222222"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4892,7 +5411,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("wwwwwwwwwwwwwwwwwwwwwwww3333333333333333333333"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("wwwwwwwwwwwwwwwwwwwwwwww3333333333333333333333"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4947,7 +5471,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("111111111111111111111"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("111111111111111111111"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -4990,7 +5519,12 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("33333333333333333333333333"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("33333333333333333333333333"));</script>
+
+                         <div class="thing-attaches">
+                             
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -5038,7 +5572,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
     </div>
 
 </div>
-
+<iframe src="" style="display:none;" id="iframe_upload" name="iframe_upload"></iframe>
 <div id="footer"></div>
 <div class="modal  fade  login-modal" tabindex="0" aria-hidden="true">
 <div class="modal-dialog modal-dialog-lg"><div class="modal-content"><div class="modal-header"><a href="javascript: void 0;" class="c-close c-hide-text" data-dismiss="modal">close this window</a></div><div class="modal-body"><h3 id="cover-msg" class="modal-title" style="display: none;">您必須登入才能操作。</h3><div id="login"><div class="split-panel"><div class="split-panel-section split-panel-divider"><h4 class="modal-title">建立一个新帐号</h4><form id="register-form" method="post" action="./api" class="form-v2"><input type="hidden" name="action" value="reg">
@@ -5064,108 +5598,33 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 </div></div></div></div></div>
 
 
-<script id="tpl-comment-edit" type="text/x-handlebars-template">
-    
-    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-{{thingid}}">
-    
-        <input type="hidden" name="action" value="submit-new-comment">
-         
-        <input type="hidden" name="main" value="{{mainid}}">
-        
-        <input type="hidden" name="parent" value="{{thingid}}">
-        
-        <div class="usertext-edit md-container" style="">
-            <div class="md">
-                <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
-            </div>
-            <div class="bottom-area">
-                <span class="help-toggle toggle" style="">
-                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
-                    <a class="option " href="#">隱藏說明</a>
-                </span>
-                <a class="reddiquette" target="_blank" tabindex="100">內容政策</a>
-                <span class="error TOO_LONG field-text" style="display:none"></span>
-                <span
-                    class="error RATELIMIT field-ratelimit" style="display:none">
-                </span>
-                <span class="error NO_TEXT field-text" style="display:none"></span>
-                <span class="error TOO_OLD field-parent" style="display:none"></span>
-                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
-                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
-                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
-                <span class="error USER_MUTED field-parent" style="display:none"></span>
-                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
-
-                <div class="usertext-buttons">
-                    <button type="submit" onclick="" class="save">保存</button>
-                    <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="">取消</button>
-                </div>
-            </div>
-            
-                                <div class="markhelp" style="display:none"><p></p>
-
-                                    <p>使用稍微自訂過的 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
-                                        版本，作為文字格式的設定方式。請參閱下方的部分基本格式。
-                                    </p>
-
-                                    <p></p>
-                                    <table class="md">
-                                        <tbody>
-                                        <tr style="background-color: #ffff99; text-align: center">
-                                            <td><em>輸入的文字：</em></td>
-                                            <td><em>顯示的文字：</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>*斜體*</td>
-                                            <td><em>斜體</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>**粗體**</td>
-                                            <td><b>粗體</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>[后园小亭](http://boopo.cn)</td>
-                                            <td><a href="http://boopo.cn">后园小亭</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>* 項目 1<br>* 項目 2<br>* 項目 3</td>
-                                            <td>
-                                                <ul>
-                                                    <li>項目 1</li>
-                                                    <li>項目 2</li>
-                                                    <li>項目 3</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>&gt; 引用文字</td>
-                                            <td>
-                                                <blockquote>引用文字</blockquote>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lines starting with four spaces<br>are treated like code:<br><br><span
-                                                    class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>if 1 * 2 &lt;
-                                                3:<br><span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>print
-                                                "hello, world!"<br></td>
-                                            <td>Lines starting with four spaces<br>are treated like code:<br>
-                                                <pre>if 1 * 2 &lt; 3:<br>&nbsp;&nbsp;&nbsp;&nbsp;print "hello, world!"</pre>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>~~strikethrough~~</td>
-                                            <td><strike>strikethrough</strike></td>
-                                        </tr>
-                                       
-                                        </tbody>
-                                    </table>
-                                </div>
-        </div>
-    </form>
-</script>
 </body>
+<script id="tpl-attach-tool" type="text/x-handlebars-template">
+<div class="attach-tool" style="border:1px dotted gray;">
+    <span class="title required-roundfield">附件</span>
+    <ul id="attaches">   
+    </ul>    
+    <form action="http://127.0.0.1/ama/index.php/v/do_upload" enctype="multipart/form-data" method="post" accept-charset="utf-8" target="iframe_upload">
+        <input type="file" name="userfile" size="20" />
+        <input type="submit" value="upload" />
+    </form>
+</div>
+</script>
 
-
+<script id="tpl-file-attach" type="text/x-handlebars-template">
+    
+    <li class="attach-file new" file_id="{{file_id}}">
+        {{#if _image_file}}
+        	<a href="./uploads/{{file_name}}"><img width="160" src="./uploads/{{file_name}}"></a>
+        {{/if}}
+        <a href="javascript:removeNewAttach({{file_id}})">删除附件</a>
+        <a href="javascript:changeAttachOrder({{file_id}},-1)">向上</a>
+        <a href="javascript:changeAttachOrder({{file_id}},1)">向下</a>
+        
+        <input type="text" name="attach-comment-{{file_id}}" value="" placeholder="附件说明({{file_name}})">
+    </li>
+    
+</script>
 <script type="text/javascript" src="./static/js/comments.js?v=8"></script>
 </html><?php }
 }

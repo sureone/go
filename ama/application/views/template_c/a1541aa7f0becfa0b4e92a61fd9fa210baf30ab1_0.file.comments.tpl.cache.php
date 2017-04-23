@@ -1,37 +1,36 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 06:42:35
+/* Smarty version 3.1.30, created on 2017-04-23 09:17:52
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fadf3bc65f60_41404297',
+  'unifunc' => 'content_58fc552060df44_04633198',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492836153,
+      1 => 1492931852,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:common/page-header.tpl' => 1,
+    'file:common/comment-reply-edit.tpl' => 1,
     'file:common/page-logo.tpl' => 1,
     'file:common/header-bottom-right.tpl' => 1,
     'file:common/side.tpl' => 1,
     'file:common/thread.tpl' => 1,
-    'file:common/thing-attach.tpl' => 1,
-    'file:common/markhelp.tpl' => 1,
     'file:common/comment.tpl' => 1,
     'file:common/login-modal.tpl' => 1,
-    'file:common/comment-reply-edit.tpl' => 1,
+    'file:common/file-attach.tpl' => 1,
   ),
 ),false)) {
-function content_58fadf3bc65f60_41404297 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1489158fadf3bbf8943_24041823';
+function content_58fc552060df44_04633198 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '3046358fc55205b0335_09806205';
 ?>
 
     <?php $_smarty_tpl->_subTemplateRender("file:common/page-header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -40,6 +39,8 @@ $_smarty_tpl->compiled->nocache_hash = '1489158fadf3bbf8943_24041823';
 </head>
 <body class="<?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>loggedin<?php }?> <?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 -page">
+<?php $_smarty_tpl->_subTemplateRender("file:common/comment-reply-edit.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 
 <div id="header">
@@ -79,20 +80,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
    
 
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['things']->value[0]['attaches'], 'entry');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
-?>
-                <?php $_smarty_tpl->_subTemplateRender("file:common/thing-attach.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
 
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
- 
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">头<?php echo $_smarty_tpl->tpl_vars['things']->value[0]['comments_count'];?>
@@ -124,45 +112,20 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div>
     </div>
 
-    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
-">
-        <input type="hidden" name="action" value="submit-new-comment">
-        <input type="hidden" name="main" value="<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
-">
-        <input type="hidden" name="parent" value="<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
-">
-        <div class="usertext-edit md-container" style="">
-            <div class="md">
-                <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
-            </div>
-            <div class="bottom-area">
-                <span class="help-toggle toggle" style="">
-                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
-                    <a class="option " href="#">隱藏說明</a>
-                </span>
-                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
-                <span class="error TOO_LONG field-text" style="display:none"></span>
-                <span
-                    class="error RATELIMIT field-ratelimit" style="display:none">
-                </span>
-                <span class="error NO_TEXT field-text" style="display:none"></span>
-                <span class="error TOO_OLD field-parent" style="display:none"></span>
-                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
-                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
-                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
-                <span class="error USER_MUTED field-parent" style="display:none"></span>
-                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
+    <?php echo '<script'; ?>
+>
+      var thingid = <?php echo $_smarty_tpl->tpl_vars['things']->value[0]['thingid'];?>
+;
+        var mainid =   <?php echo $_smarty_tpl->tpl_vars['things']->value[0]['thingid'];?>
+;       
+       
+        var tpl = Handlebars.compile($("#tpl-comment-edit").html());
+        h = (tpl({thingid:thingid,mainid:mainid}));
 
-                <div class="usertext-buttons">
-                    <button type="submit" onclick="" class="save">保存</button>
-                    <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="display:none;">取消</button>
-                </div>
-            </div>
-            <?php $_smarty_tpl->_subTemplateRender("file:common/markhelp.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
-        </div>
-    </form>
+        document.write(h);
+        
+    <?php echo '</script'; ?>
+>
 
     <div id="siteTable_<?php echo $_smarty_tpl->tpl_vars['thingid']->value;?>
 " class="sitetable nestedlisting">
@@ -174,16 +137,28 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </div>
 
 </div>
-
+<iframe src="" style="display:none;" id="iframe_upload" name="iframe_upload"></iframe>
 <div id="footer"></div>
 <?php $_smarty_tpl->_subTemplateRender("file:common/login-modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-<?php $_smarty_tpl->_subTemplateRender("file:common/comment-reply-edit.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
 
 </body>
-
+<?php echo '<script'; ?>
+ id="tpl-attach-tool" type="text/x-handlebars-template">
+<div class="attach-tool" style="border:1px dotted gray;">
+    <span class="title required-roundfield">附件</span>
+    <ul id="attaches">   
+    </ul>    
+    <form action="http://127.0.0.1/ama/index.php/v/do_upload" enctype="multipart/form-data" method="post" accept-charset="utf-8" target="iframe_upload">
+        <input type="file" name="userfile" size="20" />
+        <input type="submit" value="upload" />
+    </form>
+</div>
+<?php echo '</script'; ?>
+>
+<?php $_smarty_tpl->_subTemplateRender("file:common/file-attach.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 <?php echo '<script'; ?>
  type="text/javascript" src="./static/js/comments.js?v=8"><?php echo '</script'; ?>

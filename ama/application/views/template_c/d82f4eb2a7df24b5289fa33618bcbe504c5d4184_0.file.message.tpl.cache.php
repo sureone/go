@@ -1,28 +1,29 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-19 04:07:31
+/* Smarty version 3.1.30, created on 2017-04-23 16:46:23
   from "D:\go\ama\application\views\common\message.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f6c66307b738_05071495',
+  'unifunc' => 'content_58fcbe3f818a04_30430267',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd82f4eb2a7df24b5289fa33618bcbe504c5d4184' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\message.tpl',
-      1 => 1492563453,
+      1 => 1492958778,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:common/thing-attach.tpl' => 1,
   ),
 ),false)) {
-function content_58f6c66307b738_05071495 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fcbe3f818a04_30430267 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
-$_smarty_tpl->compiled->nocache_hash = '2737158f6c663048aa7_71064585';
+$_smarty_tpl->compiled->nocache_hash = '1068058fcbe3f764ed1_63828595';
 ?>
 <div class=" thing id-t4_7x41ei noncollapsed recipient odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
  ">
@@ -68,7 +69,27 @@ $_smarty_tpl->compiled->nocache_hash = '2737158f6c663048aa7_71064585';
      <div class="out md"><?php echo '<script'; ?>
 >document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\"]/','\\\"'),'/[\']/','\\\'');?>
 "));<?php echo '</script'; ?>
-></div>
+>
+        <?php if (isset($_smarty_tpl->tpl_vars['entry']->value['attaches'])) {?>
+        <div class="thing-attaches">
+          <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['entry']->value['attaches'], 'attach');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['attach']->value) {
+?>
+                <?php $_smarty_tpl->_subTemplateRender("file:common/thing-attach.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+
+          <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+ 
+        </div>
+        <?php }?>
+
+      </div>
     </div>
     <ul class="flat-list buttons">
       <li class="first">

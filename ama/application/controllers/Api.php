@@ -53,6 +53,10 @@ class Api extends CI_Controller {
                 $result = $this->doSubmitNewMessage($jobj);
 
             break;
+            case 'delete-attach':
+                $result = $this->doDeleteAttach($jobj);
+
+            break;
             case 'vote-link':
                 $result = $this->doVoteLink($jobj);
                 $this->ci_smarty->clearCache("new.tpl"); 
@@ -192,12 +196,30 @@ class Api extends CI_Controller {
 
         
     }
+    function doDeleteAttach($json){
+        $user = $this->session->userdata('user.info');
+        $result = array('code'=>404);
+        if(isset($_SESSION['user.info'])){
+
+           $thing = $this->amaModel->readThing($json->{'thingid'})['0'];
+           if($thing['author']==$user['userid']){
+
+               $this->db->where("thingid",$json->{'thingid'});
+               $this->db->where("id",$json->{'fileid'});
+               $this->db->delete("thing_attach_map");
+           }
+           
+           $result = array('code'=>200,'thingid'=>$json->{'thingid'});
+        }
+        return $result;
+    }
 
     function doSubmitNewLink($json){
         $user = $this->session->userdata('user.info');
         if(isset($_SESSION['user.info'])){
 
             if($json->{'thingid'}>0){
+                $this->db->trans_start();
 
                 $this->db->set('title',$json->{'title'});
                 $this->db->set('content',$json->{'content'});
@@ -205,6 +227,25 @@ class Api extends CI_Controller {
                 $this->db->where('author',$user['userid']);
                 $this->db->where('id',$json->{'thingid'});
                 $this->db->update('things');
+
+                $attches = $json->{'attaches'};
+
+                $this->db->where('thingid',$json->{'thingid'});
+                $this->db->set("thingid","");
+                $this->db->update('thing_attach_map');
+                if($attches && count($attches)>0){
+                    $i=0;
+                    foreach ($attches as $attach) {
+                        $i=$i+1;
+                        $this->db->where('id',$attach->{'file_id'});
+                        $this->db->update('thing_attach_map',
+                            array('thingid'=>$json->{'thingid'},
+                                'file_no'=>$i,
+                            'file_comment'=>$attach->{'file_comment'}));
+                    }
+                }
+                $this->db->trans_complete();
+
                 return array('code'=>200,'thingid'=>$json->{'thingid'});
 
             }else{
@@ -219,10 +260,13 @@ class Api extends CI_Controller {
                 $thingid=$this->db->insert_id();
                 $attches = $json->{'attaches'};
                 if($attches && count($attches)>0){
+                    $i=0;
                     foreach ($attches as $attach) {
+                        $i=$i+1;
                         $this->db->where('id',$attach->{'file_id'});
                         $this->db->update('thing_attach_map',
                             array('thingid'=>$thingid,
+                                'file_no'=>i,
                             'file_comment'=>$attach->{'file_comment'}));
                     }
                 }
@@ -264,7 +308,9 @@ class Api extends CI_Controller {
                     'content'=>$json->{'content'},
                     'cdate'=>$this->curTime(),
                     'udate'=>$this->curTime()));
-                return array('code'=>200,'thingid'=>$this->db->insert_id());
+            $thingid=$this->db->insert_id();
+           
+            return array('code'=>200,'thingid'=>$thingid);
 
         }else{
             return array('code'=>404);
@@ -299,7 +345,24 @@ class Api extends CI_Controller {
 
 
 
+            $attches = $json->{'attaches'};
+            if($attches && count($attches)>0){
+                $i=0;
+                foreach ($attches as $attach) {
+                    $i=$i+1;
+                    $this->db->where('id',$attach->{'file_id'});
+                    $this->db->update('thing_attach_map',
+                        array('thingid'=>$commentid,
+                            'file_no'=>i,
+                        'file_comment'=>$attach->{'file_comment'}));
+                }
+            }
+
+
             $this->db->trans_complete();
+
+            $this->ci_smarty->clearCache("comments.tpl",$json->{'main'}); 
+
             return array('code'=>200,'commentid'=>$commentid);
 
         }else{

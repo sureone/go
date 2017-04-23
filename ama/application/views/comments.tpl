@@ -2,7 +2,7 @@
     {include file="common/page-header.tpl"}
 </head>
 <body class="{if $logined eq "true"}loggedin{/if} {$page}-page">
-
+{include file='common/comment-reply-edit.tpl'}
 
 <div id="header">
     <div id="header-bottom-left">
@@ -23,9 +23,7 @@
             {include file="common/thread.tpl"}
         {/foreach}   
 
-        {foreach $things[0].attaches as $entry}
-                {include file="common/thing-attach.tpl"}
-        {/foreach} 
+
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">头{$things[0].comments_count}则留言</span><a
@@ -55,40 +53,16 @@
         </div>
     </div>
 
-    <form action="./api" class="usertext cloneable warn-on-unload" onsubmit="handleFormSubmit(this);return false;" id="form-comment-{$thingid}">
-        <input type="hidden" name="action" value="submit-new-comment">
-        <input type="hidden" name="main" value="{$thingid}">
-        <input type="hidden" name="parent" value="{$thingid}">
-        <div class="usertext-edit md-container" style="">
-            <div class="md">
-                <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
-            </div>
-            <div class="bottom-area">
-                <span class="help-toggle toggle" style="">
-                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
-                    <a class="option " href="#">隱藏說明</a>
-                </span>
-                <a href="/help/contentpolicy" class="reddiquette" target="_blank" tabindex="100">內容政策</a>
-                <span class="error TOO_LONG field-text" style="display:none"></span>
-                <span
-                    class="error RATELIMIT field-ratelimit" style="display:none">
-                </span>
-                <span class="error NO_TEXT field-text" style="display:none"></span>
-                <span class="error TOO_OLD field-parent" style="display:none"></span>
-                <span class="error THREAD_LOCKED field-parent" style="display:none"></span>
-                <span class="error DELETED_COMMENT field-parent" style="display:none"></span>
-                <span class="error USER_BLOCKED field-parent" style="display:none"></span>
-                <span class="error USER_MUTED field-parent" style="display:none"></span>
-                <span class="error MUTED_FROM_SUBREDDIT field-parent" style="display:none"></span>
+    <script>
+      var thingid = {$things[0].thingid};
+        var mainid =   {$things[0].thingid};       
+       {literal}
+        var tpl = Handlebars.compile($("#tpl-comment-edit").html());
+        h = (tpl({thingid:thingid,mainid:mainid}));
 
-                <div class="usertext-buttons">
-                    <button type="submit" onclick="" class="save">保存</button>
-                    <button type="button" onclick="return cancel_usertext(this);" class="cancel" style="display:none;">取消</button>
-                </div>
-            </div>
-            {include file="common/markhelp.tpl"}
-        </div>
-    </form>
+        document.write(h);
+        {/literal}
+    </script>
 
     <div id="siteTable_{$thingid}" class="sitetable nestedlisting">
         {include file="common/comment.tpl"}
@@ -96,12 +70,22 @@
     </div>
 
 </div>
-
+<iframe src="" style="display:none;" id="iframe_upload" name="iframe_upload"></iframe>
 <div id="footer"></div>
 {include file='common/login-modal.tpl'}
-{include file='common/comment-reply-edit.tpl'}
+
 </body>
-
-
+<script id="tpl-attach-tool" type="text/x-handlebars-template">
+<div class="attach-tool" style="border:1px dotted gray;">
+    <span class="title required-roundfield">附件</span>
+    <ul id="attaches">   
+    </ul>    
+    <form action="http://127.0.0.1/ama/index.php/v/do_upload" enctype="multipart/form-data" method="post" accept-charset="utf-8" target="iframe_upload">
+        <input type="file" name="userfile" size="20" />
+        <input type="submit" value="upload" />
+    </form>
+</div>
+</script>
+{include 'common/file-attach.tpl'}
 <script type="text/javascript" src="./static/js/comments.js?v=8"></script>
 </html>

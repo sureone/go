@@ -1,28 +1,29 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-19 03:40:25
+/* Smarty version 3.1.30, created on 2017-04-23 05:40:19
   from "D:\go\ama\application\views\common\thread.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f6c009d06905_22921677',
+  'unifunc' => 'content_58fc2223085823_14005458',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1492563366,
+      1 => 1492918783,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:common/thing-attach.tpl' => 2,
   ),
 ),false)) {
-function content_58f6c009d06905_22921677 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fc2223085823_14005458 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
-$_smarty_tpl->compiled->nocache_hash = '2065158f6c009c20158_88902943';
+$_smarty_tpl->compiled->nocache_hash = '2051358fc2222ef8b77_44433798';
 ?>
 			<div class="thing odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
 " id="thing_<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
@@ -90,7 +91,27 @@ $_smarty_tpl->compiled->nocache_hash = '2065158f6c009c20158_88902943';
 								<div class="out md"><?php echo '<script'; ?>
 >document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\"]/','\\\"'),'/[\']/','\\\'');?>
 "));<?php echo '</script'; ?>
-></div>
+>
+									
+									
+							        <div class="thing-attaches">
+									    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['entry']->value['attaches'], 'attach');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['attach']->value) {
+?>
+								            <?php $_smarty_tpl->_subTemplateRender("file:common/thing-attach.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+
+								        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+ 
+							    	</div>
+								</div>
+								
 							</div>
 							<?php }?>
 							
@@ -156,7 +177,28 @@ $_smarty_tpl->compiled->nocache_hash = '2065158f6c009c20158_88902943';
 								<div class="out md"><?php echo '<script'; ?>
 >document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\"]/','\\\"'),'/[\']/','\\\'');?>
 "));<?php echo '</script'; ?>
-></div>
+>
+	
+
+							        <div class="thing-attaches">
+									    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['entry']->value['attaches'], 'attach');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['attach']->value) {
+?>
+								            <?php $_smarty_tpl->_subTemplateRender("file:common/thing-attach.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+
+								        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+ 
+							    	</div>
+								</div>
+
+							
 							</div>
 						</form>
 					</div>

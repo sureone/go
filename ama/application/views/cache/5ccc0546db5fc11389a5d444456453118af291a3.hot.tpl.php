@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 06:41:24
+/* Smarty version 3.1.30, created on 2017-04-23 16:28:48
   from "D:\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fadef4410ca9_74738400',
+  'unifunc' => 'content_58fcba2055fef2_29426516',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -48,7 +48,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'b51f04a8c3a4978ff0f489b2c21fbac552e62798' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1492563304,
+      1 => 1492918710,
       2 => 'file',
     ),
     'b1ed80734fcd156dc543efa5cb2c0efdf8a86984' => 
@@ -60,7 +60,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fcba2055fef2_29426516 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 	<!DOCTYPE html>
 <html>
@@ -241,7 +241,9 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("怒发冲冠，凭阑处、潇潇雨歇。\n\n抬望眼、仰天长啸，壮怀激烈。\n\n三十功名尘与土，八千里路云和月。\n\n莫等闲，白了少年头，空悲切。\n\n靖康耻，犹未雪；\n\n臣子恨，何时灭。\n\n驾长车，踏破贺兰山缺。\n\n壮志饥餐胡虏肉，笑谈渴饮匈奴血。\n\n待从头、收拾旧山河，朝天阙。"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("怒发冲冠，凭阑处、潇潇雨歇。\n\n抬望眼、仰天长啸，壮怀激烈。\n\n三十功名尘与土，八千里路云和月。\n\n莫等闲，白了少年头，空悲切。\n\n靖康耻，犹未雪；\n\n臣子恨，何时灭。\n\n驾长车，踏破贺兰山缺。\n\n壮志饥餐胡虏肉，笑谈渴饮匈奴血。\n\n待从头、收拾旧山河，朝天阙。"));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -294,7 +296,119 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("hello ama!"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("hello ama!"));</script>
+ 									
+								</div>
+							</div>
+						</form>
+					</div>
+										
+					
+					
+				</div>
+				<div class="child"></div>
+				<div class="clearleft"></div>
+			</div>
+										
+			<div class="thing odd link" id="thing_224" data-thingid=224>
+				
+								<span class="rank"></span>
+								<!-- 				<div class="midcol unvoted" id="vote-224">
+					<div class="arrow upmod login-required access-required" tabindex="0" onclick="voteit('./api',this,1,224)"></div>
+
+										<div class="score dislikes" title="77">0</div>
+					<div class="score unvoted" title="78">1</div>
+					<div class="score likes" title="79">1</div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,224)"></div>
+				</div> -->
+								<div class="entry unvoted">
+																	<div class="expando-button collapsed selftext"></div>
+																
+												 <p class="title"><span class="score unvoted" title="指标 1">1</span><a class="title may-blank loggedin " href="./v/a/224">beautiy </a></p>
+											
+
+					
+					<p class="tagline">
+						 						 <a href="./v/user/sureone" class="author may-blank ">小网</a>
+						 
+						 <span class="userattrs"></span>
+
+						 <time class="live-timestamp timeago" datetime="2017-04-23 12:21:31"></time>
+
+						 <a href="./v/a/224">6 留言</a>
+						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
+
+
+																				<a href="./v/submit/224" data-thingid=224 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(224)" data-thingid=224 class="delbtn access-required" data-event-action="delete">删除</a>
+												
+
+						 
+					</p>
+										<div class="expando expando-224" style="display: none;">
+						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
+							<input type="hidden" name="thing_id" value="t3_609l7s">
+							<div class="usertext-body may-blank-within md-container ">
+								<div class="out md"><script>document.write(markdown.toHTML("photos"));</script>
+ 									
+								</div>
+							</div>
+						</form>
+					</div>
+										
+					
+					
+				</div>
+				<div class="child"></div>
+				<div class="clearleft"></div>
+			</div>
+										
+			<div class="thing odd link" id="thing_222" data-thingid=222>
+				
+								<span class="rank"></span>
+								<!-- 				<div class="midcol unvoted" id="vote-222">
+					<div class="arrow upmod login-required access-required" tabindex="0" onclick="voteit('./api',this,1,222)"></div>
+
+										<div class="score dislikes" title="77">0</div>
+					<div class="score unvoted" title="78">1</div>
+					<div class="score likes" title="79">1</div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,222)"></div>
+				</div> -->
+								<div class="entry unvoted">
+																	<div class="expando-button collapsed selftext"></div>
+																
+												 <p class="title"><span class="score unvoted" title="指标 1">1</span><a class="title may-blank loggedin " href="./v/a/222">照片</a></p>
+											
+
+					
+					<p class="tagline">
+						 						 <a href="./v/user/sureone" class="author may-blank ">小网</a>
+						 
+						 <span class="userattrs"></span>
+
+						 <time class="live-timestamp timeago" datetime="2017-04-23 11:42:34"></time>
+
+						 <a href="./v/a/222">0 留言</a>
+						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
+
+
+																				<a href="./v/submit/222" data-thingid=222 class="editbtn access-required" data-event-action="edit">编辑</a>
+
+
+								<a href="javascript:deleteit(222)" data-thingid=222 class="delbtn access-required" data-event-action="delete">删除</a>
+												
+
+						 
+					</p>
+										<div class="expando expando-222" style="display: none;">
+						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
+							<input type="hidden" name="thing_id" value="t3_609l7s">
+							<div class="usertext-body may-blank-within md-container ">
+								<div class="out md"><script>document.write(markdown.toHTML("旅游照片"));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -346,7 +460,9 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML(""));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML(""));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -398,7 +514,9 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML(""));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML(""));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -451,7 +569,9 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML(" 怒发冲冠，凭阑处、潇潇雨歇。抬望眼、仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。\n\n\n\n  靖康耻，犹未雪；臣子恨，何时灭。驾长车，踏破贺兰山缺。壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。\n\n"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML(" 怒发冲冠，凭阑处、潇潇雨歇。抬望眼、仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。\n\n\n\n  靖康耻，犹未雪；臣子恨，何时灭。驾长车，踏破贺兰山缺。壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。\n\n"));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -463,21 +583,21 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="clearleft"></div>
 			</div>
 										
-			<div class="thing odd link" id="thing_221" data-thingid=221>
+			<div class="thing odd link" id="thing_232" data-thingid=232>
 				
 								<span class="rank"></span>
-								<!-- 				<div class="midcol unvoted" id="vote-221">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,221)"></div>
+								<!-- 				<div class="midcol unvoted" id="vote-232">
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,232)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
-										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,221)"></div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,232)"></div>
 				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/221">nnnnnnnnnnnnn bbbbbbbbb</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/232">纯纯粹粹纯纯粹粹踩踩踩</a></p>
 											
 
 					
@@ -486,25 +606,27 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						 
 						 <span class="userattrs"></span>
 
-						 <time class="live-timestamp timeago" datetime="2017-04-22 12:27:02"></time>
+						 <time class="live-timestamp timeago" datetime="2017-04-23 13:00:53"></time>
 
-						 <a href="./v/a/221">0 留言</a>
+						 <a href="./v/a/232">0 留言</a>
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-																				<a href="./v/submit/221" data-thingid=221 class="editbtn access-required" data-event-action="edit">编辑</a>
+																				<a href="./v/submit/232" data-thingid=232 class="editbtn access-required" data-event-action="edit">编辑</a>
 
 
-								<a href="javascript:deleteit(221)" data-thingid=221 class="delbtn access-required" data-event-action="delete">删除</a>
+								<a href="javascript:deleteit(232)" data-thingid=232 class="delbtn access-required" data-event-action="delete">删除</a>
 												
 
 						 
 					</p>
-										<div class="expando expando-221" style="display: none;">
+										<div class="expando expando-232" style="display: none;">
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("fdsafdsa bfdsadf nfdsafdsadf"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("坎坎坷坷坎坎坷坷坎坎坷坷坎坎坷坷坎坎坷坷"));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -516,21 +638,20 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="clearleft"></div>
 			</div>
 										
-			<div class="thing odd link" id="thing_220" data-thingid=220>
+			<div class="thing odd link" id="thing_231" data-thingid=231>
 				
 								<span class="rank"></span>
-								<!-- 				<div class="midcol unvoted" id="vote-220">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,220)"></div>
+								<!-- 				<div class="midcol unvoted" id="vote-231">
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,231)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
-										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,220)"></div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,231)"></div>
 				</div> -->
 								<div class="entry unvoted">
-																	<div class="expando-button collapsed selftext"></div>
-																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/220">fdsafsafdsa</a></p>
+																					
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/231">饿饿饿饿饿饿饿饿饿饿饿饿</a></p>
 											
 
 					
@@ -539,25 +660,27 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						 
 						 <span class="userattrs"></span>
 
-						 <time class="live-timestamp timeago" datetime="2017-04-22 12:26:16"></time>
+						 <time class="live-timestamp timeago" datetime="2017-04-23 12:57:31"></time>
 
-						 <a href="./v/a/220">0 留言</a>
+						 <a href="./v/a/231">11 留言</a>
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-																				<a href="./v/submit/220" data-thingid=220 class="editbtn access-required" data-event-action="edit">编辑</a>
+																				<a href="./v/submit/231" data-thingid=231 class="editbtn access-required" data-event-action="edit">编辑</a>
 
 
-								<a href="javascript:deleteit(220)" data-thingid=220 class="delbtn access-required" data-event-action="delete">删除</a>
+								<a href="javascript:deleteit(231)" data-thingid=231 class="delbtn access-required" data-event-action="delete">删除</a>
 												
 
 						 
 					</p>
-										<div class="expando expando-220" style="display: none;">
+										<div class="expando expando-231" style="display: none;">
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("fsafdsafdsafdsafdsafdsa"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML(""));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -569,21 +692,21 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 				<div class="clearleft"></div>
 			</div>
 										
-			<div class="thing odd link" id="thing_219" data-thingid=219>
+			<div class="thing odd link" id="thing_223" data-thingid=223>
 				
 								<span class="rank"></span>
-								<!-- 				<div class="midcol unvoted" id="vote-219">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,219)"></div>
+								<!-- 				<div class="midcol unvoted" id="vote-223">
+					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,223)"></div>
 
 										<div class="score dislikes" title="77">0</div>
 					<div class="score unvoted" title="78">0</div>
 					<div class="score likes" title="79">0</div>
-										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,219)"></div>
+										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,223)"></div>
 				</div> -->
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/219">fdsafsafdsa</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/223">bb cc vvv</a></p>
 											
 
 					
@@ -592,131 +715,27 @@ function content_58fadef4410ca9_74738400 (Smarty_Internal_Template $_smarty_tpl)
 						 
 						 <span class="userattrs"></span>
 
-						 <time class="live-timestamp timeago" datetime="2017-04-22 12:24:41"></time>
+						 <time class="live-timestamp timeago" datetime="2017-04-23 12:14:23"></time>
 
-						 <a href="./v/a/219">0 留言</a>
+						 <a href="./v/a/223">0 留言</a>
 						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
 
 
-																				<a href="./v/submit/219" data-thingid=219 class="editbtn access-required" data-event-action="edit">编辑</a>
+																				<a href="./v/submit/223" data-thingid=223 class="editbtn access-required" data-event-action="edit">编辑</a>
 
 
-								<a href="javascript:deleteit(219)" data-thingid=219 class="delbtn access-required" data-event-action="delete">删除</a>
+								<a href="javascript:deleteit(223)" data-thingid=223 class="delbtn access-required" data-event-action="delete">删除</a>
 												
 
 						 
 					</p>
-										<div class="expando expando-219" style="display: none;">
+										<div class="expando expando-223" style="display: none;">
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("fsafdsafdsafdsafdsafdsa"));</script></div>
-							</div>
-						</form>
-					</div>
-										
-					
-					
-				</div>
-				<div class="child"></div>
-				<div class="clearleft"></div>
-			</div>
-										
-			<div class="thing odd link" id="thing_218" data-thingid=218>
-				
-								<span class="rank"></span>
-								<!-- 				<div class="midcol unvoted" id="vote-218">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,218)"></div>
-
-										<div class="score dislikes" title="77">0</div>
-					<div class="score unvoted" title="78">0</div>
-					<div class="score likes" title="79">0</div>
-										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,218)"></div>
-				</div> -->
-								<div class="entry unvoted">
-																	<div class="expando-button collapsed selftext"></div>
-																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/218">fdsafsafdsa</a></p>
-											
-
-					
-					<p class="tagline">
-						 						 <a href="./v/user/sureone" class="author may-blank ">小网</a>
-						 
-						 <span class="userattrs"></span>
-
-						 <time class="live-timestamp timeago" datetime="2017-04-22 12:23:49"></time>
-
-						 <a href="./v/a/218">0 留言</a>
-						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
-
-
-																				<a href="./v/submit/218" data-thingid=218 class="editbtn access-required" data-event-action="edit">编辑</a>
-
-
-								<a href="javascript:deleteit(218)" data-thingid=218 class="delbtn access-required" data-event-action="delete">删除</a>
-												
-
-						 
-					</p>
-										<div class="expando expando-218" style="display: none;">
-						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
-							<input type="hidden" name="thing_id" value="t3_609l7s">
-							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("fsafdsafdsafdsafdsafdsa"));</script></div>
-							</div>
-						</form>
-					</div>
-										
-					
-					
-				</div>
-				<div class="child"></div>
-				<div class="clearleft"></div>
-			</div>
-										
-			<div class="thing odd link" id="thing_217" data-thingid=217>
-				
-								<span class="rank"></span>
-								<!-- 				<div class="midcol unvoted" id="vote-217">
-					<div class="arrow up login-required access-required" tabindex="0" onclick="voteit('./api',this,1,217)"></div>
-
-										<div class="score dislikes" title="77">0</div>
-					<div class="score unvoted" title="78">0</div>
-					<div class="score likes" title="79">0</div>
-										<div class="arrow down login-required access-required" tabindex="0" onclick="voteit('./api',this,-1,217)"></div>
-				</div> -->
-								<div class="entry unvoted">
-																	<div class="expando-button collapsed selftext"></div>
-																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/217">fdsafsafdsa</a></p>
-											
-
-					
-					<p class="tagline">
-						 						 <a href="./v/user/sureone" class="author may-blank ">小网</a>
-						 
-						 <span class="userattrs"></span>
-
-						 <time class="live-timestamp timeago" datetime="2017-04-22 12:22:47"></time>
-
-						 <a href="./v/a/217">0 留言</a>
-						 <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">检举</a>
-
-
-																				<a href="./v/submit/217" data-thingid=217 class="editbtn access-required" data-event-action="edit">编辑</a>
-
-
-								<a href="javascript:deleteit(217)" data-thingid=217 class="delbtn access-required" data-event-action="delete">删除</a>
-												
-
-						 
-					</p>
-										<div class="expando expando-217" style="display: none;">
-						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
-							<input type="hidden" name="thing_id" value="t3_609l7s">
-							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("fsafdsafdsafdsafdsafdsa"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("dddddddddddddddddddddddd"));</script>
+ 									
+								</div>
 							</div>
 						</form>
 					</div>

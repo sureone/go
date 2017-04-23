@@ -212,6 +212,7 @@ class V extends CI_Controller {
 
         	$thing = $this->amaModel->readThing($thingid)['0'];
         	if($thing['author']==$user_info['userid']){
+        		$thing['attaches']=$this->amaModel->readAttaches($thing['thingid']);
         		$this->ci_smarty->assign("thing",$thing);	
         	}
         	

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-22 06:42:35
+/* Smarty version 3.1.30, created on 2017-04-23 06:33:41
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fadf3bcac477_81671548',
+  'unifunc' => 'content_58fc2ea51be971_93546588',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1541aa7f0becfa0b4e92a61fd9fa210baf30ab1' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\comments.tpl',
-      1 => 1492836153,
+      1 => 1492918737,
       2 => 'file',
     ),
     '9add0006f06d4c3a3cdd978f02ffd7fb276e3103' => 
@@ -42,13 +42,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'e8a712b4ffc2ccb7cb81043427e3b9e31f39dc94' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thread.tpl',
-      1 => 1492563366,
+      1 => 1492918783,
       2 => 'file',
     ),
     'a39d0e36eaffb48329459f750f9953ef1ff45a6f' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\thing-attach.tpl',
-      1 => 1492835903,
+      1 => 1492919867,
       2 => 'file',
     ),
     '80f5f0c9f21973e46f2e4ad31a1a3daba18efcc9' => 
@@ -78,7 +78,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fadf3bcac477_81671548 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fc2ea51be971_93546588 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
@@ -246,7 +246,33 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("fdsafdsa bfdsadf nfdsafdsadf"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("fdsafdsa bfdsadf nfdsafdsadf"));</script>
+	
+
+							        <div class="thing-attaches">
+									    								            <div>
+	<a href="./uploads/adaptation76.png">111111111111</a>
+		<br/>
+	<a href="./uploads/adaptation76.png">
+		<img src="./uploads/adaptation76.png" style="max-width:700px;max-height:240px;"></a>
+	</div>
+								        								            <div>
+	<a href="./uploads/competetion16.png">22222222222</a>
+		<br/>
+	<a href="./uploads/competetion16.png">
+		<img src="./uploads/competetion16.png" style="max-width:700px;max-height:240px;"></a>
+	</div>
+								        								            <div>
+	<a href="./uploads/ecosystem6.png">fffffffffffffff</a>
+		<br/>
+	<a href="./uploads/ecosystem6.png">
+		<img src="./uploads/ecosystem6.png" style="max-width:700px;max-height:240px;"></a>
+	</div>
+								         
+							    	</div>
+								</div>
+
+							
 							</div>
 						</form>
 					</div>
@@ -261,19 +287,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 			</div>
            
 
-                        <div>
-<a href="./uploads/adaptation76.png">111111111111</a>
-<img src="./uploads/adaptation76.png">
-</div>
-                        <div>
-<a href="./uploads/competetion16.png">22222222222</a>
-<img src="./uploads/competetion16.png">
-</div>
-                        <div>
-<a href="./uploads/ecosystem6.png">fffffffffffffff</a>
-<img src="./uploads/ecosystem6.png">
-</div>
-         
+
     </div>
     <div class="commentarea">
         <div class="panestack-title"><span class="title">头0则留言</span><a

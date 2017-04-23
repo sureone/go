@@ -14,6 +14,10 @@
                 <textarea rows="1" cols="1" name="content" class="" data-event-action="comment" data-type="link"></textarea>
             </div>
             <div class="bottom-area">
+                <span class="attach-toggle toggle" style="">
+                    <a class="option active " href="#" tabindex="100" onclick="return toggle(this, attachon, attachoff)">添加附件</a>
+                    <a class="option " href="#">不添加附件</a>
+                </span>
                 <span class="help-toggle toggle" style="">
                     <a class="option active " href="#" tabindex="100" onclick="return toggle(this, helpon, helpoff)">格式說明</a>
                     <a class="option " href="#">隱藏說明</a>

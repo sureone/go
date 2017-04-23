@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-19 04:07:15
+/* Smarty version 3.1.30, created on 2017-04-23 16:26:02
   from "D:\go\ama\application\views\message-compose.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f6c653cad0e3_15800194',
+  'unifunc' => 'content_58fcb97a369f97_22269722',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -48,7 +48,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58f6c653cad0e3_15800194 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fcb97a369f97_22269722 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 	<!DOCTYPE html>
@@ -110,7 +110,7 @@ function content_58f6c653cad0e3_15800194 (Smarty_Internal_Template $_smarty_tpl)
 	        		<span class="title ">至</span> 
 	        		<span class="little gray roundfield-description">(账号名)</span>
 	        		<div class="roundfield-content">
-	        			<input type="text" name="recipients" value="小网" onchange="admincheck(this)">
+	        			<input type="text" name="recipients" value="" onchange="admincheck(this)">
 	        			<span class="error NO_USER field-to" style="display:none"></span>
 	        			<span class="error USER_DOESNT_EXIST field-to" style="display:none">
 	        			</span>

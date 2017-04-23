@@ -1,16 +1,4 @@
-function handleUploadFileDone(result){
-    console.log(result);
-    
-    var tpl = Handlebars.compile($("#tpl-file-attach").html());
-   
-    if(result.is_image==1){
-        result['_image_file']=1;
-    }
-    var h = tpl(result);
 
-    $("#attaches").append(h);
-
-}
 
 function handleFormSubmit(form){
 

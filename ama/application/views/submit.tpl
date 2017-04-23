@@ -109,6 +109,19 @@
 
             <iframe src="" style="display:none;" id="iframe_upload" name="iframe_upload"></iframe>
             <ul id="attaches">
+                {if isset($thing)}
+                {foreach $thing.attaches as $attach}
+                 <li class="attach-file old" file_id="{$attach.id}">
+                    {if $attach.image_width neq 0}
+                        <a href="./uploads/{$attach.file_name}"><img width="160" src="./uploads/{$attach.file_name}"></a>
+                    {/if}
+                    <a href="javascript:removeOldAttach({$thing.thingid},{$attach.id})">删除附件</a>
+                    <a href="javascript:changeAttachOrder({$attach.id},-1)">向上</a>
+                    <a href="javascript:changeAttachOrder({$attach.id},1)">向下</a>
+                    <input type="text" name="attach-comment-{$attach.id}" value="{$attach.file_comment}" placeholder="附件说明({$attach.file_name})">
+                </li>
+                {/foreach}
+                {/if}
 
             </ul>    
 

@@ -1,40 +1,41 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-19 02:01:39
+/* Smarty version 3.1.30, created on 2017-04-23 09:31:11
   from "D:\go\ama\application\views\common\comment.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f6a8e377cb81_24105587',
+  'unifunc' => 'content_58fc583fb50847_98377970',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd03b8025f8ee3e41174be16b12370503e817c2fd' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\comment.tpl',
-      1 => 1492331288,
+      1 => 1492932668,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:common/thing-attach.tpl' => 1,
   ),
 ),false)) {
-function content_58f6a8e377cb81_24105587 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fc583fb50847_98377970 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
     'compiled_filepath' => 'D:\\go\\ama\\application\\views\\template_c\\d03b8025f8ee3e41174be16b12370503e817c2fd_0.file.comment.tpl.cache.php',
     'uid' => 'd03b8025f8ee3e41174be16b12370503e817c2fd',
-    'call_name' => 'smarty_template_function_renderComments_1755958f6a8e3601ca5_58282284',
+    'call_name' => 'smarty_template_function_renderComments_1922158fc583f98b5d2_91583026',
   ),
 ));
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
-$_smarty_tpl->compiled->nocache_hash = '1755958f6a8e3601ca5_58282284';
+$_smarty_tpl->compiled->nocache_hash = '1922158fc583f98b5d2_91583026';
 }
-/* smarty_template_function_renderComments_1755958f6a8e3601ca5_58282284 */
-if (!function_exists('smarty_template_function_renderComments_1755958f6a8e3601ca5_58282284')) {
-function smarty_template_function_renderComments_1755958f6a8e3601ca5_58282284($_smarty_tpl,$params) {
+/* smarty_template_function_renderComments_1922158fc583f98b5d2_91583026 */
+if (!function_exists('smarty_template_function_renderComments_1922158fc583f98b5d2_91583026')) {
+function smarty_template_function_renderComments_1922158fc583f98b5d2_91583026($_smarty_tpl,$params) {
 $params = array_merge(array('level'=>0), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -82,10 +83,28 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><?php echo '<script'; ?>
+                    <div class="out md"><?php echo '<script'; ?>
 >document.write(markdown.toHTML("<?php echo smarty_modifier_regex_replace(smarty_modifier_regex_replace(smarty_modifier_regex_replace($_smarty_tpl->tpl_vars['entry']->value['text'],'/[\r\t\n]/','\\n'),'/[\"]/','\\\"'),'/[\']/','\\\'');?>
 "));<?php echo '</script'; ?>
-></div>
+>
+
+                         <div class="thing-attaches">
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['entry']->value['attaches'], 'attach');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['attach']->value) {
+?>
+                                <?php $_smarty_tpl->_subTemplateRender("file:common/thing-attach.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+
+                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+ 
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">
@@ -125,5 +144,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 <?php
 }}
-/*/ smarty_template_function_renderComments_1755958f6a8e3601ca5_58282284 */
+/*/ smarty_template_function_renderComments_1922158fc583f98b5d2_91583026 */
 }
