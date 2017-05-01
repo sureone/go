@@ -57,6 +57,7 @@ class V extends CI_Controller {
 		if($user_info!=null){
 			$this->ci_smarty->assign("user",$user_info);
 	        $this->ci_smarty->assign("logined","true");
+	        $this->ci_smarty->assign("new_number",$this->amaModel->readMessageAccount($user_info['userid']));
 	        return true;
     	}else{
     		$this->ci_smarty->assign("logined","false");

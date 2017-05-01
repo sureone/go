@@ -95,7 +95,22 @@ class AmaModel extends CI_Model{
         return $rows;
     }
 
+    public function readMessageAccount($userid){
+        $sql1 = "select count(m.id) as new_number from things m 
+            where m.recipients='{$userid}' and m.readed=0";
+        $sql2 = "select count(a.id) as new_number from things a 
+            inner join things b on b.parent = a.id
+            inner join things mn on mn.id = b.main 
+            where a.author='{$userid}' and a.readed=0";
+        $sql = "select count(u.new_number) as new_number from (({$sql1}) union ({$sql2})) u"; 
+        
+        $query = $this->db->query($sql);
+        $rows = $query->result_array();
 
+        return $rows[0]['new_number'];
+
+
+    }
 
     public function readMessagesByUser($maxid,$limit,$userid,$type='all'){
 

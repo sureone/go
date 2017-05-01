@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-23 16:23:16
+/* Smarty version 3.1.30, created on 2017-05-01 08:22:40
   from "D:\go\ama\application\views\comments.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fcb8d4d3fb87_59888962',
+  'unifunc' => 'content_5906d430149ee0_15061143',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -42,7 +42,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'fe2ddcdee5c21f4349de2ce2129c6707df9d7ec7' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492558661,
+      1 => 1493534878,
       2 => 'file',
     ),
     '167548fb6b600c4daeea8ff69dea4b0028fc6a50' => 
@@ -84,7 +84,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fcb8d4d3fb87_59888962 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5906d430149ee0_15061143 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'renderComments' => 
   array (
@@ -233,7 +233,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
         </ul>
     </div>
     <div id="header-bottom-right">
-<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;<span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息&nbsp;(2)</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>
@@ -373,7 +373,7 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 	<a href="./uploads/Koala3.jpg">
 		<img src="./uploads/Koala3.jpg" style="max-width:700px;max-height:240px;"></a>
 	<br/>
-		<span class="attachment_order">附件2:</span>&nbsp;<a href="./uploads/Koala3.jpg">Koala3.jpg</a>
+		<span class="attachment_order">附件2:</span>&nbsp;<a href="./uploads/Koala3.jpg">33333333333333333</a>
 </div>
 								         
 							    	</div>

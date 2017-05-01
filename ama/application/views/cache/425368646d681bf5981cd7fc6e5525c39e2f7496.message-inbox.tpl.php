@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-23 16:46:23
+/* Smarty version 3.1.30, created on 2017-05-01 08:21:54
   from "D:\go\ama\application\views\message-inbox.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fcbe3f8eb932_30240347',
+  'unifunc' => 'content_5906d4026aa2e9_58021840',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -30,7 +30,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'fe2ddcdee5c21f4349de2ce2129c6707df9d7ec7' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492558661,
+      1 => 1493534878,
       2 => 'file',
     ),
     'd82f4eb2a7df24b5289fa33618bcbe504c5d4184' => 
@@ -60,7 +60,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fcbe3f8eb932_30240347 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5906d4026aa2e9_58021840 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 	<!DOCTYPE html>
@@ -100,7 +100,7 @@ function content_58fcbe3f8eb932_30240347 (Smarty_Internal_Template $_smarty_tpl)
 	</ul>
 </div>
 <div id="header-bottom-right">
-<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;<span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息&nbsp;(2)</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>
@@ -126,6 +126,60 @@ function content_58fcbe3f8eb932_30240347 (Smarty_Internal_Template $_smarty_tpl)
 
 	<div class="spacer">
 		<div id="siteTable" class="sitetable linklisting">
+
+							<div class=" thing id-t4_7x41ei noncollapsed recipient odd message ">
+  <p class="parent"></p>
+  <p class="subject">
+
+    <span class="subject-text">
+    	    		fdsafdsa
+    	    </span>
+	  </p>
+  <p>
+  </p>
+  <div class="entry unvoted">
+    <p class="tagline">
+      <span class="head">来自
+        <span class="sender">
+          <a href="./v/user/sureone" class="author may-blank">小网</a>
+          <span class="userattrs"></span>
+        </span>
+        <time class="timeago" datetime="2017-04-29 19:04:11" class=""></time></span>
+    </p>
+    <div class="md-container">
+     <div class="out md"><script>document.write(markdown.toHTML("fdsafdsafdsa"));</script>
+        
+      </div>
+    </div>
+    <ul class="flat-list buttons">
+      <li class="first">
+        <a href="">永久連結</a></li>
+      <li>
+        <form class="toggle del_msg-button " action="#" method="get">
+          <input type="hidden" name="executed" value="已刪除">
+          <span class="option main active">
+            <a href="#" class="togglebutton " onclick="return toggle(this)" data-event-action="delete_message">刪除</a></span>
+          <span class="option error">你確定嗎？
+            <a href="javascript:void(0)" class="yes" onclick="change_state(this, &quot;del_msg&quot;, hide_thing, undefined, null)">是</a>/
+            <a href="javascript:void(0)" class="no" onclick="return toggle(this)">否</a></span>
+        </form>
+      </li>
+      <li class="report-button">
+        <a href="javascript:void(0)" class="reportbtn access-required" data-event-action="report">檢舉</a></li>
+      <li class="unread">
+        <form action="/post/unread" method="post" class="state-button unread-button">
+          <input type="hidden" name="executed" value="未讀">
+          <span>
+            <a href="javascript:void(0)" class=" access-required" data-event-action="mark_unread" onclick="return change_state(this, 'unread_message', unread_thing, true);">標記成未讀取</a></span>
+        </form>
+      </li>
+
+          </ul>
+    <div class="reportform report-t4_7x41ei"></div>
+  </div>
+  <div class="child" id="child_244"></div>
+  <div class="clearleft"></div>
+</div>
 
 							<div class=" thing id-t4_7x41ei noncollapsed recipient odd comment ">
   <p class="parent"></p>

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-23 16:26:02
+/* Smarty version 3.1.30, created on 2017-04-29 13:06:20
   from "D:\go\ama\application\views\message-compose.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fcb97a369f97_22269722',
+  'unifunc' => 'content_590473acd26967_07651959',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -48,7 +48,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fcb97a369f97_22269722 (Smarty_Internal_Template $_smarty_tpl) {
+function content_590473acd26967_07651959 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 	<!DOCTYPE html>
