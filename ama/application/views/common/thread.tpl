@@ -43,7 +43,16 @@
 								 <p class="title"><a class="title may-blank loggedin " href="./v/a/{$entry.thingid}">{$entry.title}</a></p>
 							{else}
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script>
+									
+									
+							        <div class="thing-attaches">
+									    {foreach $entry.attaches as $attach}
+								            {include file="common/thing-attach.tpl"}
+								        {/foreach} 
+							    	</div>
+								</div>
+								
 							</div>
 							{/if}
 							
@@ -97,7 +106,17 @@
 						<form action="#" class="usertext warn-on-unload" onsubmit="return post_form(this, 'editusertext')" id="form-t3_609l7sfwt">
 							<input type="hidden" name="thing_id" value="t3_609l7s">
 							<div class="usertext-body may-blank-within md-container ">
-								<div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></div>
+								<div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script>
+	
+
+							        <div class="thing-attaches">
+									    {foreach $entry.attaches as $attach}
+								            {include file="common/thing-attach.tpl"}
+								        {/foreach} 
+							    	</div>
+								</div>
+
+							
 							</div>
 						</form>
 					</div>

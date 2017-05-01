@@ -806,7 +806,7 @@ body >.content .link .midcol, .midcol-spacer {
 .linkinfo .shortlink input {
     border: 1px solid gray;
     font-family: monospace;
-    font-size: 140%;
+    font-size: 100%;
     padding: 3px 2px;
     width: 175px;
 }
@@ -930,7 +930,7 @@ input[type=hidden] {
     width: 100%;
 }
 
-.usertext .help-toggle, .usertext a.reddiquette {
+.usertext .help-toggle, .usertext .attach-toggle,.usertext a.reddiquette {
     font-size: smaller;
     float: right;
     margin-top: 5px;
@@ -1173,4 +1173,14 @@ form .spacer+.spacer {
 
 .flat-list li.selected a {
     color: orangered;
+}
+
+.ico_att {
+    background: url("../images/compose127dee.gif") no-repeat scroll 0px 0px transparent;
+    width: 16px;
+    height: 15px;
+    padding: 0px;
+    border: medium none;
+    vertical-align: middle;
+    margin: 0px 1px 4px 0px;
 }

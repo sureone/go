@@ -17,6 +17,80 @@ try {
         $(e).parents(".usertext-edit:first").children(".markhelp:first").hide()
     }
 
+
+    function removeOldAttach(thingid,fileid){
+         var map={
+            action:'delete-attach',
+            fileid:fileid,
+            thingid:thingid
+        };
+        var postdata = JSON.stringify(map);
+        $.ajax({
+            dataType : 'json',
+            type : 'POST',
+            url : "./api",
+            data : postdata,
+            success : function(data) {
+                $("li[file_id="+fileid+"]").remove();
+             
+            },
+            error : function() {
+            }
+        });
+    }
+
+    function changeAttachOrder(fileid,order){
+        var li = $("li[file_id="+fileid+"]");
+        
+        var index = li.index();
+
+        //down
+        if(order==1 && li.next()){
+            li.next().after(li);
+        }
+
+        if(order==-1 && index>0){
+            li.after(li.prev());        
+        }
+         
+    }
+    function removeNewAttach(fileid){
+       
+      
+        $("li[file_id="+fileid+"]").remove();
+             
+       
+    }
+    function handleUploadFileDone(result){
+        console.log(result);
+        
+        var tpl = Handlebars.compile($("#tpl-file-attach").html());
+       
+        if(result.is_image==1){
+            result['_image_file']=1;
+        }
+
+
+        var h = tpl(result);
+
+        $("#attaches").append(h);
+
+    }
+
+    function attachon(e) {
+        $(".attach-tool").remove();
+        var tpl = Handlebars.compile($("#tpl-attach-tool").html());
+        var thingid=$(e).parents(".usertext-edit:first").attr('thing-id');
+        h = (tpl({thingid:thingid}));
+
+        $(e).parents(".usertext-edit:first").append(h);
+    }
+
+    function attachoff(e) {
+        $(".attach-tool").remove();
+        // $(e).parents(".usertext-edit:first").children(".attach-tool:first").hide()
+    }
+
    
     function reply(e){
 

@@ -24,7 +24,14 @@
                   id="form-t1_df1l1xva7c"><input type="hidden" name="thing_id" value="t1_df1l1xv">
 
                 <div class="usertext-body may-blank-within md-container ">
-                          <div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></div>
+                    <div class="out md"><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script>
+
+                         <div class="thing-attaches">
+                            {foreach $entry.attaches as $attach}
+                                {include file="common/thing-attach.tpl"}
+                            {/foreach} 
+                        </div>
+                      </div>
                 </div>
             </form>
             <ul class="flat-list buttons">

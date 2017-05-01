@@ -145,6 +145,11 @@ class AmaModel extends CI_Model{
         $rows = $query->result_array();
 
 
+        foreach ($rows as $row) {
+            $row['attaches']=$this->readAttaches($row['thingid']);
+            $this->db->or_where('ID',$row['thingid']);
+        }
+
         //set the thing as read
         $this->db->set('readed','1',FALSE);
         foreach ($rows as $row) {
@@ -311,13 +316,62 @@ class AmaModel extends CI_Model{
         $result = array();
 
         foreach ($rows as &$row){
+
+            $attaches = $this->readAttaches($row['thingid']);
+
+            $row['attaches'] = $attaches;
+
             if($row['parent']==$main){
                 $this->genThingsTree($rows,$row);
                 array_push($result, $row);
                 
             }
+
+
         }
 
         return array('comments'=>$result,'comments_count'=>count($rows));
+    }
+
+    function addAttach($json){
+        $user = $this->session->userdata('user.info');
+        if(isset($_SESSION['user.info'])){
+            $data =  array('userid'=>$user['userid'],
+                'file_type'=>$json['file_type'],
+                'file_name'=>$json['file_name'],
+                'file_path'=>$json['file_path'],
+                'file_size'=>$json['file_size'],
+                'cdate'=>$this->curTime());
+
+            if($json['is_image'] == "1"){
+                $data['image_width']=$json['image_width'];
+
+                $data['image_height']=$json['image_height'];
+            }
+            $this->db->insert('thing_attach_map',$data);
+           
+            return $this->db->insert_id();
+
+            
+
+        }else{
+            return -1;
+        }
+    }
+
+
+    public function readAttaches($thingid){
+      
+        $this->db->order_by("file_no","ASC");  
+        $query = $this->db->get_where("thing_attach_map",array("thingid"=>$thingid));
+          
+        $rows = $query->result_array();
+
+        return $rows;
+    }
+
+    function curTime(){
+        $ms = time();
+        return $ms;
     }
 }
