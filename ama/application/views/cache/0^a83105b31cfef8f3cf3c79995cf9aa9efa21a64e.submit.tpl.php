@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-23 08:14:39
+/* Smarty version 3.1.30, created on 2017-04-29 13:31:23
   from "D:\go\ama\application\views\submit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fc464fc24d85_14733267',
+  'unifunc' => 'content_5904798b9a1871_81726804',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -30,7 +30,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'fe2ddcdee5c21f4349de2ce2129c6707df9d7ec7' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492558661,
+      1 => 1493465465,
       2 => 'file',
     ),
     '167548fb6b600c4daeea8ff69dea4b0028fc6a50' => 
@@ -54,13 +54,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '92480ae619bca4be4858d7e757663330f94640b0' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\file-attach.tpl',
-      1 => 1492926284,
+      1 => 1492931325,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58fc464fc24d85_14733267 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5904798b9a1871_81726804 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <!DOCTYPE html>
@@ -101,7 +101,7 @@ function content_58fc464fc24d85_14733267 (Smarty_Internal_Template $_smarty_tpl)
             <li class="selected"><a href="./v/submit" class="choice">发表</a></li>
     </div>
     <div id="header-bottom-right">
-<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">2</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>

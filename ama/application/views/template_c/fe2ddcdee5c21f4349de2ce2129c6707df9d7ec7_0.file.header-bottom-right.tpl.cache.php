@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-19 02:01:23
+/* Smarty version 3.1.30, created on 2017-04-30 08:48:01
   from "D:\go\ama\application\views\common\header-bottom-right.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f6a8d3969442_55306213',
+  'unifunc' => 'content_590588a1e889c7_89320313',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe2ddcdee5c21f4349de2ce2129c6707df9d7ec7' => 
     array (
       0 => 'D:\\go\\ama\\application\\views\\common\\header-bottom-right.tpl',
-      1 => 1492558661,
+      1 => 1493534878,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f6a8d3969442_55306213 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1790058f6a8d394a032_15556163';
+function content_590588a1e889c7_89320313 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '7029590588a1e4e030_84764642';
 ?>
 <div id="header-bottom-right">
 <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true") {?>
 <span class="user"><a href="./v/user/<?php echo $_smarty_tpl->tpl_vars['user']->value['userid'];?>
 /"><?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
-</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+</a>&nbsp;<span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息&nbsp;(<?php echo $_smarty_tpl->tpl_vars['new_number']->value;?>
+)</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>

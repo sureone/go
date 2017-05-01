@@ -1,6 +1,6 @@
 <div id="header-bottom-right">
 {if $logined eq "true"}
-<span class="user"><a href="./v/user/{$user.userid}/">{$user.name}</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
+<span class="user"><a href="./v/user/{$user.userid}/">{$user.name}</a>&nbsp;<span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息&nbsp;({$new_number})</a>
 <!-- 
 <span class="separator">|</span><ul class="flat-list hover">
 <li><a href="https://www.reddit.com/prefs/" class="pref-lang choice">偏好設定</a></li>

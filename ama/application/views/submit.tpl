@@ -125,7 +125,7 @@
 
             </ul>    
 
-            <form action="http://127.0.0.1/ama/index.php/v/do_upload" enctype="multipart/form-data" method="post" accept-charset="utf-8" target="iframe_upload">
+            <form action="./v/do_upload" enctype="multipart/form-data" method="post" accept-charset="utf-8" target="iframe_upload">
                 <input type="file" name="userfile" size="20" />
                 <input type="submit" value="upload" />
             </form>
