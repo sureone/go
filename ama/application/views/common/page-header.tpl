@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
-    <base href="/index.php">
+    <base href="/ama/index.php">
     {if isset($page_title)}
 	<title>{$page_title}</title>
     {else}
