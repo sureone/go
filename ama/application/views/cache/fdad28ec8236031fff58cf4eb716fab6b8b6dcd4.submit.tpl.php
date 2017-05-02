@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 08:20:25
+/* Smarty version 3.1.30, created on 2017-04-28 03:47:58
   from "D:\work\go\ama\application\views\submit.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f5b0292d2aa6_14173611',
+  'unifunc' => 'content_59029f4eefff26_17113888',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,13 +18,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492496396,
+      1 => 1492496511,
       2 => 'file',
     ),
     'f9425a6b5d947a44cc0dd8983944da6b322d1daa' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-logo.tpl',
-      1 => 1492480911,
+      1 => 1492498622,
       2 => 'file',
     ),
     'f0f6ee9aad64c0aa7300ae99fc743a68b3429bac' => 
@@ -54,7 +54,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59029f4eefff26_17113888 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <!DOCTYPE html>
@@ -88,7 +88,7 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
     <div id="header-bottom-left">
         <span class="hover pagename"><a href="./"><img src="./static/images/logo.gif" alt="后园小亭" height="20"></a></span>
         <ul class="tabmenu ">
-            <li class="selected"><a href="./v/submit" class="choice">编辑</a></li>
+            <li class="selected"><a href="./v/submit" class="choice">发表</a></li>
     </div>
     <div id="header-bottom-right">
 <span class="user"><a href="./v/user/sureone/">小网</a>&nbsp;(<span class="userkarma" title="post karma">1</span>)</span><span class="separator">|</span><a title="沒有新郵件" href="./v/message/inbox/" class="nohavemail" id="mail">信息</a>
@@ -159,7 +159,7 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="roundfield " id="title-field">
                     <span class="title required-roundfield">标题</span>
                     <div class="roundfield-content">
-                        <textarea class="thing-title key-monitor" name="title" rows="2" required="">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。</textarea>
+                        <textarea class="thing-title key-monitor" name="title" rows="2" required=""></textarea>
                         <div class="error NO_TEXT field-title" style="display:none"></div>
                         <div class="error TOO_LONG field-title" style="display:none"></div>
                     </div>
@@ -175,21 +175,7 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
                             <input type="hidden" name="thing_id" value="">
                             <div class="usertext-edit md-container" style="">
                                 <div class="md">
-                                    <textarea rows="1" cols="1" name="content" class="thing-title key-monitor" > 寒蝉凄切， 对长亭晚， 骤雨初歇。
-
-都门帐饮无绪， 留恋处， 兰舟催发。
-
-执手相看泪眼， 竟无语凝噎。
-
-念去去， 千里烟波， 暮霭沉沉楚天阔。
-
-多情自古伤离别， 更那堪， 冷落清秋节！
-
-今宵酒醒何处？ 杨柳岸， 晓风残月。
-
-此去经年， 应是良辰好景虚设。
-
-便纵有千种风情， 更与何人说？ </textarea>
+                                    <textarea rows="1" cols="1" name="content" class="thing-title key-monitor" ></textarea>
                                 </div>
 
                                 <div class="bottom-area">
@@ -294,7 +280,7 @@ function content_58f5b0292d2aa6_14173611 (Smarty_Internal_Template $_smarty_tpl)
         </div> -->
         <!-- <div id="items-required">*required</div> -->
         <input name="resubmit" value="" type="hidden">
-        <input name="thingid" value="69" type="hidden">
+        <input name="thingid" value="0" type="hidden">
         <div class="spacer">
             <button class="btn" name="submit" value="form" type="submit">送出</button>
             <span class="status"></span>
