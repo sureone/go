@@ -29,7 +29,9 @@ class V extends CI_Controller {
 		$this->load->library('ci_smarty');
 		$this->load->model('amaModel');
 		$this->load->helper(array('form', 'url'));
-		$this->load->library('wXBizDataCrypt');
+		$this->load->library('wx_crypt');
+		$this->load->library('someclass');
+		$this->load->library('markdown');
 		
 	}
 	public function index()
@@ -96,6 +98,43 @@ class V extends CI_Controller {
 		}
 
 
+	}
+	public function wxtest2(){
+		echo $this->someclass->test();
+	}
+	public function wxtest(){
+		echo "dddddd";
+		$appid = 'wx9ec950ea9d8e2f64';
+		$sessionKey = 'tiihtNczf5v6AKRyjwEUhQ==';
+
+		$encryptedData="CiyLU1Aw2KjvrjMdj8YKliAjtP4gsMZM
+		                QmRzooG2xrDcvSnxIMXFufNstNGTyaGS
+		                9uT5geRa0W4oTOb1WT7fJlAC+oNPdbB+
+		                3hVbJSRgv+4lGOETKUQz6OYStslQ142d
+		                NCuabNPGBzlooOmB231qMM85d2/fV6Ch
+		                evvXvQP8Hkue1poOFtnEtpyxVLW1zAo6
+		                /1Xx1COxFvrc2d7UL/lmHInNlxuacJXw
+		                u0fjpXfz/YqYzBIBzD6WUfTIF9GRHpOn
+		                /Hz7saL8xz+W//FRAUid1OksQaQx4CMs
+		                8LOddcQhULW4ucetDf96JcR3g0gfRK4P
+		                C7E/r7Z6xNrXd2UIeorGj5Ef7b1pJAYB
+		                6Y5anaHqZ9J6nKEBvB4DnNLIVWSgARns
+		                /8wR2SiRS7MNACwTyrGvt9ts8p12PKFd
+		                lqYTopNHR1Vf7XjfhQlVsAJdNiKdYmYV
+		                oKlaRv85IfVunYzO0IKXsyl7JCUjCpoG
+		                20f0a04COwfneQAGGwd5oa+T8yO5hzuy
+		                Db/XcxxmK01EpqOyuxINew==";
+
+		$iv = 'r7BXXKkLb8qrSNn05n0qiA==';
+echo "dddddd";
+		$errCode = $this->wx_crypt->decryptData($appid,$sessionKey,$encryptedData, $iv, $data );
+echo "dddddd";
+		if ($errCode == 0) {
+		    echo($data . "\n");
+		} else {
+		    echo($errCode . "\n");
+		}
+echo $iv;
 	}
 
 	public function test(){

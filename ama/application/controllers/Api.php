@@ -30,7 +30,12 @@ class Api extends CI_Controller {
         $this->load->helper('file');
         $this->load->library('ci_smarty');
     }
-
+    public function wxlogin(){
+         $idata = file_get_contents('php://input');
+        $jobj = json_decode($idata);
+        $code = $jobj->code;
+        echo $code;
+    }
 
     public function index()
     {

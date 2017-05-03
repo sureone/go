@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 08:24:39
+/* Smarty version 3.1.30, created on 2017-05-03 06:34:15
   from "D:\work\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f5b127f19886_42389058',
+  'unifunc' => 'content_59095dc73e2102_89594801',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1492496511,
+      1 => 1493708245,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f5b127f19886_42389058 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '684058f5b127edeef8_90529825';
+function content_59095dc73e2102_89594801 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '599359095dc730b352_39074904';
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,10 +39,10 @@ $_smarty_tpl->compiled->nocache_hash = '684058f5b127edeef8_90529825';
 	</style>
 	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
     <?php echo '<script'; ?>
- type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"><?php echo '</script'; ?>
+ type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
- type="text/javascript" src="http://apps.bdimg.com/libs/handlebars.js/1.3.0/handlebars.min.js"><?php echo '</script'; ?>
+ type="text/javascript" src="https://apps.bdimg.com/libs/handlebars.js/1.3.0/handlebars.min.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
  src="./static/js/form2json.js"><?php echo '</script'; ?>
