@@ -29,6 +29,8 @@ class V extends CI_Controller {
 		$this->load->library('ci_smarty');
 		$this->load->model('amaModel');
 		$this->load->helper(array('form', 'url'));
+		$this->load->library('wXBizDataCrypt');
+		
 	}
 	public function index()
 	{
