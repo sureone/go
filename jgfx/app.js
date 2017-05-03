@@ -11,7 +11,7 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://www.askmeany.cn/api/wxlogin',
+            url: 'https://www.askmeany.cn/ama/api/wxlogin',
             data: {
               code: res.code
             }
