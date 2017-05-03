@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 10:31:34
+/* Smarty version 3.1.30, created on 2017-05-03 06:34:15
   from "D:\work\go\ama\application\views\common\side.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f47d668f4649_86383402',
+  'unifunc' => 'content_59095dc749d931_70931160',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '909714a59f76f675a88c2ed245e2941851f8dac9' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\side.tpl',
-      1 => 1492390703,
+      1 => 1493708019,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f47d668f4649_86383402 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '281858f47d668e0dc7_81855206';
+function content_59095dc749d931_70931160 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2318359095dc746eb39_34485585';
 ?>
 <div class="side">
 <!--     <div class="spacer">
@@ -66,7 +66,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 ?>
         <div class="spacer">
             <div class="linkinfo">
-                <div class="date"><span>本文发表于 </span>
+                <div class="date"><a style="font-size:medium;padding-right:4px;" href="./v/user/<?php echo $_smarty_tpl->tpl_vars['entry']->value['author'];?>
+"><?php echo $_smarty_tpl->tpl_vars['entry']->value['author_name'];?>
+</a><span>发表于 </span>
                     <time datetime="<?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
 "><?php echo $_smarty_tpl->tpl_vars['entry']->value['timeago'];?>
 </time>
@@ -74,8 +76,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
                 <div class="score"><span class="number"><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes']-$_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
 </span> <span class="word">指标</span> (其中<?php echo $_smarty_tpl->tpl_vars['entry']->value['likes'];?>
 票赞成)</div>
-<!--                 <div class="shortlink">shortlink: <input type="text" value="https://redd.it/5zwc09" readonly="readonly"
-                                                         id="shortlink-text"></div> -->
+                <div class="shortlink">本文链接: <input type="text" value="http://boopo.cn/v/a/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
+" readonly="readonly"
+                                                         id="shortlink-text"></div>
             </div>
         </div>
         <?php
@@ -87,6 +90,20 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         <?php }?>  
         
     <?php }?>
+
+    <?php if ($_smarty_tpl->tpl_vars['logined']->value == "true" && isset($_smarty_tpl->tpl_vars['pagedir']->value) && $_smarty_tpl->tpl_vars['pagedir']->value == "user") {?>
+    <div class="spacer">
+        <div class="sidebox submit submit-text">
+            <div class="morelink">
+                <a href="./v/message/compose/<?php echo $_smarty_tpl->tpl_vars['userid']->value;?>
+" class="login-required access-required" target="_top">给<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+发送私信</a>
+                <div class="nub"></div>
+            </div>
+        </div>
+    </div>
+    <?php }?>
+
     <div class="spacer">
         <div class="sidebox submit submit-text">
             <div class="morelink">

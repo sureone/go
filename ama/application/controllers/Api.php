@@ -30,7 +30,10 @@ class Api extends CI_Controller {
         $this->load->helper('file');
         $this->load->library('ci_smarty');
     }
-
+    public function wxlogin($code){
+       
+        echo $code;
+    }
 
     public function index()
     {

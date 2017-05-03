@@ -508,6 +508,10 @@ class Markdown
         log_message('info', 'Markdown Class Initialized');
     }
 
+    public function test(){
+        return "hello markdown";
+    }
+
     /**
      * Initializes settings from the specified $config array.
      *
