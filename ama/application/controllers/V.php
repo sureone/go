@@ -103,7 +103,6 @@ class V extends CI_Controller {
 		echo $this->someclass->test();
 	}
 	public function wxtest(){
-		echo "dddddd";
 		$appid = 'wx9ec950ea9d8e2f64';
 		$sessionKey = 'tiihtNczf5v6AKRyjwEUhQ==';
 
@@ -134,7 +133,7 @@ echo "dddddd";
 		} else {
 		    echo($errCode . "\n");
 		}
-echo $iv;
+echo $data;
 	}
 
 	public function test(){
