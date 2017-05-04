@@ -6,16 +6,31 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    var that = this;
+
     wx.login({
       success: function(res) {
         if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://www.askmeany.cn/ama/api/wxlogin',
-            data: {
-              code: res.code
-            }
+
+          var loginCode = res.code;
+
+          wx.getUserInfo({
+                withCredentials:true,
+                success: function (res) {
+                  that.globalData.userInfo = res.userInfo
+                   //发起网络请求
+                  wx.request({
+                    url: 'https://www.askmeany.cn/ama/api/wxlogin/'+loginCode,
+                    data: res,
+                    success:function(res){
+                      console.log(res.data);
+                    }
+                  })
+
+                }
           })
+
+         
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
@@ -42,6 +57,6 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
   }
 })
