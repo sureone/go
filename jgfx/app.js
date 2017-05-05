@@ -20,6 +20,7 @@ App({
                   that.globalData.userInfo = res.userInfo
                    //发起网络请求
                   wx.request({
+                    method:'POST',
                     url: 'https://www.askmeany.cn/ama/api/wxlogin/'+loginCode,
                     data: res,
                     success:function(res){

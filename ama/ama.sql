@@ -98,6 +98,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastdate` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
+ 
+DROP TABLE IF EXISTS `wx_users`;
+CREATE TABLE IF NOT EXISTS `wx_users` (
+`id` bigint(20) NOT NULL,
+  `openId` varchar(128) NOT NULL,
+  `nickName` varchar(128) NOT NULL,
+  `gender` int(11) DEFAULT NULL,
+  `language` varchar(128) DEFAULT NULL,
+  `city` varchar(64) DEFAULT NULL,
+  `province` varchar(64) DEFAULT NULL,
+  `country` varchar(64) DEFAULT NULL,
+  `avatarUrl` varchar(256) DEFAULT NULL,
+  `cdate` int(11) DEFAULT NULL,
+  `lastdate` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='微信用户表';
+--
+ALTER TABLE `wx_users`
+ ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `wx_users`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4; 
+
 --
 -- Indexes for dumped tables
 --
