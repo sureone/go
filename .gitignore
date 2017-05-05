@@ -14,4 +14,5 @@ bin
 gen
 logs
 matches
-
+ama/application/views/template_c
+ama/application/views/cache
