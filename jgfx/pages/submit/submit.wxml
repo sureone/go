@@ -1,8 +1,17 @@
 <!--logs.wxml-->
 <view class="container log-list">
   <block wx:for="{{imgs}}" wx:for-item="img" wx:key="*this">
-  <text class="log-item">{{index + 1}}</text>
+  <!--<text class="log-item">{{index + 1}}</text>-->
     <image style="width: 200px; height: 200px; background-color: #eeeeee;" mode="{{aspectFit}}" src="{{img}}"></image>
     
   </block>
+</view>
+
+
+<view class="section">
+  <form bindsubmit="submitThing">   
+
+    <textarea placeholder="请输入要分享的文字"  name="content"/>
+    <button form-type="submit"> 提交 </button>
+  </form>
 </view>
