@@ -297,6 +297,12 @@ echo $data;
 
     public function do_upload()
     {
+		$openid="";
+		if($_POST['openId']){
+			$openid=$_POST['openId'];
+			if($this->amaModel->isValidWxUser($openid)==false) 
+				return;
+		}
             $config['upload_path']          = './uploads/';
             $config['allowed_types']        = 'gif|jpg|png';
             $config['max_size']             = 1024*1024*20;
@@ -319,9 +325,14 @@ echo $data;
             else
             {
             		$result = $this->upload->data();
+			$result['openid']=$openid;
             		$result['file_id']=$this->amaModel->addAttach($result);
+			if($openid!=''){
+				echo $result['file_id'];
+			}else{
                     $data = array('upload_data' => $result);
                     $this->load->view('upload_success', $data);
+			}
 
             }
     }

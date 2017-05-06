@@ -35,45 +35,38 @@ class Api extends CI_Controller {
         $this->load->library('ci_smarty');
         $this->load->library('wx_crypt');
     }
-    function curl_request($url,$post='',$cookie='', $returnCookie=0){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)');
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
-        curl_setopt($curl, CURLOPT_REFERER, "http://XXX");
-        if($post) {
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($post));
-        }
-        if($cookie) {
-            curl_setopt($curl, CURLOPT_COOKIE, $cookie);
-        }
-        curl_setopt($curl, CURLOPT_HEADER, $returnCookie);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $data = curl_exec($curl);
-        if (curl_errno($curl)) {
-            return curl_error($curl);
-        }
-        curl_close($curl);
-        if($returnCookie){
-            list($header, $body) = explode("\r\n\r\n", $data, 2);
-            preg_match_all("/Set\-Cookie:([^;]*);/", $header, $matches);
-            $info['cookie']  = substr($matches[1][0], 1);
-            $info['content'] = $body;
-            return $info;
-        }else{
-            return $data;
-        }
-    }
-   
     public function wxlogin($code=""){
+	
+        $idata = file_get_contents('php://input');
+        $idata = json_decode($idata);
 	$url = "https://api.weixin.qq.com/sns/jscode2session?appid={$this->appid}&secret={$this->secret}&js_code={$code}&grant_type=authorization_code";
       	$data = file_get_contents($url);	 
         $jobj = json_decode($data);
-        $errCode = $this->wx_crypt->decryptData($this->appid,$jobj->{'session_key'},$_GET['encryptedData'], $_GET['iv'], $data );
-	echo $errCode;
+        $errCode = $this->wx_crypt->decryptData($this->appid,$jobj->{'session_key'},$idata->{'encryptedData'}, $idata->{'iv'}, $data );
+	$odata = json_decode($data);
+	$query = $this->db->select(['openId'])
+                              ->where('openId',$odata->{'openId'})
+                              ->get('wx_users');
+        $rows = $query->result_array();
+        if(count($rows)==0){
+		$this->db->insert('wx_users',
+		    array('openId'=>$odata->{'openId'},
+			'nickName'=>$odata->{'nickName'},
+			'gender'=>$odata->{'gender'},
+			'language'=>$odata->{'language'},
+			'province'=>$odata->{'province'},
+			'country'=>$odata->{'country'},
+			'avatarUrl'=>$odata->{'avatarUrl'},
+			'city'=>$odata->{'city'},'cdate'=>$this->curTime(),'lastdate'=>$this->curTime()));
+		$this->db->insert('users',array(
+                    'userid'=>$odata->{'openId'},'passwd'=>md5('1234'),
+                    'name'=>$odata->{'nickName'},'email'=>'',
+                'cdate'=>$this->curTime(),'lastdate'=>$this->curTime())
+                );
+
+	}
+
+	echo $data;
 
     }
 
@@ -311,7 +304,7 @@ class Api extends CI_Controller {
                         $this->db->where('id',$attach->{'file_id'});
                         $this->db->update('thing_attach_map',
                             array('thingid'=>$thingid,
-                                'file_no'=>i,
+                                'file_no'=>$i,
                             'file_comment'=>$attach->{'file_comment'}));
                     }
                 }
@@ -320,9 +313,39 @@ class Api extends CI_Controller {
             }
 
 
+        }else if($json->{'openId'}){
+	    if($this->amaModel->isValidWxUser($json->{'openId'})){
+	     $this->db->insert('things',
+                array('author'=>$json->{'openId'},
+                    'title'=>$json->{'title'},
+                    'stype'=>'link',
+                    'content'=>$json->{'content'},
+                    'cdate'=>$this->curTime(),
+                    'udate'=>$this->curTime()));
+                $thingid=$this->db->insert_id();
+                $attches = $json->{'attaches'};
+                if($attches && count($attches)>0){
+                    $i=0;
+                    foreach ($attches as $attach) {
+                        $i=$i+1;
+                        $this->db->where('id',$attach->{'file_id'});
+                        $this->db->update('thing_attach_map',
+                            array('thingid'=>$thingid,
+                                'file_no'=>$i,
+                            'file_comment'=>$attach->{'file_comment'}));
+                    }
+                }
+                return array('code'=>200,'thingid'=>$thingid,'attaches'=>$attches);
+
+
+	    }else{
+		return  "not valid wx user" . $json->{'openId'};
+	    }
+
+		
         }else{
             return array('code'=>404);
-        }
+	}
     }
 
     function doSubmitNewMessage($json){

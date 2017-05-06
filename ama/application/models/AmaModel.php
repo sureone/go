@@ -347,11 +347,27 @@ class AmaModel extends CI_Model{
 
         return array('comments'=>$result,'comments_count'=>count($rows));
     }
+    public function isValidWxUser($openid){
+	$query = $this->db->select(['openId'])
+                              ->where('openId',$openid)
+                              ->get('wx_users');
+        $rows = $query->result_array();
+        if(count($rows)==1){
+		return true;
+	}
+	return true;
+    }
 
-    function addAttach($json){
+    public function addAttach($json){
         $user = $this->session->userdata('user.info');
         if(isset($_SESSION['user.info'])){
-            $data =  array('userid'=>$user['userid'],
+		$userid=$user['userid'];
+	}else if($json['openid']!=''){
+		$userid=$json['openid'];
+        }else{
+            return -1;
+        }
+            $data =  array('userid'=>$userid,
                 'file_type'=>$json['file_type'],
                 'file_name'=>$json['file_name'],
                 'file_path'=>$json['file_path'],
@@ -369,9 +385,6 @@ class AmaModel extends CI_Model{
 
             
 
-        }else{
-            return -1;
-        }
     }
 
 
