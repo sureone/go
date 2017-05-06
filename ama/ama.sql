@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `user_thing_map` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-`id` bigint(20) NOT NULL,
+`id` bigint(64) NOT NULL,
   `userid` varchar(64) NOT NULL,
   `name` varchar(64) NOT NULL,
   `passwd` varchar(128) NOT NULL,

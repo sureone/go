@@ -24,7 +24,8 @@ App({
                     url: 'https://www.askmeany.cn/ama/api/wxlogin/'+loginCode,
                     data: res,
                     success:function(res){
-                      console.log(res.data);
+                    
+                      that.globalData.openId=res.data.openId;
                     }
                   })
 
@@ -41,7 +42,7 @@ App({
   getUserInfo:function(cb){
     var that = this
     if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
+      typeof cb == "function" && cb(this.globalData)
     }else{
       //调用登录接口
       wx.login({
@@ -59,5 +60,6 @@ App({
   },
   globalData:{
     userInfo:null,
+    openId:null
   }
 })
