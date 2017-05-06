@@ -51,7 +51,7 @@ App({
             withCredentials:true,
             success: function (res) {
               that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+              typeof cb == "function" && cb(that.globalData)
             }
           })
         }

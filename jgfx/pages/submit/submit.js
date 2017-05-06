@@ -4,18 +4,19 @@ var app = getApp();
 Page({
   data: {
     imgs: [],
-    openId:null
+    openId:null,
+    file_id:null
   },
   submitThing:function(e){
 
     var data={
       action:'submit-new-link',
       attaches:[
-        {file_comment:'',file_id:e.detail.value.file_id}
+        {file_comment:'',file_id:this.data.file_id}
       ],
       content:e.detail.value.content,
       title:'',
-      openId:e.detail.value.openId
+      openId:app.globalData.openId
     }
     wx.request({
                     method:'POST',

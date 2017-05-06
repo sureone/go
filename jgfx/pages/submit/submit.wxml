@@ -10,9 +10,8 @@
 
 <view class="section">
   <form bindsubmit="submitThing">   
-    <input type="text" name="file_id" value="{{file_id}}" />
-    <input type="text" name="openId" value="{{openId}}" />
-    <textarea placeholder="请输入要分享的文字" auto-focus   name="content"/>
+
+    <textarea placeholder="请输入要分享的文字"  name="content"/>
     <button form-type="submit"> 提交 </button>
   </form>
 </view>
