@@ -39,7 +39,6 @@ Page({
     var that = this;
     
     wx.chooseImage({
-      sizeType: ['original'],
       success: function(res) {
         var tempFilePaths = res.tempFilePaths
         var cnt=0;
