@@ -7,7 +7,7 @@
     {if isset($page_title)}
 	<title>{$page_title}</title>
     {else}
-    <title>极光网</title>
+    <title>波普网络</title>
     {/if}
     <link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
