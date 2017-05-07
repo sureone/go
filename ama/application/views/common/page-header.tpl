@@ -53,5 +53,11 @@
             white-space: nowrap;
             max-width: 700px;
         }
+
+        {if isset($ismobile)}
+        .side{
+            display: none;
+        }
+        {/if}
     </style>
     {/if}

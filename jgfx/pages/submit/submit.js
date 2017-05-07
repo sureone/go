@@ -14,7 +14,7 @@ Page({
       action:'submit-new-link',
      
       content:e.detail.value.content,
-      title:'',
+      title:e.detail.value.title,
       openId:app.globalData.openId
     }
 
