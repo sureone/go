@@ -21,7 +21,7 @@ App({
                    //发起网络请求
                   wx.request({
                     method:'POST',
-                    url: 'https://www.askmeany.cn/ama/api/wxlogin/'+loginCode,
+                    url: 'https://www.askmeany.cn/api/wxlogin/'+loginCode,
                     data: res,
                     success:function(res){
                     
