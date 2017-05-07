@@ -12,8 +12,9 @@
 <view class="section">
  <progress percent="{{progress}}" stroke-width="2" />
   <form bindsubmit="submitThing">   
+    <input type="text" name="title" placeholder="标题"/>
 
-    <textarea placeholder="请输入要分享的文字"  name="content"/>
+    <textarea maxlength="-1" placeholder="请输入要分享的文字"  name="content"/>
     <button form-type="submit"> 提交 </button>
   </form>
 </view>
