@@ -134,6 +134,7 @@ class V extends CI_Controller {
 
 		$user_info = $this->session->userdata('user.info');
 		$this->ci_smarty->assign("pagetype","list");
+
 		if($this->isMobile()) $this->ci_smarty->assign("ismobile","true");
 		if($user_info!=null){
 			$this->ci_smarty->assign("user",$user_info);
@@ -150,7 +151,7 @@ class V extends CI_Controller {
 		$this->common();
 
 		if(!$this->ci_smarty->isCached('hot.tpl')){ 
-			$rows = $this->amaModel->readHotThings(0,10);
+			$rows = $this->amaModel->readHotThings(0,2000);
 			$this->ci_smarty->assign("page","hot");
 			$this->ci_smarty->assign("things",$rows);
 			$this->ci_smarty->display("hot.tpl");
@@ -166,7 +167,7 @@ class V extends CI_Controller {
 	function showNewView(){
 		$this->common();
 		if(!$this->ci_smarty->isCached('new.tpl')){ 
-			$rows = $this->amaModel->readNewThings(0,10);
+			$rows = $this->amaModel->readNewThings(0,2000);
 			$this->ci_smarty->assign("page","new");
 			$this->ci_smarty->assign("things",$rows);
 			$this->ci_smarty->display("new.tpl");
