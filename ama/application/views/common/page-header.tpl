@@ -60,3 +60,16 @@
         {/if}
     </style>
     {/if}
+      
+	<style>
+	  {if isset($ismobile)}
+        #header,.side{
+            display: none;
+        }
+		.formtabs-content {
+			width: 100%;
+			border-top: 4px solid #5f99cf;
+			padding-top: 10px;
+		}
+        {/if}
+	</style>
