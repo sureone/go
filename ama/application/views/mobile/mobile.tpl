@@ -8,10 +8,19 @@
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>波普网络</title>
+    <title>boopo.cn</title>
     <link href="./static/f7/css/framework7.ios.min.css" rel="stylesheet">
     <link href="./static/f7/css/framework7.ios.colors.min.css" rel="stylesheet">
-	<script src="./static/f7/js/framework7.min.js"></script>
+	<!-- <script src="./static/f7/js/framework7.min.js"></script> -->
+	
+	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+    <script src="./static/js/form2json.js"></script>
+    <script src="./static/js/common.js?v=7"></script>
+    <script src="./static/js/jquery.timeago.js?v=1"></script>
+    <script src="./static/js/markdown.js?v=3"></script>
+	<script type="text/javascript" src="./static/js/ama.js?v=9"></script>
+	
 </head>
   <body>
     <!-- Status bar overlay for fullscreen mode-->
@@ -39,7 +48,7 @@
           <!-- Navbar inner for Index page-->
           <div data-page="index" class="navbar-inner">
             <!-- We have home navbar without left link-->
-            <div class="center sliding">Awesome App</div>
+            <div class="center sliding">boopo.cn</div>
             <div class="right">
               <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
             </div>
@@ -66,36 +75,41 @@
           <div data-page="index" class="page">
             <!-- Scrollable page content-->
             <div class="page-content">
-			<div class="card facebook-card">
-				  <div class="card-header">
-					<div class="facebook-avatar"><img src="..." width="34" height="34"></div>
-					<div class="facebook-name">John Doe</div>
-					<div class="facebook-date">Monday at 2:15 PM</div>
-				  </div>
-				  <div class="card-content">
-					<div class="card-content-inner">
-					  <p>What a nice photo i took yesterday!</p>
-					  <img src="..." width="100%">
-					  <p class="color-gray">Likes: 112    Comments: 43</p>
-					</div>
-				  </div>
-				  <div class="card-footer">
-					<a href="#" class="link">Like</a>
-					<a href="#" class="link">Comment</a>
-					<a href="#" class="link">Share</a>
-				  </div>
-				</div>   
+			
+				{foreach $things as $entry}
+					<div class="card facebook-card">
+					  <div class="card-header">
+						<div class="facebook-avatar"><img src="..." width="34" height="34"></div>
+						<div class="facebook-name">{$entry.author_name}</div>
+						<div class="facebook-date"><time class="live-timestamp timeago" datetime="{$entry.timeago}"></time></div>
+					  </div>
+					  <div class="card-content">
+						<div class="card-content-inner">
+						  <p>{$entry.title}</p>
+						  
+						    {foreach $entry.attaches as $attach}
+                                <img src="./uploads/{$attach.file_name}" width="100%">
+                            {/foreach} 
+                          
+						 
+						</div>
+					  </div>
+					  <div class="card-footer">
+						<a href="#" class="link">Like({$entry.likes-$entry.dislikes})</a>
+						<a href="#" class="link">Comment({$entry.replies})</a>
+						<a href="#" class="link">Share</a>
+					  </div>
+					</div>   
+				{/foreach}
+				
+				
             </div>
           </div>
           <!-- About Page-->
           <div data-page="about" class="page cached">
             <div class="page-content">
               <div class="content-block">
-                <p>You may go <a href="#" class="back">back</a> or load <a href="#services">Services</a> page.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel commodo massa, eu adipiscing mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus ultricies dictum neque, non varius tortor fermentum at. Curabitur auctor cursus imperdiet. Nam molestie nisi nec est lacinia volutpat in a purus. Maecenas consectetur condimentum viverra. Donec ultricies nec sem vel condimentum. Phasellus eu tincidunt enim, sit amet convallis orci. Vestibulum quis fringilla dolor.    </p>
-                <p>Mauris commodo lacus at nisl lacinia, nec facilisis erat rhoncus. Sed eget pharetra nunc. Aenean vitae vehicula massa, sed sagittis ante. Quisque luctus nec velit dictum convallis. Nulla facilisi. Ut sed erat nisi. Donec non dolor massa. Mauris malesuada dolor velit, in suscipit leo consectetur vitae. Duis tempus ligula non eros pretium condimentum. Cras sed dolor odio.</p>
-                <p>Suspendisse commodo adipiscing urna, a aliquet sem egestas in. Sed tincidunt dui a magna facilisis bibendum. Nunc euismod consectetur lorem vitae molestie. Proin mattis tellus libero, non hendrerit neque eleifend ac. Pellentesque interdum velit at lacus consectetur scelerisque et id dui. Praesent non fringilla dui, a elementum purus. Proin vitae lacus libero. Nunc eget lectus non mi iaculis interdum vel a velit. Nullam tincidunt purus id lacus ornare, at elementum turpis euismod. Cras mauris enim, congue eu nisl sit amet, pulvinar semper erat. Suspendisse sed mauris diam.</p>
-                <p>Nam eu mauris leo. Pellentesque aliquam vehicula est, sed lobortis tellus malesuada facilisis. Fusce at hendrerit ligula. Donec eu nibh convallis, pulvinar enim quis, lacinia diam. Ut semper ac magna nec ornare. Integer placerat justo sed nunc suscipit facilisis. Vestibulum ac tincidunt augue. Duis eu aliquet mauris, vel luctus mauris. Nulla non augue nec diam pharetra posuere at in mauris.</p>
+               
               </div>
             </div>
           </div>
@@ -103,11 +117,7 @@
           <div data-page="services" class="page cached">
             <div class="page-content">
               <div class="content-block">
-                <p>You may go <a href="#" class="back">back</a> or load <a href="#about">About</a> page.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel commodo massa, eu adipiscing mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus ultricies dictum neque, non varius tortor fermentum at. Curabitur auctor cursus imperdiet. Nam molestie nisi nec est lacinia volutpat in a purus. Maecenas consectetur condimentum viverra. Donec ultricies nec sem vel condimentum. Phasellus eu tincidunt enim, sit amet convallis orci. Vestibulum quis fringilla dolor.    </p>
-                <p>Mauris commodo lacus at nisl lacinia, nec facilisis erat rhoncus. Sed eget pharetra nunc. Aenean vitae vehicula massa, sed sagittis ante. Quisque luctus nec velit dictum convallis. Nulla facilisi. Ut sed erat nisi. Donec non dolor massa. Mauris malesuada dolor velit, in suscipit leo consectetur vitae. Duis tempus ligula non eros pretium condimentum. Cras sed dolor odio.</p>
-                <p>Suspendisse commodo adipiscing urna, a aliquet sem egestas in. Sed tincidunt dui a magna facilisis bibendum. Nunc euismod consectetur lorem vitae molestie. Proin mattis tellus libero, non hendrerit neque eleifend ac. Pellentesque interdum velit at lacus consectetur scelerisque et id dui. Praesent non fringilla dui, a elementum purus. Proin vitae lacus libero. Nunc eget lectus non mi iaculis interdum vel a velit. Nullam tincidunt purus id lacus ornare, at elementum turpis euismod. Cras mauris enim, congue eu nisl sit amet, pulvinar semper erat. Suspendisse sed mauris diam.</p>
-                <p>Nam eu mauris leo. Pellentesque aliquam vehicula est, sed lobortis tellus malesuada facilisis. Fusce at hendrerit ligula. Donec eu nibh convallis, pulvinar enim quis, lacinia diam. Ut semper ac magna nec ornare. Integer placerat justo sed nunc suscipit facilisis. Vestibulum ac tincidunt augue. Duis eu aliquet mauris, vel luctus mauris. Nulla non augue nec diam pharetra posuere at in mauris.     </p>
+                
               </div>
             </div>
           </div>

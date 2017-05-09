@@ -151,7 +151,14 @@ class V extends CI_Controller {
 		$this->common();
 		
 		if($this->isMobile()) {
-			$this->ci_smarty->display("mobile/mobile.tpl");
+			if(!$this->ci_smarty->isCached('mobile/mobile.tpl')){ 
+				$rows = $this->amaModel->readHotThings(0,2000);
+				$this->ci_smarty->assign("page","hot");
+				$this->ci_smarty->assign("things",$rows);
+				$this->ci_smarty->display("mobile/mobile.tpl");
+			}else{
+				$this->ci_smarty->display("mobile/mobile.tpl");
+			}
 			return;
 		}
 

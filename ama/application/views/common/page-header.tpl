@@ -7,7 +7,7 @@
     {if isset($page_title)}
 	<title>{$page_title}</title>
     {else}
-    <title>波普网络</title>
+    <title>boopo.cn</title>
     {/if}
     <link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -69,17 +69,5 @@
 		}
         {/if}
     </style>
-    {/if}
-      
-	<style>
-	  {if isset($ismobile)}
-        #header,.side{
-            display: none;
-        }
-		.formtabs-content {
-			width: 100%;
-			border-top: 4px solid #5f99cf;
-			padding-top: 10px;
-		}
-        {/if}
-	</style>
+
+ 
