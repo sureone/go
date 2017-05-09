@@ -56,15 +56,11 @@ class AmaModel extends CI_Model{
     	$rows = $query->result_array();
 		
 		
-		 foreach ($rows as &$row){
-            $attaches = $this->readAttaches($row['thingid']);
-            $row['attaches'] = $attaches;
-        }
 
     	return $rows;
     }
 
-     public function readNewThings($maxid,$limit){
+     public function readNewThings($maxid,$limit,$mobile){
 
         $user_info = $this->session->userdata('user.info');
 
@@ -97,6 +93,14 @@ class AmaModel extends CI_Model{
             $query = $this->db->get();
 
         $rows = $query->result_array();
+		
+		if($mobile){
+			foreach ($rows as &$row){
+				$attaches = $this->readAttaches($row['thingid']);
+				$row['attaches'] = $attaches;
+			}
+		}
+	
 
         return $rows;
     }

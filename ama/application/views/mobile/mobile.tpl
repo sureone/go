@@ -48,9 +48,10 @@
           <!-- Navbar inner for Index page-->
           <div data-page="index" class="navbar-inner">
             <!-- We have home navbar without left link-->
-            <div class="center sliding">boopo.cn</div>
+            <div class="center sliding"><img src="./static/images/boopo.png"  height="20"></div>
             <div class="right">
-              <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+              <!-- Right link contains only icon - additional "icon-only" class-->
+			  <!-- <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a> -->
             </div>
           </div>
           <!-- Navbar inner for About page-->
@@ -79,7 +80,7 @@
 				{foreach $things as $entry}
 					<div class="card facebook-card">
 					  <div class="card-header">
-						<div class="facebook-avatar"><img src="..." width="34" height="34"></div>
+						<div class="facebook-avatar"><img src="./static/images/default-avatar.jpg" width="34" height="34"></div>
 						<div class="facebook-name">{$entry.author_name}</div>
 						<div class="facebook-date"><time class="live-timestamp timeago" datetime="{$entry.timeago}"></time></div>
 					  </div>
@@ -90,14 +91,16 @@
 						    {foreach $entry.attaches as $attach}
                                 <img src="./uploads/{$attach.file_name}" width="100%">
                             {/foreach} 
+							
+						  <p><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></p>
                           
 						 
 						</div>
 					  </div>
 					  <div class="card-footer">
-						<a href="#" class="link">Like({$entry.likes-$entry.dislikes})</a>
-						<a href="#" class="link">Comment({$entry.replies})</a>
-						<a href="#" class="link">Share</a>
+						<a href="#" class="link">喜欢({$entry.likes-$entry.dislikes})</a>
+						<a href="#" class="link">评论({$entry.replies})</a>
+						<a href="#" class="link">分享</a>
 					  </div>
 					</div>   
 				{/foreach}
@@ -337,9 +340,9 @@
           </div>
         </div>
         <!-- Bottom Toolbar-->
-        <div class="toolbar">
+<!--         <div class="toolbar">
           <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- Path to your app js-->

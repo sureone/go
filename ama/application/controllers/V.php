@@ -152,7 +152,7 @@ class V extends CI_Controller {
 		
 		if($this->isMobile()) {
 			if(!$this->ci_smarty->isCached('mobile/mobile.tpl')){ 
-				$rows = $this->amaModel->readHotThings(0,2000);
+				$rows = $this->amaModel->readNewThings(0,200,true);
 				$this->ci_smarty->assign("page","hot");
 				$this->ci_smarty->assign("things",$rows);
 				$this->ci_smarty->display("mobile/mobile.tpl");
@@ -179,7 +179,7 @@ class V extends CI_Controller {
 	function showNewView(){
 		$this->common();
 		if(!$this->ci_smarty->isCached('new.tpl')){ 
-			$rows = $this->amaModel->readNewThings(0,2000);
+			$rows = $this->amaModel->readNewThings(0,2000,false);
 			$this->ci_smarty->assign("page","new");
 			$this->ci_smarty->assign("things",$rows);
 			$this->ci_smarty->display("new.tpl");
