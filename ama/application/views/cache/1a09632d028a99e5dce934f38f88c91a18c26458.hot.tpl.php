@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-03 06:35:20
+/* Smarty version 3.1.30, created on 2017-05-08 11:46:12
   from "D:\work\go\ama\application\views\hot.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59095e08a84472_10458081',
+  'unifunc' => 'content_59103e64130b81_16261267',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1493708245,
+      1 => 1494233935,
       2 => 'file',
     ),
     '60fa3e11c1f4314b315f8259b36371c39276f334' => 
@@ -48,7 +48,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'a6511d30798b0d5592df6709fdb08d9628d23d2a' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1493708019,
+      1 => 1494233935,
       2 => 'file',
     ),
     '4b6dd1202b4b103f1802898db3a09d2c6f39e99e' => 
@@ -60,18 +60,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 10,
 ),true)) {
-function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59103e64130b81_16261267 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-	<!DOCTYPE html>
-<html>
+	<html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<meta charset="utf-8">
     <base href="http://127.0.0.1/ama/index.php">
-        <title>后园小亭</title>
-    	<style type="text/css">
-	</style>
-	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
+        <title>波普网络</title>
+        <link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://apps.bdimg.com/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="./static/js/form2json.js"></script>
@@ -114,8 +111,23 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
             white-space: nowrap;
             max-width: 700px;
         }
-    </style>
-    
+
+                .side{
+            display: none;
+        }
+            </style>
+          
+	<style>
+	          #header,.side{
+            display: none;
+        }
+		.formtabs-content {
+			width: 100%;
+			border-top: 4px solid #5f99cf;
+			padding-top: 10px;
+		}
+        	</style>
+
 	<style type="text/css">
 
 	</style>
@@ -214,7 +226,11 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 1">1</span><a class="title may-blank loggedin " href="./v/a/73">dfsafdsa111111111</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 1">1</span><a class="title may-blank loggedin " href="./v/a/73">
+						 									dfsafdsa111111111
+							
+						 </a>
+						</p>
 											
 
 					
@@ -265,7 +281,11 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/75">121212</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/75">
+						 									121212
+							
+						 </a>
+						</p>
 											
 
 					
@@ -316,7 +336,11 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/74">fdsafds</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/74">
+						 									fdsafds
+							
+						 </a>
+						</p>
 											
 
 					
@@ -367,7 +391,11 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/72">gfdsgfdsgfdsg3rertwetre</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/72">
+						 									gfdsgfdsgfdsg3rertwetre
+							
+						 </a>
+						</p>
 											
 
 					
@@ -418,7 +446,11 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/71">dfsafdsafsd</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/71">
+						 									dfsafdsafsd
+							
+						 </a>
+						</p>
 											
 
 					
@@ -469,7 +501,11 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/70">test</a></p>
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/70">
+						 									test
+							
+						 </a>
+						</p>
 											
 
 					
@@ -520,9 +556,13 @@ function content_59095e08a84472_10458081 (Smarty_Internal_Template $_smarty_tpl)
 								<div class="entry unvoted">
 																	<div class="expando-button collapsed selftext"></div>
 																
-												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/69">雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
+												 <p class="title"><span class="score unvoted" title="指标 0">0</span><a class="title may-blank loggedin " href="./v/a/69">
+						 									雨霖铃·寒蝉凄切， 寒蝉凄切， 对长亭晚， 骤雨初歇。都门帐饮无绪， 留恋处， 兰舟催发。念去去， 千里烟波， 暮霭沉沉楚天阔。
 
-多情自古伤离别， 更那堪， 冷落清秋节！</a></p>
+多情自古伤离别， 更那堪， 冷落清秋节！
+							
+						 </a>
+						</p>
 											
 
 					
