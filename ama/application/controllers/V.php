@@ -149,6 +149,11 @@ class V extends CI_Controller {
 
 	function showHotView(){
 		$this->common();
+		
+		if($this->isMobile()) {
+			$this->ci_smarty->display("mobile/mobile.tpl");
+			return;
+		}
 
 		if(!$this->ci_smarty->isCached('hot.tpl')){ 
 			$rows = $this->amaModel->readHotThings(0,2000);
