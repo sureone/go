@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-03 06:34:15
+/* Smarty version 3.1.30, created on 2017-05-08 11:42:05
   from "D:\work\go\ama\application\views\common\page-header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59095dc73e2102_89594801',
+  'unifunc' => 'content_59103d6d21a9c5_96939839',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2cba0286b045df067f392a1b6c88c5e91e74ffac' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\page-header.tpl',
-      1 => 1493708245,
+      1 => 1494233935,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59095dc73e2102_89594801 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '599359095dc730b352_39074904';
+function content_59103d6d21a9c5_96939839 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2804059103d6d18a120_83751391';
 ?>
-<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -33,11 +32,9 @@ $_smarty_tpl->compiled->nocache_hash = '599359095dc730b352_39074904';
 	<title><?php echo $_smarty_tpl->tpl_vars['page_title']->value;?>
 </title>
     <?php } else { ?>
-    <title>后园小亭</title>
+    <title>波普网络</title>
     <?php }?>
-	<style type="text/css">
-	</style>
-	<link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
+    <link rel="stylesheet" href="./static/css/common.css?v=2" type="text/css" />
     <?php echo '<script'; ?>
  type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"><?php echo '</script'; ?>
 >
@@ -98,7 +95,26 @@ $_smarty_tpl->compiled->nocache_hash = '599359095dc730b352_39074904';
             white-space: nowrap;
             max-width: 700px;
         }
+
+        <?php if (isset($_smarty_tpl->tpl_vars['ismobile']->value)) {?>
+        .side{
+            display: none;
+        }
+        <?php }?>
     </style>
-    <?php }
-}
+    <?php }?>
+      
+	<style>
+	  <?php if (isset($_smarty_tpl->tpl_vars['ismobile']->value)) {?>
+        #header,.side{
+            display: none;
+        }
+		.formtabs-content {
+			width: 100%;
+			border-top: 4px solid #5f99cf;
+			padding-top: 10px;
+		}
+        <?php }?>
+	</style>
+<?php }
 }

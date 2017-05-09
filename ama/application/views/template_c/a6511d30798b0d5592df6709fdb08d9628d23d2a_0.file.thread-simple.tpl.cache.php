@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-05-03 06:34:15
+/* Smarty version 3.1.30, created on 2017-05-08 11:42:05
   from "D:\work\go\ama\application\views\common\thread-simple.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59095dc757c3e3_95763514',
+  'unifunc' => 'content_59103d6d435b45_73062936',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a6511d30798b0d5592df6709fdb08d9628d23d2a' => 
     array (
       0 => 'D:\\work\\go\\ama\\application\\views\\common\\thread-simple.tpl',
-      1 => 1493708019,
+      1 => 1494233935,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_59095dc757c3e3_95763514 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59103d6d435b45_73062936 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_regex_replace')) require_once 'D:\\work\\go\\ama\\application\\libraries\\libs\\plugins\\modifier.regex_replace.php';
-$_smarty_tpl->compiled->nocache_hash = '2076459095dc74a94b9_76235475';
+$_smarty_tpl->compiled->nocache_hash = '1718559103d6d362c15_78536249';
 ?>
 			
 			<div class="thing odd <?php echo $_smarty_tpl->tpl_vars['entry']->value['stype'];?>
@@ -85,8 +85,17 @@ $_smarty_tpl->compiled->nocache_hash = '2076459095dc74a94b9_76235475';
 						 <p class="title"><span class="score unvoted" title="指标 <?php echo $_smarty_tpl->tpl_vars['entry']->value['likes']-$_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
 "><?php echo $_smarty_tpl->tpl_vars['entry']->value['likes']-$_smarty_tpl->tpl_vars['entry']->value['dislikes'];?>
 </span><a class="title may-blank loggedin " href="./v/a/<?php echo $_smarty_tpl->tpl_vars['entry']->value['thingid'];?>
-"><?php echo $_smarty_tpl->tpl_vars['entry']->value['title'];?>
-</a></p>
+">
+						 	<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['title']) && $_smarty_tpl->tpl_vars['entry']->value['title'] != '') {?>
+								<?php echo $_smarty_tpl->tpl_vars['entry']->value['title'];?>
+
+							<?php } else { ?>
+								<?php echo $_smarty_tpl->tpl_vars['entry']->value['text'];?>
+
+							<?php }?>
+
+						 </a>
+						</p>
 						<?php } else { ?>
 						
 							<?php if (isset($_smarty_tpl->tpl_vars['entry']->value['title']) && $_smarty_tpl->tpl_vars['entry']->value['title'] != '') {?>
