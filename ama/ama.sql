@@ -19,6 +19,15 @@
 -- Table structure for table `datas`
 --
 
+
+CREATE DATABASE IF NOT EXISTS ama default charset utf8 COLLATE utf8_general_ci;
+
+use ama;
+
+CREATE USER IF NOT EXISTS 'ama'@'localhost' IDENTIFIED BY 'amagood123';
+
+GRANT ALL ON ama.* TO 'ama'@'localhost'  
+
 DROP TABLE IF EXISTS `datas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

@@ -34,8 +34,14 @@ class V extends CI_Controller {
 		$this->load->library('markdown');
 		
 	}
-	public function index()
+	public function index($code="")
 	{
+		// if($code!="helo"){
+
+		// 	echo "test php";
+		// 	return 0;
+		// }
+
 		$user_info = $this->session->userdata('user.info');
 		$this->showHotView();
 		// $this->load->view('hot',array('user'=>$user_info,'page'=>'hot',));
@@ -341,7 +347,8 @@ echo $data;
         $user_info = $this->session->userdata('user.info');
         if($thingid!=0 && $user_info!=null){
 
-        	$thing = $this->amaModel->readThing($thingid)['0'];
+        	$rows = $this->amaModel->readThing($thingid);
+        	$thing = $rows[0];
         	if($thing['author']==$user_info['userid']){
         		$thing['attaches']=$this->amaModel->readAttaches($thing['thingid']);
         		$this->ci_smarty->assign("thing",$thing);	
@@ -358,7 +365,8 @@ echo $data;
 		$this->ci_smarty->assign("thingid",$thingid);
 
 
-		$thing = $this->amaModel->readThing($thingid)['0'];
+		$rows = $this->amaModel->readThing($thingid);
+		$thing = $rows[0];
 
 		$comments_result = $this->amaModel->readComments($thingid,0,100);
 		$thing['comments']=$comments_result['comments'];

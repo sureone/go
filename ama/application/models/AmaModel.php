@@ -23,11 +23,11 @@ class AmaModel extends CI_Model{
 
         $user_info = $this->session->userdata('user.info');
 
-        $fields = ['a.author','users.name as author_name','a.stype',
+        $fields = array('a.author','users.name as author_name','a.stype',
                 'FROM_UNIXTIME(a.cdate) as timeago','a.title','a.content as text',
                 'a.cdate','a.udate','a.id as thingid','a.ups as likes',
                 'a.downs as dislikes',
-                'a.parent','a.main','a.replies'];
+                'a.parent','a.main','a.replies');
         if($user_info!=null){
             array_push($fields,'ut.idata as vote');
         }
@@ -64,11 +64,11 @@ class AmaModel extends CI_Model{
 
         $user_info = $this->session->userdata('user.info');
 
-        $fields = ['a.author','users.name as author_name','a.stype',
+        $fields = array('a.author','users.name as author_name','a.stype',
                 'FROM_UNIXTIME(a.cdate) as timeago','a.title','a.content as text',
                 'a.cdate','a.udate','a.id as thingid','a.ups as likes',
                 'a.downs as dislikes',
-                'a.parent','a.main','a.replies'];
+                'a.parent','a.main','a.replies');
         if($user_info!=null){
             array_push($fields,'ut.idata as vote');
         }
@@ -188,13 +188,13 @@ class AmaModel extends CI_Model{
 
 
     public function readThingsByUser($maxid,$limit,$userid,$type='all'){
-        $this->db->select(['things.author','users.name as author_name','things.stype',
+        $this->db->select(array('things.author','users.name as author_name','things.stype',
             'FROM_UNIXTIME(things.cdate) as timeago','things.title',
             'things.content as text','things.cdate','things.udate','things.id as thingid',
             'things.ups as likes','things.parent','things.downs as dislikes',
             'things.parent','things.main','things.replies',
             'a.title as p_title','a.author as p_author',
-            'au.name  as p_author_name','a.content as p_text']);
+            'au.name  as p_author_name','a.content as p_text'));
         $this->db->from('things');
         $this->db->join('users', 'users.userid = things.author');
         $this->db->join('things a','a.id = things.parent','LEFT',TRUE);
@@ -265,11 +265,11 @@ class AmaModel extends CI_Model{
 
         $user_info = $this->session->userdata('user.info');
 
-        $fields = ['a.author','users.name as author_name','a.stype',
+        $fields = array('a.author','users.name as author_name','a.stype',
                 'FROM_UNIXTIME(a.cdate) as timeago','a.title','a.content as text',
                 'a.cdate','a.udate','a.id as thingid','a.ups as likes',
                 'a.downs as dislikes',
-                'a.parent','a.main','a.replies'];
+                'a.parent','a.main','a.replies');
         if($user_info!=null){
             array_push($fields,'ut.idata as vote');
         }
@@ -311,11 +311,11 @@ class AmaModel extends CI_Model{
     public function readComments($main,$parent,$limit){
 
          $user_info = $this->session->userdata('user.info');
-        $fields = ['a.author','users.name as author_name','a.stype',
+        $fields = array('a.author','users.name as author_name','a.stype',
         'FROM_UNIXTIME(a.cdate) as timeago','a.title',
             'a.content as text','a.cdate','a.udate','a.id as thingid',
             'a.ups as likes','a.downs as dislikes',
-            'a.parent','a.main','a.replies'];
+            'a.parent','a.main','a.replies');
 
     if($user_info!=null){
             array_push($fields,'ut.idata as vote');
@@ -358,7 +358,7 @@ class AmaModel extends CI_Model{
         return array('comments'=>$result,'comments_count'=>count($rows));
     }
     public function isValidWxUser($openid){
-	$query = $this->db->select(['openId'])
+	$query = $this->db->select(array('openId'))
                               ->where('openId',$openid)
                               ->get('wx_users');
         $rows = $query->result_array();

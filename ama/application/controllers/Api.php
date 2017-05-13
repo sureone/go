@@ -44,7 +44,7 @@ class Api extends CI_Controller {
         $jobj = json_decode($data);
         $errCode = $this->wx_crypt->decryptData($this->appid,$jobj->{'session_key'},$idata->{'encryptedData'}, $idata->{'iv'}, $data );
 	$odata = json_decode($data);
-	$query = $this->db->select(['openId'])
+	$query = $this->db->select(array('openId'))
                               ->where('openId',$odata->{'openId'})
                               ->get('wx_users');
         $rows = $query->result_array();
@@ -130,7 +130,7 @@ class Api extends CI_Controller {
         $result = array('code'=>404);
         if(isset($_SESSION['user.info'])){
             $id = $user['userid'] . '-' . $json->{'thingid'} . '-save';
-            $query = $this->db->select(['idata'])
+            $query = $this->db->select(array('idata'))
                               ->where('id',$id)
                               ->get('user_thing_map');
             $rows = $query->result_array();
@@ -166,7 +166,7 @@ class Api extends CI_Controller {
         $result = array('code'=>404);
         if(isset($_SESSION['user.info'])){
             $id = $user['userid'] . '-' . $json->{'thingid'} . '-vote';
-            $query = $this->db->select(['idata'])
+            $query = $this->db->select(array('idata'))
                               ->where('id',$id)
                               ->get('user_thing_map');
             $rows = $query->result_array();
@@ -239,7 +239,7 @@ class Api extends CI_Controller {
         $result = array('code'=>404);
         if(isset($_SESSION['user.info'])){
 
-           $thing = $this->amaModel->readThing($json->{'thingid'})['0'];
+           $thing = $this->amaModel->readThing($json->{'thingid'}).get(0);
            if($thing['author']==$user['userid']){
 
                $this->db->where("thingid",$json->{'thingid'});
@@ -447,7 +447,7 @@ class Api extends CI_Controller {
         $id = $json->{'user'};
         $passwd = $json->{'passwd'};
 
-        $query = $this->db->select(['userid','name','email','status'])
+        $query = $this->db->select(array('userid','name','email','status'))
                           ->where('userid',$id)
                           ->where('passwd',md5($passwd))
                           ->get('users');
