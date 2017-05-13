@@ -239,7 +239,8 @@ class Api extends CI_Controller {
         $result = array('code'=>404);
         if(isset($_SESSION['user.info'])){
 
-           $thing = $this->amaModel->readThing($json->{'thingid'}).get(0);
+           $rows = $this->amaModel->readThing($json->{'thingid'});
+		    $thing=$rows[0];
            if($thing['author']==$user['userid']){
 
                $this->db->where("thingid",$json->{'thingid'});

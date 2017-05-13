@@ -3,12 +3,17 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
-    <base href="/index.php">
+    <base href="/ama/index.php">
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./static/images/newicon57.png">  
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./static/images/newicon72.png">  
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./static/images/newicon114.png">  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./static/images/newicon144.png">  
+  
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>boopo.cn</title>
+    <title>boopo</title>
     <link href="./static/f7/css/framework7.ios.min.css" rel="stylesheet">
     <link href="./static/f7/css/framework7.ios.colors.min.css" rel="stylesheet">
 	<!-- <script src="./static/f7/js/framework7.min.js"></script> -->
@@ -80,7 +85,7 @@
 				{foreach $things as $entry}
 					<div class="card facebook-card">
 					  <div class="card-header">
-						<div class="facebook-avatar"><img src="./static/images/default-avatar.jpg" width="34" height="34"></div>
+						<div class="facebook-avatar"><img src="./static/images/newicon57.png" width="34" height="34"></div>
 						<div class="facebook-name">{$entry.author_name}</div>
 						<div class="facebook-date"><time class="live-timestamp timeago" datetime="{$entry.timeago}"></time></div>
 					  </div>
@@ -89,7 +94,13 @@
 						  <p>{$entry.title}</p>
 						  
 						    {foreach $entry.attaches as $attach}
+							
+							{if $attach.file_type eq 'audio/mpeg'}
+								<a href="./uploads/{$attach.file_name}">{if $attach.file_comment neq ''}{$attach.file_comment}{else}{$attach.file_name}{/if}</a>
+							{else}
                                 <img src="./uploads/{$attach.file_name}" width="100%">
+							{/if}
+							
                             {/foreach} 
 							
 						  <p><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></p>

@@ -3,7 +3,7 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta name="baidu-site-verification" content="pQbUxSVJ6I" />
     <meta charset="utf-8">
-    <base href="/go/ama/index.php">
+    <base href="/ama/index.php">
     {if isset($page_title)}
 	<title>{$page_title}</title>
     {else}
