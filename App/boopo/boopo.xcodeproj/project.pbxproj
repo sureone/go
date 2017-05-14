@@ -15,7 +15,8 @@
 		2D7977061EC7F0050008E44C /* boopoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7977051EC7F0050008E44C /* boopoTests.swift */; };
 		2D7977111EC7F0050008E44C /* boopoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7977101EC7F0050008E44C /* boopoUITests.swift */; };
 		2D79771F1EC805C10008E44C /* BoopoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79771E1EC805C10008E44C /* BoopoTableViewController.swift */; };
-		2D7977211EC809120008E44C /* ThingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7977201EC809120008E44C /* ThingModel.swift */; };
+		2D7977291EC838E60008E44C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7977281EC838E60008E44C /* DetailViewController.swift */; };
+		2D79772B1EC83AF60008E44C /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D79772A1EC83AF60008E44C /* Web.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,8 @@
 		2D7977101EC7F0050008E44C /* boopoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boopoUITests.swift; sourceTree = "<group>"; };
 		2D7977121EC7F0050008E44C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D79771E1EC805C10008E44C /* BoopoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoopoTableViewController.swift; sourceTree = "<group>"; };
-		2D7977201EC809120008E44C /* ThingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingModel.swift; sourceTree = "<group>"; };
+		2D7977281EC838E60008E44C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2D79772A1EC83AF60008E44C /* Web.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +105,9 @@
 			children = (
 				2D7976ED1EC7F0050008E44C /* AppDelegate.swift */,
 				2D79771E1EC805C10008E44C /* BoopoTableViewController.swift */,
-				2D7977201EC809120008E44C /* ThingModel.swift */,
+				2D7977281EC838E60008E44C /* DetailViewController.swift */,
 				2D7976F11EC7F0050008E44C /* Main.storyboard */,
+				2D79772A1EC83AF60008E44C /* Web.storyboard */,
 				2D7976F71EC7F0050008E44C /* Assets.xcassets */,
 				2D7976F91EC7F0050008E44C /* LaunchScreen.storyboard */,
 				2D7976FC1EC7F0050008E44C /* Info.plist */,
@@ -242,6 +245,7 @@
 				2D7976FB1EC7F0050008E44C /* LaunchScreen.storyboard in Resources */,
 				2D7976F81EC7F0050008E44C /* Assets.xcassets in Resources */,
 				2D7976F31EC7F0050008E44C /* Main.storyboard in Resources */,
+				2D79772B1EC83AF60008E44C /* Web.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D7977211EC809120008E44C /* ThingModel.swift in Sources */,
 				2D7976EE1EC7F0050008E44C /* AppDelegate.swift in Sources */,
+				2D7977291EC838E60008E44C /* DetailViewController.swift in Sources */,
 				2D7976F61EC7F0050008E44C /* boopo.xcdatamodeld in Sources */,
 				2D79771F1EC805C10008E44C /* BoopoTableViewController.swift in Sources */,
 			);

@@ -10,42 +10,80 @@ import UIKit
 
 var kSize=UIScreen.main.bounds;
 
-var dataTable:UITableView!
-var itemStringArr=["企划部","软件部","咨询部","人事部","后勤部","产品部"]
-
 
 class BoopoTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+
+    @IBOutlet var listTableView : UITableView!
+    var dataSource:NSArray = []
     /*  创建Post请求 */
-    func PostRequest()
+    func postRequestDeprecated()
     {
         //(1）设置请求路径
-        var url:NSURL = NSURL(string:"http://www.boopo.cn:19023/ama/index.php/api")!//不需要传递参数
+        let url:NSURL = NSURL(string:"https://www.boopo.cn:19023/ama/index.php/api")!//不需要传递参数
         
         //(2) 创建请求对象
-        var request:NSMutableURLRequest = NSMutableURLRequest(url: url as URL) //默认为get请求
+        let request:NSMutableURLRequest = NSMutableURLRequest(url: url as URL) //默认为get请求
         request.timeoutInterval = 5.0 //设置请求超时为5秒
         request.httpMethod = "POST"  //设置请求方法
         
         //设置请求体
-        var param:NSString = NSString(format:"username=%@&pwd=%@",self.userName.text!,self.userPwd.text!)
+        let param:NSString = NSString(format:"{\"action\":\"read-hot-things\"}")
         //把拼接后的字符串转换为data，设置请求体
-        request.HTTPBody = param.dataUsingEncoding(NSUTF8StringEncoding)
+        request.httpBody = param.data(using: String.Encoding.utf8.rawValue)
+        
+        
+        
         
         //(3) 发送请求
-        NSURLConnection.sendAsynchronousRequest(request, queue:NSOperationQueue()) { (res, data, error)in
+        NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue:OperationQueue()) { (res, data, error)in
             //服务器返回：请求方式 = POST，返回数据格式 = JSON，用户名 = 123，密码 = 123
-            let  str =NSString(data: data!, encoding:NSUTF8StringEncoding)
-            print(str)
+            let  str = NSString(data: data!, encoding:String.Encoding.utf8.rawValue)
+            print(str!)
             
         }
     }
-
+    
+    func onDataReady(data:Any){
+        
+        self.dataSource = data as!NSArray
+        for item in self.dataSource{
+            print(item)
+        }
+        
+        listTableView.reloadData()
+        
+        
+    }
+    
+    
+    func postRequest(){
+        
+        
+        var request = URLRequest(url: URL(string: "https://www.boopo.cn:19023/ama/index.php/api")!)
+        request.httpMethod = "POST"
+        
+        let params = ["action":"read-hot-things"] as Dictionary<String, String>
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {data, response, err in
+            //let  str = NSString(data: data!, encoding:String.Encoding.utf8.rawValue)
+            //print(str!)
+            let jsonData = try? JSONSerialization.jsonObject(with: data!)
+            self.onDataReady(data: jsonData ?? [])
+            
+            }.resume()
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "boopo.cn"
         
+        self.title = "boopo.cn"
+        postRequest()
     }
     
     //段数
@@ -55,7 +93,7 @@ class BoopoTableViewController: UIViewController, UITableViewDataSource, UITable
     
     //行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemStringArr.count
+        return dataSource.count
     }
     
     //行高
@@ -94,9 +132,9 @@ class BoopoTableViewController: UIViewController, UITableViewDataSource, UITable
         if(cell == nil){
             cell=UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: identifier);
         }
-        
-        cell?.textLabel?.text = itemStringArr[indexPath.row];
-        cell?.detailTextLabel?.text = "待添加内容";
+        let item = self.dataSource[indexPath.row] as! Dictionary<String,Any>
+        cell?.textLabel?.text = item["title"] as? String;
+        cell?.detailTextLabel?.text = item["timeago"] as? String;
         cell?.detailTextLabel?.font = UIFont .systemFont(ofSize: CGFloat(13))
         cell?.accessoryType=UITableViewCellAccessoryType.disclosureIndicator
         
@@ -106,6 +144,7 @@ class BoopoTableViewController: UIViewController, UITableViewDataSource, UITable
     //选中cell时触发这个代理
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print("indexPath.row = SelectRow第\(indexPath.row)行")
+        self.performSegue(withIdentifier: "show-detail", sender: self)
     }
     
     //取消选中cell时，触发这个代理
