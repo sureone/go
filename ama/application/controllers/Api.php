@@ -91,6 +91,9 @@ class Api extends CI_Controller {
                 $result = $this->doSubmitNewMessage($jobj);
 
             break;
+            case 'read-hot-things':
+                $result = $this->amaModel->readHotThings(0,2000);
+            break;
             case 'delete-attach':
                 $result = $this->doDeleteAttach($jobj);
 
