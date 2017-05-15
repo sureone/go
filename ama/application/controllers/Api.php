@@ -70,6 +70,11 @@ class Api extends CI_Controller {
 
     }
 
+    public function hot(){
+        $result = $this->amaModel->readHotThings(0,2000);
+        echo json_encode_utf8($result);
+    }
+
     public function index()
     {
         $idata = file_get_contents('php://input');
@@ -93,6 +98,7 @@ class Api extends CI_Controller {
             break;
             case 'read-hot-things':
                 $result = $this->amaModel->readHotThings(0,2000);
+
             break;
             case 'delete-attach':
                 $result = $this->doDeleteAttach($jobj);
