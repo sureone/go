@@ -13,6 +13,6 @@
 
   <div class="item-detail" padding>
     <h2>{{thing.title}}</h2>
-    <p>{{thing.text}}</p>
+    <p class="e2e-inner-html-bound" [innerHTML]="thing.text"></p>
   </div>
 </ion-content>

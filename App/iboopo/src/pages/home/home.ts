@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,ModalController } from 'ionic-angular';
 import { Thing }        from '../../models/thing';
 import { ThingService } from '../../providers/thing.service';
 import { ItemDetailPage } from '../item-detail/item-detail';
+import { ItemCreatePage } from '../item-create/item-create';
 
 @Component({
   selector: 'page-home',
@@ -10,16 +11,9 @@ import { ItemDetailPage } from '../item-detail/item-detail';
 })
 export class HomePage {
 
-
-  //private api = 'https://www.boopo.cn:19023/ama/index.php/api'; // 服务器地址
-  //private api = "/api";
-  //private hot = '/hot';  // 获取全部
-  //private getGundam = '/detail';		
-
-  
   things: Thing[] = [];
-  
-  constructor(public navCtrl: NavController,private thingService: ThingService) { }
+
+  constructor(public navCtrl: NavController,private thingService: ThingService, public modalCtrl: ModalController) { }
 
   ngOnInit(): void {
     this.thingService.getThings()
@@ -35,5 +29,15 @@ export class HomePage {
     this.navCtrl.push(ItemDetailPage, {
       thing: thing 
     });
+  }
+  addThing() {
+    let addModal = this.modalCtrl.create(ItemCreatePage);
+    addModal.onDidDismiss(thing => {
+      if (thing) {
+        //this.things.add(thing);
+      }
+    })
+    addModal.present();
+ 
   }
 }
