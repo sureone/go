@@ -6,13 +6,13 @@
 
 <ion-content padding>
   <ion-list>
-
-    <ion-item *ngFor="let item of items">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      <h2>{{item.title}}</h2>
-      <p>{{item.timeago}}</p>
-      <button ion-button clear item-right>View</button>
-    </ion-item>
+    <ion-item-sliding *ngFor="let thing of things">
+        <button ion-item (click)="openThing(thing)">
+          <ion-icon name="{{thing.icon}}" item-left></ion-icon>
+          <h2>{{thing.title}}</h2>
+          <p>{{thing.timeago}}</p>
+        </button>
+    </ion-item-sliding>
    
   </ion-list>
 
