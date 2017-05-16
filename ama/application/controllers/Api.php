@@ -71,6 +71,9 @@ class Api extends CI_Controller {
     }
 
     public function hot(){
+        $this->output->set_header('Access-Control-Allow-Origin: *');
+        $this->output->set_header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+        $this->output->set_content_type('application/json');
         $result = $this->amaModel->readHotThings(0,2000);
         echo json_encode_utf8($result);
     }
