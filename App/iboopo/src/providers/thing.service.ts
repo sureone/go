@@ -3,7 +3,7 @@ import { Headers, Http, RequestOptions, URLSearchParams  } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Thing } from '../models/thing';
-import { markdown } from 'markdown';
+import { markdown } from 'markdown'
 
 @Injectable()
 export class ThingService {
@@ -11,8 +11,6 @@ export class ThingService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private url = 'https://www.boopo.cn:19023/ama/index.php/api';  // URL to web api
   _user: any;
-
-  constructor(private http: Http) { }
 
 
   get(endpoint: string, params?: any, options?: RequestOptions) {
@@ -50,23 +48,26 @@ export class ThingService {
     return this.http.put(this.url + '/' + endpoint, body, options);
   }
 
+  constructor(public http: Http) { }
+
   /**
    * Process a login/signup response to store user data
    */
   _loggedIn(resp) {
-    this._user = resp.user;
+    this._user = resp.rows[0];
+    this._user.token = resp.token;
   }
 
   login(accountInfo: any) {
-    // let seq = this.post('login', accountInfo).share();
-    let seq = this.post('login', accountInfo);
+    let seq = this.post('login', accountInfo).share();
+    //let seq = this.post('login', accountInfo);
 
     seq
       .map(res => res.json())
       .subscribe(res => {
         // If the API returned a successful response, mark the user as logged in
         if (res.code == 200) {
-          this._loggedIn(res.rows[0]);
+          this._loggedIn(res);
         } else {
         }
       }, err => {
@@ -102,8 +103,18 @@ export class ThingService {
     return null;
   }
 
-  createThing(title: string,text: string): Promise<Thing> {
-    return null;
+  createThing(title: string,content: string) {
+    let seq = this.post('create', {title:title,content:content,token:this._user.token}).share();
+
+    seq
+      .map(res => res.json())
+      .subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.error('ERROR', err);
+      });
+
+    return seq;
   }
 
   updateThing(thing: Thing): Promise<Thing> {
