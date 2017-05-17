@@ -1,19 +1,84 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import { markdown } from 'markdown';
+import { Headers, Http, RequestOptions, URLSearchParams  } from '@angular/http';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Thing } from '../models/thing';
+import { markdown } from 'markdown';
+
 @Injectable()
 export class ThingService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serviceUrl = 'https://www.boopo.cn:19023/ama/index.php/api';  // URL to web api
+  private url = 'https://www.boopo.cn:19023/ama/index.php/api';  // URL to web api
+  _user: any;
 
   constructor(private http: Http) { }
 
+
+  get(endpoint: string, params?: any, options?: RequestOptions) {
+    if (!options) {
+      options = new RequestOptions();
+    }
+
+    // Support easy query params for GET requests
+    if (params) {
+      let p = new URLSearchParams();
+      for (let k in params) {
+        p.set(k, params[k]);
+      }
+      // Set the search field if we have params and don't already have
+      // a search field set in options.
+      options.search = !options.search && p || options.search;
+    }
+
+    return this.http.get(this.url + '/' + endpoint, options);
+  }
+
+  post(endpoint: string, body: any, options?: RequestOptions) {
+    return this.http.post(this.url + '/' + endpoint, body);
+  }
+
+  put(endpoint: string, body: any, options?: RequestOptions) {
+    return this.http.put(this.url + '/' + endpoint, body, options);
+  }
+
+  delete(endpoint: string, options?: RequestOptions) {
+    return this.http.delete(this.url + '/' + endpoint, options);
+  }
+
+  patch(endpoint: string, body: any, options?: RequestOptions) {
+    return this.http.put(this.url + '/' + endpoint, body, options);
+  }
+
+  /**
+   * Process a login/signup response to store user data
+   */
+  _loggedIn(resp) {
+    this._user = resp.user;
+  }
+
+  login(accountInfo: any) {
+    // let seq = this.post('login', accountInfo).share();
+    let seq = this.post('login', accountInfo);
+
+    seq
+      .map(res => res.json())
+      .subscribe(res => {
+        // If the API returned a successful response, mark the user as logged in
+        if (res.code == 200) {
+          this._loggedIn(res.rows[0]);
+        } else {
+        }
+      }, err => {
+        console.error('ERROR', err);
+      });
+
+    return seq;
+  }
+
+
   getThings(): Promise<Thing[]> {
-    const url = `${this.serviceUrl}/hot`;
-    return this.http.get(url)
+    return this.get('hot')
                .toPromise()
                .then(response =>{
                    var things: Thing[] =  response.json() as Thing[];
@@ -30,36 +95,19 @@ export class ThingService {
 
 
   getThing(id: number): Promise<Thing> {
-    const url = `${this.serviceUrl}/hot/${id}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json().data as Thing)
-      .catch(this.handleError);
+    return null;
   }
 
-  delete(id: number): Promise<void> {
-    const url = `${this.serviceUrl}/hot/${id}`;
-    return this.http.delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => null)
-      .catch(this.handleError);
+  deleteThing(id: number): Promise<void> {
+    return null;
   }
 
-  create(title: string,text: string): Promise<Thing> {
-    return this.http
-      .post(this.serviceUrl, JSON.stringify({title: title,text:text}), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json().data as Thing)
-      .catch(this.handleError);
+  createThing(title: string,text: string): Promise<Thing> {
+    return null;
   }
 
-  update(thing: Thing): Promise<Thing> {
-    const url = `${this.serviceUrl}/hot/${thing.thingid}`;
-    return this.http
-      .put(url, JSON.stringify(thing), {headers: this.headers})
-      .toPromise()
-      .then(() => thing)
-      .catch(this.handleError);
+  updateThing(thing: Thing): Promise<Thing> {
+    return null;
   }
 
   private handleError(error: any): Promise<any> {

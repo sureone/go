@@ -11,7 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { ThingService }   from '../providers/thing.service';
 import { ItemCreatePage } from '../pages/item-create/item-create';
-
+import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -24,7 +24,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ItemDetailPage,
     ItemCreatePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ItemDetailPage,
     ItemCreatePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     ThingService,
