@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Thing } from '../models/thing';
 import { markdown } from 'markdown'
-
+import { Storage } from '@ionic/storage';
 @Injectable()
 export class ThingService {
 
@@ -48,7 +48,7 @@ export class ThingService {
     return this.http.put(this.url + '/' + endpoint, body, options);
   }
 
-  constructor(public http: Http) { }
+  constructor(public http: Http,private storage:Storage){ }
 
   /**
    * Process a login/signup response to store user data
@@ -56,6 +56,7 @@ export class ThingService {
   _loggedIn(resp) {
     this._user = resp.rows[0];
     this._user.token = resp.token;
+
   }
 
   login(accountInfo: any) {
@@ -67,7 +68,11 @@ export class ThingService {
       .subscribe(res => {
         // If the API returned a successful response, mark the user as logged in
         if (res.code == 200) {
-          this._loggedIn(res);
+
+          this.storage.set("account.user",accountInfo.user);
+
+          this.storage.set("account.passwd",accountInfo.passwd);
+            this._loggedIn(res);
         } else {
         }
       }, err => {

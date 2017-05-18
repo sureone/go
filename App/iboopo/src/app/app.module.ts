@@ -14,6 +14,7 @@ import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { ThingService }   from '../providers/thing.service';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { LoginPage } from '../pages/login/login';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { Api } from '../providers/api';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,6 +44,7 @@ let pages = [
   ItemDetailPage,
   ItemCreatePage,
   TabsPage,
+  WelcomePage,
   LoginPage
 
 ];

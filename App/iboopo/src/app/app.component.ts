@@ -4,15 +4,15 @@ import { Platform, Nav, Config } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
-
 import { TranslateService } from '@ngx-translate/core'
 
 @Component({
-  template: `<ion-nav #content [root]="rootPage"></ion-nav>`
+  templateUrl: `app.html`
 })
 export class MyApp {
-  rootPage = LoginPage;
+  rootPage = WelcomePage;
 
   @ViewChild(Nav) nav: Nav;
 

@@ -33,9 +33,10 @@ export class HomePage {
   addThing() {
     let addModal = this.modalCtrl.create(ItemCreatePage);
     addModal.onDidDismiss(thing => {
-      if (thing) {
-        //this.things.add(thing);
-      }
+      this.thingService.getThings()
+      .then(things=>{
+            this.things=things;
+       });
     })
     addModal.present();
  

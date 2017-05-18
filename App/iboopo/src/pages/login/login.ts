@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 import { ThingService } from '../../providers/thing.service';
 
 
@@ -15,8 +15,8 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: { user: string, passwd: string } = {
-    user: 'ama',
-    passwd: '123'
+    user: '',
+    passwd: ''
   };
 
   // Our translated text strings
@@ -30,10 +30,12 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
-    this.thingService.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(HomePage);
+    this.thingService.login(this.account).map(resp => resp.json()).subscribe((resp) => {
+      if(resp.code==200){
+        this.navCtrl.push(TabsPage);
+      }
     }, (err) => {
-      this.navCtrl.push(HomePage);
+     
       // Unable to log in
       let toast = this.toastCtrl.create({
         message: this.loginErrorString,
