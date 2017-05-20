@@ -3,10 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
-
+import { MediaPlugin, MediaObject } from '@ionic-native/media';
+import { Transfer} from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
 import { MyApp } from './app.component';
 
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+
 import { AboutPage } from '../pages/about/about';
+import { PlayerPage } from '../pages/player/player';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -41,6 +46,7 @@ let pages = [
   AboutPage,
   ContactPage,
   HomePage,
+  PlayerPage,
   ItemDetailPage,
   ItemCreatePage,
   TabsPage,
@@ -60,6 +66,10 @@ export function entryComponents() {
 export function providers() {
   return [
     Api,
+    MediaPlugin,
+    Transfer,
+    File,
+    SQLite,
     ThingService,
     SplashScreen,
     StatusBar,

@@ -4,5 +4,6 @@ export class Thing {
   text: string;
   timeago: String;
   author: String;
+  attaches: Array<any>;
 }
 

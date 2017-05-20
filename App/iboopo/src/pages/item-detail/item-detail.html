@@ -2,6 +2,11 @@
 
   <ion-navbar>
     <ion-title>{{ thing.title }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="downloadAttach()">
+        <ion-icon name="download"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +20,14 @@
     <h2>{{thing.title}}</h2>
     <p class="e2e-inner-html-bound" [innerHTML]="thing.text"></p>
   </div>
+  <ion-list>
+  
+    <ion-item-sliding *ngFor="let attach of thing.attaches; let i = index">
+
+        <button ion-item (click)="playAudio(i)" *ngIf="attach.isaudio">
+          <h2>{{attach.file_comment}}</h2>
+        </button>
+    </ion-item-sliding>
+   
+  </ion-list>
 </ion-content>
