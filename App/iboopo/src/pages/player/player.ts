@@ -31,6 +31,15 @@ export class PlayerPage {
   playOrpause(){
     this.thingService.playOrpause();
   }
+
+  playNext(){
+    this.thingService.playNewAudio(this.thingService.cur_media.thing,this.thingService.cur_media.start_song+1);
+  }
+
+  playPrev(){
+
+    this.thingService.playNewAudio(this.thingService.cur_media.thing,this.thingService.cur_media.start_song-1);
+  }
     
 
 

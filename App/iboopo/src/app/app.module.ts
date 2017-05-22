@@ -22,6 +22,7 @@ import { LoginPage } from '../pages/login/login';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { Api } from '../providers/api';
 
+import { MusicControls } from '@ionic-native/music-controls';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -72,6 +73,7 @@ export function providers() {
     SQLite,
     ThingService,
     SplashScreen,
+    MusicControls,
     StatusBar,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }

@@ -45,7 +45,7 @@ export class MyApp {
             .then(() => console.log('created things table'))
             .catch(e => console.log(e));
 
-          var sql = 'create table IF NOT EXISTS attaches(id INTEGER PRIMARY KEY, thingid INTEGER, remoteurl VARCHAR(512),localurl VARCHAR(512), isaudio INTEGER,isvedio INTEGER,filesize INTEGER,duration INTEGER,fileorder INTEGER)';
+          sql = 'create table IF NOT EXISTS attaches(id INTEGER PRIMARY KEY, thingid INTEGER, remoteurl VARCHAR(512),localurl VARCHAR(512), isaudio INTEGER,isvedio INTEGER,filesize INTEGER,duration INTEGER,fileorder INTEGER)';
           db.executeSql(sql, {})
             .then(() => console.log('create attaches table'))
             .catch(e => console.log(e));  

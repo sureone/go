@@ -47,53 +47,19 @@ export class ItemDetailPage {
   constructor(public navCtrl: NavController, navParams: NavParams,
   private plt:Platform,private modalCtrl:ModalController,private media: MediaPlugin,private thingService: ThingService,private transfer: Transfer, private file: File) {
     this.thing = navParams.get('thing');
+
+
+
+        this.thingService.syncLocalAttach(this.thing);
+
   }
 
 
 
-    downloadAttachFiles(fileTransfer,thing,idx){
-        if(idx==thing.attaches.length) return;
-        var attach = thing.attaches[idx];
-        if(attach.file_type=="audio/mpeg"){
-          const url = 'https://www.boopo.cn:19023/ama/uploads/'+attach.file_name;
-          fileTransfer.download(url, this.file.dataDirectory + attach.id+".mp3").then((entry) => {
-            console.log('data dataDirectory:'+this.file.dataDirectory);
-            console.log('download complete: ' + entry.toURL());
-            var isaudio =1;
-            var isvedio = 0;
-            var localurl = this.file.dataDirectory + attach.id+".mp3";
-            var sql = 'REPLACE INTO attaches(id,thingid,remoteurl,localurl,isaudio,isvedio) \
-             VALUES('+attach.id+','+thing.thingid+',\''+url+'\',\''+localurl+'\','+isaudio+','+isvedio+')';
-            this.thingService.db.executeSql(sql, {})
-              .then(() => console.log('insert or update attach:'+attach.file_name))
-              .catch(e => console.log(e));
-
-            idx++;
-            this.downloadAttachFiles(fileTransfer,thing,idx);
-
-          }, (error) => {
-            // handle error
-          });
-        }else{
-           idx++;
-              this.downloadAttachFiles(fileTransfer,thing,idx);
-
-        }
-    }
-
-    downloadAttach(){
-
-    	if (this.plt.is('ios')) { 
-      const fileTransfer: TransferObject = this.transfer.create();
-
-      if(this.thing['attaches']){
-        this.downloadAttachFiles(fileTransfer,this.thing,0);
-      }else{
-        console.log("no attache file");
-      }
-  		}
-  	
-    }
+  
+  downloadAttach(){
+    this.thingService.downloadThingAttach(this.thing);
+  }
 
 
 
