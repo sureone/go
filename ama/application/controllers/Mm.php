@@ -35,9 +35,18 @@ class Mm extends CI_Controller {
             $this->doMaintainJobs();
     }
 
+    public function test(){
+	echo "test";
+    }
     function doMaintainJobs(){
-        echo 'hello admin';
+	$name = trim(fgets(STDIN)); 
+	// write input back 
+	if($name=="addmp3"){
+	
+	}
     }
 
+    function addmp3(){
+    }
 
 }

@@ -1,362 +1,185 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
-    <base href="/ama/index.php">
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./static/images/newicon57.png">  
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./static/images/newicon72.png">  
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./static/images/newicon114.png">  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./static/images/newicon144.png">  
-  
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>boopo</title>
-    <link href="./static/f7/css/framework7.ios.min.css" rel="stylesheet">
-    <link href="./static/f7/css/framework7.ios.colors.min.css" rel="stylesheet">
-	<!-- <script src="./static/f7/js/framework7.min.js"></script> -->
-	
-	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://apps.bdimg.com/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
-    <script src="./static/js/form2json.js"></script>
-    <script src="./static/js/common.js?v=7"></script>
-    <script src="./static/js/jquery.timeago.js?v=1"></script>
-    <script src="./static/js/markdown.js?v=3"></script>
-	<script type="text/javascript" src="./static/js/ama.js?v=9"></script>
-	
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>南京市管培一体化考试</title>
+    <link rel="stylesheet" href="./static/css/weui.css"/>
+    <link rel="stylesheet" href="./static/css/app.css"/>
+<script type="text/javascript">
+
+    var questions = {json_encode_utf8($questions)};
+    var questions_num = {count($questions)};
+  </script>
+    
 </head>
-  <body>
-    <!-- Status bar overlay for fullscreen mode-->
-    <div class="statusbar-overlay"></div>
-    <!-- Panels overlay-->
-    <div class="panel-overlay"></div>
-    <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal">
-      <div class="content-block">
-        <p>Left panel content goes here</p>
-      </div>
-    </div>
-    <!-- Right panel with cover effect-->
-    <div class="panel panel-right panel-cover">
-      <div class="content-block">
-        <p>Right panel content goes here</p>
-      </div>
-    </div>
-    <!-- Views-->
-    <div class="views">
-      <!-- Your main view, should have "view-main" class-->
-      <div class="view view-main">
-        <!-- Top Navbar-->
-        <div class="navbar">
-          <!-- Navbar inner for Index page-->
-          <div data-page="index" class="navbar-inner">
-            <!-- We have home navbar without left link-->
-            <div class="center sliding"><img src="./static/images/boopo.png"  height="20"></div>
-            <div class="right">
-              <!-- Right link contains only icon - additional "icon-only" class-->
-			  <!-- <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a> -->
-            </div>
-          </div>
-          <!-- Navbar inner for About page-->
-          <div data-page="about" class="navbar-inner cached">
-            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
-            <div class="center sliding">About Us</div>
-          </div>
-          <!-- Navbar inner for Services page-->
-          <div data-page="services" class="navbar-inner cached">
-            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
-            <div class="center sliding">Services</div>
-          </div>
-          <!-- Navbar inner for Form page-->
-          <div data-page="form" class="navbar-inner cached">
-            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
-            <div class="center sliding">Form</div>
-          </div>
-        </div>
-        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-        <div class="pages navbar-through toolbar-through">
-          <!-- Index Page-->
-          <div data-page="index" class="page">
-            <!-- Scrollable page content-->
-            <div class="page-content">
-			
-				{foreach $things as $entry}
-					<div class="card facebook-card">
-					  <div class="card-header">
-						<div class="facebook-avatar"><img src="./static/images/newicon57.png" width="34" height="34"></div>
-						<div class="facebook-name">{$entry.author_name}</div>
-						<div class="facebook-date"><time class="live-timestamp timeago" datetime="{$entry.timeago}"></time></div>
-					  </div>
-					  <div class="card-content">
-						<div class="card-content-inner">
-						  <p>{$entry.title}</p>
-						  
-						    {foreach $entry.attaches as $attach}
-							
-							{if $attach.file_type eq 'audio/mpeg'}
-								<a href="./uploads/{$attach.file_name}">{if $attach.file_comment neq ''}{$attach.file_comment}{else}{$attach.file_name}{/if}</a>
-							{else}
-                                <img src="./uploads/{$attach.file_name}" width="100%">
-							{/if}
-							
-                            {/foreach} 
-							
-						  <p><script>document.write(markdown.toHTML("{$entry.text|regex_replace:'/[\r\t\n]/':'\\n'|regex_replace:'/[\"]/':'\\\"'|regex_replace:'/[\']/':'\\\''}"));</script></p>
-                          
-						 
-						</div>
-					  </div>
-					  <div class="card-footer">
-						<a href="#" class="link">喜欢({$entry.likes-$entry.dislikes})</a>
-						<a href="#" class="link">评论({$entry.replies})</a>
-						<a href="#" class="link">分享</a>
-					  </div>
-					</div>   
-				{/foreach}
-				
-				
-            </div>
-          </div>
-          <!-- About Page-->
-          <div data-page="about" class="page cached">
-            <div class="page-content">
-              <div class="content-block">
-               
-              </div>
-            </div>
-          </div>
-          <!-- Services Page-->
-          <div data-page="services" class="page cached">
-            <div class="page-content">
-              <div class="content-block">
-                
-              </div>
-            </div>
-          </div>
-          <!-- Form Page-->
-          <div data-page="form" class="page cached">
-            <div class="page-content">
-              <div class="content-block-title">Form Example</div>
-              <div class="list-block">
-                <ul>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-name"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Name</div>
-                        <div class="item-input">
-                          <input type="text" placeholder="Your name">
+<body ontouchstart>
+    <div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+
+    <div class="container" id="container"></div>
+
+    <script type="text/html" id="tpl_home">
+        <div class="page">
+          
+            <div class="page__bd ">
+                <h4 class="weui-media-box__title" style="    text-align: center;margin-top:20px;margin-bottom:20px;">请输入姓名和单位信息开始考试</h4>
+                <div class="weui-cells weui-cells_form">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" type="text" name="name" value="" placeholder="请输入姓名"/>
                         </div>
-                      </div>
                     </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-email"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">E-mail</div>
-                        <div class="item-input">
-                          <input type="email" placeholder="E-mail">
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">单位</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" type="text" name="danwei" value="" placeholder="请输入单位"/>
                         </div>
-                      </div>
                     </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-url"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">URL</div>
-                        <div class="item-input">
-                          <input type="url" placeholder="URL">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-password"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Password</div>
-                        <div class="item-input">
-                          <input type="password" placeholder="Password">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-tel"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Phone</div>
-                        <div class="item-input">
-                          <input type="tel" placeholder="Phone">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-gender"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Gender</div>
-                        <div class="item-input">
-                          <select>
-                            <option>Male</option>
-                            <option>Female</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-calendar"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Birth date</div>
-                        <div class="item-input">
-                          <input type="date" placeholder="Birth day" value="2014-04-30">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-toggle"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Switch</div>
-                        <div class="item-input">
-                          <label class="label-switch">
-                            <input type="checkbox">
-                            <div class="checkbox"></div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-settings"></i></div>
-                      <div class="item-inner">
-                        <div class="item-title label">Slider</div>
-                        <div class="item-input">
-                          <div class="range-slider">
-                            <input type="range" min="0" max="100" value="50" step="0.1">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="align-top">
-                    <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-comment"></i></div>
-                      <div class="item-inner"> 
-                        <div class="item-title label">Textarea</div>
-                        <div class="item-input">
-                          <textarea></textarea>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="content-block">
-                <div class="row">
-                  <div class="col-50"><a href="#" class="button button-big button-fill color-red">Cancel</a></div>
-                  <div class="col-50">
-                    <input type="submit" value="Submit" class="button button-big button-fill color-green">
-                  </div>
+
+
+                    
+                    
                 </div>
-              </div>
-              <div class="content-block-title">Checkbox group</div>
-              <div class="list-block">
-                <ul>
-                  <li>
-                    <label class="label-checkbox item-content">
-                      <input type="checkbox" name="ks-checkbox" value="Books" checked>
-                      <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
-                      <div class="item-inner">
-                        <div class="item-title">Books</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="label-checkbox item-content">
-                      <input type="checkbox" name="ks-checkbox" value="Movies">
-                      <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
-                      <div class="item-inner">
-                        <div class="item-title">Movies</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="label-checkbox item-content">
-                      <input type="checkbox" name="ks-checkbox" value="Food">
-                      <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
-                      <div class="item-inner">
-                        <div class="item-title">Food</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="label-checkbox item-content">
-                      <input type="checkbox" name="ks-checkbox" value="Drinks">
-                      <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
-                      <div class="item-inner">
-                        <div class="item-title">Drinks</div>
-                      </div>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-              <div class="content-block-title">Radio buttons group</div>
-              <div class="list-block">
-                <ul>
-                  <li>
-                    <label class="label-radio item-content">
-                      <input type="radio" name="ks-radio" value="Books" checked>
-                      <div class="item-inner">
-                        <div class="item-title">Books</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="label-radio item-content">
-                      <input type="radio" name="ks-radio" value="Movies">
-                      <div class="item-inner">
-                        <div class="item-title">Movies</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="label-radio item-content">
-                      <input type="radio" name="ks-radio" value="Food">
-                      <div class="item-inner">
-                        <div class="item-title">Food</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="label-radio item-content">
-                      <input type="radio" name="ks-radio" value="Drinks">
-                      <div class="item-inner">
-                        <div class="item-title">Drinks</div>
-                      </div>
-                    </label>
-                  </li>
-                </ul>
-              </div>
+
+                <div class="button-sp-area page__bd_spacing" style="margin-top:20px;">
+                    <a href="javascript:;" data-id="question" class="weui-btn weui-btn_plain-default" id="login">开始</a>
+                </div>
             </div>
-          </div>
+            <div class="page__ft">
+                <div class="weui-footer">
+                    <p class="weui-footer__links">
+                        <a href="javascript:void(0);" class="weui-footer__link">一体化管培项目</a>
+                    </p>
+                    <p class="weui-footer__text">Copyright © 2018 鼓楼医院 内分泌</p>
+                </div>
+            </div>
         </div>
-        <!-- Bottom Toolbar-->
-<!--         <div class="toolbar">
-          <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
-        </div> -->
-      </div>
-    </div>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/my-app.js"></script>
-  </body>
+    </script>
+
+
+    <script type="text/html" id="tpl_admin">
+        <div class="page badge">
+            <div class="page__hd" style="text-align:center;">
+                <h1 class="">统计</h1>
+                <p class="">共{count($exam_users)}人</p>
+            </div>
+            <div class="page__bd">
+                
+                <div class="weui-cells">
+                {foreach $exam_users as $entry}
+                
+                    <div class="weui-cell">
+                        
+                        <div class="weui-cell__bd">
+                            <p>{$entry.name}</p>
+                            <p style="font-size: 13px;color: #888888;">{$entry.danwei}</p>
+                        </div>
+
+                        <div class="weui-cell__ft" style="font-size:25px;">{$entry.score}／{count($questions)}</div>
+                    </div>
+                    
+                
+                {/foreach}
+                </div>
+            </div>
+            
+        </div>
+    </script>
+
+
+     <script type="text/html" id="tpl_question_end">
+        <div class="page" id="page-question-end">
+          
+            <div class="page__bd"  style="margin-top:100px;">
+                <div class="icon-box" style="text-align:center;">
+                    <i class="weui-icon_msg result-icon"></i>
+                   
+                </div>
+                <h4 class="weui-media-box__title" style="    text-align: center;margin-top:20px;margin-bottom:20px;">答对题数：<span class="correct"></span></h4>
+                
+                
+                
+            </div>
+            <div class="page__bd page__bd_spacing">
+                <div class="button-sp-area">
+                    <a href="javascript:;" class="weui-btn weui-btn_plain-primary next_question" data-id="question" >再做一次</a>
+                </div>
+            </div>
+
+            <div class="page__bd page__bd_spacing" style="margin-top:20px;">
+                <div class="button-sp-area">
+                    <a href="javascript:;" class="weui-btn weui-btn_plain-default close-window"  >退出</a>
+                </div>
+            </div>
+
+
+
+            
+           
+        </div>
+    </script>
+
+
+  
+   
+   {foreach $questions as $entry}
+    <script type="text/html" id="tpl_question_{$entry.no}">
+        <div class="page panel" id="question-page-{$entry.no}">
+            <div class="page__bd page__bd_spacing">
+                <h1 class="page__title" style="text-align:center;margin-top:20px;">第{$entry.no}题</h1>
+                <p class="page__desc">{$entry.title}</p>
+            </div>
+            <div class="page__bd">
+          
+                <div class="weui-form-preview">
+                    <div class="weui-cells weui-cells_checkbox">
+                    {foreach $entry.options as $option}
+
+
+
+                       
+                            <label class="weui-cell weui-check__label" for="o-{$entry.no}-{$option@index}">
+                                <div class="weui-cell__hd">
+                                    <input type="checkbox" class="weui-check" name="o-{$entry.no}-{$option@index}" id="o-{$entry.no}-{$option@index}">
+                                    <i class="weui-icon-checked"></i>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <p>{$option}</p>
+                                </div>
+                            </label>
+                        
+                    {/foreach}
+
+                    </div>
+                    <div class="weui-form-preview__ft">
+                        <a class="weui-form-preview__btn weui-form-preview__btn_default last_question" href="javascript:" data-id="question">上一题</a>
+
+                        <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary next_question" href="javascript:"  data-id="question">下一题</button>
+
+                    </div>
+                </div>
+                
+            </div>
+            <div class="page__ft">
+                <div class="weui-footer">
+                    <p class="weui-footer__links">
+                        <a href="javascript:void(0);" class="weui-footer__link">一体化管培项目</a>
+                    </p>
+                    <p class="weui-footer__text">Copyright © 2018 鼓楼医院 内分泌</p>
+                </div>
+            </div>
+            
+        </div>
+    </script>
+    {/foreach}
+
+    <script src="./static/js/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="./static/js/app.js?v=4"></script>
+</body>
 </html>

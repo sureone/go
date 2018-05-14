@@ -26,6 +26,13 @@ class Api extends CI_Controller {
     {       
         // Call the Model constructor       
         parent::__construct();
+		header('Access-Control-Allow-Origin: *');
+		header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+		header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE,OPTIONS");
+		header("Access-Control-Allow-Credentials:true");
+		if ( "OPTIONS" === $_SERVER['REQUEST_METHOD'] ) {
+			die();
+		}
         $this->load->helper('json');
         $this->load->library('session');
         // $this->load->library('markdown');
@@ -33,7 +40,7 @@ class Api extends CI_Controller {
         $this->load->database();
         $this->load->helper('file');
         $this->load->library('ci_smarty');
-        $this->load->library('wx_crypt');
+        $this->load->library('wx_crypt');		
     }
     public function wxlogin($code=""){
 	
@@ -70,12 +77,128 @@ class Api extends CI_Controller {
 
     }
 
+    public function save_answer($userid){
+
+        $idata = file_get_contents('php://input');
+        // echo $idata;
+        $jobj = json_decode($idata);
+        $answers = $jobj->{'answers'};
+        $score = $jobj->{'score'};
+            $this->db->set('cdate',$this->curTime())
+                ->set('answers',$answers)
+                ->set('score',$score)
+                ->where('userid',$userid)
+                ->update('exam_answers');
+        echo json_encode_utf8( array('code'=>200,'data'=>'answer saven ok!'));
+    }
+
+    public function exam_login(){
+
+        // echo $name.$danwei;
+        $idata = file_get_contents('php://input');
+        // echo $idata;
+        $jobj = json_decode($idata);
+        $name = $jobj->{'name'};
+        $danwei = $jobj->{'danwei'};
+
+        $bumen = $jobj->{'bumen'};
+
+        $query = $this->db->select('id')
+                          ->where('name',$name)
+                          ->where('danwei',$danwei)
+                          ->get('exam_users');
+        $rows = $query->result_array();
+
+        $code = 400;
+        $id = "";
+        $userid="";
+        $answers="{}";
+        if(count($rows)==0){
+
+            $this->db->insert('exam_users',
+                array(
+                    'name'=>$name,
+                    'danwei'=>$danwei,
+                    'bumen'=>$bumen,
+                    'cdate'=>$this->curTime()
+                ));
+            $userid=$this->db->insert_id();
+            $answers="{}";
+            $this->db->insert('exam_answers',
+            array(
+                'userid'=>$userid,
+                'answers'=>$answers,
+                'cdate'=>$this->curTime()
+            ));
+            $code = 200;
+        }else{
+
+            $userid = $rows[0]['id'];
+            $query = $this->db->select('answers')
+                          ->where('userid',$userid)
+                          ->get('exam_answers');
+            $rows = $query->result_array();
+            if(count($rows)==0){
+                $answers = "{}";
+            }else
+                $answers = $rows[0]['answers'];
+
+        }
+        $this->session->set_userdata('logged',true);
+
+
+        echo json_encode_utf8( array('code'=>$code,'data'=>array(
+                    'name'=>$name,
+                    'danwei'=>$danwei,
+                    'bumen'=>$bumen,
+                    'userid'=>$userid,
+                    'answers'=>$answers
+                )));
+
+
+    }
+
     public function hot(){
-        $this->output->set_header('Access-Control-Allow-Origin: *');
-        $this->output->set_header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
-        $this->output->set_content_type('application/json');
-        $result = $this->amaModel->readHotThings(0,2000);
+
+        $rows = $this->amaModel->readNewThings(0,200,true);
+        echo json_encode_utf8($rows);
+    }
+	public function getLoginUser($token=""){
+
+        $user = null;
+       
+        if ($token!=""){
+
+
+            $this->db->where("token",$token);
+            $query = $this->db->get("tokens");
+            $rows = $query->result_array();
+
+            $user = $rows[0];
+
+        }else  if(isset($_SESSION['user.info']))
+            $user = $this->session->userdata('user.info');
+        return $user;
+
+
+    }
+	public function create(){
+
+        $idata = file_get_contents('php://input');
+        $jobj = json_decode($idata);
+		$result = $this->doSubmitNewLink($jobj);
+		$this->ci_smarty->clearCache("new.tpl"); 
+		$this->ci_smarty->clearCache("hot.tpl");
         echo json_encode_utf8($result);
+    }
+	
+	public function login(){
+		
+
+        $idata = file_get_contents('php://input');
+        $jobj = json_decode($idata);
+		$result = $this->doLogin($jobj);
+		echo json_encode_utf8($result);
     }
 
     public function index()
@@ -266,10 +389,14 @@ class Api extends CI_Controller {
     }
 
     function doSubmitNewLink($json){
-        $user = $this->session->userdata('user.info');
-        if(isset($_SESSION['user.info'])){
+        $token = "";
+        if(array_key_exists("token",$json)){
+            $token=$json->{'token'};
+        }
+        $user = $this->getLoginUser($token);
+        if($user!=null){
 
-            if($json->{'thingid'}>0){
+            if(array_key_exists("thingid",$json) && $json->{'thingid'}>0){
                 $this->db->trans_start();
 
                 $this->db->set('title',$json->{'title'});
@@ -309,8 +436,8 @@ class Api extends CI_Controller {
                     'cdate'=>$this->curTime(),
                     'udate'=>$this->curTime()));
                 $thingid=$this->db->insert_id();
-                $attches = $json->{'attaches'};
-                if($attches && count($attches)>0){
+                if(array_key_exists('attaches',$json)){
+                    $attaches = $json->{'attaches'};
                     $i=0;
                     foreach ($attches as $attach) {
                         $i=$i+1;
@@ -326,34 +453,34 @@ class Api extends CI_Controller {
             }
 
 
-        }else if($json->{'openId'}){
-	    if($this->amaModel->isValidWxUser($json->{'openId'})){
-	     $this->db->insert('things',
-                array('author'=>$json->{'openId'},
-                    'title'=>$json->{'title'},
-                    'stype'=>'link',
-                    'content'=>$json->{'content'},
-                    'cdate'=>$this->curTime(),
-                    'udate'=>$this->curTime()));
-                $thingid=$this->db->insert_id();
-                $attches = $json->{'attaches'};
-                if($attches && count($attches)>0){
-                    $i=0;
-                    foreach ($attches as $attach) {
-                        $i=$i+1;
-                        $this->db->where('id',$attach->{'file_id'});
-                        $this->db->update('thing_attach_map',
-                            array('thingid'=>$thingid,
-                                'file_no'=>$i,
-                            'file_comment'=>$attach->{'file_comment'}));
-                    }
-                }
-                return array('code'=>200,'thingid'=>$thingid,'attaches'=>$attches);
+        }else if(array_key_exists("openid", $json)){
+			if($this->amaModel->isValidWxUser($json->{'openId'})){
+				$this->db->insert('things',
+					array('author'=>$json->{'openId'},
+						'title'=>$json->{'title'},
+						'stype'=>'link',
+						'content'=>$json->{'content'},
+						'cdate'=>$this->curTime(),
+						'udate'=>$this->curTime()));
+				$thingid=$this->db->insert_id();
+				$attches = $json->{'attaches'};
+				if($attches && count($attches)>0){
+					$i=0;
+					foreach ($attches as $attach) {
+						$i=$i+1;
+						$this->db->where('id',$attach->{'file_id'});
+						$this->db->update('thing_attach_map',
+							array('thingid'=>$thingid,
+								'file_no'=>$i,
+							'file_comment'=>$attach->{'file_comment'}));
+					}
+				}
+				return array('code'=>200,'thingid'=>$thingid,'attaches'=>$attches);
 
 
-	    }else{
-		return  "not valid wx user" . $json->{'openId'};
-	    }
+			}else{
+				return  "not valid wx user" . $json->{'openId'};
+			}
 
 		
         }else{
@@ -459,6 +586,10 @@ class Api extends CI_Controller {
 
         $id = $json->{'user'};
         $passwd = $json->{'passwd'};
+		
+		$code = 200;
+
+        $token = "";
 
         $query = $this->db->select(array('userid','name','email','status'))
                           ->where('userid',$id)
@@ -468,12 +599,26 @@ class Api extends CI_Controller {
         if(count($rows)==1){
             $this->session->set_userdata('user.info',$rows[0]);
             $this->session->set_userdata('logged',true);
+            $token = md5($id . $this->curTime() . "www.boopo.cn");
+
+
+
+            $sql = 'INSERT INTO tokens (userid, token,cdate)
+                VALUES (?, ?, ?)
+                ON DUPLICATE KEY UPDATE 
+                    token=VALUES(token), 
+                    cdate=VALUES(cdate)';
+
+            $query = $this->db->query($sql, array( $id,$token,$this->curTime()));  
+
 
             $this->db->set('lastdate',$this->curTime())
                 ->where('userid',$id)
                 ->update('users');
-        }
-        return array('code'=>200,'rows'=>$rows);
+        }else{
+			$code = 404;
+		}
+        return array('code'=>$code,'rows'=>$rows,'token'=>$token);
     }
     //{"action":"reg","user":"fdsa","user_name":"fdsaf","passwd":"fdsafsd","passwd2":"fdsafd","email":"fdsafds","digest_subscribe":"true"}
     function doReg($json){

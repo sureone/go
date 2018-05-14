@@ -55,6 +55,11 @@ class V extends CI_Controller {
 		$this->showHotView();
 		
 	}
+	public function questions()
+	{
+		$this->showQuestionsView();
+		
+	}
 	public function news()
 	{
 		$this->showNewView();
@@ -153,7 +158,40 @@ class V extends CI_Controller {
     	}
 	}
 
+
 	function showHotView(){
+		$this->common();
+
+
+
+		$questions = array(
+				array('no'=>1,'title'=>'blablablabla 1','options'=>array('option1','option2'),'daan'=>array('1')),
+				array('no'=>2,'title'=>'blablablabla 2','options'=>array('option1','option2'),'daan'=>array('2')),
+				array('no'=>3,'title'=>'blablablabla 3','options'=>array('option1','option2'),'daan'=>array('1','2')),
+		);
+		
+		$this->db->select(array('a.name','a.danwei','a.bumen','b.score'));
+        $this->db->from('exam_users a');
+        $this->db->join('exam_answers b', 'a.id = b.userid');
+        $this->db->order_by('a.id','ASC');
+
+        $query = $this->db->get();
+        $rows = $query->result_array();
+
+
+		$this->ci_smarty->assign("page","hot");
+		$this->ci_smarty->assign("questions",$questions);
+
+		$this->ci_smarty->assign("exam_users",$rows);
+		$this->ci_smarty->display("mobile/mobile.tpl");
+
+
+
+
+	}
+
+
+	function showHotView2(){
 		$this->common();
 		
 		if($this->isMobile()) {
@@ -181,6 +219,15 @@ class V extends CI_Controller {
 
 	}
 
+	function showQuestionsView(){
+		$this->common();
+		
+		
+			$this->ci_smarty->display("questions.tpl");
+		
+
+
+	}
 
 	function showNewView(){
 		$this->common();

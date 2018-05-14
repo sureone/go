@@ -134,6 +134,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='...';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+DROP TABLE IF EXISTS `tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tokens` (
+  `userid` varchar(64) NOT NULL,
+  `token` varchar(128) NOT NULL,
+  `cdate` int(11) DEFAULT NULL,
+  UNIQUE KEY `token` (`token`),
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='...';
+/*!40101 SET character_set_client = @saved_cs_client */;
 --
 -- Table structure for table `wx_users`
 --
