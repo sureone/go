@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{thingService.cur_media.thing.title}}</ion-title>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="song-content">
+		{{thingService.cur_media.thing.attaches[thingService.cur_media.start_song].file_comment}}
+	</div>	
+	<div class="play-controll">
+
+		<div class="progress">
+		<ion-range min="0" max="{{thingService.cur_media.duration}}" [(ngModel)]="thingService.cur_media.position"  (ionChange)="thingService.seekAudio()" color="secondary">
+	      <!-- <ion-label range-left>{{thingService.cur_media.position}}</ion-label> -->
+	      <!-- <ion-label range-right>{{thingService.cur_media.duration}}</ion-label> -->
+	    </ion-range>
+		</div>
+		
+		<div class="options" data-copy-type="1">
+			<div class="extra ">
+			    <div class="btn-opt log btn-list"></div>
+			    
+			    <div class="btn-opt btn-last" (click)="playPrev()"></div>
+			    
+			    <div class="btn-play opt need-active {{thingService.cur_media.status}}" (click)="playOrpause()" >
+			    </div>
+
+			    
+			    <div class="btn-opt btn-next" (click)="playNext()"></div>
+			    <div class="btn-fav btn-opt"></div>
+		<!-- 	    <div class="btn-opt btn-comment log">
+			            <span>17</span>
+			    </div> -->
+			    
+			</div>
+		</div>
+	</div>
+</ion-content>

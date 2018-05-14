@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { NavController,ModalController } from 'ionic-angular';
+import { Thing }        from '../../models/thing';
+import { ThingService } from '../../providers/thing.service';
+import { ItemDetailPage } from '../item-detail/item-detail';
+import { ItemCreatePage } from '../item-create/item-create';
 
 @Component({
   selector: 'page-home',
@@ -9,30 +11,50 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
 
+  things: Thing[] = [];
 
-  private api = 'https://www.boopo.cn:19023/ama/index.php/api'; // 服务器地址
-  // private api = "/api";
-  private hot = '/hot';  // 获取全部
-  private getGundam = '/detail';		
+  constructor(public navCtrl: NavController,private thingService: ThingService, public modalCtrl: ModalController) { }
 
-  icons: string[];
-  items: Array<{ title: string, note: string, icon: string }>;
+  ngOnInit(): void {
+    this.thingService.getThings()
+      .then(things=>{
+            this.things=things;
+            for(var i=0;i<this.things.length;i++){
+              var thing = this.things[i];
+              if(thing['attaches']){
+                for(var j=0;j<thing.attaches.length;j++){
+                  var attach = thing.attaches[j];
+                  attach['remoteurl']='https://www.boopo.cn:19023/ama/uploads/'+attach.file_name;
+                  attach['localurl']=null;
+                  if(attach['file_type']=="audio/mpeg"){
+                    attach['isaudio']=true;
+                  }else{
+                    attach['isaudio']=false;
+                  
+                  }
+                }
+              }
+            }
+       });
+  }
 	
-
-  constructor(public navCtrl: NavController,public http: Http) {
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-      'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    
-
-    this.http.get(this.api+this.hot).map(res => res.json()).subscribe(data => {
-        this.items = data;
-        console.log(data.data);
-        for (let i = 0; i < this.items.length; i++) {
-        	this.items[i]['icon']=this.icons[Math.floor(Math.random() * this.icons.length)];
-	    }
+  /**
+   * Navigate to the detail page for this item.
+   */
+  openThing(thing: Thing) {
+    this.navCtrl.push(ItemDetailPage, {
+      thing: thing 
     });
   }
-
+  addThing() {
+    let addModal = this.modalCtrl.create(ItemCreatePage);
+    addModal.onDidDismiss(thing => {
+      this.thingService.getThings()
+      .then(things=>{
+            this.things=things;
+       });
+    })
+    addModal.present();
+ 
+  }
 }

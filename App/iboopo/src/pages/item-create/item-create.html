@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>create</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        <span color="primary" showWhen="ios">
+            cancel
+        </span>
+        <ion-icon name="md-close" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+        <span color="primary" showWhen="ios">
+            done
+        </span>
+        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createThing()">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" placeholder="title" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+       
+        <textarea rows=20 placeholder="text" formControlName="content"></textarea> 
+        
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
