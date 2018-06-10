@@ -14,6 +14,8 @@ $(function () {
     var login_data = null;
 
     var answers = null;
+
+    var results = [];
     var pageManager = {
         $container: $('#container'),
         _pageStack: [],
@@ -51,7 +53,10 @@ $(function () {
 
             var url = location.hash.indexOf('#') === 0 ? location.hash : '#';
             var page = self._find('url', url) || self._defaultPage;
-            this._go(page);
+            setTimeout(function(){
+                self._go(page);
+            },1500)
+            // this._go(page);
             return this;
         },
         push: function (config) {
@@ -67,8 +72,9 @@ $(function () {
 
 
 
+
             if(config.url.indexOf("#question_")==0){
-                cur_question_no = parseInt(config.url.charAt(config.url.length-1));
+                cur_question_no = parseInt(config.url.slice("#question_".length));
             }
         },
         _go: function (config) {
@@ -137,7 +143,7 @@ $(function () {
                 cur_question_no = 0;
             }
             if(url.indexOf("#question_")==0){
-                cur_question_no = parseInt(url.charAt(url.length-1));
+                cur_question_no = parseInt(url.slice("#question_".length));
             }
             var found = this._findInStack(url);
             if (!found) {
@@ -418,6 +424,7 @@ $(function () {
         window.pageManager.go("question_end");
         wrongs = 0;
         corrects=questions_num;
+        results = [];
         for(var i=0;i<questions_num;i++){
             var question = questions[i];
             var daan = {};
@@ -428,11 +435,16 @@ $(function () {
                 daan['o-'+(i+1)+'-'+(question.daan[j]-1)]=1;
             }
 
+            results.push(1);
+
             for(j=0;j<question.options.length;j++){
                 id = 'o-'+(i+1)+'-'+(j)
                 if(daan[id]!=answers[id]){
                     wrongs ++;
                     corrects --;
+                    results[i]=(0);
+
+
                     break;
                 }
             }
@@ -445,7 +457,16 @@ $(function () {
 
                 $("#page-question-end .result-icon").addClass("weui-icon-warn");
             }
-            $("#page-question-end .correct").html(corrects+"／"+questions_num);        
+
+            $("#page-question-end .correct").html(corrects+"／"+questions_num);  
+
+            for(var i=0;i<questions_num;i++){
+                if(results[i]==0){
+                    $("#page-question-end .result-"+i).addClass("weui-icon-warn");
+                }else{
+                    $("#page-question-end .result-"+i).addClass("weui-icon-success");
+                }
+            }      
         },100);
 
         cur_question_no = 0;
@@ -466,6 +487,14 @@ $(function () {
         if((cur_question_no+1)>questions_num) return;
         enterQuestion(cur_question_no+1);
 
+
+    });
+
+    $(document).on('click','.jump_question', function(){
+
+        
+        var id = $(this).data('id');
+        enterQuestion(id);
 
     });
 
